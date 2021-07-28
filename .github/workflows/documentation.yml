@@ -34,8 +34,8 @@ jobs:
         with:
           node-version: '12.x'
       - name: Deploy 🚀
-          uses: JamesIves/github-pages-deploy-action@4.1.0
-          with:
-            branch: gh-pages
-            folder: build
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          branch: gh-pages
+          folder: build
 
