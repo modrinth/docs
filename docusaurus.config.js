@@ -31,12 +31,7 @@ module.exports = {
           href: 'https://modrinth.com/',
           label: 'Main website',
           position: 'right'
-        },
-        {
-          href: 'https://github.com/modrinth/docs',
-          label: 'Modify Me',
-          position: 'right',
-        },
+        }
       ],
     },
     footer: {
@@ -55,16 +50,12 @@ module.exports = {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
               label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              href: 'https://discord.gg/EUHuJHt',
             },
             {
               label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              href: 'https://twitter.com/modrinth',
             },
           ],
         },
@@ -72,12 +63,8 @@ module.exports = {
           title: 'More',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/modrinth/docs',
             },
           ],
         },
