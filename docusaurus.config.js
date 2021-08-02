@@ -17,13 +17,13 @@ module.exports = {
     navbar: {
       title: 'Modrinth',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Modrinth Logo',
         src: 'img/logo.svg',
       },
       items: [
         {
           type: 'doc',
-          docId: 'intro',
+          docId: 'getting-started',
           position: 'left',
           label: 'Documentation',
         },

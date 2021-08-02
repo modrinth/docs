@@ -4,26 +4,26 @@ import styles from './HomepageFeatures.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Simple by design',
+    Svg: require('../../static/img/undraw_building_blocks.svg').default,
     description: (
       <>
-        Modrinth's API is made from the ground up to be easy to use, and easily usable in other applications, not just ours.
+        Modrinth's API is made from the ground up to be easy to use, and easy to integrate into other applications, not just ours.
       </>
     ),
   },
   {
     title: 'Free to use',
-    Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
+    Svg: require('../../static/img/undraw_running_wild.svg').default,
     description: (
       <>
-        Modrinth doesn't change money or prevent certain developers from using the API, and does not makes advertising mandatory.
+        Modrinth doesn't change money or prevent certain developers from using the API, and we <b>do not</b> make advertising mandatory.
       </>
     ),
   },
   {
     title: 'Powered by Rust',
-    Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
+    Svg: require('../../static/img/undraw_fast_loading.svg').default,
     description: (
       <>
         Rust allows us to have a high performance and high safety on what we do, making our APIs really fast.
