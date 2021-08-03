@@ -11,7 +11,7 @@ This tutorial will explain the basics of the Modrinth API.
 
 ## Getting a working testing environment
 
-This documentation doesn't provide a way to easily test our api (yet).
+This documentation doesn't provide a way to easily test our API (yet).
 In order to facilitate testing we recommend the following API testing tools:
 
 - [ReqBIN](https://reqbin.com/), an online REST API testing tool.
@@ -29,7 +29,7 @@ Once you have have a working client, you can test that it works by making a **GE
 }
 ```
 
-If you did get nearly the same thing than what's appearing above, then it's that you can access modrinth !
+If you did get nearly the same thing than what's appearing above, then it's that you can access Modrinth !
 
 ## Your first useful request
 
@@ -57,8 +57,8 @@ Let's talk about the how and why of this request:
 
 ### Method
 As many of you may already know, the HTTP specification has specific action words, called methods, that tell the Modrinth API what you want to do with our data.
-In applications, we will always tell the Modrinth api what action to use.
-In the above example, we used the `GET` method, which tells the Api we want to *get* information from Modrinth.
+In applications, we will always tell the Modrinth API what action to use.
+In the above example, we used the `GET` method, which tells the API we want to *get* information from Modrinth.
 
 You can learn more about the different HTTP methods [here](details/methods.md)
 
@@ -74,13 +74,13 @@ Version 1 of the API is the only exception to this rule, as it was the following
 Note the part between the version and the domain :P
 
 :::
-If you are feeling particularly adventurous, you can use the staging api, which is in active development (and has all the shiny new features), but only includes test mods. The base URL for the staging api is:
+If you are feeling particularly adventurous, you can use the staging api, which is in active development (and has all the shiny new features), but only includes test mods. The base URL for the staging API is:
 ```
 https://staging-api.modrinth.com/{version}/
 ```
 ### Projects
 
-In modrinth, projects are any type of item that modrinth provides for users to download (currently only includes modpacks and mods).
+In modrinth, projects are any type of item that Modrinth provides for users to download (currently only includes modpacks and mods).
 
 Projects have a unique id, usually gibberish, like `tsi4hUoN`, as well as another characteristic, called a *slug*.
 
