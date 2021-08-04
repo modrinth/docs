@@ -112,6 +112,7 @@ module.exports = {
           primaryColor: '#5DA426',
           redocOptions: {
             hideLoading: true,
+            noAutoAuth: true,
           },
         },
       },

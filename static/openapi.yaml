@@ -12,7 +12,12 @@ info:
     All responses have a wildcard same-origin which makes them completely public and accessible to everyone, including any code on any site.
 
     # Authentication
-    This API uses GitHub tokens for authentication. [Get a token.](#operation/initAuth)
+    This API uses GitHub tokens for authentication. The token is in the `Authorization` header of the request. [Get a token.](#operation/initAuth)
+     
+     Example:
+     ```
+     Authorization: gho_pJ9dGXVKpfzZp4PUHSxYEq9hjk0h288Gwj4S
+     ```
 servers:
   - url: https://api.modrinth.com/v2
     description: Production server
