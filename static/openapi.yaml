@@ -125,7 +125,7 @@ paths:
           schema:
             type: string
             example: categories="fabric" AND (categories="technology" OR categories="utility")
-          description: A list of filters relating to the properties of a project. Use filters when their isn't an available facet for your needs. [More information](https://docs.meilisearch.com/reference/features/filtering.html)
+          description: A list of filters relating to the properties of a project. Use filters when there isn't an available facet for your needs. [More information](https://docs.meilisearch.com/reference/features/filtering.html)
         - in: query
           name: version
           schema:
