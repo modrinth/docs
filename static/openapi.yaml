@@ -325,7 +325,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Version"
         "404":
-          description: The requested version was not found or no authorization to see this project's versions
+          description: The requested version was not found or no authorization to see this version
           content:
             application/json:
               schema:
@@ -357,7 +357,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/AuthError"
         "404":
-          description: The requested version was not found or no authorization to see this project
+          description: The requested version was not found or no authorization to see this version
           content:
             application/json:
               schema:
@@ -383,7 +383,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/AuthError"
         "404":
-          description: The requested version was not found or no authorization to see this project
+          description: The requested version was not found or no authorization to see this version
           content:
             application/json:
               schema:
@@ -450,7 +450,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/AuthError"
         "404":
-          description: The requested version was not found
+          description: The requested version was not found or no authorization to see this version
           content:
             application/json:
               schema:
