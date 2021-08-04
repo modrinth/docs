@@ -110,7 +110,9 @@ module.exports = {
         ],
         theme: {
           primaryColor: '#5DA426',
-          redocOptions: {},
+          redocOptions: {
+            hideLoading: true,
+          },
         },
       },
     ],
