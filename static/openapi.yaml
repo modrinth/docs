@@ -575,13 +575,16 @@ components:
           items:
             type: string
             example: [technology, adventure, fabric]
+          description: A list of the categories that the project is in
         client_side:
           type: string
           enum: [required, optional, unsupported]
+          description: The client side support of the project
           example: required
         server_side:
           type: string
           enum: [required, optional, unsupported]
+          description: The server side support of the project
           example: optional
     ServerRenderedProject:
       allOf:
@@ -656,6 +659,7 @@ components:
             status:
               type: string
               enum: [approved, rejected, draft, unlisted, processing, unknown]
+              description: The status of the project
               example: approved
             license:
               type: object
@@ -672,6 +676,7 @@ components:
                   type: string
                   description: The URL to this license
                   example: https://cdn.modrinth.com/licenses/lgpl-3.txt
+              description: The license of the project
             issues_url:
               type: string
               description: An optional link to where to submit bugs or issues with the project
@@ -707,6 +712,7 @@ components:
                     type: string
                     description: The URL of the donation platform and user
                     example: https://www.patreon.com/my_user
+              description: A list of donation links for the project
     CreatableProject:
       allOf:
         - $ref: "#/components/schemas/EditableProject"
@@ -739,23 +745,29 @@ components:
             id:
               type: string
               example: AABBCCDD
+              description: The ID of the project, encoded as a base62 string
             team:
               type: string
               example: MMNNOOPP
+              description: The ID of the team that has ownership of this project
             moderator_message:
               type: string
               example: null
+              description: A message that a moderator sent regarding the project
             published:
               type: string
               format: date-time
+              description: The date the project was published
             updated:
               type: string
               format: date-time
+              description: The date the project was last updated
             versions:
               type: array
               items:
                 type: string
               example: [IIJJKKLL, QQRRSSTT]
+              description: A list of the version IDs of the project
             # TODO: gallery
     # Version
     BaseVersion:
