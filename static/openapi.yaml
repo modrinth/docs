@@ -1133,7 +1133,7 @@ components:
           type: string
           description: The contents of the error
           example: "the requested route does not exist"
-    # Empty (for 204s)
+    # Empty
     Empty:
       type: null
 
