@@ -1,7 +1,7 @@
 openapi: "3.0.0"
 
 info:
-  version: 1b33f0c
+  version: 1b33f0c (v2)
   title: Labrinth
   description: |
     This API is documented in **OpenAPI format** and is available for download [here](/openapi.yaml).
@@ -167,16 +167,11 @@ paths:
                     example: 10
 
         "400":
-          description: Invalid Request
+          description: Invalid request
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                  description:
-                    type: string
+                $ref: "#/components/schemas/InvalidInputError"
   /project/{id|slug}:
     get:
       summary: Get a project
@@ -193,7 +188,11 @@ paths:
               schema:
                 $ref: "#/components/schemas/Project"
         "404":
-          description: The requested project was not found
+          description: The requested project was not found or no authorization to see this project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
     patch:
       summary: Modify a project
       operationId: modifyProject
@@ -210,8 +209,22 @@ paths:
       responses:
         "204":
           description: Project modified successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+        "401":
+          description: No authorization to edit this project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
         "404":
-          description: The requested project was not found
+          description: The requested project was not found or no authorization to see this project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
     delete:
       summary: Delete a project
       operationId: deleteProject
@@ -222,8 +235,22 @@ paths:
       responses:
         "204":
           description: Project deleted successfully
-        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+        "400":
           description: The requested project was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InvalidInputError"
+        "401":
+          description: No valid authorization to delete this project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
   /project:
     post:
       summary: Create a project
@@ -247,16 +274,17 @@ paths:
               schema:
                 $ref: "#/components/schemas/Project"
         "400":
-          description: Invalid Request
+          description: Invalid request
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                  description:
-                    type: string
+                $ref: "#/components/schemas/InvalidInputError"
+        "401":
+          description: No authorization to create a project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
   # Version
   /project/{id|slug}/version:
     get:
@@ -276,7 +304,11 @@ paths:
                 items:
                   $ref: "#/components/schemas/Version"
         "404":
-          description: The requested project was not found
+          description: The requested project was not found or no authorization to see this project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
   /version/{id}:
     get:
       summary: Get a version
@@ -293,7 +325,11 @@ paths:
               schema:
                 $ref: "#/components/schemas/Version"
         "404":
-          description: The requested version was not found
+          description: The requested version was not found or no authorization to see this version
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
     patch:
       summary: Modify a version
       operationId: modifyVersion
@@ -310,8 +346,22 @@ paths:
       responses:
         "204":
           description: Version modified successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+        "401":
+          description: No authorization to edit this version
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
         "404":
-          description: The requested version was not found
+          description: The requested version was not found or no authorization to see this version
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
     delete:
       summary: Delete a version
       operationId: deleteVersion
@@ -322,8 +372,22 @@ paths:
       responses:
         "204":
           description: Version deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+        "401":
+          description: No authorization to delete this version
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
         "404":
-          description: The requested version was not found
+          description: The requested version was not found or no authorization to see this version
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
   /version:
     post:
       summary: Create a version
@@ -345,16 +409,17 @@ paths:
               schema:
                 $ref: "#/components/schemas/Version"
         "400":
-          description: Invalid Request
+          description: Invalid request
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                  description:
-                    type: string
+                $ref: "#/components/schemas/InvalidInputError"
+        "401":
+          description: No authorization to create this version
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
   /version/{id}/file:
     post:
       summary: Add files to version
@@ -378,8 +443,18 @@ paths:
       responses:
         "204":
           description: Version modified successfully
+        "401":
+          description: No authorization to modify this version
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
         "404":
-          description: The requested version was not found
+          description: The requested version was not found or no authorization to see this version
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
   # User
   /user/{id|username}:
     get:
@@ -398,6 +473,10 @@ paths:
                 $ref: "#/components/schemas/User"
         "404":
           description: The requested user was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
     patch:
       summary: Modify a user
       operationId: modifyUser
@@ -414,8 +493,22 @@ paths:
       responses:
         "204":
           description: User modified successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+        "401":
+          description: No authorization to modify this user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
         "404":
           description: The requested user was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
     delete:
       summary: Delete a user
       operationId: deleteUser
@@ -426,8 +519,22 @@ paths:
       responses:
         "204":
           description: User deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+        "401":
+          description: No authorization to delete this user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
         "404":
           description: The requested user was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
   /user/{id|username}/projects:
     get:
       summary: Get user's projects
@@ -447,6 +554,10 @@ paths:
                   $ref: "#/components/schemas/Project"
         "404":
           description: The requested user was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
   /user/{id|username}/notifications:
     get:
       summary: Get user's notifications
@@ -467,14 +578,24 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Notification"
+        "401":
+          description: No authorization to get this user's notifications
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
         "404":
           description: The requested user was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
   # Auth
   /auth/init:
     get:
       summary: Initialize authentication
       description: |
-        1. Preforms a redirect to: https://github.com/login/oauth/authorize?client_id=873e1f2db86d89306227&state=tVPJ27GD&scope=read%3Auser
+        1. Performs a redirect to: https://github.com/login/oauth/authorize?client_id=873e1f2db86d89306227&state=tVPJ27GD&scope=read%3Auser
         2. Then redirects to [/auth/callback](#operation/authCallback)
         3. The user is redirected to the given `url` parameter
       operationId: initAuth
@@ -574,7 +695,7 @@ components:
           type: array
           items:
             type: string
-            example: [technology, adventure, fabric]
+            example: technology, adventure, fabric
           description: A list of the categories that the project is in
         client_side:
           type: string
@@ -978,6 +1099,43 @@ components:
           items:
             type: object
           description: A list of actions that can be performed
+    # Errors
+    InvalidInputError:
+      type: object
+      properties:
+        error:
+          type: string
+          description: The name of the error
+          example: "invalid_input"
+        description:
+          type: string
+          description: The contents of the error
+          example: "Error while parsing multipart payload"
+    AuthError:
+      type: object
+      properties:
+        error:
+          type: string
+          description: The name of the error
+          example: "unauthorized"
+        description:
+          type: string
+          description: The contents of the error
+          example: "Authentication Error: Invalid Authentication Credentials"
+    NotFoundError:
+      type: object
+      properties:
+        error:
+          type: string
+          description: The name of the error
+          example: "not_found"
+        description:
+          type: string
+          description: The contents of the error
+          example: "the requested route does not exist"
+    # Empty
+    Empty:
+      type: null
 
   securitySchemes:
     TokenAuth:
