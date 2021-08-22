@@ -21,7 +21,7 @@ module.exports = {
         'modpacks/format_definition',
       ],
       'Migrations': ['migrations/migrations-info', 'migrations/v1-to-v2'],
-      'API Information': ['details/versioning', 'details/methods'],
+      'API Information': ['details/versioning', 'details/methods']
     }
   ],
 };
