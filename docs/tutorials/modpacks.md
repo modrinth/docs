@@ -5,4 +5,4 @@ id: api_modpacks
 
 # Modpack API
 
-Welcome to this tutorial  
+This tutorial will be released soon :)
