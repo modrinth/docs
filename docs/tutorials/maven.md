@@ -45,7 +45,7 @@ repositories {
 
 Optionally, you may also add a repository name by adding `name = "Modrinth"` before the `url`. This may help debug logs be easier to read.
 
-Additionally, if you're using Gradle 5 or above, it is recommended that you add a `content includeGroup` field. The Maven group that Modrinth uses in the repository is unique (`maven.modrinth`) and won't be used anywhere else, so specifying that this group should only be resolved to the Maven will allow it to resolve artifacts faster.
+Additionally, if you're using Gradle 5 or above, it is recommended that you add a `content includeGroup` field. The Maven group that Modrinth uses in the repository is unique (`maven.modrinth`) and won't be used anywhere else, so specifying that this group should only be resolved to our Maven will allow it to resolve artifacts faster.
 
 All in all, here's what an optimal `repositories` block with the Modrinth Maven repository might look like:
 
