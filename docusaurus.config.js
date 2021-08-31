@@ -1,5 +1,5 @@
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require('prism-react-renderer/themes/github')
+const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
@@ -28,10 +28,16 @@ module.exports = {
           label: 'Documentation',
         },
         {
+          to: 'api-spec',
+          position: 'left',
+          label: 'API Spec',
+          activeBasePath: 'api-spec',
+        },
+        {
           href: 'https://modrinth.com/',
           label: 'Main website',
-          position: 'right'
-        }
+          position: 'right',
+        },
       ],
     },
     footer: {
@@ -85,12 +91,31 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-              'https://github.com/facebook/docusaurus/edit/master/website/',
+            'https://github.com/facebook/docusaurus/edit/master/website/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
       },
     ],
+    [
+      'redocusaurus',
+      {
+        debug: Boolean(process.env.DEBUG || process.env.CI),
+        specs: [
+          {
+            spec: './static/openapi.yaml',
+            routePath: '/api-spec/',
+          },
+        ],
+        theme: {
+          primaryColor: '#5DA426',
+          redocOptions: {
+            hideLoading: true,
+            noAutoAuth: true,
+          },
+        },
+      },
+    ],
   ],
-};
+}
