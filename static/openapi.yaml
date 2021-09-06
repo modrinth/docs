@@ -209,10 +209,6 @@ paths:
       responses:
         "204":
           description: Project modified successfully
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Empty"
         "401":
           description: No authorization to edit this project
           content:
@@ -235,10 +231,6 @@ paths:
       responses:
         "204":
           description: Project deleted successfully
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Empty"
         "400":
           description: The requested project was not found
           content:
@@ -346,10 +338,6 @@ paths:
       responses:
         "204":
           description: Version modified successfully
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Empty"
         "401":
           description: No authorization to edit this version
           content:
@@ -372,10 +360,6 @@ paths:
       responses:
         "204":
           description: Version deleted successfully
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Empty"
         "401":
           description: No authorization to delete this version
           content:
@@ -493,10 +477,6 @@ paths:
       responses:
         "204":
           description: User modified successfully
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Empty"
         "401":
           description: No authorization to modify this user
           content:
@@ -519,10 +499,6 @@ paths:
       responses:
         "204":
           description: User deleted successfully
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Empty"
         "401":
           description: No authorization to delete this user
           content:
@@ -1133,10 +1109,6 @@ components:
           type: string
           description: The contents of the error
           example: "the requested route does not exist"
-    # Empty
-    Empty:
-      type: null
-
   securitySchemes:
     TokenAuth:
       type: apiKey
