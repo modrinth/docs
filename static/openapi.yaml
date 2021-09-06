@@ -297,10 +297,6 @@ paths:
                   $ref: "#/components/schemas/Version"
         "404":
           description: The requested project was not found or no authorization to see this project
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Empty"
   /version/{id}:
     get:
       summary: Get a version
@@ -318,10 +314,6 @@ paths:
                 $ref: "#/components/schemas/Version"
         "404":
           description: The requested version was not found or no authorization to see this version
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Empty"
     patch:
       summary: Modify a version
       operationId: modifyVersion
@@ -346,10 +338,6 @@ paths:
                 $ref: "#/components/schemas/AuthError"
         "404":
           description: The requested version was not found or no authorization to see this version
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Empty"
     delete:
       summary: Delete a version
       operationId: deleteVersion
