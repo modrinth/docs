@@ -14,7 +14,7 @@ module.exports = {
   tutorialSidebar: [
     'intro',
     {
-      'Tutorials': ['tutorials/api_modpacks', 'tutorials/api_search'],
+      'Tutorials': ['tutorials/api_modpacks', 'tutorials/api_search', 'tutorials/maven', 'details/contributing'],
       'Modpacks': [{
         'Tutorials': ['modpacks/creating_modpacks']
       },
@@ -22,7 +22,6 @@ module.exports = {
       ],
       'Migrations': ['migrations/migrations-info', 'migrations/v1-to-v2'],
       'API Information': ['details/versioning', 'details/methods'],
-      'Tutorials': ['tutorials/maven'],
     }
   ],
 };
