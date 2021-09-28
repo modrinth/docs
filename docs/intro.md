@@ -30,8 +30,8 @@ Once you have installed a client, you can test that it works on modrinth by maki
 GET https://staging-api.modrinth.com/
 {
   "name": "modrinth-labrinth",
-  "version": "0.1.0",
-  "documentation": "https://modrinth.com/documentation",
+  "version": "0.2.0",
+  "documentation": "https://docs.modrinth.com",
   "about": "Welcome traveler!"
 }
 ```
