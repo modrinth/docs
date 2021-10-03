@@ -1,4 +1,4 @@
-# Modrinth Modpack Format
+# Modpack Format
 
 The Modrinth modpack format is a simple format that lets you store modpacks.
 
