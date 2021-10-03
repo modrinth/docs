@@ -34,6 +34,10 @@ module.exports = {
           activeBasePath: 'api-spec',
         },
         {
+          type: 'localeDropdown',
+          position: 'right',
+        },
+        {
           href: 'https://modrinth.com/',
           label: 'Main website',
           position: 'right',
@@ -118,4 +122,8 @@ module.exports = {
       },
     ],
   ],
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'fr'],
+  },
 }

@@ -1,0 +1,22 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Tutorials": {
+    "message": "Tutorials",
+    "description": "The label for category Tutorials in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Modpacks": {
+    "message": "Modpacks",
+    "description": "The label for category Modpacks in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Migrations": {
+    "message": "Migrations",
+    "description": "The label for category Migrations in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.API Information": {
+    "message": "API Information",
+    "description": "The label for category API Information in sidebar tutorialSidebar"
+  }
+}
