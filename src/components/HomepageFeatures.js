@@ -18,7 +18,7 @@ const FeatureList = [
         Svg: require('../../static/img/undraw_running_wild.svg').default,
         description: (
             <Translate id="homepage.free_use.desc">
-                Modrinth doesn't change money or prevent certain developers from using the API, and we <b>do not</b> make advertising mandatory.
+                Modrinth doesn't change money or prevent certain developers from using the API, and we do not make advertising mandatory.
             </Translate>
         ),
     },

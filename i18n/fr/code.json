@@ -176,7 +176,7 @@
     "message": "L'API de Modrinth est conçue dès le départ pour être facile à utiliser et à intégrer dans d'autres applications, pas seulement les nôtres."
   },
   "homepage.free_use.desc": {
-    "message": "Modrinth doesn't change money or prevent certain developers from using the API, and we <b>do not</b> make advertising mandatory."
+    "message": "Modrinth ne change pas d'argent et n'empêche pas certains développeurs d'utiliser l'API, et nous ne rendons pas la publicité obligatoire."
   },
   "homepage.powered_rust.desc": {
     "message": "Rust nous permet d'avoir une haute performance et une haute sécurité sur ce que nous faisons, rendant nos APIs vraiment rapides."
