@@ -1,5 +1,5 @@
 ---
-title: Using Modrinth's Maven repository
+title: Modrinth Maven
 ---
 
 # Using Modrinth's Maven repository

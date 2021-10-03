@@ -16,8 +16,8 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/intro">
-            Modrinth API Tutorial - 5min ⏱️
+            to="/docs/getting-started">
+            Get Started
           </Link>
         </div>
       </div>
@@ -29,8 +29,8 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={`${siteConfig.title}`}
+      description="Modrinth is an open source modding platform, hosting lots of Minecraft content.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

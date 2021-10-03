@@ -4,7 +4,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Modrinth Documentation',
-  tagline: 'Learn how to use modrinth and its APIs',
+  tagline: 'Learn how to interact with the Modrinth API!',
   url: 'https://docs.modrinth.com',
   baseUrl: '/',
   trailingSlash: true,
@@ -17,13 +17,13 @@ module.exports = {
     navbar: {
       title: 'Modrinth',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Modrinth Logo',
         src: 'img/logo.svg',
       },
       items: [
         {
           type: 'doc',
-          docId: 'intro',
+          docId: 'getting-started',
           position: 'left',
           label: 'Documentation',
         },
@@ -48,7 +48,7 @@ module.exports = {
           items: [
             {
               label: 'Tutorial',
-              to: '/docs/intro',
+              to: '/docs/getting-started',
             },
           ],
         },
@@ -91,7 +91,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+            'https://github.com/modrinth/docs/edit/master/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

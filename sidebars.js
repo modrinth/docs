@@ -12,16 +12,15 @@
 module.exports = {
   // But you can create a sidebar manually
   tutorialSidebar: [
-    'intro',
+    'getting-started',
     {
-      'Tutorials': ['tutorials/api_modpacks', 'tutorials/api_search', 'tutorials/maven', 'details/contributing'],
-      'Modpacks': [{
-        'Tutorials': ['modpacks/creating_modpacks']
-      },
+      'Tutorials': ['tutorials/api_search', 'tutorials/maven', 'details/contributing'],
+      'Modpacks': [
         'modpacks/format_definition',
+        'modpacks/creating_modpacks',
       ],
       'Migrations': ['migrations/migrations-info', 'migrations/v1-to-v2'],
-      'API Information': ['details/versioning', 'details/methods'],
+      'API Information': ['details/versioning', 'details/domains'],
     }
   ],
 };

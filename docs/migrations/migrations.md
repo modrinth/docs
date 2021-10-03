@@ -5,4 +5,4 @@ title: "Information"
 
 # Migrations
 
-You will be able to find here all the new migrations of the modrinth API, accompanied by tips, and a guide to migrate applications to the new version.
+In this section you will be able to find all of the changes between versions of the Modrinth API, accompanied by tips, and a guide to migrate applications to newer versions.

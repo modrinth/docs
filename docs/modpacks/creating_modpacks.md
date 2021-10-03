@@ -6,9 +6,8 @@ title: Creating Modpacks
 # Modpacks
 
 ## What is a modpack?
-A modpack is a list of mods with attached configs and worlds.
+A modpack is a list of mods with additional files, such as configs
 In general, it's an instance of a game ready to play, or with minor changes.
 
 ## How do I create one?
-Really good question!
-This tutorial will be continued soon:tm:
+You cannot create modpacks on Modrinth yet.

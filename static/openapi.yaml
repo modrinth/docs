@@ -1,18 +1,18 @@
 openapi: "3.0.0"
 
 info:
-  version: 1b33f0c (v2)
+  version: 0010119 (v2)
   title: Labrinth
   description: |
-    This API is documented in **OpenAPI format** and is available for download [here](/openapi.yaml).
+    This API is documented in the **OpenAPI format** and is available for download [here](/openapi.yaml).
 
     # Cross-Origin Resource Sharing
     This API features Cross-Origin Resource Sharing (CORS) implemented in compliance with  [W3C spec](https://www.w3.org/TR/cors/).
-    And that allows cross-domain communication from the browser.
+    This allows for cross-domain communication from the browser.
     All responses have a wildcard same-origin which makes them completely public and accessible to everyone, including any code on any site.
 
     # Authentication
-    This API uses GitHub tokens for authentication. The token is in the `Authorization` header of the request. [Get a token.](#operation/initAuth)
+    This API uses GitHub tokens for authentication. The token is in the `Authorization` header of the request. You can get a token [here](#operation/initAuth).
      
      Example:
      ```
