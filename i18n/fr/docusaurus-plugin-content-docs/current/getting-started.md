@@ -11,14 +11,14 @@ Ce tutoriel vous expliquera les bases de l'API Modrinth.
 
 ## Obtenir un environnement de test fonctionnel
 
-This documentation doesn't provide a way to easily test our API (yet).
-In order to facilitate testing we recommend the following tools:
+Cette documentation ne fournit pas (encore) un moyen de tester facilement notre API.
+Afin de faciliter les tests, nous recommandons les outils suivants :
 
-- [ReqBIN](https://reqbin.com/), an online REST API testing tool.
-- [Postman](https://www.postman.com/downloads/), the main reference for our API, but it is not open source, and now asks you for your login too frequently.
-- [Insomnia](https://insomnia.rest/), another reference, this time opensource, and doesn't ask for your credentials.
+- [ReqBIN](https://reqbin.com/), un outil de test d'API REST en ligne.
+- [Postman](https://www.postman.com/downloads/), la référence principale pour notre API, mais elle n'est pas open source, et vous demande votre login trop fréquemment.
+- [Insomnia](https://insomnia.rest/), une autre référence, cette fois opensource, et qui ne demande pas vos identifiants.
 
-Once you have have a working client, you can test that it works by making a **GET** request to the following address:
+Une fois que vous avez un client fonctionnel, vous pouvez vérifier qu'il fonctionne en envoyant une requête **GET** à l'adresse suivante :
 
 ```json title="GET https://api.modrinth.com/"
 {
@@ -29,14 +29,14 @@ Once you have have a working client, you can test that it works by making a **GE
 }
 ```
 
-If you got a response just like or very close to the one above, you can use the Modrinth API! 
-If you are having issues, feel free to reach out in our support channel of our discord. We'll be happy to assist you.
+Si vous avez obtenu une réponse semblable ou très proche de celle ci-dessus, vous pouvez utiliser l'API Modrinth !
+Si vous rencontrez des problèmes, n'hésitez pas à nous contacter dans notre canal de support de notre discord. Nous serons heureux de vous aider.
 
-## Your first useful request
+## Votre première requête utile
 
-Let's start by getting more information about a minecraft mod, for example the [Gravestones](https://modrinth.com/mod/gravestones) mod.
+Commençons par obtenir plus d'informations sur un mod Minecraft, par exemple le mod [Gravestones](https://modrinth.com/mod/gravestones).
 
-You can get information of that mod by doing the following request:
+Vous pouvez obtenir des informations sur ce mod en effectuant la requête suivante :
 
 ```json title="GET https://api.modrinth.com/v2/project/gravestones"
 {
@@ -54,48 +54,49 @@ You can get information of that mod by doing the following request:
 }
 ```
 
-Let's talk about the how and why of this request:
+Parlons du comment et du pourquoi de cette demande :
 
-### Method
-As many of you may already know, the HTTP specification has specific action words, called methods, that tell the Modrinth API what you want to do with our data.
-In applications, we will always tell the Modrinth API what action to use.
-In the above example, we used the `GET` method, which tells the API we want to *get* information from Modrinth.
+### Méthode
+Comme beaucoup d'entre vous le savent peut-être déjà, la spécification HTTP comporte des mots d'action spécifiques, appelés méthodes, qui indiquent à l'API Modrinth ce que vous voulez faire avec nos données.
+Dans les applications, nous indiquerons toujours à l'API Modrinth quelle action utiliser.
+Dans l'exemple ci-dessus, nous avons utilisé la méthode `GET`, qui indique à l'API que nous voulons *obtenir* des informations de Modrinth.
 
-### Base URL
-The base URL that you use will almost always be:
+### URL de base
+L'URL de base que vous utilisez sera presque toujours :
 ```
 https://api.modrinth.org/{version}/
 ```
 :::note
 
-Version 1 of the API is the only exception to this rule, as it was the following: `https://api.modrinth.com/api/v1/`
+La version 1 de l'API est la seule exception à cette règle, car elle était la suivante : `https://api.modrinth.com/api/v1/`
 
-Note the part between the version and the domain
+Notez la partie entre la version et le domaine
+
 
 :::
-If you are feeling particularly adventurous, you can use the staging api, which is in active development (and has all the shiny new features), but only includes test mods. The base URL for the staging API is:
+Si vous vous sentez particulièrement aventureux, vous pouvez utiliser l'API de mise à disposition, qui est en cours de développement (et dispose de toutes les nouvelles fonctionnalités), mais qui ne comprend que des mods de test. L'URL de base de l'API de mise à disposition est la suivante :
 ```
 https://staging-api.modrinth.com/{version}/
 ```
-### Projects
+### Projets
 
-In modrinth, projects are any type of item that Modrinth provides for users to download (currently only includes modpacks and mods).
+Dans modrinth, les projets sont tout type d'élément que Modrinth met à la disposition des utilisateurs pour qu'ils le téléchargent (actuellement, cela ne comprend que les modpacks et les mods).
 
-Projects have a unique id, usually gibberish, like `tsi4hUoN`, as well as another characteristic, called a *slug*.
+Les projets ont un identifiant unique, généralement du charabia, comme `tsi4hUoN`, ainsi qu'une autre caractéristique, appelée *slug*.
 
-Slugs are a unique id that the mod authors can change
+Les slugs sont un identifiant unique que les auteurs de mods peuvent modifier.
 
-For example, the gravestones mod has the slug `gravestones`, and the id of `ssUbhMkL`.
+Par exemple, le mod gravestones a le slug `gravestones`, et l'id de `ssUbhMkL`.
 
 :::caution
 
-While unique IDs are constant, **slugs can change at any moment**!
+Alors que les identifiants uniques sont constants, **les slugs peuvent changer à tout moment** !
 
-If you want to store something in the long term, it is recommended to use the unique ID.
+Si vous voulez stocker quelque chose à long terme, il est recommandé d'utiliser l'ID unique.
 
 :::
 
-Adding on to the gravestones example above, if we want to make sure that we *always* access the gravestones mod, even if the author wants to change the slug, we can change our request to:
+Pour reprendre l'exemple du mod gravestones , si nous voulons être sûrs d'accéder *toujours* au mod gravestones, même si l'auteur veut changer le slug, nous pouvons modifier notre requête comme suit
 ```json title="GET https://api.modrinth.com/v2/project/ssUbhMkL"
 {
   "id": "ssUbhMkL",
@@ -113,5 +114,5 @@ Adding on to the gravestones example above, if we want to make sure that we *alw
 ```
 ## Conclusion
 
-You did it!
-I hope you understand more about how the Modrinth API works, and are now prepared to tackle the rest of the documentation :D
+Tu l'as fait !
+J'espère que vous comprenez mieux le fonctionnement de l'API Modrinth et que vous êtes maintenant prêt à vous attaquer au reste de la documentation :D
