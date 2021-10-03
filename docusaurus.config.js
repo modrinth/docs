@@ -4,7 +4,6 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Modrinth Documentation',
-  tagline: 'Learn how to interact with the Modrinth API!',
   url: 'https://docs.modrinth.com',
   baseUrl: '/',
   trailingSlash: true,

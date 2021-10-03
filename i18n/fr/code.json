@@ -162,5 +162,29 @@
   "theme.common.skipToMainContent": {
     "message": "Aller au contenu principal",
     "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  },
+  "homepage.simple_design": {
+    "message": "Simple de conception"
+  },
+  "homepage.free_use": {
+    "message": "Utilisation gratuite"
+  },
+  "homepage.powered_rust": {
+    "message": "Propulsé par Rust"
+  },
+  "homepage.simple_design.desc": {
+    "message": "L'API de Modrinth est conçue dès le départ pour être facile à utiliser et à intégrer dans d'autres applications, pas seulement les nôtres."
+  },
+  "homepage.free_use.desc": {
+    "message": "Modrinth doesn't change money or prevent certain developers from using the API, and we <b>do not</b> make advertising mandatory."
+  },
+  "homepage.powered_rust.desc": {
+    "message": "Rust nous permet d'avoir une haute performance et une haute sécurité sur ce que nous faisons, rendant nos APIs vraiment rapides."
+  },
+  "homepage.tagline": {
+    "message": "Apprenez à interagir avec l'API Modrinth !"
+  },
+  "homepage.get_started": {
+    "message": "Commencer"
   }
 }
