@@ -1,7 +1,7 @@
 openapi: "3.0.0"
 
 info:
-  version: 0010119 (v2)
+  version: 13187de (v2)
   title: Labrinth
   description: |
     This API is documented in the **OpenAPI format** and is available for download [here](/openapi.yaml).
@@ -34,9 +34,9 @@ tags:
   - name: users
     x-displayName: Users
     description: Users can create projects, join teams, access notifications, manage settings, and follow projects. Admins and moderators have more advanced permissions such as reviewing new projects.
-#  - name: teams # TODO: Add teams
-#    x-displayName: Teams
-#    description: "Through teams, user permissions limit how team members can modify projects."
+  - name: teams
+    x-displayName: Teams
+    description: Through teams, user permissions limit how team members can modify projects.
 #  - name: tags # TODO: Add tags
 #    x-displayName: Tags
 #    description: Tags are common and reusable lists of metadata types such as categories or versions. Some can be applied to projects and/or versions.
@@ -65,7 +65,7 @@ x-tagGroups:
       - projects
       - versions
       - users
-#      - teams
+      - teams
 #      - tags
       - auth
   - name: Models
@@ -554,6 +554,160 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/NotFoundError"
+  # Teams
+  /team/{id}/members:
+    get:
+      summary: Get a team's members
+      operationId: getTeamMembers
+      tags:
+        - teams
+      parameters:
+        - $ref: "#/components/parameters/TeamIdentifier"
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Team"
+        "404":
+          description: The requested team was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+    post:
+      summary: Add a user to a team
+      operationId: addTeamMember
+      tags:
+        - teams
+      parameters:
+        - $ref: "#/components/parameters/TeamIdentifier"
+      requestBody:
+        description: User(s) to be added
+        content:
+          application/json:
+            schema:
+              properties:
+                user_id:
+                  type: string
+                  example: EEFFGGHH
+      responses:
+        "204":
+          description: User has been successfully invited to the team
+        "401":
+          description: No authorization to modify this team
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
+        "404":
+          description: The requested team was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+  /team/{id}/join:
+    post:
+      summary: Join a team
+      operationId: joinTeam
+      tags:
+        - teams
+      parameters:
+        - $ref: "#/components/parameters/TeamIdentifier"
+      responses:
+        "204":
+          description: Team has successfully been joined
+        "401":
+          description: No authorization to join this team
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
+        "404":
+          description: The requested team was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+  /team/{team_id}/members/{user_id}:
+    patch:
+      summary: Modify a team member's roles and/or permissions
+      operationId: modifyTeamMember
+      tags:
+        - teams
+      parameters:
+        - $ref: "#/components/parameters/TeamIdentifier"
+        - $ref: "#/components/parameters/UserIdentifier"
+      responses:
+        "204":
+          description: Roles/permissions have been updated successfully
+        "401":
+          description: No authorization to change this member's roles/permissions
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
+        "404":
+          description: The requested team was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+    delete:
+      summary: Remove a member from a team
+      tags:
+        - teams
+      parameters:
+        - $ref: "#/components/parameters/TeamIdentifier"
+        - $ref: "#/components/parameters/UserIdentifier"
+      responses:
+        "204":
+          description: User has been removed from the team successfully
+        "401":
+          description: No authorization to remove this member from the team
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
+        "404":
+          description: The requested team was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+  /team/{id}/owner:
+    post:
+      summary: Transfer team's ownership to another user
+      operationId: transferTeamOwnership
+      tags:
+        - teams
+      parameters:
+        - $ref: "#/components/parameters/TeamIdentifier"
+      requestBody:
+        description: New owner's ID
+        content:
+          application/json:
+            schema:
+              properties:
+                user_id:
+                  type: string
+                  example: EEFFGGHH
+      responses:
+        "204":
+          description: Team has successfully been joined
+        "401":
+          description: No authorization to join this team
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
+        "404":
+          description: The requested team was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
   # Auth
   /auth/init:
     get:
@@ -637,6 +791,14 @@ components:
       schema:
         type: string
         example: [IIJJKKLL]
+    TeamIdentifier:
+      name: id
+      in: path
+      required: true
+      description: The ID of the team
+      schema:
+        type: string
+        example: [MMNNOOPP]
 
   schemas:
     # Project
@@ -1063,6 +1225,30 @@ components:
           items:
             type: object
           description: A list of actions that can be performed
+    # Team
+    Team:
+      type: object
+      properties:
+        team_id:
+          type: string
+          example: MMNNOOPP
+          description: The team's ID
+        user_id:
+          type: string
+          example: EEFFGGHH
+          description: The user's ID
+        role:
+          type: string
+          example: Member
+          description: The user's role on the team
+        permissions:
+          type: integer
+          example: 127
+          description: The user's permissions in bitflag format (requires authorization)
+        accepted:
+          type: boolean
+          example: true
+          description: Whether or not the user has accepted to be on the team (requires authorization)
     # Errors
     InvalidInputError:
       type: object
