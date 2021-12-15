@@ -47,6 +47,7 @@ For files that only exist on a specific environment, this field allows that to b
 }
 ```
 In the above example, this is a client-only file. It cannot be installed server side.
+Both side types can only be the following values: `required`, `optional`, `unsupported`
 
 `server` refers to the *dedicated* server. Even though clients technically have a logical server, if something is marked server only, it should not be installed on the client.
 
@@ -74,12 +75,12 @@ An example `dependencies` object:
 ---
 
 ## Storage
-When stored on disk, the modpack MUST be in ZIP format, using the `.zip` extension. The main metadata of the modpack MUST be stored at `index.json` in the root of the zip.
+When stored on disk, the modpack MUST be in ZIP format, using the `.mrpack` extension. The main metadata of the modpack MUST be stored at `modrinth.index.json` in the root of the zip.
 
 The zip may also contain a directory named `overrides`. Files in this directory will be copied to the root of the Minecraft Instance directory upon installation by the launcher. For example:
 ```
-my_modpack.zip/
-    index.json
+my_modpack.mrpack/
+    modrinth.index.json
     overrides/
         config/
             mymod.cfg
