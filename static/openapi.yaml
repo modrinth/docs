@@ -58,6 +58,10 @@ tags:
     x-displayName: User Model
     description: |
       <SchemaDefinition schemaRef="#/components/schemas/User" />
+  - name: team_member_model
+    x-displayname: Team Member Model
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/TeamMember" />
 
 x-tagGroups:
   - name: General
@@ -74,6 +78,7 @@ x-tagGroups:
       - project_result_model
       - version_model
       - user_model
+      - team_member_model
 
 paths:
   # Project
