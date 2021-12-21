@@ -165,7 +165,11 @@ paths:
                     type: integer
                     description: The total number of results that match the query
                     example: 10
-
+                required:
+                  - hits
+                  - offset
+                  - limit
+                  - total_hits
         "400":
           description: Invalid request
           content:
@@ -833,6 +837,12 @@ components:
           enum: [required, optional, unsupported]
           description: The server side support of the project
           example: optional
+      required:
+        - title
+        - description
+        - categories
+        - client_side
+        - server_side
     ServerRenderedProject:
       allOf:
         - $ref: "#/components/schemas/BaseProject"
@@ -853,6 +863,10 @@ components:
               type: string
               example: https://cdn.modrinth.com/data/AABBCCDD/b46513nd83hb4792a9a0e1fn28fgi6090c1842639.png
               description: The URL of the project's icon
+          required:
+            - project_type
+            - downloads
+            - follows
     ProjectResult:
       allOf:
         - $ref: "#/components/schemas/ServerRenderedProject"
@@ -888,6 +902,13 @@ components:
               type: string
               description: The license of the project
               example: mit
+          required:
+            - project_id
+            - author
+            - versions
+            - date_created
+            - date_modified
+            - license
     EditableProject:
       allOf:
         - $ref: "#/components/schemas/BaseProject"
@@ -960,6 +981,10 @@ components:
                     description: The URL of the donation platform and user
                     example: https://www.patreon.com/my_user
               description: A list of donation links for the project
+          required:
+            - body
+            - status
+            - license
     CreatableProject:
       allOf:
         - $ref: "#/components/schemas/EditableProject"
@@ -982,7 +1007,8 @@ components:
               type: string
               format: binary
               description: "The icon of the project. Supported types: `.png`, `.jpeg`, `.bmp`, `.gif`, `.webp`, `.svg(z)`, .rgb"
-            
+          required:
+            - project_type
     Project:
       allOf:
         - $ref: "#/components/schemas/EditableProject"
@@ -1016,6 +1042,12 @@ components:
               example: [IIJJKKLL, QQRRSSTT]
               description: A list of the version IDs of the project
             # TODO: gallery
+          required:
+            - id
+            - team
+            - published
+            - updated
+            - versions
     # Version
     BaseVersion:
       type: object
@@ -1064,6 +1096,15 @@ components:
           type: boolean
           description: Whether the version is featured or not
           example: true
+      required:
+        - name
+        - version_number
+        - changelog
+        - dependencies
+        - game_versions
+        - version_type
+        - loaders
+        - featured
     EditableVersion:
       allOf:
         - $ref: "#/components/schemas/BaseVersion"
@@ -1074,20 +1115,26 @@ components:
               items:
                 type: string
               description: An array of the multipart field names of each file that goes with this version
+          required:
+            - file_parts
     CreatableVersion:
       allOf:
         - type: object
           properties:
             data:
               allOf:
-               - $ref: "#/components/schemas/BaseVersion"
-               - type: object
-                 properties:
-                   file_parts:
-                     type: array
-                     items:
-                       type: string
-                       description: An array of the multipart field names of each file that goes with this version
+                - $ref: "#/components/schemas/BaseVersion"
+                - type: object
+                  properties:
+                    file_parts:
+                      type: array
+                      items:
+                        type: string
+                        description: An array of the multipart field names of each file that goes with this version
+                  required:
+                    - file_parts
+          required:
+            - data
     Version:
       allOf:
         - $ref: "#/components/schemas/BaseVersion"
@@ -1134,10 +1181,21 @@ components:
                     type: string
                     example: "my_file.jar"
                     description: The name of the file
-                  primary: 
+                  primary:
                     type: boolean
                     example: false
+                required:
+                  - hashes
+                  - url
+                  - filename
+                  - primary
               description: A list of files available for download for this version
+          required:
+            - id
+            - project_id
+            - author_id
+            - date_published
+            - downloads
     # User
     EditableUser:
       type: object
@@ -1158,6 +1216,8 @@ components:
           type: string
           example: My short biography
           description: A description of the user
+      required:
+        - username
     User:
       allOf:
         - $ref: "#/components/schemas/EditableUser"
@@ -1184,6 +1244,10 @@ components:
               enum: [admin, moderator, developer]
               description: The user's role
               example: developer
+          required:
+            - id
+            - created
+            - role
     # Notifications
     Notification:
       type: object
@@ -1225,6 +1289,15 @@ components:
           items:
             type: object
           description: A list of actions that can be performed
+      required:
+        - id
+        - user_id
+        - title
+        - text
+        - link
+        - read
+        - created
+        - actions
     # Team
     Team:
       type: object
@@ -1261,6 +1334,9 @@ components:
           type: string
           description: The contents of the error
           example: "Error while parsing multipart payload"
+      required:
+        - error
+        - description
     AuthError:
       type: object
       properties:
@@ -1272,6 +1348,9 @@ components:
           type: string
           description: The contents of the error
           example: "Authentication Error: Invalid Authentication Credentials"
+      required:
+        - error
+        - description
     NotFoundError:
       type: object
       properties:
@@ -1283,6 +1362,9 @@ components:
           type: string
           description: The contents of the error
           example: "the requested route does not exist"
+      required:
+        - error
+        - description
   securitySchemes:
     TokenAuth:
       type: apiKey
