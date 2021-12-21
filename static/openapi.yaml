@@ -573,7 +573,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Team"
+                type: array
+                items:
+                  $ref: "#/components/schemas/TeamMember"
+                description: An array of team members
         "404":
           description: The requested team was not found
           content:
@@ -1299,17 +1302,15 @@ components:
         - created
         - actions
     # Team
-    Team:
+    TeamMember:
       type: object
       properties:
         team_id:
           type: string
           example: MMNNOOPP
-          description: The team's ID
-        user_id:
-          type: string
-          example: EEFFGGHH
-          description: The user's ID
+          description: The ID of the team this team member is a member of
+        user:
+          $ref: "#/components/schemas/User"
         role:
           type: string
           example: Member
@@ -1322,6 +1323,11 @@ components:
           type: boolean
           example: true
           description: Whether or not the user has accepted to be on the team (requires authorization)
+      required:
+        - team_id
+        - user
+        - role
+        - accepted
     # Errors
     InvalidInputError:
       type: object
