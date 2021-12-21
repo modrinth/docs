@@ -564,6 +564,30 @@ paths:
               schema:
                 $ref: "#/components/schemas/NotFoundError"
   # Teams
+  /project/{id|slug}/members:
+    get:
+      summary: Get a project's team members
+      operationId: getProjectTeamMembers
+      tags:
+        - teams
+      parameters:
+        - $ref: "#/components/parameters/ProjectIdentifier"
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TeamMember"
+                description: An array of team members
+        "404":
+          description: The requested project was not found or no authorization to see this project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
   /team/{id}/members:
     get:
       summary: Get a team's members
