@@ -856,9 +856,6 @@ components:
             downloads:
               type: integer
               description: The total number of downloads of the project
-            follows:
-              type: integer
-              description: The total number of users following the project
             icon_url:
               type: string
               example: https://cdn.modrinth.com/data/AABBCCDD/b46513nd83hb4792a9a0e1fn28fgi6090c1842639.png
@@ -866,7 +863,6 @@ components:
           required:
             - project_type
             - downloads
-            - follows
     ProjectResult:
       allOf:
         - $ref: "#/components/schemas/ServerRenderedProject"
@@ -886,6 +882,9 @@ components:
                 type: string
               description: A list of the minecraft versions supported by the project
               example: ["1.8", "1.8.9"]
+            follows:
+              type: integer
+              description: The total number of users following the project
             date_created:
               type: string
               format: date-time
@@ -906,6 +905,7 @@ components:
             - project_id
             - author
             - versions
+            - follows
             - date_created
             - date_modified
             - license
@@ -1035,6 +1035,9 @@ components:
               type: string
               format: date-time
               description: The date the project was last updated
+            followers:
+              type: integer
+              description: The total number of users following the project
             versions:
               type: array
               items:
@@ -1047,6 +1050,7 @@ components:
             - team
             - published
             - updated
+            - followers
             - versions
     # Version
     BaseVersion:
