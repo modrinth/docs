@@ -58,6 +58,10 @@ tags:
     x-displayName: User Model
     description: |
       <SchemaDefinition schemaRef="#/components/schemas/User" />
+  - name: team_member_model
+    x-displayname: Team Member Model
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/TeamMember" />
 
 x-tagGroups:
   - name: General
@@ -74,6 +78,7 @@ x-tagGroups:
       - project_result_model
       - version_model
       - user_model
+      - team_member_model
 
 paths:
   # Project
@@ -536,6 +541,30 @@ paths:
               schema:
                 $ref: "#/components/schemas/NotFoundError"
   # Teams
+  /project/{id|slug}/members:
+    get:
+      summary: Get a project's team members
+      operationId: getProjectTeamMembers
+      tags:
+        - teams
+      parameters:
+        - $ref: "#/components/parameters/ProjectIdentifier"
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TeamMember"
+                description: An array of team members
+        "404":
+          description: The requested project was not found or no authorization to see this project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
   /team/{id}/members:
     get:
       summary: Get a team's members
@@ -550,7 +579,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Team"
+                type: array
+                items:
+                  $ref: "#/components/schemas/TeamMember"
+                description: An array of team members
         "404":
           description: The requested team was not found
           content:
@@ -1307,17 +1339,15 @@ components:
         - created
         - actions
     # Team
-    Team:
+    TeamMember:
       type: object
       properties:
         team_id:
           type: string
           example: MMNNOOPP
-          description: The team's ID
-        user_id:
-          type: string
-          example: EEFFGGHH
-          description: The user's ID
+          description: The ID of the team this team member is a member of
+        user:
+          $ref: "#/components/schemas/User"
         role:
           type: string
           example: Member
@@ -1330,6 +1360,11 @@ components:
           type: boolean
           example: true
           description: Whether or not the user has accepted to be on the team (requires authorization)
+      required:
+        - team_id
+        - user
+        - role
+        - accepted
     # Errors
     InvalidInputError:
       type: object
