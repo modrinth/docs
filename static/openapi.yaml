@@ -863,6 +863,7 @@ components:
           required:
             - project_type
             - downloads
+            - follows
     ProjectResult:
       allOf:
         - $ref: "#/components/schemas/ServerRenderedProject"
@@ -1200,6 +1201,7 @@ components:
             - author_id
             - date_published
             - downloads
+            - files
     # User
     EditableUser:
       type: object
