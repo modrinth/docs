@@ -146,30 +146,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  hits:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/ProjectResult"
-                    description: The list of results
-                  offset:
-                    type: integer
-                    description: The number of results that were skipped by the query
-                    example: 0
-                  limit:
-                    type: integer
-                    description: The number of results that were returned by the query
-                    example: 10
-                  total_hits:
-                    type: integer
-                    description: The total number of results that match the query
-                    example: 10
-                required:
-                  - hits
-                  - offset
-                  - limit
-                  - total_hits
+                $ref: '#/components/schemas/SearchResults'
         "400":
           description: Invalid request
           content:
@@ -1053,6 +1030,32 @@ components:
             - updated
             - followers
             - versions
+    # Search
+    SearchResults:
+      type: object
+      properties:
+        hits:
+          type: array
+          items:
+            $ref: "#/components/schemas/ProjectResult"
+          description: The list of results
+        offset:
+          type: integer
+          description: The number of results that were skipped by the query
+          example: 0
+        limit:
+          type: integer
+          description: The number of results that were returned by the query
+          example: 10
+        total_hits:
+          type: integer
+          description: The total number of results that match the query
+          example: 10
+      required:
+        - hits
+        - offset
+        - limit
+        - total_hits
     # Version
     BaseVersion:
       type: object
@@ -1201,7 +1204,6 @@ components:
             - author_id
             - date_published
             - downloads
-            - files
     # User
     EditableUser:
       type: object
