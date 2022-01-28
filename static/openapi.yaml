@@ -59,7 +59,7 @@ tags:
     description: |
       <SchemaDefinition schemaRef="#/components/schemas/User" />
   - name: team_member_model
-    x-displayname: Team Member Model
+    x-displayName: Team Member Model
     description: |
       <SchemaDefinition schemaRef="#/components/schemas/TeamMember" />
 
