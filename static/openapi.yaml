@@ -272,6 +272,30 @@ paths:
         - versions
       parameters:
         - $ref: "#/components/parameters/ProjectIdentifier"
+        - in: query
+          name: loaders
+          required: false
+          description: "The types of loaders to filter for"
+          schema:
+            type: array
+            items:
+              type: string
+            example: "[\"fabric\"]"
+        - in: query
+          name: game_versions
+          required: false
+          description: "The game versions to filter for"
+          schema:
+            type: array
+            items:
+              type: string
+            example: "[\"1.18.1\"]"
+        - in: query
+          name: featured
+          required: false
+          description: "Allows to filter for featured or non-featured versions only"
+          schema:
+            type: boolean
       responses:
         "200":
           description: Expected response to a valid request
