@@ -1,17 +1,17 @@
 openapi: "3.0.0"
 
 info:
-  version: 13187de (v2)
+  version: f3234a6 (v2)
   title: Labrinth
   description: |
     This API is documented in the **OpenAPI format** and is available for download [here](/openapi.yaml).
 
-    # Cross-Origin Resource Sharing
-    This API features Cross-Origin Resource Sharing (CORS) implemented in compliance with  [W3C spec](https://www.w3.org/TR/cors/).
+    ## Cross-Origin Resource Sharing
+    This API features Cross-Origin Resource Sharing (CORS) implemented in compliance with the [W3C spec](https://www.w3.org/TR/cors/).
     This allows for cross-domain communication from the browser.
     All responses have a wildcard same-origin which makes them completely public and accessible to everyone, including any code on any site.
 
-    # Authentication
+    ## Authentication
     This API uses GitHub tokens for authentication. The token is in the `Authorization` header of the request. You can get a token [here](#operation/initAuth).
      
      Example:
@@ -437,6 +437,75 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/NotFoundError"
+  /version_file/{hash}?algorithm={algorithm}:
+    get:
+      summary: Get version from hash
+      operationId: versionFromHash
+      tags:
+        - versions
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Version"
+        "404":
+          description: The requested version was not found or no authorization to see this version
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+      parameters:
+        - in: query
+          name: hash
+          required: true
+          schema:
+            type: string
+            example: 619e250c133106bacc3e3b560839bd4b324dfda8
+          description: The hash of the file to query
+        - in: query
+          name: algorithm
+          schema:
+            type: string
+            example: sha1
+            default: sha1
+          description: The algorithm of the hash queried (only sha1 and sha512 are supported)
+    delete:
+      summary: Delete a version from hash
+      operationId: deleteVersionFromHash
+      tags:
+        - versions
+      responses:
+        "204":
+          description: Expected response to a valid request
+        "401":
+          description: No authorization to delete this version
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
+        "404":
+          description: The requested version was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+      parameters:
+        - in: query
+          name: hash
+          required: true
+          schema:
+            type: string
+            example: 619e250c133106bacc3e3b560839bd4b324dfda8
+          description: The hash of the file to delete
+        - in: query
+          name: algorithm
+          schema:
+            type: string
+            example: sha1
+            default: sha1
+          description: The algorithm of the hash (only sha1 and sha512 are supported)
   # User
   /user/{id|username}:
     get:
@@ -1331,7 +1400,7 @@ components:
         title:
           type: string
           description: The title of the notification
-          example: "My Project has been updated!"
+          example: "**My Project** has been updated!"
         text:
           type: string
           description: The body text of the notification
@@ -1339,7 +1408,7 @@ components:
         link:
           type: string
           description: A link to the related project or version
-          example: project/AABBCCDD/version/IIJJKKLL
+          example: mod/AABBCCDD/version/IIJJKKLL
         read:
           type: boolean
           example: false
