@@ -276,6 +276,142 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AuthError"
+  /project/{id|slug}/gallery?ext={extension}&featured={featured}&title={title}&description={description}:
+    post:
+      summary: Add a gallery image
+      description: Modrinth allows you to upload files of up to 5MiB to a project's gallery.
+      operationId: addGalleryImage
+      tags:
+        - projects
+      parameters:
+        - $ref: "#/components/parameters/ProjectIdentifier"
+        - description: Image extension
+          in: path
+          name: extension
+          required: true
+          schema:
+            type: string
+            enum: [png, jpg, jpeg, bmp, gif, webp, svg, svgz, rgb]
+        - description: Whether an image is featured
+          in: path
+          name: featured
+          required: true
+          schema:
+            type: boolean
+        - description: Title of the image
+          in: path
+          name: title
+          schema:
+            type: string
+        - description: Description of the image
+          in: path
+          name: description
+          schema:
+            type: string
+      requestBody:
+        description: New gallery image
+        content:
+          image/*:
+            encoding:
+              image:
+                contentType: image/png, image/jpeg, image/bmp, image/gif, image/webp, image/svg, image/svgz, image/rgb
+      responses:
+        "204":
+          description: Gallery image successfully created
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InvalidInputError"
+        "401":
+          description: No authorization to create a gallery image
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
+        "404":
+          description: The requested project was not found or no authorization to see this project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+  /project/{id|slug}/gallery?url={url}&featured={featured}&title={title}&description={description}:
+    patch:
+      summary: Modify a gallery image
+      operationId: modifyGalleryImage
+      tags:
+        - projects
+      parameters:
+        - $ref: "#/components/parameters/ProjectIdentifier"
+        - description: URL link of the image to modify
+          in: path
+          name: url
+          required: true
+          schema:
+            type: string
+            format: uri
+        - description: Whether the image is featured
+          in: path
+          name: featured
+          required: true
+          schema:
+            type: boolean
+        - description: New title of the image
+          in: path
+          name: title
+          schema:
+            type: string
+        - description: New description of the image
+          in: path
+          name: description
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Gallery image modified successfully
+        "401":
+          description: No authorization to edit this gallery image
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
+        "404":
+          description: The requested project was not found or no authorization to see this project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+  /project/{id|slug}/gallery?url={url}:
+    delete:
+      summary: Delete a gallery image
+      operationId: deleteGalleryImage
+      tags:
+        - projects
+      parameters:
+        - $ref: "#/components/parameters/ProjectIdentifier"
+        - description: URL link of the image to delete
+          in: path
+          name: url
+          required: true
+          schema:
+            type: string
+            format: uri
+      responses:
+        "204":
+          description: Gallery image deleted successfully
+        "400":
+          description: Invalid URL or project specified
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InvalidInputError"
+        "401":
+          description: No authorization to delete this gallery image
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
   # Version
   /project/{id|slug}/version:
     get:
@@ -671,7 +807,11 @@ paths:
               schema:
                 $ref: "#/components/schemas/Report"
         "400":
-          description: JSON body could not be parsed
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InvalidInputError"
         "401":
           description: No authorization to submit a report
           content:
@@ -1287,7 +1427,38 @@ components:
                 type: string
               example: [IIJJKKLL, QQRRSSTT]
               description: A list of the version IDs of the project
-            # TODO: gallery
+            gallery:
+              type: array
+              nullable: true
+              items:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    description: The URL of the gallery image
+                    example: https://cdn.modrinth.com/data/AABBCCDD/images/009b7d8d6e8bf04968a29421117c59b3efe2351a.png
+                    required: true
+                  featured:
+                    type: boolean
+                    description: Whether the image is featured in the gallery
+                    example: true
+                    required: true
+                  title:
+                    type: string
+                    description: The title of the gallery image
+                    example: My awesome screenshot!
+                    nullable: true
+                  description:
+                    type: string
+                    description: The description of the gallery image
+                    example: This awesome screenshot shows all of the blocks in my mod!
+                    nullable: true
+                  created:
+                    type: string
+                    format: date-time
+                    description: The date and time the gallery image was created
+                    required: true
+              description: A list of images that have been uploaded to the project's gallery
           required:
             - id
             - team
