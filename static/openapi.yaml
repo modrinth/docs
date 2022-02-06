@@ -522,7 +522,7 @@ paths:
   /version:
     post:
       summary: Create a version
-      description: Project files are attached. `.zip` and `.jar` files are accepted.
+      description: Project files are attached. `.mrpack` and `.jar` files are accepted.
       operationId: createVersion
       tags:
         - versions
@@ -554,7 +554,7 @@ paths:
   /version/{id}/file:
     post:
       summary: Add files to version
-      description: Project files are attached. `.zip` and `.jar` files are accepted.
+      description: Project files are attached. `.mrpack` and `.jar` files are accepted.
       operationId: addFilesToVersion
       tags:
         - versions
@@ -620,10 +620,10 @@ paths:
             enum: [sha1, sha512]
             example: sha1
             default: sha1
-          description: The algorithm of the hash queried (only sha1 and sha512 are supported)
+          description: The algorithm of the hash queried
     delete:
-      summary: Delete a version from hash
-      operationId: deleteVersionFromHash
+      summary: Delete a file from its hash
+      operationId: deleteFileFromHash
       tags:
         - versions
       responses:
@@ -656,7 +656,10 @@ paths:
             enum: [sha1, sha512]
             example: sha1
             default: sha1
-          description: The algorithm of the hash (only sha1 and sha512 are supported)
+          description: The algorithm of the hash
+          # TODO other version file routes??
+          # https://canary.discord.com/channels/734077874708938864/734077874708938867/939925924856623184
+          # https://github.com/modrinth/labrinth/blob/master/src/routes/version_file.rs#L313
   # User
   /user/{id|username}:
     get:
@@ -986,9 +989,9 @@ paths:
                   example: EEFFGGHH
       responses:
         "204":
-          description: Team has successfully been joined
+          description: Ownership has successfully been transferred
         "401":
-          description: No authorization to join this team
+          description: No authorization to transfer ownership of this team
           content:
             application/json:
               schema:
@@ -1200,7 +1203,7 @@ components:
           type: array
           items:
             type: string
-            example: [technology, adventure, fabric]
+          example: [technology, adventure, fabric]
           description: A list of the categories that the project is in
         client_side:
           type: string
@@ -1383,6 +1386,7 @@ components:
               description: "The icon of the project. Supported types: `.png`, `.jpeg`, `.bmp`, `.gif`, `.webp`, `.svg(z)`, .rgb"
           required:
             - project_type
+            - initial_versions
     Project:
       allOf:
         - $ref: "#/components/schemas/EditableProject"
@@ -1820,8 +1824,20 @@ components:
           description: The user's role on the team
         permissions:
           type: integer
+          format: bitflag
           example: 127
-          description: The user's permissions in bitflag format (requires authorization)
+          description: |
+            The user's permissions in bitflag format (requires authorization)
+
+            In order from first to eighth bit, the bits are:
+            - UPLOAD_VERSION
+            - DELETE_VERSION
+            - EDIT_DETAILS
+            - EDIT_BODY
+            - MANAGE_INVITES
+            - REMOVE_MEMBER
+            - EDIT_MEMBER
+            - DELETE_PROJECT
         accepted:
           type: boolean
           example: true
