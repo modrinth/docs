@@ -86,6 +86,7 @@ An example `dependencies` object:
 ## Storage
 When stored on disk, the modpack MUST be in ZIP format (MIME type `application/x-modrinth-modpack+zip`), using the `.mrpack` extension. The main metadata of the modpack MUST be stored at `modrinth.index.json` in the root of the zip.
 
+### Overrides
 The zip may also contain a directory named `overrides`. Files in this directory will be copied to the root of the Minecraft Instance directory upon installation by the launcher. For example:
 ```
 my_modpack.mrpack/
@@ -100,5 +101,31 @@ When installed, the contents of `overrides` will be copied to the Minecraft Inst
 .minecraft/
     config/
         mymod.cfg
+    options.txt
+```
+
+### Server Overrides
+Along with the traditional overrides folder, Modrinth also has a server overrides folder to eliminate the need for server packs. 
+Server overrides work in a layer based approach. This means server overrides folder (with the directory name `server-overrides`) will be applied after the `overrides` folder, overwriting its contents.
+
+Here's an example:
+```
+my_modpack.mrpack/
+    modrinth.index.json
+    overrides/
+        config/
+            mymod.cfg
+        options.txt
+    server-overrides/
+        config/
+            mymod.cfg
+            servermod.cfg
+```
+When installed, the contents of `overrides` will be copied to the Minecraft Instance directory. Then the contents of the `server-overrides` will be copied and end up similar to this:
+```
+.minecraft/
+    config/
+        mymod.cfg
+        servermod.cfg
     options.txt
 ```
