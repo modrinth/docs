@@ -1,31 +1,25 @@
----
-title: Search
-id: api_search
----
+# Search API
 
-Searching projects is a common use case of the Modrinth API, but can be a difficult topic understand. 
-By the end of this tutorial, you should have a high level understanding of how to search for projects using the API!
+Searching projects is a common use case of the Modrinth API, but can be difficult to understand. By the end of this tutorial, you should have a high level understanding of how to search for projects using the API!
 
 ## Route
 
-The search API is available at the following route: `{API_BASE}/search` (if you don't know what {API_BASE} means [see this page](../details/domains.md)
+The search API is available at [`{API_BASE}`](../api-information/domains.md)`/search`.
 
 ## Details
 
-In these examples, we'll be searching for an adventure mod about monkeys on Fabric 1.17.
+In these examples, we'll be searching for a gravestones mod on Fabric 1.16.5.
 
 ### Query
 Query Parameter: `query`
 
-The query is the text you want to search by.
-In this example, the query would be `Monke`. You can view an example of what the API returns to this 
-[here](https://staging-api.modrinth.com/v2/search?query=Monke)!
+The query is the text you want to search for. In this example, a query might be `grave`. You can see what the API response is 
+[here](https://api.modrinth.com/v2/search?query=grave).
 
 ### Sorting
 Query Parameter: `index`
 
-The index field decides the way the results will be sorted in the response.
-Modrinth supports the following indexes:
+The index field changes the way the results will be sorted in the response. Modrinth supports the following indexes:
 - `relevance` => This sorts by the element that our system is the best match for your query, at least based on our query.
 - `downloads` => This sorts all matches by the order of downloads.
 - `follows` => The same principle as `downloads`, but sorted by the number of followers of this mod.
@@ -35,7 +29,7 @@ Modrinth supports the following indexes:
 ### Limiting results
 Query Parameter: `limit`
 
-The maximum number of results that will be returned in the response. The minimum limit is 5, and the maximum limit is 100. 
+The maximum number of results that will be returned in the response. The maximum limit is 100. 
 
 ### Handling pagination
 Query Parameter: `offset`
@@ -62,7 +56,7 @@ Where type is one of the facet types defined above.
 
 In search, the main operators are `AND` and `OR`. The others are not supported as of now.
 
-First of all, all facets search must be included in a javascript array.
+All facets search must be included in a JavaScript array.
 
 ##### OR
 All elements in a single array **after the first one** are considered in a single OR block.
@@ -76,8 +70,11 @@ For example, the search `[["versions:1.16.5"], ["project_type:modpack"]]` transl
 If you want to learn more about facets, the documentation on them is available [here](https://docs.meilisearch.com/reference/features/faceted_search.html#using-facets)
 
 #### Example Query
-Here's an example query on the staging API if you are confused:
-https://staging-api.modrinth.com/v2/search?limit=20&index=relevance&facets=[["categories:adventure"],["categories:fabric"],["versions:1.17.1"]]
+Here's an example query if you are confused on how to use facets:
+
+https://api.modrinth.com/v2/search?limit=20&index=relevance&facets=[["categories:adventure"],["categories:fabric"],["versions:1.17.1"]]
+
+This request searches for up to 20 projects sorted by relevance that are in the categories `adventure` and `fabric` and that support 1.17.1.
 
 ### Filters
 Filters are an alternative way to facets to filter out results. Filters are slower than facets.

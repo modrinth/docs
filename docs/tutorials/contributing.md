@@ -1,7 +1,3 @@
----
-title: Contributing to Modrinth
----
-
 # Contributing to Modrinth
 
 The vast majority of Modrinth, including everything from our [API/backend](https://github.com/modrinth/labrinth) and [frontend](https://github.com/modrinth/knossos) to the [Minotaur plugin](https://github.com/modrinth/minotaur) and [analytics service](https://github.com/modrinth/ariadne), is released under free and open source licenses on our [GitHub](https://github.com/modrinth). As such, we love contributions from community members! Before proceeding to do so, though, there are a number of things you'll want to keep in mind throughout the process, as well as some details specific to certain projects.
@@ -109,7 +105,7 @@ npm run dev
 
 Once that's done, you'll be serving knossos on `localhost:3000` with hot reloading. You can replace the `dev` in `npm run dev` with `build` to build for a production server and `start` to start the server. You can also use `npm run lint` to find any eslint problems, and `npm run fix` to try automatically fixing those problems.
 
-### theseus (launcher), minos (authentication provider), and ariadne (analytics system)
+### theseus (launcher), daedalus (metadata host), minos (authentication provider), and ariadne (analytics system)
 
 These Rust programs are still in early development. Ask in the relevant Discord channel what you can help with before making a pull request.
 

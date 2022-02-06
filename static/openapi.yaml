@@ -1,23 +1,31 @@
 openapi: "3.0.0"
 
 info:
-  version: 13187de (v2)
+  version: f3234a6 (v2)
   title: Labrinth
   description: |
     This API is documented in the **OpenAPI format** and is available for download [here](/openapi.yaml).
+    
+    There are some undocumented routes. These routes are not meant for public use, such as the routes for adding new items to tags.
 
-    # Cross-Origin Resource Sharing
-    This API features Cross-Origin Resource Sharing (CORS) implemented in compliance with  [W3C spec](https://www.w3.org/TR/cors/).
+    ## Cross-Origin Resource Sharing
+    This API features Cross-Origin Resource Sharing (CORS) implemented in compliance with the [W3C spec](https://www.w3.org/TR/cors/).
     This allows for cross-domain communication from the browser.
     All responses have a wildcard same-origin which makes them completely public and accessible to everyone, including any code on any site.
 
-    # Authentication
+    ## Authentication
     This API uses GitHub tokens for authentication. The token is in the `Authorization` header of the request. You can get a token [here](#operation/initAuth).
      
      Example:
      ```
      Authorization: gho_pJ9dGXVKpfzZp4PUHSxYEq9hjk0h288Gwj4S
      ```
+    
+    ## Ratelimits
+    The API has a ratelimit defined per IP. Limits and remaining amounts are given in the response headers.
+    The `X-Ratelimit-Limit` header is the maximum number of requests that can be made in a minute.
+    The `X-Ratelimit-Remaining` header is the number of requests remaining in the current ratelimit window.
+    The `X-Ratelimit-Reset` header is the time in seconds until the ratelimit window resets.
 servers:
   - url: https://api.modrinth.com/v2
     description: Production server
@@ -37,9 +45,9 @@ tags:
   - name: teams
     x-displayName: Teams
     description: Through teams, user permissions limit how team members can modify projects.
-#  - name: tags # TODO: Add tags
-#    x-displayName: Tags
-#    description: Tags are common and reusable lists of metadata types such as categories or versions. Some can be applied to projects and/or versions.
+  - name: tags
+    x-displayName: Tags
+    description: Tags are common and reusable lists of metadata types such as categories or versions. Some can be applied to projects and/or versions.
   - name: auth
     x-displayName: Auth
   - name: project_model
@@ -70,7 +78,7 @@ x-tagGroups:
       - versions
       - users
       - teams
-#      - tags
+      - tags
       - auth
   - name: Models
     tags:
@@ -101,8 +109,13 @@ paths:
               type: array
               items:
                 type: string
+                enum:
+                  - categories
+                  - versions
+                  - license
+                  - project_type
           example: "[[\"categories:forge\"],[\"versions:1.17.1\"],[\"project_type:mod\"]]"
-          description: The recommended way of filtering search results. [Learn more about using facets.](/docs/tutorials/search-facets/)
+          description: The recommended way of filtering search results. [Learn more about using facets.](/docs/tutorials/search)
         - in: query
           name: index
           schema:
@@ -259,6 +272,142 @@ paths:
                 $ref: "#/components/schemas/InvalidInputError"
         "401":
           description: No authorization to create a project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
+  /project/{id|slug}/gallery?ext={extension}&featured={featured}&title={title}&description={description}:
+    post:
+      summary: Add a gallery image
+      description: Modrinth allows you to upload files of up to 5MiB to a project's gallery.
+      operationId: addGalleryImage
+      tags:
+        - projects
+      parameters:
+        - $ref: "#/components/parameters/ProjectIdentifier"
+        - description: Image extension
+          in: path
+          name: extension
+          required: true
+          schema:
+            type: string
+            enum: [png, jpg, jpeg, bmp, gif, webp, svg, svgz, rgb]
+        - description: Whether an image is featured
+          in: path
+          name: featured
+          required: true
+          schema:
+            type: boolean
+        - description: Title of the image
+          in: path
+          name: title
+          schema:
+            type: string
+        - description: Description of the image
+          in: path
+          name: description
+          schema:
+            type: string
+      requestBody:
+        description: New gallery image
+        content:
+          image/*:
+            encoding:
+              image:
+                contentType: image/png, image/jpeg, image/bmp, image/gif, image/webp, image/svg, image/svgz, image/rgb
+      responses:
+        "204":
+          description: Gallery image successfully created
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InvalidInputError"
+        "401":
+          description: No authorization to create a gallery image
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
+        "404":
+          description: The requested project was not found or no authorization to see this project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+  /project/{id|slug}/gallery?url={url}&featured={featured}&title={title}&description={description}:
+    patch:
+      summary: Modify a gallery image
+      operationId: modifyGalleryImage
+      tags:
+        - projects
+      parameters:
+        - $ref: "#/components/parameters/ProjectIdentifier"
+        - description: URL link of the image to modify
+          in: path
+          name: url
+          required: true
+          schema:
+            type: string
+            format: uri
+        - description: Whether the image is featured
+          in: path
+          name: featured
+          required: true
+          schema:
+            type: boolean
+        - description: New title of the image
+          in: path
+          name: title
+          schema:
+            type: string
+        - description: New description of the image
+          in: path
+          name: description
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Gallery image modified successfully
+        "401":
+          description: No authorization to edit this gallery image
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
+        "404":
+          description: The requested project was not found or no authorization to see this project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+  /project/{id|slug}/gallery?url={url}:
+    delete:
+      summary: Delete a gallery image
+      operationId: deleteGalleryImage
+      tags:
+        - projects
+      parameters:
+        - $ref: "#/components/parameters/ProjectIdentifier"
+        - description: URL link of the image to delete
+          in: path
+          name: url
+          required: true
+          schema:
+            type: string
+            format: uri
+      responses:
+        "204":
+          description: Gallery image deleted successfully
+        "400":
+          description: Invalid URL or project specified
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InvalidInputError"
+        "401":
+          description: No authorization to delete this gallery image
           content:
             application/json:
               schema:
@@ -437,6 +586,77 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/NotFoundError"
+  /version_file/{hash}?algorithm={algorithm}:
+    get:
+      summary: Get version from hash
+      operationId: versionFromHash
+      tags:
+        - versions
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Version"
+        "404":
+          description: The requested version was not found or no authorization to see this version
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+      parameters:
+        - in: query
+          name: hash
+          required: true
+          schema:
+            type: string
+            example: 619e250c133106bacc3e3b560839bd4b324dfda8
+          description: The hash of the file to query
+        - in: query
+          name: algorithm
+          schema:
+            type: string
+            enum: [sha1, sha512]
+            example: sha1
+            default: sha1
+          description: The algorithm of the hash queried (only sha1 and sha512 are supported)
+    delete:
+      summary: Delete a version from hash
+      operationId: deleteVersionFromHash
+      tags:
+        - versions
+      responses:
+        "204":
+          description: Expected response to a valid request
+        "401":
+          description: No authorization to delete this version
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
+        "404":
+          description: The requested version was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+      parameters:
+        - in: query
+          name: hash
+          required: true
+          schema:
+            type: string
+            example: 619e250c133106bacc3e3b560839bd4b324dfda8
+          description: The hash of the file to delete
+        - in: query
+          name: algorithm
+          schema:
+            type: string
+            enum: [sha1, sha512]
+            example: sha1
+            default: sha1
+          description: The algorithm of the hash (only sha1 and sha512 are supported)
   # User
   /user/{id|username}:
     get:
@@ -564,6 +784,40 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/NotFoundError"
+  /report:
+    post:
+      summary: Report a project, user, or version
+      description: Bring a project, user, or version to the attention of the moderators by reporting it. You must be logged in to report anything.
+      operationId: submitReport
+      tags:
+        - users
+      security:
+        - TokenAuth: []
+      requestBody:
+        description: The report to be sent
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatableReport"
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Report"
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InvalidInputError"
+        "401":
+          description: No authorization to submit a report
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
   # Teams
   /project/{id|slug}/members:
     get:
@@ -745,6 +999,94 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/NotFoundError"
+  # Tags
+  /tag/category:
+    get:
+      summary: Get a list of categories
+      description: Gets an array of categories, their icons, and applicable project types
+      operationId: categoryList
+      tags:
+        - tags
+      responses:
+        "200":
+          description: List of categories
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CategoryTag"
+  /tag/loader:
+    get:
+      summary: Get a list of loaders
+      description: Gets an array of loaders, their icons, and supported project types
+      operationId: loaderList
+      tags:
+        - tags
+      responses:
+        "200":
+          description: List of loaders
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoaderTag"
+  /tag/game_version:
+    get:
+      summary: Get a list of game versions
+      description: Gets an array of game versions and information about them
+      operationId: versionList
+      tags:
+        - tags
+      responses:
+        "200":
+          description: List of game versions
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GameVersionTag"
+  /tag/license:
+    get:
+      summary: Get a list of licenses
+      description: Gets an array of licenses and information about them
+      operationId: licenseList
+      tags:
+        - tags
+      responses:
+        "200":
+          description: List of licenses
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LicenseTag"
+  /tag/donation_platform:
+    get:
+      summary: Get a list of donation platforms
+      description: Gets an array of donation platforms and information about them
+      operationId: donationPlatformList
+      tags:
+        - tags
+      responses:
+        "200":
+          description: List of donation platforms
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DonationPlatformTag"
+  /tag/report_type:
+    get:
+      summary: Get a list of report types
+      description: Gets an array of valid report types
+      operationId: reportTypeList
+      tags:
+        - tags
+      responses:
+        "200":
+          description: List of report types
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                example: [ spam, copyright, inappropriate, malicious, name-squatting, other ]
   # Auth
   /auth/init:
     get:
@@ -858,7 +1200,7 @@ components:
           type: array
           items:
             type: string
-            example: technology, adventure, fabric
+            example: [technology, adventure, fabric]
           description: A list of the categories that the project is in
         client_side:
           type: string
@@ -960,7 +1302,7 @@ components:
               example: null
             status:
               type: string
-              enum: [approved, rejected, draft, unlisted, processing, unknown]
+              enum: [approved, rejected, draft, unlisted, archived, processing, unknown]
               description: The status of the project
               example: approved
             license:
@@ -1002,12 +1344,10 @@ components:
                 properties:
                   id:
                     type: string
-                    enum: [patreon, bmac, paypal, github, ko-fi, other]
                     description: The ID of the donation platform
                     example: patreon
                   platform:
                     type: string
-                    enum: [Patreon, By Me a Coffee, PayPal, GitHub Sponsors, Ko-Fi, Other]
                     description: The donation platform this link is to
                     example: Patreon
                   url:
@@ -1058,7 +1398,16 @@ components:
               example: MMNNOOPP
               description: The ID of the team that has ownership of this project
             moderator_message:
-              type: string
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: The message that a moderator has left for the project
+                body:
+                  type: string
+                  description: The longer body of the message that a moderator has left for the project
+                  nullable: true
+              nullable: true
               example: null
               description: A message that a moderator sent regarding the project
             published:
@@ -1078,7 +1427,38 @@ components:
                 type: string
               example: [IIJJKKLL, QQRRSSTT]
               description: A list of the version IDs of the project
-            # TODO: gallery
+            gallery:
+              type: array
+              nullable: true
+              items:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    description: The URL of the gallery image
+                    example: https://cdn.modrinth.com/data/AABBCCDD/images/009b7d8d6e8bf04968a29421117c59b3efe2351a.png
+                    required: true
+                  featured:
+                    type: boolean
+                    description: Whether the image is featured in the gallery
+                    example: true
+                    required: true
+                  title:
+                    type: string
+                    description: The title of the gallery image
+                    example: My awesome screenshot!
+                    nullable: true
+                  description:
+                    type: string
+                    description: The description of the gallery image
+                    example: This awesome screenshot shows all of the blocks in my mod!
+                    nullable: true
+                  created:
+                    type: string
+                    format: date-time
+                    description: The date and time the gallery image was created
+                    required: true
+              description: A list of images that have been uploaded to the project's gallery
           required:
             - id
             - team
@@ -1136,9 +1516,26 @@ components:
         dependencies:
           type: array
           items:
-            type: string
-          description: "A list of specific versions of projects that this version depends on"
-          example: [IIJJKKLL, QQRRSSTT]
+            type: object
+            properties:
+              version_id:
+                type: string
+                description: The ID of the version that this version depends on
+                example: IIJJKKLL
+                nullable: true
+              project_id:
+                type: string
+                description: The ID of the project that this version depends on
+                example: QQRRSSTT
+                nullable: true
+              dependency_type:
+                type: string
+                enum: [required, optional, incompatible]
+                description: The type of dependency that this version has
+                example: required
+            required:
+              - dependency_type
+          description: A list of specific versions of projects that this version depends on
         game_versions:
           type: array
           items:
@@ -1275,7 +1672,8 @@ components:
         email:
           type: string
           format: email
-          description: The user's email
+          description: The user's email (only your own is ever displayed)
+          nullable: true
         bio:
           type: string
           example: My short biography
@@ -1326,12 +1724,13 @@ components:
           example: EEFFGGHH
         type:
           type: string
+          enum: [project_update, team_invite]
           description: The type of notification
           example: project_update
         title:
           type: string
           description: The title of the notification
-          example: "My Project has been updated!"
+          example: "**My Project** has been updated!"
         text:
           type: string
           description: The body text of the notification
@@ -1339,7 +1738,7 @@ components:
         link:
           type: string
           description: A link to the related project or version
-          example: project/AABBCCDD/version/IIJJKKLL
+          example: mod/AABBCCDD/version/IIJJKKLL
         read:
           type: boolean
           example: false
@@ -1362,6 +1761,49 @@ components:
         - read
         - created
         - actions
+    # Reports
+    CreatableReport:
+      type: object
+      properties:
+        report_type:
+          type: string
+          description: The type of the report being sent
+          example: copyright
+        item_id:
+          type: string
+          description: The ID of the item (project, version, or user) being reported
+          example: EEFFGGHH
+        item_type:
+          type: string
+          enum: [project, user, version]
+          description: The type of the item being reported
+          example: project
+        body:
+          type: string
+          description: The extended explanation of the report
+          example: This is a reupload of my mod, AABBCCDD!
+      required:
+        - report_type
+        - item_id
+        - item_type
+        - body
+    Report:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/CreatableReport"
+        - type: object
+          properties:
+            reporter:
+              type: string
+              description: The ID of the user who reported the item
+              example: UUVVWWXX
+            created:
+              type: string
+              format: date-time
+              description: The time at which the report was created
+          required:
+            - reporter
+            - created
     # Team
     TeamMember:
       type: object
@@ -1389,6 +1831,111 @@ components:
         - user
         - role
         - accepted
+    # Tags
+    CategoryTag:
+      type: array
+      items:
+        type: object
+        properties:
+          icon:
+            type: string
+            description: The SVG icon of a category
+            example: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76\"/></svg>"
+          name:
+            type: string
+            description: The name of the category
+            example: "adventure"
+          project_type:
+            type: string
+            description: The project type this category is applicable to
+            example: mod
+        required:
+          - icon
+          - name
+          - project_type
+    LoaderTag:
+      type: array
+      items:
+        type: object
+        properties:
+          icon:
+            type: string
+            description: The SVG icon of a loader
+            example: "<svg viewBox=\"0 0 276 288\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"23\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"matrix(1,0,0,1,-3302.43,-67.3276)\"><g transform=\"matrix(0.564163,0,0,1.70346,1629.87,0)\"><g transform=\"matrix(1.97801,-0.0501803,0.151517,0.655089,1678.7,-354.14)\"><g><path d=\"M820.011,761.092C798.277,738.875 754.809,694.442 734.36,673.389C729.774,668.668 723.992,663.75 708.535,674.369C688.629,688.043 700.073,696.251 703.288,699.785C711.508,708.824 787.411,788.803 800.523,803.818C802.95,806.597 780.243,781.318 793.957,764.065C799.444,757.163 811.985,752.043 820.011,761.092C826.534,768.447 830.658,779.178 816.559,790.826C791.91,811.191 714.618,873.211 689.659,893.792C677.105,904.144 661.053,896.143 653.827,887.719C646.269,878.908 623.211,853.212 602.539,829.646C596.999,823.332 598.393,810.031 604.753,804.545C639.873,774.253 696.704,730.787 716.673,713.831\"/></g></g></g></g></svg>"
+          name:
+            type: string
+            description: The name of the loader
+            example: fabric
+          supported_project_types:
+            type: array
+            items:
+              type: string
+              description: The project type
+            description: The project types that this loader is applicable to
+            example: [mod, modpack]
+        required:
+          - icon
+          - name
+          - supported_project_types
+    GameVersionTag:
+      type: array
+      items:
+        type: object
+        properties:
+          version:
+            type: string
+            description: The name/number of the game version
+            example: 1.18.1
+          version_type:
+            type: string
+            enum: [release, snapshot, alpha, beta]
+            description: The type of the game version
+            example: release
+          date:
+            type: string
+            format: date-time
+            description: The date of the game version release
+          major:
+            type: boolean
+            description: Whether or not this is a major version, used for Featured Versions
+            example: true
+        required:
+          - version
+          - version_type
+          - date
+          - major
+    LicenseTag:
+      type: array
+      items:
+        type: object
+        properties:
+          short:
+            type: string
+            description: The short identifier of the license
+            example: lgpl-3
+          name:
+            type: string
+            description: The full name of the license
+            example: GNU Lesser General Public License v3
+        required:
+          - short
+          - name
+    DonationPlatformTag:
+      type: array
+      items:
+        type: object
+        properties:
+          short:
+            type: string
+            description: The short identifier of the donation platform
+            example: bmac
+          name:
+            type: string
+            description: The full name of the donation platform
+            example: Buy Me a Coffee
+        required:
+          - short
+          - name
     # Errors
     InvalidInputError:
       type: object
