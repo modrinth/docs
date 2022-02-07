@@ -606,21 +606,14 @@ paths:
               schema:
                 $ref: "#/components/schemas/NotFoundError"
       parameters:
-        - in: query
+        - in: path
           name: hash
           required: true
           schema:
             type: string
             example: 619e250c133106bacc3e3b560839bd4b324dfda8
           description: The hash of the file to query
-        - in: query
-          name: algorithm
-          schema:
-            type: string
-            enum: [sha1, sha512]
-            example: sha1
-            default: sha1
-          description: The algorithm of the hash queried
+        - $ref: "#/components/parameters/AlgorithmIdentifier"
     delete:
       summary: Delete a file from its hash
       operationId: deleteFileFromHash
@@ -642,24 +635,149 @@ paths:
               schema:
                 $ref: "#/components/schemas/NotFoundError"
       parameters:
-        - in: query
+        - in: path
           name: hash
           required: true
           schema:
             type: string
             example: 619e250c133106bacc3e3b560839bd4b324dfda8
           description: The hash of the file to delete
-        - in: query
-          name: algorithm
+        - $ref: "#/components/parameters/AlgorithmIdentifier"
+  /version_file/{hash}/update?algorithm={algorithm}:
+    post:
+      summary: Latest version of a project from a hash, loader(s), and game version(s)
+      operationId: getLatestVersionFromHash
+      tags:
+        - versions
+      parameters:
+        - in: path
+          name: hash
+          required: true
           schema:
             type: string
-            enum: [sha1, sha512]
-            example: sha1
-            default: sha1
-          description: The algorithm of the hash
-          # TODO other version file routes??
-          # https://canary.discord.com/channels/734077874708938864/734077874708938867/939925924856623184
-          # https://github.com/modrinth/labrinth/blob/master/src/routes/version_file.rs#L313
+            example: 619e250c133106bacc3e3b560839bd4b324dfda8
+          description: The hash to find the latest version of
+        - $ref: "#/components/parameters/AlgorithmIdentifier"
+      requestBody:
+        description: Parameters of the updated version requested
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                loaders:
+                  type: array
+                  items:
+                    type: string
+                    example: fabric
+                game_versions:
+                  type: array
+                  items:
+                    type: string
+                  example: ["1.18", 1.18.1]
+              required:
+                - loaders
+                - game_versions
+      responses:
+        "200":
+          description: Latest version retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Version"
+        "400":
+          description: Input is invalid
+        "404":
+          description: The requested version was not found or no authorization to see this version
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+  /version_files:
+    post: # TODO test that this is actually the response
+      summary: Get versions from hashes
+      description: This is the same as [`/version_file/{hash}`](#operation/versionFromHash) except it accepts multiple hashes.
+      operationId: versionsFromHashes
+      tags:
+        - versions
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Version"
+        "400":
+          description: Input is invalid
+      requestBody:
+        description: Hashes and algorithm of the versions requested
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                hashes:
+                  type: array
+                  items:
+                    type: string
+                  example: [ea0f38408102e4d2efd53c2cc11b88b711996b48d8922f76ea6abf731219c5bd1efe39ddf9cce77c54d49a62ff10fb685c00d2e4c524ab99d20f6296677ab2c4, 925a5c4899affa4098d997dfa4a4cb52c636d539e94bc489d1fa034218cb96819a70eb8b01647a39316a59fcfe223c1a8c05ed2e2ae5f4c1e75fa48f6af1c960]
+                algorithm:
+                  type: string
+                  enum: [ sha1, sha512 ]
+                  example: sha512
+              required:
+                - hashes
+                - algorithm
+  /version_files/update:
+    post: # TODO test that this is actually the response
+      summary: Latest versions of a project from hashes, loader(s), and game version(s)
+      operationId: getLatestVersionsFromHashes
+      tags:
+        - versions
+      requestBody:
+        description: Parameters of the updated version requested
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                hashes:
+                  type: array
+                  items:
+                    type: string
+                  example: [ea0f38408102e4d2efd53c2cc11b88b711996b48d8922f76ea6abf731219c5bd1efe39ddf9cce77c54d49a62ff10fb685c00d2e4c524ab99d20f6296677ab2c4, 925a5c4899affa4098d997dfa4a4cb52c636d539e94bc489d1fa034218cb96819a70eb8b01647a39316a59fcfe223c1a8c05ed2e2ae5f4c1e75fa48f6af1c960]
+                algorithm:
+                  type: string
+                  enum: [sha1, sha512]
+                  example: sha512
+                loaders:
+                  type: array
+                  items:
+                    type: string
+                  example: fabric
+                game_versions:
+                  type: array
+                  items:
+                    type: string
+                  example: ["1.18", 1.18.1]
+              required:
+                - hashes
+                - algorithm
+                - loaders
+                - game_versions
+      responses:
+        "200":
+          description: Latest versions retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Version"
+        "400":
+          description: Input is invalid
   # User
   /user/{id|username}:
     get:
@@ -1181,6 +1299,16 @@ components:
       schema:
         type: string
         example: [MMNNOOPP]
+    AlgorithmIdentifier:
+      name: algorithm
+      in: query
+      required: false
+      description: The algorithm of the hash
+      schema:
+        type: string
+        enum: [sha1, sha512]
+        example: sha512
+        default: sha1
 
   schemas:
     # Project
@@ -1280,6 +1408,10 @@ components:
               type: string
               description: The license of the project
               example: mit
+            gallery:
+              type: array
+              description: All gallery images attached to the project
+              example: [https://cdn.modrinth.com/data/AABBCCDD/images/009b7d8d6e8bf04968a29421117c59b3efe2351a.png, https://cdn.modrinth.com/data/AABBCCDD/images/c21776867afb6046fdc3c21dbcf5cc50ae27a236.png]
           required:
             - project_id
             - author

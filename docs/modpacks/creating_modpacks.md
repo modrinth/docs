@@ -6,7 +6,7 @@ A modpack is a list of mods bundled with additional files, such as configuration
 
 ## What does the Modrinth format look like?
 
-Modrinth uses its own storage layout for modpacks. This can be found on the [format definition](format.md) page.
+Modrinth uses its own storage layout for modpacks. This can be found on the [format definition](format_definition.md) page.
 
 ## How do I create one?
 

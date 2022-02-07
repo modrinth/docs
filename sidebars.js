@@ -3,23 +3,23 @@ module.exports = {
     'getting-started',
     {
       'API Information': [
-        'api-information/domains',
-        'api-information/versioning',
+        'details/domains',
+        'details/versioning',
         {
           'Migrations': [
-            'api-information/migrations/information',
-            'api-information/migrations/v1-to-v2',
+            'migrations/information',
+            'migrations/v1-to-v2',
           ],
         },
       ],
       'Tutorials': [
-        'tutorials/search',
+        'tutorials/api_search',
         'tutorials/maven',
-        'tutorials/contributing',
+        'details/contributing',
       ],
       'Modpacks': [
-        'modpacks/creation',
-        'modpacks/format',
+        'modpacks/creating_modpacks',
+        'modpacks/format_definition',
       ],
     },
   ],
