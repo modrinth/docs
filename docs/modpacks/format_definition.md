@@ -129,3 +129,8 @@ When installed, the contents of `overrides` will be copied to the Minecraft Inst
         servermod.cfg
     options.txt
 ```
+
+### Client Overrides
+Modrinth also has a client overrides folder! The folders name is `client-overrides`. It is functionally equivalent to the server overrides folder (besides only being applied on the client), and works the same with the layer based approach.
+
+Both the server and client override folders are optional.
