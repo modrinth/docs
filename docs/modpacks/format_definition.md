@@ -57,7 +57,7 @@ For optional mods, we recommend showing a dialog to the user that allows them to
 `server` refers to the *dedicated* server. Even though clients technically have a logical server, if something is marked server only, it should not be installed on the client.
 
 #### `downloads`
-An array containing RFC 3986 compliant URIs where this file may be downloaded. Only URIs from the following domains are allowed:
+An array containing RFC 3986 compliant URIs where this file may be downloaded. URIs MUST NOT contain unencoded spaces or any other illegal characters according to RFC 3986. Only URIs from the following domains are allowed:
 - `cdn.modrinth.com`
 - `edge.forgecdn.net` (CurseForge)
 - `github.com`
