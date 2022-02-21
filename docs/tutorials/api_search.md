@@ -4,7 +4,7 @@ Searching projects is a common use case of the Modrinth API, but can be difficul
 
 ## Route
 
-The search API is available at [`{API_BASE}`](../api-information/domains.md)`/search`.
+The search API is available at [`{API_BASE}`](../details/domains.md)`/search`.
 
 ## Details
 

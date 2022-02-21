@@ -63,7 +63,7 @@ The base URL that you use will almost always be:
 https://api.modrinth.org/{version}/
 ```
 
-More information about all available domains and versions can be found [here](api-information/domains.md).
+More information about all available domains and versions can be found [here](details/domains.md).
 
 ## Structure
 

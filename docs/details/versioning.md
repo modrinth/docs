@@ -2,7 +2,7 @@
 
 Modrinth follows a simple pattern for its API:
 
-- In the event of a breaking API change, the API version is bumped, and migration steps will be available [here](migrations/information.md)
+- In the event of a breaking API change, the API version is bumped, and migration steps will be available [here](../migrations/information.md)
 - When an API is no longer the current one, it will be considered outdated but still supported. It will be kept for a certain duration, defined by one of the two triggers, either that:
   - The version is no longer current for a duration of two (2) years, or
   - The version is three (3) versions behind the current one
@@ -13,7 +13,7 @@ Modrinth follows a simple pattern for its API:
 - After this phase-out period, the version will be removed entirely, either with a permanent `410 GONE` or `404 NOT FOUND` error.
 
 :::tip
-We recommend that you handle these 410 errors and update applications to the latest API version. Migration details can be found [here](migrations/v1-to-v2.md).
+We recommend that you handle these 410 errors and update applications to the latest API version. Migration details can be found [here](../migrations/v1-to-v2.md).
 :::
 
 Modrinth must stay stable for apps that depends on it, but maintaining older versions can be costly and difficult to maintain. Keeping old versions is also a barrier to innovation for new features and changes. As such, this approach is taken in order to keep a balance between stability and innovation.
