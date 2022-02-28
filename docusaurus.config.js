@@ -75,7 +75,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Guavy LLC. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Rinth, Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: lightCodeTheme,
@@ -108,7 +108,7 @@ module.exports = {
           },
         ],
         theme: {
-          primaryColor: '#5DA426',
+          primaryColor: '#30b27b',
           redocOptions: {
             hideLoading: true,
             noAutoAuth: true,
