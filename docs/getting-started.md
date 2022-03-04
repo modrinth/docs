@@ -60,7 +60,7 @@ As you probably already know, the HTTP specification has specific action words, 
 The base URL that you use will almost always be:
 
 ```
-https://api.modrinth.org/{version}/
+https://api.modrinth.com/{version}/
 ```
 
 More information about all available domains and versions can be found [here](details/domains.md).
