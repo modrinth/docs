@@ -1070,7 +1070,8 @@ paths:
                 user_id:
                   type: string
                   example: EEFFGGHH
-                  required: true
+              required:
+                - user_id
       responses:
         "204":
           description: User has been successfully invited to the team
@@ -1172,7 +1173,8 @@ paths:
                 user_id:
                   type: string
                   example: EEFFGGHH
-                  required: true
+              required:
+                - user_id
       responses:
         "204":
           description: Ownership has successfully been transferred
@@ -1652,12 +1654,10 @@ components:
                     type: string
                     description: The URL of the gallery image
                     example: https://cdn.modrinth.com/data/AABBCCDD/images/009b7d8d6e8bf04968a29421117c59b3efe2351a.png
-                    required: true
                   featured:
                     type: boolean
                     description: Whether the image is featured in the gallery
                     example: true
-                    required: true
                   title:
                     type: string
                     description: The title of the gallery image
@@ -1672,7 +1672,10 @@ components:
                     type: string
                     format: date-time
                     description: The date and time the gallery image was created
-                    required: true
+                required:
+                  - url
+                  - featured
+                  - created
               description: A list of images that have been uploaded to the project's gallery
           required:
             - id
