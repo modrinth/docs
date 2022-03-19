@@ -276,7 +276,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AuthError"
-  /project/{id|slug}/gallery?ext={extension}&featured={featured}&title={title}&description={description}:
+  /project/{id|slug}/gallery:
     post:
       summary: Add a gallery image
       description: Modrinth allows you to upload files of up to 5MiB to a project's gallery.
@@ -286,25 +286,25 @@ paths:
       parameters:
         - $ref: "#/components/parameters/ProjectIdentifier"
         - description: Image extension
-          in: path
-          name: extension
+          in: query
+          name: ext
           required: true
           schema:
             type: string
             enum: [png, jpg, jpeg, bmp, gif, webp, svg, svgz, rgb]
         - description: Whether an image is featured
-          in: path
+          in: query
           name: featured
           required: true
           schema:
             type: boolean
         - description: Title of the image
-          in: path
+          in: query
           name: title
           schema:
             type: string
         - description: Description of the image
-          in: path
+          in: query
           name: description
           schema:
             type: string
@@ -312,6 +312,9 @@ paths:
         description: New gallery image
         content:
           image/*:
+            schema:
+              type: string
+              format: binary
             encoding:
               image:
                 contentType: image/png, image/jpeg, image/bmp, image/gif, image/webp, image/svg, image/svgz, image/rgb
@@ -336,7 +339,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/NotFoundError"
-  /project/{id|slug}/gallery?url={url}&featured={featured}&title={title}&description={description}:
     patch:
       summary: Modify a gallery image
       operationId: modifyGalleryImage
@@ -345,25 +347,25 @@ paths:
       parameters:
         - $ref: "#/components/parameters/ProjectIdentifier"
         - description: URL link of the image to modify
-          in: path
+          in: query
           name: url
           required: true
           schema:
             type: string
             format: uri
         - description: Whether the image is featured
-          in: path
+          in: query
           name: featured
           required: true
           schema:
             type: boolean
         - description: New title of the image
-          in: path
+          in: query
           name: title
           schema:
             type: string
         - description: New description of the image
-          in: path
+          in: query
           name: description
           schema:
             type: string
@@ -382,7 +384,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/NotFoundError"
-  /project/{id|slug}/gallery?url={url}:
     delete:
       summary: Delete a gallery image
       operationId: deleteGalleryImage
@@ -391,7 +392,7 @@ paths:
       parameters:
         - $ref: "#/components/parameters/ProjectIdentifier"
         - description: URL link of the image to delete
-          in: path
+          in: query
           name: url
           required: true
           schema:
@@ -1487,6 +1488,8 @@ components:
               type: array
               description: All gallery images attached to the project
               example: [https://cdn.modrinth.com/data/AABBCCDD/images/009b7d8d6e8bf04968a29421117c59b3efe2351a.png, https://cdn.modrinth.com/data/AABBCCDD/images/c21776867afb6046fdc3c21dbcf5cc50ae27a236.png]
+              items:
+                type: string
           required:
             - project_id
             - author
