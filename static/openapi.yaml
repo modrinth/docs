@@ -1451,15 +1451,15 @@ components:
               type: string
               description: The username of the project's author
               example: my_user
-            follows:
-              type: integer
-              description: The total number of users following the project
             versions:
               type: array
               items:
                 type: string
               description: A list of the minecraft versions supported by the project
               example: ["1.8", "1.8.9"]
+            follows:
+              type: integer
+              description: The total number of users following the project
             date_created:
               type: string
               format: date-time
@@ -1485,8 +1485,8 @@ components:
           required:
             - project_id
             - author
-            - follows
             - versions
+            - follows
             - date_created
             - date_modified
             - license
