@@ -1430,9 +1430,6 @@ components:
             downloads:
               type: integer
               description: The total number of downloads of the project
-            follows:
-              type: integer
-              description: The total number of users following the project
             icon_url:
               type: string
               example: https://cdn.modrinth.com/data/AABBCCDD/b46513nd83hb4792a9a0e1fn28fgi6090c1842639.png
@@ -1441,7 +1438,6 @@ components:
           required:
             - project_type
             - downloads
-            - follows
     ProjectResult: # The actual result in search.
       allOf:
         - $ref: "#/components/schemas/ServerRenderedProject"
@@ -1455,6 +1451,9 @@ components:
               type: string
               description: The username of the project's author
               example: my_user
+            follows:
+              type: integer
+              description: The total number of users following the project
             versions:
               type: array
               items:
@@ -1486,6 +1485,7 @@ components:
           required:
             - project_id
             - author
+            - follows
             - versions
             - date_created
             - date_modified
@@ -1623,6 +1623,13 @@ components:
               example: true
           required:
             - project_type
+            - slug
+            - title
+            - description
+            - body
+            - client_side
+            - server_side
+            - license_id
     Project:
       allOf:
         - $ref: "#/components/schemas/NonSearchProject"
@@ -1668,6 +1675,28 @@ components:
             followers:
               type: integer
               description: The total number of users following the project
+            status:
+              type: string
+              enum: [approved, rejected, draft, unlisted, archived, processing, unknown]
+              description: The status of the project
+              example: approved
+            license:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: The license id of a project, retrieved from the licenses get route
+                  example: lgpl-3
+                name:
+                  type: string
+                  description: The long name of a license
+                  example: GNU Lesser General Public License v3
+                url:
+                  type: string
+                  description: The URL to this license
+                  example: https://cdn.modrinth.com/licenses/lgpl-3.txt
+                  nullable: true
+              description: The license of the project
             versions:
               type: array
               items:
@@ -1720,75 +1749,7 @@ components:
             - server_side
             - slug
             - body
-    CreateProject: # As represented at https://github.com/modrinth/labrinth/blob/master/src/routes/project_creation.rs#L129-L197
-      allOf:
-        - $ref: "#/components/schemas/BaseProject"
-        - type: object
-          properties:
-            project_type:
-              type: string
-              enum: [ mod, modpack ]
-              example: modpack
-            body:
-              type: string
-              description: A long form description of the project
-              example: A long body describing my project in detail
-            initial_versions:
-              type: array
-              items:
-                $ref: "#/components/schemas/EditableVersion"
-              description: A list of initial versions to upload with the created project (required unless `is_draft` is true)
-            issues_url:
-              type: string
-              description: An optional link to where to submit bugs or issues with the project
-              example: https://github.com/my_user/my_project/issues
-              nullable: true
-            source_url:
-              type: string
-              description: An optional link to the source code of the project
-              example: https://github.com/my_user/my_project
-              nullable: true
-            wiki_url:
-              type: string
-              description: An optional link to the project's wiki page or other relevant information
-              example: https://github.com/my_user/my_project/wiki
-              nullable: true
-            license_url:
-              type: string
-              description: The link to the project's license
-              example: https://cdn.modrinth.com/licenses/cc0.txt
-              nullable: true
-            discord_url:
-              type: string
-              description: An optional invite link to the project's discord
-              example: https://discord.gg/AaBbCcDd
-              nullable: true
-            donation_urls:
-              type: array
-              items:
-                type: object
-                nullable: true
-                properties:
-                  id:
-                    type: string
-                    description: The ID of the donation platform
-                    example: patreon
-                  platform:
-                    type: string
-                    description: The donation platform this link is to
-                    example: Patreon
-                  url:
-                    type: string
-                    description: The URL of the donation platform and user
-                    example: https://www.patreon.com/my_user
-            is_draft:
-              type: boolean
-              description: Whether the project should be saved as a draft instead of being sent to moderation for review
-              example: true
-            license_id:
-              type: string
-              description: The ID of the project's license
-              example: cc0
+            - status
     # Search
     SearchResults:
       type: object
