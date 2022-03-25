@@ -1767,12 +1767,12 @@ components:
         projects:
           type: array
           items:
-            - $ref: "#/components/schemas/Project"
+            $ref: "#/components/schemas/Project"
           description: Projects that the project depends upon
         versions:
           type: array
           items:
-            - $ref: "#/components/schemas/Version"
+            $ref: "#/components/schemas/Version"
           description: Versions that the project depends upon
     # Search
     SearchResults:
