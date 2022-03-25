@@ -1,7 +1,7 @@
 openapi: "3.0.0"
 
 info:
-  version: f3234a6 (v2)
+  version: v2.2.4
   title: Labrinth
   description: |
     This API is documented in the **OpenAPI format** and is available for download [here](/openapi.yaml).
@@ -413,6 +413,27 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AuthError"
+  /project/{id|slug}/dependencies:
+    get:
+      summary: Get all of a project's dependencies
+      operationId: getDependencies
+      tags:
+        - projects
+      parameters:
+        - $ref: "#/components/parameters/ProjectIdentifier"
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectDependencyList"
+        "404":
+          description: The requested project was not found or no authorization to see this project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
   # Version
   /project/{id|slug}/version:
     get:
@@ -1386,14 +1407,13 @@ components:
 
   schemas:
     # Project
-    BaseProject:
+    BaseProject: # Fields that can be used in everything. Search, direct project lookup, project editing, you name it.
       type: object
       properties:
         slug:
           type: string
           description: The slug of a project, used for vanity URLs
           example: my_project
-          nullable: true
         title:
           type: string
           description: The title or name of the project
@@ -1418,13 +1438,7 @@ components:
           enum: [required, optional, unsupported]
           description: The server side support of the project
           example: optional
-      required:
-        - title
-        - description
-        - categories
-        - client_side
-        - server_side
-    ServerRenderedProject:
+    ServerRenderedProject: # Fields added to search results and direct project lookups that cannot be edited.
       allOf:
         - $ref: "#/components/schemas/BaseProject"
         - type: object
@@ -1445,8 +1459,7 @@ components:
           required:
             - project_type
             - downloads
-            - follows
-    ProjectResult:
+    ProjectResult: # The actual result in search.
       allOf:
         - $ref: "#/components/schemas/ServerRenderedProject"
         - type: object
@@ -1498,7 +1511,7 @@ components:
             - date_created
             - date_modified
             - license
-    EditableProject:
+    NonSearchProject: # Fields that appear everywhere EXCEPT search.
       allOf:
         - $ref: "#/components/schemas/BaseProject"
         - type: object
@@ -1507,35 +1520,6 @@ components:
               type: string
               description: A long form description of the project
               example: A long body describing my project in detail
-            body_url:
-              type: string
-              deprecated: true
-              default: null
-              description: The link to the long description of the project (only present for old projects)
-              example: null
-              nullable: true
-            status:
-              type: string
-              enum: [approved, rejected, draft, unlisted, archived, processing, unknown]
-              description: The status of the project
-              example: approved
-            license:
-              type: object
-              properties:
-                id:
-                  type: string
-                  description: The license id of a project, retrieved from the licenses get route
-                  example: lgpl-3
-                name:
-                  type: string
-                  description: The long name of a license
-                  example: GNU Lesser General Public License v3
-                url:
-                  type: string
-                  description: The URL to this license
-                  example: https://cdn.modrinth.com/licenses/lgpl-3.txt
-                  nullable: true
-              description: The license of the project
             issues_url:
               type: string
               description: An optional link to where to submit bugs or issues with the project
@@ -1575,13 +1559,41 @@ components:
                     description: The URL of the donation platform and user
                     example: https://www.patreon.com/my_user
               description: A list of donation links for the project
-          required:
-            - body
-            - status
-            - license
-    CreatableProject:
+    ModifiableProject: # Fields available only when editing or creating a project
       allOf:
-        - $ref: "#/components/schemas/EditableProject"
+        - $ref: "#/components/schemas/NonSearchProject"
+        - type: object
+          properties:
+            license_id:
+              type: string
+              description: The license ID of a project, retrieved from the license tag route
+              example: lgpl-3
+            license_url:
+              type: string
+              description: The URL to this license
+              example: https://cdn.modrinth.com/licenses/lgpl-3.txt
+              nullable: true
+    EditableProject: # Fields that can be edited through a PATCH request. https://github.com/modrinth/labrinth/blob/master/src/routes/projects.rs#L195-L271
+      allOf:
+        - $ref: "#/components/schemas/ModifiableProject"
+        - type: object
+          properties:
+            status:
+              type: string
+              enum: [approved, rejected, draft, unlisted, archived, processing, unknown]
+              description: The status of the project
+              example: approved
+            moderation_message:
+              type: string
+              description: The title of the moderators' message for the project
+              nullable: true
+            moderation_message_body:
+              type: string
+              description: The body of the moderators' message for the project
+              nullable: true
+    CreatableProject: # Fields only available for project creation. https://github.com/modrinth/labrinth/blob/master/src/routes/project_creation.rs#L129-L197
+      allOf:
+        - $ref: "#/components/schemas/ModifiableProject"
         - type: object
           properties:
             project_type:
@@ -1597,15 +1609,41 @@ components:
               type: boolean
               description: Whether the project should be saved as a draft instead of being sent to moderation for review
               example: true
-            icon:
-              type: string
-              format: binary
-              description: "The icon of the project. Supported types: `.png`, `.jpeg`, `.bmp`, `.gif`, `.webp`, `.svg(z)`, .rgb"
+            gallery_items:
+              type: array
+              items:
+                type: object
+                nullable: true
+                properties:
+                  item:
+                    type: string
+                    description: The name of the multipart item where the gallery media is located
+                  featured:
+                    type: boolean
+                    description: Whether the image is featured in the gallery
+                    example: true
+                  title:
+                    type: string
+                    description: The title of the gallery image
+                    example: My awesome screenshot!
+                    nullable: true
+                  description:
+                    type: string
+                    description: The description of the gallery image
+                    example: This awesome screenshot shows all of the blocks in my mod!
+                    nullable: true
           required:
             - project_type
+            - slug
+            - title
+            - description
+            - body
+            - client_side
+            - server_side
+            - license_id
     Project:
       allOf:
-        - $ref: "#/components/schemas/EditableProject"
+        - $ref: "#/components/schemas/NonSearchProject"
         - $ref: "#/components/schemas/ServerRenderedProject"
         - type: object
           properties:
@@ -1617,6 +1655,13 @@ components:
               type: string
               example: MMNNOOPP
               description: The ID of the team that has ownership of this project
+            body_url:
+              type: string
+              deprecated: true
+              default: null
+              description: The link to the long description of the project (only present for old projects)
+              example: null
+              nullable: true
             moderator_message:
               type: object
               properties:
@@ -1641,6 +1686,28 @@ components:
             followers:
               type: integer
               description: The total number of users following the project
+            status:
+              type: string
+              enum: [approved, rejected, draft, unlisted, archived, processing, unknown]
+              description: The status of the project
+              example: approved
+            license:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: The license id of a project, retrieved from the licenses get route
+                  example: lgpl-3
+                name:
+                  type: string
+                  description: The long name of a license
+                  example: GNU Lesser General Public License v3
+                url:
+                  type: string
+                  description: The URL to this license
+                  example: https://cdn.modrinth.com/licenses/lgpl-3.txt
+                  nullable: true
+              description: The license of the project
             versions:
               type: array
               items:
@@ -1686,6 +1753,27 @@ components:
             - published
             - updated
             - followers
+            - title
+            - description
+            - categories
+            - client_side
+            - server_side
+            - slug
+            - body
+            - status
+    ProjectDependencyList:
+      type: object
+      properties:
+        projects:
+          type: array
+          items:
+            $ref: "#/components/schemas/Project"
+          description: Projects that the project depends upon
+        versions:
+          type: array
+          items:
+            $ref: "#/components/schemas/Version"
+          description: Versions that the project depends upon
     # Search
     SearchResults:
       type: object
@@ -1728,12 +1816,6 @@ components:
           type: string
           description: "The changelog for this version"
           example: "List of changes in this version: ..."
-          nullable: true
-        changelog_url:
-          type: string
-          description: "A link to the changelog for this version"
-          deprecated: true
-          example: null
           nullable: true
         dependencies:
           type: array
@@ -1780,26 +1862,18 @@ components:
           type: boolean
           description: Whether the version is featured or not
           example: true
-      required:
-        - name
-        - version_number
-        - game_versions
-        - version_type
-        - loaders
-        - featured
-    EditableVersion:
+    EditableVersion: # https://github.com/modrinth/labrinth/blob/master/src/routes/versions.rs#L169-L190
       allOf:
         - $ref: "#/components/schemas/BaseVersion"
         - type: object
           properties:
-            file_parts:
+            primary_file:
               type: array
               items:
                 type: string
-              description: An array of the multipart field names of each file that goes with this version
-          required:
-            - file_parts
-    CreatableVersion:
+              example: [sha1, aaaabbbbccccddddeeeeffffgggghhhhiiiijjjj]
+              description: The hash format and the hash of the new primary file
+    CreatableVersion: # https://github.com/modrinth/labrinth/blob/master/src/routes/version_creation.rs#L25-L5%
       allOf:
         - type: object
           properties:
@@ -1808,13 +1882,27 @@ components:
                 - $ref: "#/components/schemas/BaseVersion"
                 - type: object
                   properties:
+                    project_id:
+                      type: string
+                      description: The ID of the project this version is for
+                      example: AABBCCDD
                     file_parts:
                       type: array
                       items:
                         type: string
                         description: An array of the multipart field names of each file that goes with this version
+                    primary_file:
+                      type: string
+                      description: The multipart field name of the primary file
                   required:
                     - file_parts
+                    - project_id
+                    - name
+                    - version_number
+                    - game_versions
+                    - version_type
+                    - loaders
+                    - featured
           required:
             - data
     Version:
@@ -1840,6 +1928,12 @@ components:
             downloads:
               type: integer
               description: The number of times this version has been downloaded
+            changelog_url:
+              type: string
+              description: A link to the changelog for this version
+              deprecated: true
+              example: null
+              nullable: true
             files:
               type: array
               items:
@@ -1879,6 +1973,12 @@ components:
             - date_published
             - downloads
             - files
+            - name
+            - version_number
+            - game_versions
+            - version_type
+            - loaders
+            - featured
     # User
     EditableUser:
       type: object
