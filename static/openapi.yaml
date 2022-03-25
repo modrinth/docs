@@ -413,6 +413,27 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AuthError"
+  /project/{id|slug}/dependencies:
+    get:
+      summary: Get all of a project's dependencies
+      operationId: getDependencies
+      tags:
+        - projects
+      parameters:
+        - $ref: "#/components/parameters/ProjectIdentifier"
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectDependencyList"
+        "404":
+          description: The requested project was not found or no authorization to see this project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
   # Version
   /project/{id|slug}/version:
     get:
@@ -1740,6 +1761,19 @@ components:
             - slug
             - body
             - status
+    ProjectDependencyList:
+      type: object
+      properties:
+        projects:
+          type: array
+          items:
+            - $ref: "#/components/schemas/Project"
+          description: Projects that the project depends upon
+        versions:
+          type: array
+          items:
+            - $ref: "#/components/schemas/Version"
+          description: Versions that the project depends upon
     # Search
     SearchResults:
       type: object
