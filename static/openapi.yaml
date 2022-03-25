@@ -1,7 +1,7 @@
 openapi: "3.0.0"
 
 info:
-  version: f3234a6 (v2)
+  version: v2.2.4
   title: Labrinth
   description: |
     This API is documented in the **OpenAPI format** and is available for download [here](/openapi.yaml).
@@ -1538,39 +1538,6 @@ components:
                     description: The URL of the donation platform and user
                     example: https://www.patreon.com/my_user
               description: A list of donation links for the project
-            gallery:
-              type: array
-              items:
-                type: object
-                nullable: true
-                properties:
-                  url:
-                    type: string
-                    description: The URL of the gallery image
-                    example: https://cdn.modrinth.com/data/AABBCCDD/images/009b7d8d6e8bf04968a29421117c59b3efe2351a.png
-                  featured:
-                    type: boolean
-                    description: Whether the image is featured in the gallery
-                    example: true
-                  title:
-                    type: string
-                    description: The title of the gallery image
-                    example: My awesome screenshot!
-                    nullable: true
-                  description:
-                    type: string
-                    description: The description of the gallery image
-                    example: This awesome screenshot shows all of the blocks in my mod!
-                    nullable: true
-                  created:
-                    type: string
-                    format: date-time
-                    description: The date and time the gallery image was created
-                required:
-                  - url
-                  - featured
-                  - created
-              description: A list of images that have been uploaded to the project's gallery
     ModifiableProject: # Fields available only when editing or creating a project
       allOf:
         - $ref: "#/components/schemas/NonSearchProject"
@@ -1621,6 +1588,29 @@ components:
               type: boolean
               description: Whether the project should be saved as a draft instead of being sent to moderation for review
               example: true
+            gallery_items:
+              type: array
+              items:
+                type: object
+                nullable: true
+                properties:
+                  item:
+                    type: string
+                    description: The name of the multipart item where the gallery media is located
+                  featured:
+                    type: boolean
+                    description: Whether the image is featured in the gallery
+                    example: true
+                  title:
+                    type: string
+                    description: The title of the gallery image
+                    example: My awesome screenshot!
+                    nullable: true
+                  description:
+                    type: string
+                    description: The description of the gallery image
+                    example: This awesome screenshot shows all of the blocks in my mod!
+                    nullable: true
           required:
             - project_type
             - slug
@@ -1793,12 +1783,6 @@ components:
           description: "The changelog for this version"
           example: "List of changes in this version: ..."
           nullable: true
-        changelog_url:
-          type: string
-          description: "A link to the changelog for this version"
-          deprecated: true
-          example: null
-          nullable: true
         dependencies:
           type: array
           items:
@@ -1844,26 +1828,18 @@ components:
           type: boolean
           description: Whether the version is featured or not
           example: true
-      required:
-        - name
-        - version_number
-        - game_versions
-        - version_type
-        - loaders
-        - featured
-    EditableVersion:
+    EditableVersion: # https://github.com/modrinth/labrinth/blob/master/src/routes/versions.rs#L169-L190
       allOf:
         - $ref: "#/components/schemas/BaseVersion"
         - type: object
           properties:
-            file_parts:
+            primary_file:
               type: array
               items:
                 type: string
-              description: An array of the multipart field names of each file that goes with this version
-          required:
-            - file_parts
-    CreatableVersion:
+              example: [sha1, aaaabbbbccccddddeeeeffffgggghhhhiiiijjjj]
+              description: The hash format and the hash of the new primary file
+    CreatableVersion: # https://github.com/modrinth/labrinth/blob/master/src/routes/version_creation.rs#L25-L5%
       allOf:
         - type: object
           properties:
@@ -1872,13 +1848,27 @@ components:
                 - $ref: "#/components/schemas/BaseVersion"
                 - type: object
                   properties:
+                    project_id:
+                      type: string
+                      description: The ID of the project this version is for
+                      example: AABBCCDD
                     file_parts:
                       type: array
                       items:
                         type: string
                         description: An array of the multipart field names of each file that goes with this version
+                    primary_file:
+                      type: string
+                      description: The multipart field name of the primary file
                   required:
                     - file_parts
+                    - project_id
+                    - name
+                    - version_number
+                    - game_versions
+                    - version_type
+                    - loaders
+                    - featured
           required:
             - data
     Version:
@@ -1904,6 +1894,12 @@ components:
             downloads:
               type: integer
               description: The number of times this version has been downloaded
+            changelog_url:
+              type: string
+              description: A link to the changelog for this version
+              deprecated: true
+              example: null
+              nullable: true
             files:
               type: array
               items:
@@ -1943,6 +1939,12 @@ components:
             - date_published
             - downloads
             - files
+            - name
+            - version_number
+            - game_versions
+            - version_type
+            - loaders
+            - featured
     # User
     EditableUser:
       type: object
