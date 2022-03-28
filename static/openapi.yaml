@@ -1461,6 +1461,7 @@ components:
               type: string
               example: https://cdn.modrinth.com/data/AABBCCDD/b46513nd83hb4792a9a0e1fn28fgi6090c1842639.png
               description: The URL of the project's icon
+              nullable: true
           required:
             - project_type
             - downloads
