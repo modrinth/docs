@@ -1430,14 +1430,20 @@ components:
           description: A list of the categories that the project is in
         client_side:
           type: string
-          enum: [required, optional, unsupported]
+          enum: [required, optional, unsupported, unknown]
           description: The client side support of the project
           example: required
         server_side:
           type: string
-          enum: [required, optional, unsupported]
+          enum: [required, optional, unsupported, unknown]
           description: The server side support of the project
           example: optional
+      required:
+        - title
+        - description
+        - categories
+        - client_side
+        - server_side
     ServerRenderedProject: # Fields added to search results and direct project lookups that cannot be edited.
       allOf:
         - $ref: "#/components/schemas/BaseProject"
@@ -1455,10 +1461,10 @@ components:
               type: string
               example: https://cdn.modrinth.com/data/AABBCCDD/b46513nd83hb4792a9a0e1fn28fgi6090c1842639.png
               description: The URL of the project's icon
-              nullable: true
           required:
             - project_type
             - downloads
+            - icon_url
     ProjectResult: # The actual result in search.
       allOf:
         - $ref: "#/components/schemas/ServerRenderedProject"
@@ -1510,7 +1516,9 @@ components:
             - follows
             - date_created
             - date_modified
+            - latest_version
             - license
+            - gallery
     NonSearchProject: # Fields that appear everywhere EXCEPT search.
       allOf:
         - $ref: "#/components/schemas/BaseProject"
@@ -1559,6 +1567,12 @@ components:
                     description: The URL of the donation platform and user
                     example: https://www.patreon.com/my_user
               description: A list of donation links for the project
+              required:
+                - id
+                - platform
+                - url
+          required:
+            - body
     ModifiableProject: # Fields available only when editing or creating a project
       allOf:
         - $ref: "#/components/schemas/NonSearchProject"
@@ -1573,6 +1587,8 @@ components:
               description: The URL to this license
               example: https://cdn.modrinth.com/licenses/lgpl-3.txt
               nullable: true
+          required:
+            - license_id
     EditableProject: # Fields that can be edited through a PATCH request. https://github.com/modrinth/labrinth/blob/master/src/routes/projects.rs#L195-L271
       allOf:
         - $ref: "#/components/schemas/ModifiableProject"
@@ -1591,6 +1607,8 @@ components:
               type: string
               description: The body of the moderators' message for the project
               nullable: true
+          required:
+            - status
     CreatableProject: # Fields only available for project creation. https://github.com/modrinth/labrinth/blob/master/src/routes/project_creation.rs#L129-L197
       allOf:
         - $ref: "#/components/schemas/ModifiableProject"
@@ -1632,15 +1650,12 @@ components:
                     description: The description of the gallery image
                     example: This awesome screenshot shows all of the blocks in my mod!
                     nullable: true
+                required:
+                  - item
+                  - featured
           required:
             - project_type
-            - slug
-            - title
-            - description
-            - body
-            - client_side
-            - server_side
-            - license_id
+            - initial_versions
     Project:
       allOf:
         - $ref: "#/components/schemas/NonSearchProject"
@@ -1708,6 +1723,9 @@ components:
                   example: https://cdn.modrinth.com/licenses/lgpl-3.txt
                   nullable: true
               description: The license of the project
+              required:
+                - id
+                - name
             versions:
               type: array
               items:
@@ -1753,14 +1771,10 @@ components:
             - published
             - updated
             - followers
-            - title
-            - description
-            - categories
-            - client_side
-            - server_side
-            - slug
-            - body
             - status
+            - license
+            - versions
+            - gallery
     ProjectDependencyList:
       type: object
       properties:
@@ -1774,6 +1788,9 @@ components:
           items:
             $ref: "#/components/schemas/Version"
           description: Versions that the project depends upon
+      required:
+        - projects
+        - versions
     # Search
     SearchResults:
       type: object
@@ -1862,6 +1879,14 @@ components:
           type: boolean
           description: Whether the version is featured or not
           example: true
+      required:
+        - name
+        - version_number
+        - changelog
+        - game_versions
+        - version_type
+        - loaders
+        - featured
     EditableVersion: # https://github.com/modrinth/labrinth/blob/master/src/routes/versions.rs#L169-L190
       allOf:
         - $ref: "#/components/schemas/BaseVersion"
@@ -1896,13 +1921,6 @@ components:
                       description: The multipart field name of the primary file
                   required:
                     - file_parts
-                    - project_id
-                    - name
-                    - version_number
-                    - game_versions
-                    - version_type
-                    - loaders
-                    - featured
           required:
             - data
     Version:
@@ -1973,12 +1991,6 @@ components:
             - date_published
             - downloads
             - files
-            - name
-            - version_number
-            - game_versions
-            - version_type
-            - loaders
-            - featured
     # User
     EditableUser:
       type: object
@@ -2031,8 +2043,6 @@ components:
               example: developer
           required:
             - id
-            - github_id
-            - avatar_url
             - created
             - role
     # Notifications
