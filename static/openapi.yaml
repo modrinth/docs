@@ -20,12 +20,18 @@ info:
      ```
      Authorization: gho_pJ9dGXVKpfzZp4PUHSxYEq9hjk0h288Gwj4S
      ```
+     
+    You do not need a token for most requests. Generally speaking, only the following types of requests require a token:
+     - those which create data (such as version creation)
+     - those which modify data (such as editing a project)
+     - those which access private data (e.g. draft projects)
     
     ## Ratelimits
     The API has a ratelimit defined per IP. Limits and remaining amounts are given in the response headers.
     The `X-Ratelimit-Limit` header is the maximum number of requests that can be made in a minute.
     The `X-Ratelimit-Remaining` header is the number of requests remaining in the current ratelimit window.
     The `X-Ratelimit-Reset` header is the time in seconds until the ratelimit window resets.
+    Ratelimits are the same no matter whether you use a token or not.
 servers:
   - url: https://api.modrinth.com/v2
     description: Production server
