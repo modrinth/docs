@@ -82,6 +82,9 @@ module.exports = {
       darkTheme: darkCodeTheme,
       additionalLanguages: ['http'],
     },
+    colorMode: {
+      respectPrefersColorScheme: true,
+    },
   },
   presets: [
     [
