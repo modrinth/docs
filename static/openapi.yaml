@@ -634,13 +634,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/NotFoundError"
       parameters:
-        - in: path
-          name: hash
-          required: true
-          schema:
-            type: string
-            example: 619e250c133106bacc3e3b560839bd4b324dfda8
-          description: The hash of the file to query
+        - $ref: "#/components/parameters/FileHashIdentifier"
         - $ref: "#/components/parameters/AlgorithmIdentifier"
     delete:
       summary: Delete a file from its hash
@@ -663,13 +657,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/NotFoundError"
       parameters:
-        - in: path
-          name: hash
-          required: true
-          schema:
-            type: string
-            example: 619e250c133106bacc3e3b560839bd4b324dfda8
-          description: The hash of the file to delete
+        - $ref: "#/components/parameters/FileHashIdentifier"
         - $ref: "#/components/parameters/AlgorithmIdentifier"
   /version_file/{hash}/update?algorithm={algorithm}:
     post:
@@ -678,13 +666,7 @@ paths:
       tags:
         - versions
       parameters:
-        - in: path
-          name: hash
-          required: true
-          schema:
-            type: string
-            example: 619e250c133106bacc3e3b560839bd4b324dfda8
-          description: The hash to find the latest version of
+        - $ref: "#/components/parameters/FileHashIdentifier"
         - $ref: "#/components/parameters/AlgorithmIdentifier"
       requestBody:
         description: Parameters of the updated version requested
@@ -1420,6 +1402,14 @@ components:
         enum: [sha1, sha512]
         example: sha512
         default: sha1
+    FileHashIdentifier:
+      name: hash
+      in: path
+      required: true
+      description: The hash of the file, considering its byte content, and encoded in hexadecimal
+      schema:
+        type: string
+        example: 619e250c133106bacc3e3b560839bd4b324dfda8
 
   schemas:
     # Project
