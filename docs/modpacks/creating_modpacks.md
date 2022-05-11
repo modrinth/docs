@@ -10,4 +10,6 @@ Modrinth uses its own storage layout for modpacks. This can be found on the [for
 
 ## How do I create one?
 
-Currently, the only way to create Modrinth modpacks are via [packwiz](https://github.com/packwiz/packwiz), a command line tool for managing modpacks. Specifically, this is done through the [`packwiz modrinth export`](https://packwiz.infra.link/reference/commands/packwiz_modrinth_export/) command. Using the [` packwiz curseforge import`](https://packwiz.infra.link/reference/commands/packwiz_curseforge_export/) command, CurseForge modpacks may be converted into Modrinth packs.
+You can either use [ATLauncher](https://atlauncher.com) or [packwiz](https://github.com/packwiz/packwiz) to create modpacks. The Modrinth format is unique for our purposes, so you cannot use the CurseForge format or another format to upload to Modrinth.
+
+You can also convert a CurseForge modpack to the Modrinth format via packwiz. Specifically, the commands [`packwiz cf import`](https://packwiz.infra.link/reference/commands/packwiz_curseforge_import/) and [`packwiz mr export`](https://packwiz.infra.link/reference/commands/packwiz_modrinth_export/) will make a compliant file which can be uploaded to Modrinth.

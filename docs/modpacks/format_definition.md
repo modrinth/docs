@@ -72,12 +72,13 @@ Available dependency IDs are:
 - `minecraft` - The Minecraft game
 - `forge` - The Minecraft Forge mod loader
 - `fabric-loader` - The Fabric loader
+- `quilt-loader` - The Quilt loader
 
 An example `dependencies` object:
 ```json
 "dependencies": {
-    "minecraft": "1.18.1",
-    "fabric-loader": "0.13.1"
+    "minecraft": "1.18.2",
+    "forge": "40.1.0"
 }
 ```
 
