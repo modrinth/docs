@@ -85,6 +85,7 @@ x-tagGroups:
     tags:
       - projects
       - versions
+      - version-files
       - users
       - teams
       - tags
@@ -251,6 +252,31 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AuthError"
+  /projects:
+    get:
+      summary: Get multiple projects
+      operationId: getProjects
+      tags:
+        - projects
+      parameters:
+        - in: query
+          name: ids
+          description: The IDs of the projects
+          schema:
+            type: array
+            items:
+              type: string
+            example: "[\"AABBCCDD\", \"EEFFGGHH\"]"
+          required: true
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Project"
   /project:
     post:
       summary: Create a project
@@ -582,6 +608,31 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AuthError"
+  /versions:
+    get:
+      summary: Get multiple versions
+      operationId: getVersions
+      tags:
+        - versions
+      parameters:
+        - in: query
+          name: ids
+          description: The IDs of the versions
+          schema:
+            type: array
+            items:
+              type: string
+            example: "[\"AABBCCDD\", \"EEFFGGHH\"]"
+          required: true
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Version"
   /version/{id}/file:
     post:
       summary: Add files to version
