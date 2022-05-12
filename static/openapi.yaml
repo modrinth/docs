@@ -915,6 +915,31 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/NotFoundError"
+  /users:
+    get:
+      summary: Get multiple users
+      operationId: getUsers
+      tags:
+        - users
+      parameters:
+        - in: query
+          name: ids
+          description: The IDs of the users
+          schema:
+            type: array
+            items:
+              type: string
+            example: "[\"AABBCCDD\", \"EEFFGGHH\"]"
+          required: true
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
   /user/{id|username}/icon:
     patch:
       summary: Change user's avatar
