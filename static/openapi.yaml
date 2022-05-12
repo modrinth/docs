@@ -45,6 +45,9 @@ tags:
   - name: versions
     x-displayName: Versions
     description: Versions contain download links to files with additional metadata.
+  - name: version-files
+    x-displayName: Version Files
+    description: Versions can contain multiple files, and these routes help manage those files.
   - name: users
     x-displayName: Users
     description: Users can create projects, join teams, access notifications, manage settings, and follow projects. Admins and moderators have more advanced permissions such as reviewing new projects.
@@ -55,7 +58,7 @@ tags:
     x-displayName: Tags
     description: Tags are common and reusable lists of metadata types such as categories or versions. Some can be applied to projects and/or versions.
   - name: auth
-    x-displayName: Auth
+    x-displayName: Authorization
   - name: project_model
     x-displayName: Project Model
     description: |
@@ -614,12 +617,13 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/NotFoundError"
+  # Version file
   /version_file/{hash}?algorithm={algorithm}:
     get:
       summary: Get version from hash
       operationId: versionFromHash
       tags:
-        - versions
+        - version-files
       responses:
         "200":
           description: Expected response to a valid request
@@ -640,7 +644,7 @@ paths:
       summary: Delete a file from its hash
       operationId: deleteFileFromHash
       tags:
-        - versions
+        - version-files
       responses:
         "204":
           description: Expected response to a valid request
@@ -664,7 +668,7 @@ paths:
       summary: Latest version of a project from a hash, loader(s), and game version(s)
       operationId: getLatestVersionFromHash
       tags:
-        - versions
+        - version-files
       parameters:
         - $ref: "#/components/parameters/FileHashIdentifier"
         - $ref: "#/components/parameters/AlgorithmIdentifier"
@@ -709,7 +713,7 @@ paths:
 #      description: This is the same as [`/version_file/{hash}`](#operation/versionFromHash) except it accepts multiple hashes.
 #      operationId: versionsFromHashes
 #      tags:
-#        - versions
+#        - version-files
 #      responses:
 #        "200":
 #          description: Expected response to a valid request
@@ -745,7 +749,7 @@ paths:
 #      summary: Latest versions of a project from hashes, loader(s), and game version(s)
 #      operationId: getLatestVersionsFromHashes
 #      tags:
-#        - versions
+#        - version-files
 #      requestBody:
 #        description: Parameters of the updated version requested
 #        content:
