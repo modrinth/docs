@@ -18,8 +18,10 @@ ATLauncher is a launcher focused on easy integration of modpacks with various di
 
 Modrinth packs can be installed using ATLauncher in as few as three clicks. Go to the "Packs" tab, select Modrinth on the left, and search for the pack you want. Then, play!
 
-TODO: Insert image here!
+![ATLauncher search](../../static/img/tutorial/atlauncherSearch.png)
 
-If you have a direct link to a Modrinth pack, you can also import it using the "Import" button in the "Instances" tab.
+If you just want to insert an ID, slug, or URL directly, you can also do so using the "Add Manually" button by the top-right of the search
+
+If you have a direct link to a Modrinth pack, you also have the option of importing it using the "Import" button in the "Instances" tab.
 
 ![ATLauncher import](../../static/img/tutorial/atlauncherImport.png)
