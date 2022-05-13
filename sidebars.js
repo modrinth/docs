@@ -19,6 +19,7 @@ module.exports = {
       ],
       'Modpacks': [
         'modpacks/creating_modpacks',
+        'modpacks/playing_modpacks',
         'modpacks/format_definition',
       ],
     },

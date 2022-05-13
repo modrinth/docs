@@ -59,9 +59,11 @@ For optional mods, we recommend showing a dialog to the user that allows them to
 #### `downloads`
 An array containing RFC 3986 compliant URIs where this file may be downloaded. URIs MUST NOT contain unencoded spaces or any other illegal characters according to RFC 3986. Only URIs from the following domains are allowed:
 - `cdn.modrinth.com`
-- `edge.forgecdn.net` (CurseForge)
+- `edge.forgecdn.net` 
+- `media.forgecdn.net`
 - `github.com`
 - `raw.githubusercontent.com`
+HTTP 3xx redirects MUST be followed for a reasonable number of redirections (we recommend three minimum).
 
 ---
 
