@@ -125,7 +125,7 @@ paths:
                   - license
                   - project_type
           example: "[[\"categories:forge\"],[\"versions:1.17.1\"],[\"project_type:mod\"]]"
-          description: The recommended way of filtering search results. [Learn more about using facets.](/docs/tutorials/search)
+          description: The recommended way of filtering search results. [Learn more about using facets.](/docs/tutorials/api_search)
         - in: query
           name: index
           schema:
