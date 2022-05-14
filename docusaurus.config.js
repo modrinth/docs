@@ -44,47 +44,92 @@ module.exports = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/getting-started',
+              label: 'Modrinth is open source software. You may view the source code at our GitHub page',
+              href: 'https://github.com/modrinth',
+            },
+            {
+              label: `modrinth/docs, built ${new Date().toDateString()}`,
+              href: 'https://github.com/modrinth/docs'
             },
           ],
         },
         {
-          title: 'Community',
+          title: 'Legal',
           items: [
+            {
+              label: 'Terms',
+              href: 'https://modrinth.com/legal/terms',
+            },
+            {
+              label: 'Privacy',
+              href: 'https://modrinth.com/legal/privacy',
+            },
+            {
+              label: 'Rules',
+              href: 'https://modrinth.com/legal/rules',
+            },
+            {
+              label: 'License',
+              href: 'https://github.com/modrinth/docs/blob/master/LICENSE',
+            },
+          ],
+        },
+        {
+          title: 'Resources',
+          items: [
+            {
+              label: 'Main site',
+              href: 'https://modrinth.com',
+            },
+            {
+              label: 'Blog',
+              href: 'https://blog.modrinth.com/',
+            },
             {
               label: 'Discord',
               href: 'https://discord.gg/EUHuJHt',
             },
             {
-              label: 'Twitter',
-              href: 'https://twitter.com/modrinth',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
               label: 'GitHub',
-              href: 'https://github.com/modrinth/docs',
+              href: 'https://github.com/modrinth',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Rinth, Inc. Built with Docusaurus.`,
+      copyright: `This documentation is public domain under the CC0. Built with Docusaurus.`,
     },
     prism: {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
-      additionalLanguages: ['http'],
+      additionalLanguages: ['http', 'groovy'],
     },
     colorMode: {
       respectPrefersColorScheme: true,
     },
+    metadata: [
+      {
+        name: 'publisher',
+        content: 'Rinth, Inc.',
+      },
+      {
+        name: 'theme-color',
+        content: '#30b27b',
+      },
+      {
+        name: 'og:image',
+        content: 'https://cdn.modrinth.com/modrinth-new.png',
+      },
+      {
+        name: 'twitter:card',
+        content: 'summary',
+      },
+      {
+        name: 'twitter:site',
+        content: '@modrinth',
+      },
+    ]
   },
   presets: [
     [
