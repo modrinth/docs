@@ -63,7 +63,10 @@ An array containing RFC 3986 compliant URIs where this file may be downloaded. U
 - `media.forgecdn.net`
 - `github.com`
 - `raw.githubusercontent.com`
+
+:::note
 HTTP 3xx redirects MUST be followed for a reasonable number of redirections (we recommend three minimum).
+:::
 
 ---
 
