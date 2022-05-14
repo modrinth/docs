@@ -1,7 +1,5 @@
 # Playing Modpacks
 
-## What is a modpack?
-
 A modpack is a list of mods bundled with additional files, such as configuration files. In general, it's a modded instance of a game ready to play, or with minor changes.
 
 ## How do I create a modpack?
