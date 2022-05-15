@@ -8,7 +8,7 @@ Please see the guide for [creating modpacks](creating_modpacks.md).
 
 ## How do I play a modpack?
 
-Currently, the only way to play a Modrinth modpack is via [ATLauncher](https://atlauncher.com).
+Currently, the only stable way to play a Modrinth modpack is via [ATLauncher](https://atlauncher.com). You can also install Modrinth packs if you switch to the development branch of [MultiMC](https://multimc.org).
 
 ### ATLauncher
 
@@ -23,3 +23,15 @@ If you just want to insert an ID, slug, or URL directly, you can also do so usin
 If you have a direct link to a Modrinth pack, you also have the option of importing it using the "Import" button in the "Instances" tab.
 
 ![ATLauncher import](../../static/img/tutorial/atlauncherImport.png)
+
+### MultiMC
+
+MultiMC is a launcher focused on efficiently managing multiple separate instances.
+
+:::caution
+Modrinth packs are currently only available when using the development branch of MultiMC. To switch to the development version, click the "Settings" button at the top of the window, and change the "Update Channel" to "Development". Then, close the settings and press Update to swap to the development branch.
+:::
+
+Modrinth packs can be installed using the "Add instance" button and clicking "Modrinth (WIP)" on the left. It's as easy as selecting the one you want, and pressing "OK".
+
+![MultiMC](../../static/img/tutorial/multimc.png)
