@@ -2046,11 +2046,16 @@ components:
                   primary:
                     type: boolean
                     example: false
+                  size:
+                    type: integer
+                    example: 1097270
+                    description: The size of the file in bytes
                 required:
                   - hashes
                   - url
                   - filename
                   - primary
+                  - size
               description: A list of files available for download for this version
           required:
             - id
