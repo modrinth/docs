@@ -34,10 +34,11 @@ If you implement an "import ZIP" feature or similar, make sure this field doesn'
 :::
 
 #### `hashes`
-The hashes of the file specified. SHA1 is required, and other hashes are optional, but will usually be ignored. This is formatted as such:
+The hashes of the file specified. This MUST contain the SHA1 hash and the SHA512 hash. Other hashes are optional, but will usually be ignored. This is formatted as such:
 ```json
 "hashes": {
-    "sha1": "cc297357ff0031f805a744ca3a1378a112c2ddf4"
+    "sha1": "cc297357ff0031f805a744ca3a1378a112c2ddf4",
+    "sha512": "d0760a2df6f123fb3546080a85f3a44608e1f8ad9f9f7c57b5380cf72235ad380a5bbd494263639032d63bb0f0c9e0847a62426a6028a73a4b4c8e7734b4e8f5"
 }
 ```
 #### `env` (optional)
@@ -67,6 +68,9 @@ An array containing RFC 3986 compliant URIs where this file may be downloaded. U
 :::note
 HTTP 3xx redirects MUST be followed for a reasonable number of redirections (we recommend three minimum).
 :::
+
+#### `fileSize`
+An integer containing the size of the file, in bytes. This is mostly provided as a utility for launchers to allow use of progress bars.
 
 ---
 
