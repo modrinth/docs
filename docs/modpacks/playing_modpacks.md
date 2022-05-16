@@ -35,3 +35,5 @@ Modrinth packs are currently only available when using the development branch of
 Modrinth packs can be installed using the "Add instance" button and clicking "Modrinth (WIP)" on the left. It's as easy as selecting the one you want, and pressing "OK".
 
 ![MultiMC](../../static/img/tutorial/multimc.png)
+
+If you want to insert a URL directly, you can do so by selecting "Import from zip" instead of "Modrinth".
