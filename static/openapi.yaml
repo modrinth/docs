@@ -198,10 +198,6 @@ paths:
                 $ref: "#/components/schemas/Project"
         "404":
           description: The requested project was not found or no authorization to see this project
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
     patch:
       summary: Modify a project
       operationId: modifyProject
@@ -226,10 +222,6 @@ paths:
                 $ref: "#/components/schemas/AuthError"
         "404":
           description: The requested project was not found or no authorization to see this project
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
     delete:
       summary: Delete a project
       operationId: deleteProject
@@ -370,10 +362,6 @@ paths:
                 $ref: "#/components/schemas/AuthError"
         "404":
           description: The requested project was not found or no authorization to see this project
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
     patch:
       summary: Modify a gallery image
       operationId: modifyGalleryImage
@@ -415,10 +403,6 @@ paths:
                 $ref: "#/components/schemas/AuthError"
         "404":
           description: The requested project was not found or no authorization to see this project
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
     delete:
       summary: Delete a gallery image
       operationId: deleteGalleryImage
@@ -465,10 +449,6 @@ paths:
                 $ref: "#/components/schemas/ProjectDependencyList"
         "404":
           description: The requested project was not found or no authorization to see this project
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
   # Version
   /project/{id|slug}/version:
     get:
@@ -572,10 +552,6 @@ paths:
                 $ref: "#/components/schemas/AuthError"
         "404":
           description: The requested version was not found or no authorization to see this version
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
   /version:
     post:
       summary: Create a version
@@ -664,10 +640,6 @@ paths:
                 $ref: "#/components/schemas/AuthError"
         "404":
           description: The requested version was not found or no authorization to see this version
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
   # Version file
   /version_file/{hash}?algorithm={algorithm}:
     get:
@@ -683,11 +655,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Version"
         "404":
-          description: The requested version was not found or no authorization to see this version
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
+          description: The requested version file was not found or no authorization to see this version
       parameters:
         - $ref: "#/components/parameters/FileHashIdentifier"
         - $ref: "#/components/parameters/AlgorithmIdentifier"
@@ -707,10 +675,6 @@ paths:
                 $ref: "#/components/schemas/AuthError"
         "404":
           description: The requested version was not found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
       parameters:
         - $ref: "#/components/parameters/FileHashIdentifier"
         - $ref: "#/components/parameters/AlgorithmIdentifier"
@@ -754,10 +718,6 @@ paths:
           description: Input is invalid
         "404":
           description: The requested version was not found or no authorization to see this version
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
 #  /version_files:
 #    post: # TODO test that this is actually the response
 #      summary: Get versions from hashes
@@ -861,10 +821,6 @@ paths:
                 $ref: "#/components/schemas/User"
         "404":
           description: The requested user was not found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
     patch:
       summary: Modify a user
       operationId: modifyUser
@@ -889,10 +845,6 @@ paths:
                 $ref: "#/components/schemas/AuthError"
         "404":
           description: The requested user was not found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
     delete:
       summary: Delete a user
       operationId: deleteUser
@@ -911,10 +863,6 @@ paths:
                 $ref: "#/components/schemas/AuthError"
         "404":
           description: The requested user was not found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
   /users:
     get:
       summary: Get multiple users
@@ -971,10 +919,6 @@ paths:
                 $ref: "#/components/schemas/InvalidInputError"
         "404":
           description: The requested user was not found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
   /user/{id|username}/projects:
     get:
       summary: Get user's projects
@@ -994,10 +938,6 @@ paths:
                   $ref: "#/components/schemas/Project"
         "404":
           description: The requested user was not found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
   /user/{id|username}/notifications:
     get:
       summary: Get user's notifications
@@ -1026,10 +966,6 @@ paths:
                 $ref: "#/components/schemas/AuthError"
         "404":
           description: The requested user was not found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
   /user/{id|username}/follows:
     get:
       summary: Get user's followed projects
@@ -1057,10 +993,6 @@ paths:
                 $ref: "#/components/schemas/AuthError"
         "404":
           description: The requested user was not found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
   /report:
     post:
       summary: Report a project, user, or version
@@ -1116,10 +1048,6 @@ paths:
                 description: An array of team members
         "404":
           description: The requested project was not found or no authorization to see this project
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
   /team/{id}/members:
     get:
       summary: Get a team's members
@@ -1138,12 +1066,6 @@ paths:
                 items:
                   $ref: "#/components/schemas/TeamMember"
                 description: An array of team members
-        "404":
-          description: The requested team was not found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
     post:
       summary: Add a user to a team
       operationId: addTeamMember
@@ -1173,10 +1095,6 @@ paths:
                 $ref: "#/components/schemas/AuthError"
         "404":
           description: The requested team was not found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
   /team/{id}/join:
     post:
       summary: Join a team
@@ -1196,10 +1114,6 @@ paths:
                 $ref: "#/components/schemas/AuthError"
         "404":
           description: The requested team was not found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
   /team/{team_id}/members/{user_id}:
     patch:
       summary: Modify a team member's roles and/or permissions
@@ -1220,10 +1134,6 @@ paths:
                 $ref: "#/components/schemas/AuthError"
         "404":
           description: The requested team was not found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
     delete:
       summary: Remove a member from a team
       tags:
@@ -1242,10 +1152,6 @@ paths:
                 $ref: "#/components/schemas/AuthError"
         "404":
           description: The requested team was not found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
   /team/{id}/owner:
     post:
       summary: Transfer team's ownership to another user
@@ -1276,10 +1182,6 @@ paths:
                 $ref: "#/components/schemas/AuthError"
         "404":
           description: The requested team was not found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
   # Tags
   /tag/category:
     get:
@@ -2381,20 +2283,6 @@ components:
           type: string
           description: The contents of the error
           example: "Authentication Error: Invalid Authentication Credentials"
-      required:
-        - error
-        - description
-    NotFoundError:
-      type: object
-      properties:
-        error:
-          type: string
-          description: The name of the error
-          example: "not_found"
-        description:
-          type: string
-          description: The contents of the error
-          example: "the requested route does not exist"
       required:
         - error
         - description
