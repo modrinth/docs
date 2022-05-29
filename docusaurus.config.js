@@ -152,7 +152,7 @@ module.exports = {
         specs: [
           {
             spec: './static/openapi.yaml',
-            routePath: '/api-spec/',
+            route: '/api-spec/',
           },
         ],
         theme: {
