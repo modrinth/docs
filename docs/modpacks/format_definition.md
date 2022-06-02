@@ -58,12 +58,15 @@ For optional mods, we recommend showing a dialog to the user that allows them to
 `server` refers to the *dedicated* server. Even though clients technically have a logical server, if something is marked server only, it should not be installed on the client.
 
 #### `downloads`
-An array containing HTTPS URLs where this file may be downloaded. URIs MUST NOT contain unencoded spaces or any other illegal characters according to RFC 3986. Only URIs from the following domains are allowed:
+An array containing HTTPS URLs where this file may be downloaded. URIs MUST NOT contain unencoded spaces or any other illegal characters according to RFC 3986.
+
+When uploading to Modrinth, the pack is validated so that only URIs from the following domains are allowed:
 - `cdn.modrinth.com`
-- `edge.forgecdn.net` 
-- `media.forgecdn.net`
 - `github.com`
 - `raw.githubusercontent.com`
+- `gitlab.com`
+
+Other platforms implementing the specification SHOULD have a defined set of whitelisted domains.
 
 :::note
 HTTP 3xx redirects MUST be followed for a reasonable number of redirections (we recommend three minimum).

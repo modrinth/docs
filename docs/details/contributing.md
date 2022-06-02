@@ -38,7 +38,7 @@ If you wish to contribute code to a specific project, here's the place to start.
 Now, you'll have to install the sqlx CLI, which can be done with cargo:
 
 ```bash
-cargo install --git https://github.com/launchbadge/sqlx sqlx-cli --no-default-features --features postgres
+cargo install --git https://github.com/launchbadge/sqlx sqlx-cli --no-default-features --features postgres,rustls
 ```
 
 From there, you can create the database and perform all database migrations with these two commands:
