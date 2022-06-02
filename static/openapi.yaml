@@ -718,91 +718,92 @@ paths:
           description: Input is invalid
         "404":
           description: The requested version was not found or no authorization to see this version
-#  /version_files:
-#    post: # TODO test that this is actually the response
-#      summary: Get versions from hashes
-#      description: This is the same as [`/version_file/{hash}`](#operation/versionFromHash) except it accepts multiple hashes.
-#      operationId: versionsFromHashes
-#      tags:
-#        - version-files
-#      responses:
-#        "200":
-#          description: Expected response to a valid request
-#          content:
-#            application/json:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: "#/components/schemas/Version"
-#        "400":
-#          description: Input is invalid
-#      requestBody:
-#        description: Hashes and algorithm of the versions requested
-#        content:
-#          application/json:
-#            schema:
-#              type: object
-#              properties:
-#                hashes:
-#                  type: array
-#                  items:
-#                    type: string
-#                  example: [ea0f38408102e4d2efd53c2cc11b88b711996b48d8922f76ea6abf731219c5bd1efe39ddf9cce77c54d49a62ff10fb685c00d2e4c524ab99d20f6296677ab2c4, 925a5c4899affa4098d997dfa4a4cb52c636d539e94bc489d1fa034218cb96819a70eb8b01647a39316a59fcfe223c1a8c05ed2e2ae5f4c1e75fa48f6af1c960]
-#                algorithm:
-#                  type: string
-#                  enum: [ sha1, sha512 ]
-#                  example: sha512
-#              required:
-#                - hashes
-#                - algorithm
-#  /version_files/update:
-#    post: # TODO test that this is actually the response
-#      summary: Latest versions of a project from hashes, loader(s), and game version(s)
-#      operationId: getLatestVersionsFromHashes
-#      tags:
-#        - version-files
-#      requestBody:
-#        description: Parameters of the updated version requested
-#        content:
-#          application/json:
-#            schema:
-#              type: object
-#              properties:
-#                hashes:
-#                  type: array
-#                  items:
-#                    type: string
-#                  example: [ea0f38408102e4d2efd53c2cc11b88b711996b48d8922f76ea6abf731219c5bd1efe39ddf9cce77c54d49a62ff10fb685c00d2e4c524ab99d20f6296677ab2c4, 925a5c4899affa4098d997dfa4a4cb52c636d539e94bc489d1fa034218cb96819a70eb8b01647a39316a59fcfe223c1a8c05ed2e2ae5f4c1e75fa48f6af1c960]
-#                algorithm:
-#                  type: string
-#                  enum: [sha1, sha512]
-#                  example: sha512
-#                loaders:
-#                  type: array
-#                  items:
-#                    type: string
-#                  example: fabric
-#                game_versions:
-#                  type: array
-#                  items:
-#                    type: string
-#                  example: ["1.18", 1.18.1]
-#              required:
-#                - hashes
-#                - algorithm
-#                - loaders
-#                - game_versions
-#      responses:
-#        "200":
-#          description: Latest versions retrieved successfully
-#          content:
-#            application/json:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: "#/components/schemas/Version"
-#        "400":
-#          description: Input is invalid
+  /version_files:
+    post:
+      summary: Get versions from hashes
+      description: This is the same as [`/version_file/{hash}`](#operation/versionFromHash) except it accepts multiple hashes.
+      operationId: versionsFromHashes
+      tags:
+        - version-files
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Version"
+        "400":
+          description: Input is invalid
+      requestBody:
+        description: Hashes and algorithm of the versions requested
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                hashes:
+                  type: array
+                  items:
+                    type: string
+                  example: [ea0f38408102e4d2efd53c2cc11b88b711996b48d8922f76ea6abf731219c5bd1efe39ddf9cce77c54d49a62ff10fb685c00d2e4c524ab99d20f6296677ab2c4, 925a5c4899affa4098d997dfa4a4cb52c636d539e94bc489d1fa034218cb96819a70eb8b01647a39316a59fcfe223c1a8c05ed2e2ae5f4c1e75fa48f6af1c960]
+                algorithm:
+                  type: string
+                  enum: [ sha1, sha512 ]
+                  example: sha512
+              required:
+                - hashes
+                - algorithm
+  /version_files/update:
+    post:
+      summary: Latest versions of multiple project from hashes, loader(s), and game version(s)
+      description: This is the same as [`/version_file/{hash}/update?algorithm={algorithm}`](#operation/getLatestVersionFromHash) except it accepts multiple hashes.
+      operationId: getLatestVersionsFromHashes
+      tags:
+        - version-files
+      requestBody:
+        description: Parameters of the updated version requested
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                hashes:
+                  type: array
+                  items:
+                    type: string
+                  example: [ea0f38408102e4d2efd53c2cc11b88b711996b48d8922f76ea6abf731219c5bd1efe39ddf9cce77c54d49a62ff10fb685c00d2e4c524ab99d20f6296677ab2c4, 925a5c4899affa4098d997dfa4a4cb52c636d539e94bc489d1fa034218cb96819a70eb8b01647a39316a59fcfe223c1a8c05ed2e2ae5f4c1e75fa48f6af1c960]
+                algorithm:
+                  type: string
+                  enum: [sha1, sha512]
+                  example: sha512
+                loaders:
+                  type: array
+                  items:
+                    type: string
+                  example: fabric
+                game_versions:
+                  type: array
+                  items:
+                    type: string
+                  example: ["1.18", 1.18.1]
+              required:
+                - hashes
+                - algorithm
+                - loaders
+                - game_versions
+      responses:
+        "200":
+          description: Latest versions retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Version"
+        "400":
+          description: Input is invalid
   # User
   /user/{id|username}:
     get:
