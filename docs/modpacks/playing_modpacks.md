@@ -8,7 +8,7 @@ Please see the guide for [creating modpacks](creating_modpacks.md).
 
 ## How do I play a modpack?
 
-Currently, the easiest ways to play a Modrinth modpack are via [ATLauncher](https://atlauncher.com) or [PolyMC](https://polymc.org). You can also install Modrinth packs if you switch to the development branch of [MultiMC](https://multimc.org).
+Currently, the easiest ways to play a Modrinth modpack are via [ATLauncher](https://atlauncher.com) or [PolyMC](https://polymc.org). You can also install Modrinth packs if you switch to the development branch of [MultiMC](https://multimc.org) or [Hello Minecraft! Launcher (HMCL)](https://github.com/huanghongxun/HMCL).
 
 ### ATLauncher
 
@@ -23,6 +23,20 @@ If you just want to insert an ID, slug, or URL directly, you can also do so usin
 If you have a direct link to a Modrinth pack, you also have the option of importing it using the "Import" button in the "Instances" tab.
 
 ![ATLauncher import](../../static/img/tutorial/atlauncherImport.png)
+
+### Hello Minecraft! Launcher (HMCL)
+
+:::caution
+You must switch to the beta version of HMCL to install Modrinth packs. To check whether it is in beta version, go to Settings -> General and click Update to check if HMCL is a beta version. Otherwise, you will need to download the latest beta from [GitHub releases](https://github.com/huanghongxun/HMCL/releases).
+:::
+
+![Make sure you're using a beta version of HMCL](../../static/img/tutorial/HMCL1.png)
+
+To install Modrinth packs in HMCL, just drag and drop the .mrpack file to the startup page. That's it!
+
+![Drag and drop files](../../static/img/tutorial/HMCL2.png)
+
+![Install](../../static/img/tutorial/HMCL3.png)
 
 ### MultiMC and PolyMC
 
