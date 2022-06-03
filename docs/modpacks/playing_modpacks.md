@@ -50,6 +50,7 @@ Then, just drag and drop the .mrpack file to the startup page to install.
 
 ![Drag and drop files](../../static/img/tutorial/HMCL2.png)
 
+![Install](../../static/img/tutorial/HMCL3.png)
 
 
 
