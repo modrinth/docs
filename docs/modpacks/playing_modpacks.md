@@ -24,6 +24,20 @@ If you have a direct link to a Modrinth pack, you also have the option of import
 
 ![ATLauncher import](../../static/img/tutorial/atlauncherImport.png)
 
+### Hello Minecraft! Launcher (HMCL)
+
+:::caution
+You must switch to the beta version of HMCL to install Modrinth packs. To check whether it is in beta version, go to Settings -> General and click Update to check if HMCL is a beta version. Otherwise, you will need to download the latest beta from [GitHub releases](https://github.com/huanghongxun/HMCL/releases).
+:::
+
+![Make sure you're using a beta version of HMCL](../../static/img/tutorial/HMCL1.png)
+
+To install Modrinth packs in HMCL, just drag and drop the .mrpack file to the startup page. That's it!
+
+![Drag and drop files](../../static/img/tutorial/HMCL2.png)
+
+![Install](../../static/img/tutorial/HMCL3.png)
+
 ### MultiMC and PolyMC
 
 MultiMC and PolyMC are both launchers focused on efficiently managing multiple separate instances, with the latter being a fork of the former. The installation instructions for each are identical.
@@ -37,21 +51,3 @@ Modrinth packs can be installed using the "Add instance" button and clicking "Mo
 ![MultiMC](../../static/img/tutorial/multimc.png)
 
 If you want to insert a URL directly, you can do so by selecting "Import from zip" instead of "Modrinth".
-
-### Hello Minecraft! Launcher (HMCL)
-
-[Download](https://github.com/huanghongxun/HMCL/releases)
-
-:::First of all, the function is still in beta stage, you need to check whether it is in beta version, Just go to Settings->General and click Update to check if HMCL is a beta version，otherwise you need to download it [here](https://github.com/huanghongxun/HMCL/releases).:::
-
-![Just go to Settings->General and click Update to check if HMCL is a beta version](../../static/img/tutorial/HMCL1.png)
-
-Then, just drag and drop the .mrpack file to the startup page to install.
-
-![Drag and drop files](../../static/img/tutorial/HMCL2.png)
-
-![Install](../../static/img/tutorial/HMCL3.png)
-
-
-
-
