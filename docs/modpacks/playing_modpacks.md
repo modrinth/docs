@@ -42,7 +42,7 @@ If you want to insert a URL directly, you can do so by selecting "Import from zi
 
 [Download](https://github.com/huanghongxun/HMCL/releases)
 
-First of all, the function is still in beta stage, you need to check whether it is in beta version, Just go to Settings->General and click Update to check if HMCL is a beta version，otherwise you need to download it [here](https://github.com/huanghongxun/HMCL/releases).
+:::First of all, the function is still in beta stage, you need to check whether it is in beta version, Just go to Settings->General and click Update to check if HMCL is a beta version，otherwise you need to download it [here](https://github.com/huanghongxun/HMCL/releases).:::
 
 ![Just go to Settings->General and click Update to check if HMCL is a beta version](../../static/img/tutorial/HMCL1.png)
 
