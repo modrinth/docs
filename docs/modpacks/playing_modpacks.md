@@ -70,6 +70,8 @@ You can also use the built-in modrinth search to get modpark to install. In Down
 
 ![Search](../../static/img/tutorial/HMCL4.png)
 
+![Search](../../static/img/tutorial/HMCL5.png)
+
 ### MultiMC and PolyMC
 
 MultiMC and PolyMC are both launchers focused on efficiently managing multiple separate instances, with the latter being a fork of the former. The installation instructions for each are identical.
