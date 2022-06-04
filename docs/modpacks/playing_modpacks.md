@@ -66,6 +66,12 @@ To install Modrinth packs in HMCL, just drag and drop the .mrpack file to the st
 
 ![Install](../../static/img/tutorial/HMCL3.png)
 
+You can also use the built-in Modrinth search to get a modpack to install. In Download -> Modpack, switch the Download Source to Modrinth to search for packs to install.
+
+![Search](../../static/img/tutorial/HMCL4.png)
+
+![Search](../../static/img/tutorial/HMCL5.png)
+
 ### MultiMC and PolyMC
 
 MultiMC and PolyMC are both launchers focused on efficiently managing multiple separate instances, with the latter being a fork of the former. The installation instructions for each are identical.
