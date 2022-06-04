@@ -24,6 +24,34 @@ If you have a direct link to a Modrinth pack, you also have the option of import
 
 ![ATLauncher import](../../static/img/tutorial/atlauncherImport.png)
 
+### BakaXL
+
+:::caution
+This is a Windows-only launcher. 
+
+You must switch to the Parrot or Pigeon Channel of BakaXL to install Modrinth packs. To check whether it is in one of these channels, go to Settings -> Insider Preview. If you are not in one of these channels, click on Sloth Channel and switch. Remember to click on Change button. If you cannot download the update properly, you will need to download the latest version from [BakaXL Jenkins](http://jk-insider.bakaxl.com:8888/).
+
+BakaXL has not been fully translated into English, so you may have trouble in reading texts. If you are interested in translating, check out [the translation effort](https://github.com/BakaXL-Launcher/BakaXL/tree/master/BakaXL_Software/3.0). 
+:::
+
+![Make sure you're using beta version of BakaXL](../../static/img/tutorial/bakaxlInsiderPreview.png)
+
+To install Modrinth packs in BakaXL, go to the Start Menu then to "Add a new Minecraft Core or Modpack" (in the upper left corner). Click the Import Modpack (导入整合包) button then drag and drop the .mrpack file to the page. 
+
+![Drag and drop files](../../static/img/tutorial/bakaxlImportModpackDrop.png)
+
+You can also use BakaPlaza to install Modpacks. Go to the Start Menu then to BakaPlaza -- the search is in the upper right corner. Click on Filters (搜索条件) and All Sources (所有来源) to choose Modrinth. 
+
+![BakaPlaza Search](../../static/img/tutorial/bakaxlBakaPlazaSearchFilter.png)
+
+Click on the Modpack you want to install and press and Get (获取). Choose a version and click on its name to install it.
+
+![BakaPlaza Modpack Details](../../static/img/tutorial/bakaxlBakaPlazaDetail.png)
+
+![BakaPlaza Get Modpack](../../static/img/tutorial/bakaxlBakaPlazaGetDetail.png)
+
+If the pack is too slow to download, go to Settings -> Download and turn off "Use mirror source in mainland China" (中国大陆地区使用第三方下载源加速). 
+
 ### Hello Minecraft! Launcher (HMCL)
 
 :::caution
