@@ -24,6 +24,34 @@ If you have a direct link to a Modrinth pack, you also have the option of import
 
 ![ATLauncher import](../../static/img/tutorial/atlauncherImport.png)
 
+### BakaXL
+
+:::caution
+This is a Windows-only launcher. 
+
+You must switch to the Parrot or Pigeon Channel of BakaXL to install Modrinth packs. To check whether it is in one of these channels, go to Settings -> Insider Preview . If you are not in one of these channels, click on Sloth Channel and switch. Remember to click on Change button. If you cannot download the update properly, you will need to download the latest version from [BakaXL Jenkins](http://jk-insider.bakaxl.com:8888/).
+
+BakaXL has not been fully translated into English, so you may have trouble in reading texts. If you are interested in translating, check [it](https://github.com/BakaXL-Launcher/BakaXL/tree/master/BakaXL_Software/3.0) out. 
+:::
+
+![Make sure you're using beta version of BakaXL](../../static/img/tutorial/bakaxlInsiderPreview.png)
+
+To install Modrinth packs in BakaXL, go to Start Menu -> Add a new Minecraft Core or Modpack (at the upper left corner of the tiles) -> ![Icon](../../static/img/tutorial/bakaxlImportModpackIcon.png)Import Modpack (导入整合包) -> Continue, then drag and drop the .mrpack file to the page. 
+
+![Drag and drop files](../../static/img/tutorial/bakaxlImportModpackDrop.png)
+
+You can also use BakaPlaza to install Modpacks. Go to Start Menu -> BakaPlaza, search at the upper right corner. Click on Filters(搜索条件) and click on All Source(所有来源), choose Modrinth. 
+
+![BakaPlaza Search](../../static/img/tutorial/bakaxlBakaPlazaSearchFilter.png)
+
+Click on the Modpack you want to install, and Get(获取) , then choose a version, and click on its name. BakaXL will automatically install it for you. 
+
+![BakaPlaza Modpack Details](../../static/img/tutorial/bakaxlBakaPlazaDetail.png)
+
+![BakaPlaza Get Modpack](../../static/img/tutorial/bakaxlBakaPlazaGetDetail.png)
+
+If it's too slow to download the Modpack, go to Settings -> Download, turn off Using mirror source in China Mainland(中国大陆地区使用第三方下载源加速). 
+
 ### Hello Minecraft! Launcher (HMCL)
 
 :::caution
