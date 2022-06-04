@@ -66,7 +66,7 @@ To install Modrinth packs in HMCL, just drag and drop the .mrpack file to the st
 
 ![Install](../../static/img/tutorial/HMCL3.png)
 
-You can also use the built-in modrinth search to get a modpack to install. In Download->Modpack, click Download Source to switch to Modrinth, then you can search for keywords to get the modpack and install it!
+You can also use the built-in Modrinth search to get a modpack to install. In Download -> Modpack, switch the Download Source to Modrinth to search for packs to install.
 
 ![Search](../../static/img/tutorial/HMCL4.png)
 
