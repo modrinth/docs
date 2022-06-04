@@ -68,6 +68,8 @@ To install Modrinth packs in HMCL, just drag and drop the .mrpack file to the st
 
 You can also use the built-in modrinth search to get modpark to install. In Download->Modpark, click Download Source to switch to Modrinth, then you can search for keywords to get Modpark and install it!
 
+![Search](../../static/img/tutorial/HMCL4.png)
+
 ### MultiMC and PolyMC
 
 MultiMC and PolyMC are both launchers focused on efficiently managing multiple separate instances, with the latter being a fork of the former. The installation instructions for each are identical.
