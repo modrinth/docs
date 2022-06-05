@@ -4,27 +4,10 @@ info:
   version: v2.3.1
   title: Labrinth
   description: |
-    This API is documented in the **OpenAPI format** and is available for download [here](/openapi.yaml).
-    
-    There are some undocumented routes. These routes are not meant for public use, such as the routes for adding new items to tags.
-
     ## Cross-Origin Resource Sharing
     This API features Cross-Origin Resource Sharing (CORS) implemented in compliance with the [W3C spec](https://www.w3.org/TR/cors/).
     This allows for cross-domain communication from the browser.
     All responses have a wildcard same-origin which makes them completely public and accessible to everyone, including any code on any site.
-
-    ## Authentication
-    This API uses GitHub tokens for authentication. The token is in the `Authorization` header of the request. You can get a token [here](#operation/initAuth).
-     
-     Example:
-     ```
-     Authorization: gho_pJ9dGXVKpfzZp4PUHSxYEq9hjk0h288Gwj4S
-     ```
-     
-    You do not need a token for most requests. Generally speaking, only the following types of requests require a token:
-     - those which create data (such as version creation)
-     - those which modify data (such as editing a project)
-     - those which access private data (e.g. draft projects)
     
     ## Ratelimits
     The API has a ratelimit defined per IP. Limits and remaining amounts are given in the response headers.
@@ -1077,7 +1060,7 @@ paths:
       parameters:
         - $ref: "#/components/parameters/TeamIdentifier"
       requestBody:
-        description: User(s) to be added
+        description: User to be added (must be the ID, usernames cannot be used here)
         content:
           application/json:
             schema:
@@ -1125,7 +1108,37 @@ paths:
         - teams
       parameters:
         - $ref: "#/components/parameters/TeamIdentifier"
-        - $ref: "#/components/parameters/UserIdentifier"
+        - in: path
+          name: user_id
+          description: The ID of the user to modify
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Contents to be modified
+        content:
+          application/json:
+            schema:
+              properties:
+                role:
+                  type: string
+                  example: Contributor
+                permissions:
+                  type: integer
+                  format: bitflag
+                  example: 127
+                  description: |
+                    The user's permissions in bitflag format
+
+                    In order from first to eighth bit, the bits are:
+                    - UPLOAD_VERSION
+                    - DELETE_VERSION
+                    - EDIT_DETAILS
+                    - EDIT_BODY
+                    - MANAGE_INVITES
+                    - REMOVE_MEMBER
+                    - EDIT_MEMBER
+                    - DELETE_PROJECT
       responses:
         "204":
           description: Roles/permissions have been updated successfully
@@ -2294,3 +2307,15 @@ components:
       type: apiKey
       in: header
       name: Authorization
+      description: |
+        This API uses GitHub tokens for authentication. The token is in the `Authorization` header of the request. You can get a token [here](#operation/initAuth).
+        
+        Example:
+        ```
+        Authorization: gho_pJ9dGXVKpfzZp4PUHSxYEq9hjk0h288Gwj4S
+        ```
+    
+        You do not need a token for most requests. Generally speaking, only the following types of requests require a token:
+          - those which create data (such as version creation)
+          - those which modify data (such as editing a project)
+          - those which access private data (e.g. draft projects)
