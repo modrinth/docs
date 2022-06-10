@@ -76,10 +76,6 @@ You can also use the built-in Modrinth search to get a modpack to install. In Do
 
 MultiMC and PolyMC are both launchers focused on efficiently managing multiple separate instances, with the latter being a fork of the former. The installation instructions for each are identical.
 
-:::caution
-When using MultiMC, you must switch to the development branch to install Modrinth packs. To switch to the development version, click the "Settings" button at the top of the window, and change the "Update Channel" to "Development". Then, close the settings and press Update to swap to the development branch.
-:::
-
 Modrinth packs can be installed using the "Add instance" button and clicking "Modrinth" on the left. It's as easy as selecting the one you want, and pressing "OK".
 
 ![MultiMC](../../static/img/tutorial/multimc.png)
