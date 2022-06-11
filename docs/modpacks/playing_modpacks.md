@@ -8,7 +8,7 @@ Please see the guide for [creating modpacks](creating_modpacks.md).
 
 ## How do I play a modpack?
 
-Currently, the easiest ways to play a Modrinth modpack are via [ATLauncher](https://atlauncher.com) or [PolyMC](https://polymc.org). You can also install Modrinth packs if you switch to the development branch of [BakaXL](http://jk-insider.bakaxl.com:8888), [MultiMC](https://multimc.org) or [Hello Minecraft! Launcher (HMCL)](https://github.com/huanghongxun/HMCL).
+Currently, the easiest ways to play a Modrinth modpack are via [ATLauncher](https://atlauncher.com), [MultiMC](https://multimc.org), or [PolyMC](https://polymc.org). You can also install Modrinth packs if you switch to the development branch of [BakaXL](http://jk-insider.bakaxl.com:8888) or [Hello Minecraft! Launcher (HMCL)](https://github.com/huanghongxun/HMCL).
 
 ### ATLauncher
 
@@ -29,13 +29,13 @@ If you have a direct link to a Modrinth pack, you also have the option of import
 :::caution
 This is a Windows-only launcher. 
 
-We recommend you use the Parrot (update almost every day) or Pigeon (update every Friday) Channel of BakaXL because of the translation is more perfect. 
+We recommend you use the Parrot (which updates almost every day) or Pigeon (which updates every Friday) Channel of BakaXL because the translation is more up-to-date.
 
 To check whether it is in one of these channels, go to Settings -> Insider Preview. If you are not in one of these channels, click on Sloth Channel (a.k.a. Release) and switch. Remember to click on Change button. 
 
 If you cannot download the update properly, you will need to download the latest version from [BakaXL Jenkins](http://jk-insider.bakaxl.com:8888/).
 
-BakaXL has not been fully translated into English, so you may have trouble in reading texts. If you are interested in translating, check out [the translation effort](https://github.com/BakaXL-Launcher/BakaXL/tree/master/BakaXL_Software/3.0). 
+BakaXL has not been fully translated into English, so you may have trouble in reading texts. If you are interested in translating, check out [the translation effort](https://github.com/BakaXL-Launcher/BakaXL/tree/master/BakaXL_Software/3.0).
 :::
 
 ![Make sure you're using beta version of BakaXL](../../static/img/tutorial/bakaxlInsiderPreview.png)
