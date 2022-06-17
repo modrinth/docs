@@ -1313,7 +1313,7 @@ paths:
           schema:
             type: string
             example: https://modrinth.com
-          description: "The URL to redirect to after authentication"
+          description: The URL to redirect to after authentication. This can only be `localhost` or an official Modrinth domain.
           required: true
       responses:
         "307":
