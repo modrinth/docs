@@ -72,7 +72,6 @@ x-tagGroups:
       - users
       - teams
       - tags
-      - auth
   - name: Models
     tags:
       - project_model
@@ -1296,65 +1295,6 @@ paths:
                 items:
                   type: string
                 example: [ spam, copyright, inappropriate, malicious, name-squatting, other ]
-  # Auth
-  /auth/init:
-    get:
-      summary: Initialize authentication
-      description: |
-        1. Performs a redirect to: https://github.com/login/oauth/authorize?client_id=873e1f2db86d89306227&state=tVPJ27GD&scope=read%3Auser
-        2. Then redirects to [/auth/callback](#operation/authCallback)
-        3. The user is redirected to the given `url` parameter
-      operationId: initAuth
-      tags:
-        - auth
-      parameters:
-        - in: query
-          name: url
-          schema:
-            type: string
-            example: https://modrinth.com
-          description: The URL to redirect to after authentication. This can only be `localhost` or an official Modrinth domain.
-          required: true
-      responses:
-        "307":
-          headers:
-            location:
-              schema:
-                type: string
-                format: uri
-                example: https://github.com/login/oauth/authorize?client_id=873e1f2db86d89306227& state=tVPJ27GD&scope=read%3Auser
-          description: Redirect to Github login page
-  /auth/callback:
-    get:
-      summary: Authentication callback
-      description: Redirects the user back to the website that started the login process
-      operationId: authCallback
-      tags:
-        - auth
-      parameters:
-        - in: query
-          name: code
-          schema:
-            type: string
-            example: e0c1560ab153bbc0b73
-          description: The token from the GitHub auth
-          required: true
-        - in: query
-          name: state
-          schema:
-            type: string
-            example: AaBb1234
-          description: The state from the GitHub auth
-          required: true
-      responses:
-        "307":
-          headers:
-            location:
-              schema:
-                type: string
-                format: uri
-                example: https://modrinth.com
-          description: Redirect to the website that initiated the login
 
 components:
   parameters:
@@ -2308,7 +2248,7 @@ components:
       in: header
       name: Authorization
       description: |
-        This API uses GitHub tokens for authentication. The token is in the `Authorization` header of the request. You can get a token [here](#operation/initAuth).
+        This API uses GitHub tokens for authentication. The token is in the `Authorization` header of the request.
         
         Example:
         ```
@@ -2318,4 +2258,9 @@ components:
         You do not need a token for most requests. Generally speaking, only the following types of requests require a token:
           - those which create data (such as version creation)
           - those which modify data (such as editing a project)
-          - those which access private data (e.g. draft projects)
+          - those which access private data (such as draft projects and notifications)
+
+        Applications interacting with the authenticated API should either retrieve the Modrinth GitHub token through the site or create a personal app token for use with Modrinth.
+        The API provides a couple routes for auth -- don't implement this flow in your application!
+        Instead, use a personal access token or create your own GitHub OAuth2 application.
+        This system will be revisited and allow easier interaction with the authenticated API once we roll out our own authentication system.
