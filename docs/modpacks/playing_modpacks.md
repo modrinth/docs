@@ -8,7 +8,7 @@ Please see the guide for [creating modpacks](creating_modpacks.md).
 
 ## How do I play a modpack?
 
-Currently, the easiest ways to play a Modrinth modpack are via [ATLauncher](https://atlauncher.com), [BakaXL](http://jk-insider.bakaxl.com:8888), [MultiMC](https://multimc.org), or [PolyMC](https://polymc.org). You can also install Modrinth packs if you switch to the development branch of [Hello Minecraft! Launcher (HMCL)](https://github.com/huanghongxun/HMCL).
+Currently, the easiest ways to play a Modrinth modpack are via [ATLauncher](https://atlauncher.com), [BakaXL](http://jk-insider.bakaxl.com:8888), [XMCL](https://xmcl.app), [MultiMC](https://multimc.org), or [PolyMC](https://polymc.org). You can also install Modrinth packs if you switch to the development branch of [Hello Minecraft! Launcher (HMCL)](https://github.com/huanghongxun/HMCL).
 
 ### ATLauncher
 
@@ -92,15 +92,15 @@ X Minecraft Launcher (XMCL) is an open source Minecraft launcher manages the mod
 
 You can find the Modrinth tab on the side bar of the Launcher.
 
-You need to switch the Mod to Modpack in the switch on the top:
+You need to switch the Mod to Modpack in the dropdown on the top:
 
 ![Home](../../static/img/tutorial/xmcl-modrinth-home.png)
 
-Select the project you want and go to the `VERSIONS` tab. Click download button in the `VERSIONS` tab, or click `Install` button on the right.
+Click the project card and go to the `VERSIONS` tab. Click download button in the `VERSIONS` tab, or click `Install` button on the right to install.
 
 ![Project](../../static/img/tutorial/xmcl-modrinth-project.png)
 
-Once the download is finished. It will show a snackbar asking you to create a new instance. Click the `>` button to open the creation dialog.
+Once the download is finished, it will show a snackbar asking you to create a new instance. Click the `>` button to open the creation dialog.
 
 ![Notification](../../static/img/tutorial/xmcl-modrinth-notification.png)
 
@@ -114,8 +114,8 @@ If you want to import a `.mrpack` file locally, you can just drag and drop the f
 
 ![Drag'n'Drop](../../static/img/tutorial/xmcl-modrinth-drag-drop.png)
 
-Once you import the modpack. You can find it in the `Modpack` tab in the sidebar.
+Once you imported the modpack, you can find it in the `Modpack` tab in the sidebar.
 
 ![Modpack](../../static/img/tutorial/xmcl-modrinth-modpack.png)
 
-You can click the `+` button to initiate the instance create dialog and create the instance of that modpack.
+You can click the `+` button to initiate the instance creation dialog and create the instance of the modpack.

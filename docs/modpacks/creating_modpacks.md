@@ -58,11 +58,10 @@ Once you done, click the `EXPORT AS MODPACK` button to export `.mrpack` format m
 
 ![Export](../../static/img/tutorial/xmcl-export-dialog.png)
 
-
 :::tip
-Since Curseforge now does not allow Modrinth modpack include curseforge CDN url, the file downloaded from Curseforge will not be able to included in `modrinth.index.json` with url.
+Since Curseforge now does not allow Modrinth modpack includes curseforge CDN url, the files downloaded from Curseforge will not be able to list in `modrinth.index.json` with url. It will be compressed as a file in overrides.
 
-You need to download the file from Modrinth to resolve it.
+You need to download the file from Modrinth if you want to use them as url.
 :::
 
 :::caution
