@@ -8,7 +8,7 @@ Please see the guide for [creating modpacks](creating_modpacks.md).
 
 ## How do I play a modpack?
 
-Currently, the easiest ways to play a Modrinth modpack are via [ATLauncher](https://atlauncher.com), [BakaXL](http://jk-insider.bakaxl.com:8888), [XMCL](https://xmcl.app), [MultiMC](https://multimc.org), or [PolyMC](https://polymc.org). You can also install Modrinth packs if you switch to the development branch of [Hello Minecraft! Launcher (HMCL)](https://github.com/huanghongxun/HMCL).
+Currently, the easiest ways to play a Modrinth modpack are via [ATLauncher](https://atlauncher.com), [BakaXL](http://jk-insider.bakaxl.com:8888), [MultiMC](https://multimc.org), [PolyMC](https://polymc.org), or [XMCL](https://xmcl.app). You can also install Modrinth packs if you switch to the development branch of [Hello Minecraft! Launcher (HMCL)](https://github.com/huanghongxun/HMCL).
 
 ### ATLauncher
 
