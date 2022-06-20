@@ -85,3 +85,37 @@ Modrinth packs can be installed using the "Add instance" button and clicking "Mo
 ![MultiMC](../../static/img/tutorial/multimc.png)
 
 If you want to insert a URL directly, you can do so by selecting "Import from zip" instead of "Modrinth".
+
+### X Minecraft Launcher (XMCL)
+
+X Minecraft Launcher (XMCL) is an open source Minecraft launcher manages the mods & other resources via instances model similar to MultiMC.
+
+You can find the Modrinth tab on the side bar of the Launcher.
+
+You need to switch the Mod to Modpack in the switch on the top:
+
+![Home](../../static/img/tutorial/xmcl-modrinth-home.png)
+
+Select the project you want and go to the `VERSIONS` tab. Click download button in the `VERSIONS` tab, or click `Install` button on the right.
+
+![Project](../../static/img/tutorial/xmcl-modrinth-project.png)
+
+Once the download is finished. It will show a snackbar asking you to create a new instance. Click the `>` button to open the creation dialog.
+
+![Notification](../../static/img/tutorial/xmcl-modrinth-notification.png)
+
+![Create Project](../../static/img/tutorial/xmcl-modrinth-create-project.png)
+
+In the dialog, you can review the creation and just click the create button.
+
+#### Manually Import
+
+If you want to import a `.mrpack` file locally, you can just drag and drop the file into the XMCL.
+
+![Drag'n'Drop](../../static/img/tutorial/xmcl-modrinth-drag-drop.png)
+
+Once you import the modpack. You can find it in the `Modpack` tab in the sidebar.
+
+![Modpack](../../static/img/tutorial/xmcl-modrinth-modpack.png)
+
+You can click the `+` button to initiate the instance create dialog and create the instance of that modpack.
