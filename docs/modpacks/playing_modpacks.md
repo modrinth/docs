@@ -8,7 +8,7 @@ Please see the guide for [creating modpacks](creating_modpacks.md).
 
 ## How do I play a modpack?
 
-Currently, the easiest ways to play a Modrinth modpack are via [ATLauncher](https://atlauncher.com), [BakaXL](http://jk-insider.bakaxl.com:8888)， [MultiMC](https://multimc.org), or [PolyMC](https://polymc.org). You can also install Modrinth packs if you switch to the development branch of [Hello Minecraft! Launcher (HMCL)](https://github.com/huanghongxun/HMCL).
+Currently, the easiest ways to play a Modrinth modpack are via [ATLauncher](https://atlauncher.com), [BakaXL](http://jk-insider.bakaxl.com:8888), [MultiMC](https://multimc.org), or [PolyMC](https://polymc.org). You can also install Modrinth packs if you switch to the development branch of [Hello Minecraft! Launcher (HMCL)](https://github.com/huanghongxun/HMCL).
 
 ### ATLauncher
 
@@ -31,7 +31,7 @@ This is a Windows-only launcher.
 
 If you cannot download the update properly, you will need to download the latest version from [BakaXL Jenkins](http://jk-insider.bakaxl.com:8888/).
 
-If you are interested in translating for us, check out [the translation effort](https://github.com/BakaXL-Launcher/BakaXL/tree/master/BakaXL_Software/3.0).
+If you are interested in translating for BakaXL, check out [the translation effort](https://github.com/BakaXL-Launcher/BakaXL/tree/master/BakaXL_Software/3.0).
 :::
 
 ![Make sure you're using beta version of BakaXL](../../static/img/tutorial/bakaxlInsiderPreview.png)
