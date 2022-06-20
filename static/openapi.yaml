@@ -1222,10 +1222,25 @@ paths:
         description: "New project"
         content:
           multipart/form-data:
-            schema: *CreatableProject
-            encoding:
-              icon:
-                contentType: image/png, image/jpeg, image/bmp, image/gif, image/webp, image/svg, image/svgz, image/rgb
+            schema:
+              type: object
+              properties:
+                data: *CreatableProject
+                icon:
+                  type: string
+                  format: binary
+                  enum: ["*.png", "*.jpg", "*.jpeg", "*.bmp", "*.gif", "*.webp", "*.svg", "*.svgz", "*.rgb"]
+                  description: Project icon file
+              patternProperties:
+                '^gallery-[0-9]+$':
+                  type: string
+                  format: binary
+                  enum: ["*.png", "*.jpg", "*.jpeg", "*.bmp", "*.gif", "*.webp", "*.svg", "*.svgz", "*.rgb"]
+                  description: A project gallery image file
+                '^version-[0-9]+-[0-9]+$':
+                  type: string
+                  description: A version file
+              required: [data]
       responses:
         "200":
           description: Project successfully created
