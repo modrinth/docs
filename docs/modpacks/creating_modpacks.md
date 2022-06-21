@@ -39,3 +39,25 @@ packwiz is a command-line application which allows easy creation of modpacks for
 When you have a working packwiz pack, you can use the [`packwiz mr export`] command to create a Modrinth modpack.
 
 [`packwiz mr export`]: https://packwiz.infra.link/reference/commands/packwiz_modrinth_export/
+
+### X Minecraft Launcher (XMCL)
+
+X Minecraft Launcher (XMCL) is an open source Minecraft launcher which provides a disk efficient way to manage massive mods and other resources similarly to MultiMC.
+
+You can enable/disable the mods in `Mods` section.
+
+![Mods](../../static/img/tutorial/xmcl-mods.png)
+
+In home page, click the `Export as Modpack` button to open the export dialog.
+
+![Export](../../static/img/tutorial/xmcl-export.png)
+
+You can configure your modpack in this dialog -- for example, you can the environment (client-side/server-side) for each file.
+
+Once you done, click the `Export as Modpack` button to export to the Modrinth format.
+
+![Export](../../static/img/tutorial/xmcl-export-dialog.png)
+
+:::caution
+XMCL currently does not support download mods from GitHub or GitLab. File URLs from these sites are unsupported.
+:::
