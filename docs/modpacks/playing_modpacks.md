@@ -88,19 +88,19 @@ If you want to insert a URL directly, you can do so by selecting "Import from zi
 
 ### X Minecraft Launcher (XMCL)
 
-X Minecraft Launcher (XMCL) is an open source Minecraft launcher manages the mods & other resources via instances model similar to MultiMC.
+X Minecraft Launcher (XMCL) is an open source Minecraft launcher which provides a disk efficient way to manage massive mods and other resources similarly to MultiMC.
 
 You can find the Modrinth tab on the side bar of the Launcher.
 
-You need to switch the Mod to Modpack in the dropdown on the top:
+To download modpacks, switch to Modpack in the dropdown on the top:
 
 ![Home](../../static/img/tutorial/xmcl-modrinth-home.png)
 
-Click the project card and go to the `VERSIONS` tab. Click download button in the `VERSIONS` tab, or click `Install` button on the right to install.
+Click the project card and go to the `Versions` tab. Click the download button in the `Versions` tab or click the `Install` button on the right.
 
 ![Project](../../static/img/tutorial/xmcl-modrinth-project.png)
 
-Once the download is finished, it will show a snackbar asking you to create a new instance. Click the `>` button to open the creation dialog.
+Once the download is finished, ask whether you want to create a new instance. Click the `>` button to open the creation dialog.button to open the creation dialog.
 
 ![Notification](../../static/img/tutorial/xmcl-modrinth-notification.png)
 
