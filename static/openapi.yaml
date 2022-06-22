@@ -1,9 +1,29 @@
 openapi: '3.1.0'
 
 info:
-  version: v2.3.1
+  version: v2.4.3
   title: Labrinth
   description: |
+    **Remember to join our [Discord](https://discord.gg/EUHuJHt) if you need any support!**
+    
+    ## Authentication
+    This API uses GitHub tokens for authentication. The token is in the `Authorization` header of the request.
+    
+    Example:
+    ```
+    Authorization: gho_pJ9dGXVKpfzZp4PUHSxYEq9hjk0h288Gwj4S
+    ```
+    
+    You do not need a token for most requests. Generally speaking, only the following types of requests require a token:
+    - those which create data (such as version creation)
+    - those which modify data (such as editing a project)
+    - those which access private data (such as draft projects and notifications)
+    
+    Applications interacting with the authenticated API should either retrieve the Modrinth GitHub token through the site or create a personal app token for use with Modrinth.
+    The API provides a couple routes for auth -- don't implement this flow in your application!
+    Instead, use a personal access token or create your own GitHub OAuth2 application.
+    This system will be revisited and allow easier interaction with the authenticated subset of the API once we roll out our own authentication system.
+    
     ## Cross-Origin Resource Sharing
     This API features Cross-Origin Resource Sharing (CORS) implemented in compliance with the [W3C spec](https://www.w3.org/TR/cors/).
     This allows for cross-domain communication from the browser.
@@ -11,9 +31,10 @@ info:
     
     ## Ratelimits
     The API has a ratelimit defined per IP. Limits and remaining amounts are given in the response headers.
-    The `X-Ratelimit-Limit` header is the maximum number of requests that can be made in a minute.
-    The `X-Ratelimit-Remaining` header is the number of requests remaining in the current ratelimit window.
-    The `X-Ratelimit-Reset` header is the time in seconds until the ratelimit window resets.
+    - `X-Ratelimit-Limit`: the maximum number of requests that can be made in a minute
+    - `X-Ratelimit-Remaining`: the number of requests remaining in the current ratelimit window
+    - `X-Ratelimit-Reset`: the time in seconds until the ratelimit window resets
+    
     Ratelimits are the same no matter whether you use a token or not.
 
 servers:
@@ -978,23 +999,6 @@ components:
       type: apiKey
       in: header
       name: Authorization
-      description: |
-        This API uses GitHub tokens for authentication. The token is in the `Authorization` header of the request.
-        
-        Example:
-        ```
-        Authorization: gho_pJ9dGXVKpfzZp4PUHSxYEq9hjk0h288Gwj4S
-        ```
-        
-        You do not need a token for most requests. Generally speaking, only the following types of requests require a token:
-          - those which create data (such as version creation)
-          - those which modify data (such as editing a project)
-          - those which access private data (such as draft projects and notifications)
-        
-        Applications interacting with the authenticated API should either retrieve the Modrinth GitHub token through the site or create a personal app token for use with Modrinth.
-        The API provides a couple routes for auth -- don't implement this flow in your application!
-        Instead, use a personal access token or create your own GitHub OAuth2 application.
-        This system will be revisited and allow easier interaction with the authenticated API once we roll out our own authentication system.
 
 tags:
   - name: projects
