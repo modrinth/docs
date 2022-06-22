@@ -46,7 +46,7 @@ module.exports = {
         {
           items: [
             {
-              label: 'Modrinth is open source software. You may view the source code at our GitHub page',
+              label: 'Modrinth is open source.',
               href: 'https://github.com/modrinth',
             },
             {
@@ -103,7 +103,7 @@ module.exports = {
     prism: {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
-      additionalLanguages: ['http', 'groovy'],
+      additionalLanguages: ['http', 'groovy', 'toml'],
     },
     colorMode: {
       respectPrefersColorScheme: true,

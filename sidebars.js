@@ -13,9 +13,10 @@ module.exports = {
         },
       ],
       'Tutorials': [
+        'details/contributing',
         'tutorials/api_search',
         'tutorials/maven',
-        'details/contributing',
+        'tutorials/forge_updates',
       ],
       'Modpacks': [
         'modpacks/creating_modpacks',
