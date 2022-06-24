@@ -111,34 +111,10 @@ These Rust programs are still in early development. Ask in the relevant Discord 
 
 ### minotaur (Gradle plugin)
 
-[Minotaur](https://github.com/modrinth/minotaur) is the Gradle plugin used to automatically publish artifacts to Modrinth. To run your copy of the plugin in a project, publish it to your local Maven with `./gradlew clean build publishToMavenLocal` and add `mavenLocal()` to your buildscript.
+[Minotaur](https://github.com/modrinth/minotaur) is the Gradle plugin used to automatically publish artifacts to Modrinth. To run your copy of the plugin in a project, publish it to your local Maven with `./gradlew publishToMavenLocal` and add `mavenLocal()` to your buildscript.
 
-If you don't wish to use the local Maven, or you're having trouble doing so, you can use a direct jar. If you do so, please make sure to add all relevant dependencies (httpmime, httpclient, and gson) like such:
-
-```groovy
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath files { file('../../../../build/libs').listFiles()}
-        classpath group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.5.2'
-        classpath group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
-        classpath group: 'com.google.code.gson', name: 'gson', version: '2.6.2'
-    }
-}
-```
-
-### Blog
-
-The [blog](https://blog.modrinth.com) is the central place to find news and articles about topics related to or involving Modrinth. To run the blog, it's similar to but simpler than knossos; run `npm install` first, then `npm run develop` for hot reloading or `npm run build` to build and serve.
-
-Pull requests to the [blog repository](https://github.com/modrinth/blog) may not always be accepted. Before making a pull request to this repository, please contact a core Modrinth team member, and they will work with you and the rest of the blogging team on revisions, banner photos, and other details.
+Minotaur contains two test environments within it - one with ForgeGradle and one with Fabric Loom. You may tweak with these environments to test whatever you may be trying; just make sure that the `modrinth` task within each still functions properly. GitHub Actions will validate this if you're making a pull request, so you may want to use [`act pull_request`](https://github.com/nektos/act) to test them locally.
 
 ### Documentation
 
 The [documentation](https://github.com/modrinth/docs) (which you are reading right now!) is the place to find any and all general information about Modrinth and its API. Instead of using npm to build and develop the documentation, you should instead use [yarn](https://yarnpkg.com). `yarn install` followed by `yarn start` will serve the docs on `localhost:3000` with hot reloading and open a browser window pointing there.
-
-### modrinth-old-ui
-
-Do not make a pull request to this repository or attempt to contribute to it. This repository is no longer used and has not been used for a long time.
