@@ -18,10 +18,10 @@ Once you have a working client, you can test that it works by making a `GET` req
 
 ```json title="GET https://api.modrinth.com/"
 {
-  "name": "modrinth-labrinth",
-  "version": "0.2.0",
+  "about": "Welcome traveler!",
   "documentation": "https://docs.modrinth.com",
-  "about": "Welcome traveler!"
+  "name": "modrinth-labrinth",
+  "version": "2.4.4"
 }
 ```
 

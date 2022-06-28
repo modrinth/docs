@@ -1,7 +1,7 @@
 openapi: '3.1.0'
 
 info:
-  version: v2.4.3
+  version: v2.4.4
   title: Labrinth
   description: |
     **Remember to join our [Discord](https://discord.gg/EUHuJHt) if you need any support!**
@@ -132,7 +132,7 @@ components:
                 nullable: true
               dependency_type:
                 type: string
-                enum: [required, optional, incompatible]
+                enum: [required, optional, incompatible, embedded]
                 description: The type of dependency that this version has
                 example: required
             required:
@@ -171,7 +171,7 @@ components:
                 type: string
               example: [sha1, aaaabbbbccccddddeeeeffffgggghhhhiiiijjjj]
               description: The hash format and the hash of the new primary file
-    # https://github.com/modrinth/labrinth/blob/master/src/routes/version_creation.rs#L25-L5%
+    # https://github.com/modrinth/labrinth/blob/master/src/routes/version_creation.rs#L27-L57
     CreatableVersion: &CreatableVersion
       allOf:
         - type: object
@@ -455,7 +455,7 @@ components:
               description: The URL to this license
               example: https://cdn.modrinth.com/licenses/lgpl-3.txt
               nullable: true
-    # Fields that can be edited through a PATCH request. https://github.com/modrinth/labrinth/blob/master/src/routes/projects.rs#L195-L271
+    # Fields that can be edited through a PATCH request. https://github.com/modrinth/labrinth/blob/master/src/routes/projects.rs#L195-L269
     EditableProject: &EditableProject
       allOf:
         - *ModifiableProject
@@ -1402,6 +1402,47 @@ paths:
               schema: *ProjectDependencyList
         "404":
           description: The requested project was not found or no authorization to see this project
+  /project/{id|slug}/follow:
+    post:
+      summary: Follow a project
+      operationId: followProject
+      tags:
+        - projects
+      parameters:
+        - *ProjectIdentifier
+      responses:
+        "204":
+          description: Expected response to a valid request
+        "400":
+          description: You are already following the specified project or the requested project was not found
+          content:
+            application/json:
+              schema: *InvalidInputError
+        "401":
+          description: No authorization to follow a project
+          content:
+            application/json:
+              schema: *AuthError
+    delete:
+      summary: Unfollow a project
+      operationId: unfollowProject
+      tags:
+        - projects
+      parameters:
+        - *ProjectIdentifier
+      responses:
+        "204":
+          description: Expected response to a valid request
+        "400":
+          description: You are not following the specified project or the requested project was not found
+          content:
+            application/json:
+              schema: *InvalidInputError
+        "401":
+          description: No authorization to unfollow a project
+          content:
+            application/json:
+              schema: *AuthError
   # Version
   /project/{id|slug}/version:
     get:
