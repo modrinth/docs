@@ -174,36 +174,30 @@ components:
     # https://github.com/modrinth/labrinth/blob/master/src/routes/version_creation.rs#L27-L57
     CreatableVersion: &CreatableVersion
       allOf:
+        - *BaseVersion
         - type: object
           properties:
-            data:
-              allOf:
-                - *BaseVersion
-                - type: object
-                  properties:
-                    project_id:
-                      type: string
-                      description: The ID of the project this version is for
-                      example: AABBCCDD
-                    file_parts:
-                      type: array
-                      items:
-                        type: string
-                        description: An array of the multipart field names of each file that goes with this version
-                    primary_file:
-                      type: string
-                      description: The multipart field name of the primary file
-                  required:
-                    - file_parts
-                    - project_id
-                    - name
-                    - version_number
-                    - game_versions
-                    - version_type
-                    - loaders
-                    - featured
+            project_id:
+              type: string
+              description: The ID of the project this version is for
+              example: AABBCCDD
+            file_parts:
+              type: array
+              items:
+                type: string
+                description: An array of the multipart field names of each file that goes with this version
+            primary_file:
+              type: string
+              description: The multipart field name of the primary file
           required:
-            - data
+            - file_parts
+            - project_id
+            - name
+            - version_number
+            - game_versions
+            - version_type
+            - loaders
+            - featured
     Version: &Version
       allOf:
         - *BaseVersion
@@ -1552,7 +1546,11 @@ paths:
         description: "New version"
         content:
           multipart/form-data:
-            schema: *CreatableVersion
+            schema:
+              type: object
+              properties:
+                data: *CreatableVersion
+              required: [data]
       responses:
         "200":
           description: Version successfully created
