@@ -2170,6 +2170,7 @@ paths:
           description: The requested team was not found
     delete:
       summary: Remove a member from a team
+      operationId: deleteTeamMember
       tags:
         - teams
       parameters:
