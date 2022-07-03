@@ -36,6 +36,17 @@ info:
     - `X-Ratelimit-Reset`: the time in seconds until the ratelimit window resets
     
     Ratelimits are the same no matter whether you use a token or not.
+    
+    ## User Agents
+    To access the Modrinth API, you **must** use provide a uniquely-identifying `User-Agent` header.
+    Providing a user agent that only identifies your HTTP client library (such as "okhttp/4.9.3") increases the likelihood that we will block your traffic.
+    It is recommended, but not required, to include contact information in your user agent.
+    This allows us to contact you if we would like a change in your application's behavior without having to block your traffic.
+    - Bad: `User-Agent: okhttp/4.9.3`
+    - Good: `User-Agent: my_awesome_launcher`
+    - Better: `User-Agent: github_org/my_awesome_launcher/1.56.0`
+    - Best: `User-Agent: github_org/my_awesome_launcher/1.56.0 (launcher.com)` or `User-Agent: github_org/my_awesome_launcher/1.56.0 (contact@launcher.com)`
+# The above snippet about User Agents was adapted from https://crates.io/policies, copyright (c) 2014 The Rust Project Developers under MIT license
 
 servers:
   - url: https://api.modrinth.com/v2
@@ -1256,6 +1267,27 @@ paths:
           content:
             application/json:
               schema: *AuthError
+#  /project/{id|slug}/check:
+#    get:
+#      summary: Check project slug/ID validity
+#      operationId: checkProjectValidity
+#      tags:
+#        - projects
+#      parameters:
+#        - *ProjectIdentifier
+#      responses:
+#        "200":
+#          description: Expected response to a valid request
+#          content:
+#            application/json:
+#              schema:
+#                type: object
+#                properties:
+#                  id:
+#                    type: string
+#                    example: AABBCCDD
+#        "404":
+#          description: The requested project was not found
   /project/{id|slug}/gallery:
     post:
       summary: Add a gallery image

@@ -1,19 +1,13 @@
 # Versioning 
 
-Modrinth follows a simple pattern for its API:
+Modrinth follows a simple pattern for its API versioning. In the event of a breaking API change, the API version is bumped, and migration steps will be available [on the migration page](../migrations/information.md).
 
-- In the event of a breaking API change, the API version is bumped, and migration steps will be available [here](../migrations/information.md)
-- When an API is no longer the current one, it will be considered outdated but still supported. It will be kept for a certain duration, defined by one of the two triggers, either that:
-  - The version is no longer current for a duration of two (2) years, or
-  - The version is three (3) versions behind the current one
-- When one of these triggers has been met, a deprecation period of six (6) months begins, where developers still using that version will be notified by email, Discord, GitHub issues, or other similar contact methods if available.
-- Once the deprecation period finishes, the version will phase out over a duration of one (1) month.
-  - For the first two weeks, the version will periodically return a `410 GONE` error for small durations of around 5 minutes, alongside an error body saying that the version is phasing out.
-  - For the next two weeks, it will break with the same error, but over longer durations of 6-12 hours.
-- After this phase-out period, the version will be removed entirely, either with a permanent `410 GONE` or `404 NOT FOUND` error.
+When an API is no longer the current one, it will immediately be considered deprecated. No more support will be provided for API versions older than the current one. It will be kept for some time, but this amount of time is not certain.
 
-:::tip
-We recommend that you handle these 410 errors and update applications to the latest API version. Migration details can be found [here](../migrations/v1-to-v2.md).
+:::warning
+Modrinth may break any old API versions at any time. Please do not request support for them!
 :::
+
+Old API routes may be changed in a way seen fit by Modrinth. For example, a field called `_comment` may be added to every JSON request telling developers to update their applications. Another example may be route providing a `410 GONE` error or `404 NOT FOUND` error periodically. In any event, you [MUST (but we know you won't)](https://datatracker.ietf.org/doc/html/rfc6919#section-1) handle these errors and update your application.
 
 Modrinth must stay stable for apps that depends on it, but maintaining older versions can be costly and difficult to maintain. Keeping old versions is also a barrier to innovation for new features and changes. As such, this approach is taken in order to keep a balance between stability and innovation.
