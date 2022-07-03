@@ -45,8 +45,6 @@ info:
     - Bad: `User-Agent: okhttp/4.9.3`
     - Better: `User-Agent: github_org/my_awesome_launcher`
     - Best: `User-Agent: github_org/my_awesome_launcher/1.56.0 (launcher.com)` or `User-Agent: github_org/my_awesome_launcher/1.56.0 (contact@launcher.com)`
-    
-    We reserve the right to block traffic from any application that we determine to be in violation of this policy or causing a significant impact on our service.
 # The above snippet about User Agents was adapted from https://crates.io/policies, copyright (c) 2014 The Rust Project Developers under MIT license
 
 servers:
