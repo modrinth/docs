@@ -1161,6 +1161,8 @@ paths:
       operationId: modifyProject
       tags:
         - projects
+      security:
+        - TokenAuth: []
       parameters:
         - *ProjectIdentifier
       requestBody:
@@ -1183,6 +1185,8 @@ paths:
       operationId: deleteProject
       tags:
         - projects
+      security:
+        - TokenAuth: []
       parameters:
         - *ProjectIdentifier
       responses:
@@ -1228,6 +1232,8 @@ paths:
       operationId: createProject
       tags:
         - projects
+      security:
+        - TokenAuth: []
       requestBody:
         description: "New project"
         content:
@@ -1295,6 +1301,8 @@ paths:
       operationId: addGalleryImage
       tags:
         - projects
+      security:
+        - TokenAuth: []
       parameters:
         - *ProjectIdentifier
         - description: Image extension
@@ -1350,6 +1358,8 @@ paths:
       operationId: modifyGalleryImage
       tags:
         - projects
+      security:
+        - TokenAuth: []
       parameters:
         - *ProjectIdentifier
         - description: URL link of the image to modify
@@ -1390,6 +1400,8 @@ paths:
       operationId: deleteGalleryImage
       tags:
         - projects
+      security:
+        - TokenAuth: []
       parameters:
         - *ProjectIdentifier
         - description: URL link of the image to delete
@@ -1434,6 +1446,8 @@ paths:
       operationId: followProject
       tags:
         - projects
+      security:
+        - TokenAuth: []
       parameters:
         - *ProjectIdentifier
       responses:
@@ -1454,6 +1468,8 @@ paths:
       operationId: unfollowProject
       tags:
         - projects
+      security:
+        - TokenAuth: []
       parameters:
         - *ProjectIdentifier
       responses:
@@ -1533,6 +1549,8 @@ paths:
       operationId: modifyVersion
       tags:
         - versions
+      security:
+        - TokenAuth: []
       parameters:
         - *VersionIdentifier
       requestBody:
@@ -1555,6 +1573,8 @@ paths:
       operationId: deleteVersion
       tags:
         - versions
+      security:
+        - TokenAuth: []
       parameters:
         - *VersionIdentifier
       responses:
@@ -1574,6 +1594,8 @@ paths:
       operationId: createVersion
       tags:
         - versions
+      security:
+        - TokenAuth: []
       requestBody:
         description: "New version"
         content:
@@ -1630,6 +1652,8 @@ paths:
       operationId: addFilesToVersion
       tags:
         - versions
+      security:
+        - TokenAuth: []
       parameters:
         - *VersionIdentifier
       requestBody:
@@ -1676,6 +1700,8 @@ paths:
       operationId: deleteFileFromHash
       tags:
         - version-files
+      security:
+        - TokenAuth: []
       responses:
         "204":
           description: Expected response to a valid request
@@ -1836,6 +1862,8 @@ paths:
       operationId: modifyUser
       tags:
         - users
+      security:
+        - TokenAuth: []
       parameters:
         - *UserIdentifier
       requestBody:
@@ -1858,6 +1886,8 @@ paths:
       operationId: deleteUser
       tags:
         - users
+      security:
+        - TokenAuth: []
       parameters:
         - *UserIdentifier
       responses:
@@ -1949,10 +1979,10 @@ paths:
       operationId: getNotifications
       tags:
         - users
-      parameters:
-        - *UserIdentifier
       security:
         - TokenAuth: []
+      parameters:
+        - *UserIdentifier
       responses:
         "200":
           description: Expected response to a valid request
@@ -1974,10 +2004,10 @@ paths:
       operationId: getFollowedProjects
       tags:
         - users
-      parameters:
-        - *UserIdentifier
       security:
         - TokenAuth: []
+      parameters:
+        - *UserIdentifier
       responses:
         "200":
           description: Expected response to a valid request
@@ -2062,6 +2092,8 @@ paths:
       operationId: getTeamMembers
       tags:
         - teams
+      security:
+        - TokenAuth: []
       parameters:
         - *TeamIdentifier
       responses:
@@ -2078,6 +2110,8 @@ paths:
       operationId: addTeamMember
       tags:
         - teams
+      security:
+        - TokenAuth: []
       parameters:
         - *TeamIdentifier
       requestBody:
@@ -2107,6 +2141,8 @@ paths:
       operationId: joinTeam
       tags:
         - teams
+      security:
+        - TokenAuth: []
       parameters:
         - *TeamIdentifier
       responses:
@@ -2125,6 +2161,8 @@ paths:
       operationId: modifyTeamMember
       tags:
         - teams
+      security:
+        - TokenAuth: []
       parameters:
         - *TeamIdentifier
         - in: path
@@ -2173,6 +2211,8 @@ paths:
       operationId: deleteTeamMember
       tags:
         - teams
+      security:
+        - TokenAuth: []
       parameters:
         - *TeamIdentifier
         - *UserIdentifier
@@ -2192,6 +2232,8 @@ paths:
       operationId: transferTeamOwnership
       tags:
         - teams
+      security:
+        - TokenAuth: []
       parameters:
         - *TeamIdentifier
       requestBody:
