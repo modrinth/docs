@@ -97,7 +97,7 @@ An example `dependencies` object:
 ---
 
 ## Storage
-When stored on disk, the modpack MUST be in ZIP format (MIME type `application/x-modrinth-modpack+zip`), using the `.mrpack` extension. The main metadata of the modpack MUST be stored at `modrinth.index.json` in the root of the zip.
+When stored on disk, the modpack MUST be in ZIP format (MIME type `application/x-modrinth-modpack+zip`), using the `.mrpack` extension. The main metadata of the modpack MUST be stored with UTF-8 encoding at `modrinth.index.json` in the root of the zip.
 
 ### Overrides
 The zip may also contain a directory named `overrides`. Files in this directory will be copied to the root of the Minecraft Instance directory upon installation by the launcher. For example:
