@@ -1678,12 +1678,17 @@ paths:
         "404":
           description: The requested version was not found or no authorization to see this version
   # Version file
-  /version_file/{hash}?algorithm={algorithm}:
+  /version_file/{hash}:
     get:
       summary: Get version from hash
       operationId: versionFromHash
       tags:
         - version-files
+      parameters:
+        - *FileHashIdentifier
+        - *AlgorithmIdentifier
+      required:
+        - algorithm
       responses:
         "200":
           description: Expected response to a valid request
@@ -1692,9 +1697,6 @@ paths:
               schema: *Version
         "404":
           description: The requested version file was not found or no authorization to see this version
-      parameters:
-        - *FileHashIdentifier
-        - *AlgorithmIdentifier
     delete:
       summary: Delete a file from its hash
       operationId: deleteFileFromHash
@@ -1702,6 +1704,11 @@ paths:
         - version-files
       security:
         - TokenAuth: []
+      parameters:
+        - *FileHashIdentifier
+        - *AlgorithmIdentifier
+      required:
+        - algorithm
       responses:
         "204":
           description: Expected response to a valid request
@@ -1712,10 +1719,7 @@ paths:
               schema: *AuthError
         "404":
           description: The requested version was not found
-      parameters:
-        - *FileHashIdentifier
-        - *AlgorithmIdentifier
-  /version_file/{hash}/update?algorithm={algorithm}:
+  /version_file/{hash}/update:
     post:
       summary: Latest version of a project from a hash, loader(s), and game version(s)
       operationId: getLatestVersionFromHash
@@ -1724,6 +1728,8 @@ paths:
       parameters:
         - *FileHashIdentifier
         - *AlgorithmIdentifier
+      required:
+        - algorithm
       requestBody:
         description: Parameters of the updated version requested
         content:
@@ -1794,7 +1800,7 @@ paths:
   /version_files/update:
     post:
       summary: Latest versions of multiple project from hashes, loader(s), and game version(s)
-      description: This is the same as [`/version_file/{hash}/update?algorithm={algorithm}`](#operation/getLatestVersionFromHash) except it accepts multiple hashes.
+      description: This is the same as [`/version_file/{hash}/update`](#operation/getLatestVersionFromHash) except it accepts multiple hashes.
       operationId: getLatestVersionsFromHashes
       tags:
         - version-files
