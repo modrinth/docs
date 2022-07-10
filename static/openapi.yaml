@@ -1686,9 +1686,8 @@ paths:
         - version-files
       parameters:
         - *FileHashIdentifier
-        - *AlgorithmIdentifier
-      required:
-        - algorithm
+        - <<: *AlgorithmIdentifier
+          required: true
       responses:
         "200":
           description: Expected response to a valid request
@@ -1706,9 +1705,8 @@ paths:
         - TokenAuth: []
       parameters:
         - *FileHashIdentifier
-        - *AlgorithmIdentifier
-      required:
-        - algorithm
+        - <<: *AlgorithmIdentifier
+          required: true
       responses:
         "204":
           description: Expected response to a valid request
@@ -1727,9 +1725,9 @@ paths:
         - version-files
       parameters:
         - *FileHashIdentifier
-        - *AlgorithmIdentifier
-      required:
-        - algorithm
+        - <<: *AlgorithmIdentifier
+          required: true
+
       requestBody:
         description: Parameters of the updated version requested
         content:
