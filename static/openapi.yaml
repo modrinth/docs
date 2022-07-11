@@ -1273,27 +1273,27 @@ paths:
           content:
             application/json:
               schema: *AuthError
-#  /project/{id|slug}/check:
-#    get:
-#      summary: Check project slug/ID validity
-#      operationId: checkProjectValidity
-#      tags:
-#        - projects
-#      parameters:
-#        - *ProjectIdentifier
-#      responses:
-#        "200":
-#          description: Expected response to a valid request
-#          content:
-#            application/json:
-#              schema:
-#                type: object
-#                properties:
-#                  id:
-#                    type: string
-#                    example: AABBCCDD
-#        "404":
-#          description: The requested project was not found
+  /project/{id|slug}/check:
+    get:
+      summary: Check project slug/ID validity
+      operationId: checkProjectValidity
+      tags:
+        - projects
+      parameters:
+        - *ProjectIdentifier
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: AABBCCDD
+        "404":
+          description: The requested project was not found
   /project/{id|slug}/gallery:
     post:
       summary: Add a gallery image
