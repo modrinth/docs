@@ -1727,7 +1727,6 @@ paths:
         - *FileHashIdentifier
         - <<: *AlgorithmIdentifier
           required: true
-
       requestBody:
         description: Parameters of the updated version requested
         content:
