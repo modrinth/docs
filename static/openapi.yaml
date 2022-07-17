@@ -1903,6 +1903,25 @@ paths:
               schema: *AuthError
         "404":
           description: The requested user was not found
+  /user:
+    get:
+      summary: Get user from authorization header
+      operationId: getUserFromAuth
+      tags:
+        - users
+      security:
+        - TokenAuth: []
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema: *User
+        "401":
+          description: No authorization token given
+          content:
+            application/json:
+              schema: *AuthError
   /users:
     get:
       summary: Get multiple users
