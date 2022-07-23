@@ -20,3 +20,17 @@ These bullet points cover most changes in the v2 API, but please note that field
 - Notifications now have a `type` field, such as `project_update`
 
 Along with this, project subroutes (such as `/v2/project/{id}/version`) now allow the slug to be used as the ID. This is also the case with user routes.
+
+## Minotaur v1 to v2
+
+Minotaur 2.x introduced a few breaking changes to how your buildscript is formatted.
+
+First, instead of registering your own `publishModrinth` task, Minotaur now automatically creates a `modrinth` task. As such, you can replace the `task publishModrinth(type: TaskModrinthUpload) {` line with just `modrinth {`.
+
+To declare supported Minecraft versions and mod loaders, the `gameVersions` and `loaders` arrays must now be used. The syntax for these are pretty self-explanatory.
+
+Instead of using `releaseType`, you must now use `versionType`. This was actually changed in v1.2.0, but very few buildscripts have moved on from v1.1.0.
+
+Dependencies have been changed to a special DSL. Create a `dependencies` block within the `modrinth` block, and then use `scope.type("project/version")`. For example, `required.project("fabric-api")` adds a required project dependency on Fabric API.
+
+You may now use the slug anywhere that a project ID was previously required.
