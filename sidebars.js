@@ -2,7 +2,7 @@ module.exports = {
   tutorialSidebar: [
     'getting-started',
     {
-      'API Information': [
+      'About the APi': [
         'details/domains',
         'details/versioning',
         {

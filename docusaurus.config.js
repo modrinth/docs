@@ -30,7 +30,7 @@ module.exports = {
         {
           to: 'api-spec',
           position: 'left',
-          label: 'API Spec',
+          label: 'API Routes',
           activeBasePath: 'api-spec',
         },
         {
