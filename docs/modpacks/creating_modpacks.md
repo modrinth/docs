@@ -12,7 +12,7 @@ Modrinth uses its own storage layout for modpacks. This can be found on the [for
 
 ## How do I create a modpack?
 
-You can either use [ATLauncher](https://atlauncher.com) or [packwiz](https://github.com/packwiz/packwiz) to create modpacks.
+You can either use [ATLauncher](https://atlauncher.com), [packwiz](https://github.com/packwiz/packwiz), or [Moddermore](https://moddermore.vercel.app) to create modpacks.
 
 ### ATLauncher
 
@@ -61,3 +61,13 @@ Once you done, click the `Export as Modpack` button to export to the Modrinth fo
 :::caution
 XMCL currently does not support download mods from GitHub or GitLab. File URLs from these sites are unsupported.
 :::
+
+### Moddermore
+
+[Moddermore](https://moddermore.vercel.app) is a website for sharing lists of mods that Minecrafters use.
+
+You can create an instance by going to [the `Create` page](https://moddermore.vercel.app/new), where you have a few options of how you want to create the list.
+
+Once you've created the list, there will be a `Modrinth pack` button that you can click to export to the Modrinth modpack format.
+
+![Export from Moddermore](../../static/img/tutorial/moddermore.png)
