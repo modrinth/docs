@@ -4,6 +4,10 @@ Welcome to Modrinth developer docs!
 
 This tutorial will explain the basics of the Modrinth API.
 
+:::info
+**Looking for the list of routes? [Take me to the API specification.](../api-spec)**
+:::
+
 ## Getting a working testing environment
 
 This documentation doesn't provide a way to test our API. In order to facilitate testing, we recommend the following tools:
