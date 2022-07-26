@@ -25,7 +25,7 @@ module.exports = {
           type: 'doc',
           docId: 'getting-started',
           position: 'left',
-          label: 'Documentation',
+          label: 'Information',
         },
         {
           to: 'api-spec',
