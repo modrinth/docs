@@ -389,6 +389,11 @@ components:
               items:
                 type: string
           required:
+            - slug
+            - title
+            - description
+            - client_side
+            - server_side
             - project_id
             - author
             - versions
