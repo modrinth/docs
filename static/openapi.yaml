@@ -141,6 +141,11 @@ components:
                 description: The ID of the project that this version depends on
                 example: QQRRSSTT
                 nullable: true
+              file_name:
+                type: string
+                description: The file name of the dependency, mostly used for showing external dependencies on modpacks
+                example: sodium-fabric-mc1.19-0.4.2+build.16.jar
+                nullable: true
               dependency_type:
                 type: string
                 enum: [required, optional, incompatible, embedded]
@@ -228,7 +233,7 @@ components:
               example: EEFFGGHH
             date_published:
               type: string
-              format: date-time
+              format: ISO-8601
             downloads:
               type: integer
               description: The number of times this version has been downloaded
@@ -368,11 +373,11 @@ components:
               description: The total number of users following the project
             date_created:
               type: string
-              format: date-time
+              format: ISO-8601
               description: The date the project was created
             date_modified:
               type: string
-              format: date-time
+              format: ISO-8601
               description: The date the project was last modified
             latest_version:
               type: string
@@ -571,11 +576,11 @@ components:
               description: A message that a moderator sent regarding the project
             published:
               type: string
-              format: date-time
+              format: ISO-8601
               description: The date the project was published
             updated:
               type: string
-              format: date-time
+              format: ISO-8601
               description: The date the project was last updated
             followers:
               type: integer
@@ -634,7 +639,7 @@ components:
                     nullable: true
                   created:
                     type: string
-                    format: date-time
+                    format: ISO-8601
                     description: The date and time the gallery image was created
                 required:
                   - url
@@ -728,13 +733,14 @@ components:
               type: integer
               example: 11223344
               description: The user's github id
+              nullable: true
             avatar_url:
               type: string
               example: https://avatars.githubusercontent.com/u/11223344?v=1
               description: The user's avatar url
             created:
               type: string
-              format: date-time
+              format: ISO-8601
               description: The time at which the user was created
             role:
               type: string
@@ -743,7 +749,6 @@ components:
               example: developer
           required:
             - id
-            - github_id
             - avatar_url
             - created
             - role
@@ -782,7 +787,7 @@ components:
           description: Whether the notification has been read or not
         created:
           type: string
-          format: date-time
+          format: ISO-8601
           description: The time at which the notification was created
         actions:
           type: array
@@ -837,7 +842,7 @@ components:
               example: UUVVWWXX
             created:
               type: string
-              format: date-time
+              format: ISO-8601
               description: The time at which the report was created
           required:
             - reporter
@@ -857,10 +862,10 @@ components:
           description: The user's role on the team
         permissions:
           type: integer
-          format: bitflag
+          format: bitfield
           example: 127
           description: |
-            The user's permissions in bitflag format (requires authorization to view)
+            The user's permissions in bitfield format (requires authorization to view)
 
             In order from first to eighth bit, the bits are:
             - UPLOAD_VERSION
@@ -936,7 +941,7 @@ components:
           example: release
         date:
           type: string
-          format: date-time
+          format: ISO-8601
           description: The date of the game version release
         major:
           type: boolean
@@ -2209,10 +2214,10 @@ paths:
                   example: Contributor
                 permissions:
                   type: integer
-                  format: bitflag
+                  format: bitfield
                   example: 127
                   description: |
-                    The user's permissions in bitflag format
+                    The user's permissions in bitfield format
 
                     In order from first to eighth bit, the bits are:
                     - UPLOAD_VERSION
