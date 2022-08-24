@@ -2167,6 +2167,33 @@ paths:
               schema: *AuthError
         "404":
           description: The requested team was not found
+  /teams:
+    get:
+      summary: Get the members of multiple teams
+      operationId: getTeams
+      tags:
+        - teams
+      parameters:
+        - in: query
+          name: ids
+          description: The IDs of the teams
+          schema:
+            type: array
+            items:
+              type: string
+            example: "[\"AABBCCDD\", \"EEFFGGHH\"]"
+          required: true
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: array
+                  items: *TeamMember
+
   /team/{id}/join:
     post:
       summary: Join a team
