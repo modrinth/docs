@@ -1,7 +1,7 @@
 openapi: '3.1.0'
 
 info:
-  version: v2.4.4
+  version: v2.5.0
   title: Labrinth
   description: |
     **Remember to join our [Discord](https://discord.gg/EUHuJHt) if you need any support!**
@@ -315,7 +315,7 @@ components:
           items:
             type: string
           example: [technology, adventure, fabric]
-          description: A list of the categories that the project is in
+          description: A list of the categories that the project has
         client_side:
           type: string
           enum: [required, optional, unsupported]
@@ -334,7 +334,7 @@ components:
           properties:
             project_type:
               type: string
-              enum: [mod, modpack]
+              enum: [mod, modpack, resourcepack]
               description: The project type of the project
               example: mod
             downloads:
@@ -362,6 +362,10 @@ components:
               type: string
               description: The username of the project's author
               example: my_user
+            display_categories:
+              type: array
+              description: A list of the categories that the project has which are not secondary
+              example: []
             versions:
               type: array
               items:
@@ -374,7 +378,7 @@ components:
             date_created:
               type: string
               format: ISO-8601
-              description: The date the project was created
+              description: The date the project was added to search
             date_modified:
               type: string
               format: ISO-8601
@@ -416,6 +420,10 @@ components:
               type: string
               description: A long form description of the project
               example: A long body describing my project in detail
+            additional_categories:
+              type: array
+              description: A list of categories which are searchable but non-primary
+              example: []
             issues_url:
               type: string
               description: An optional link to where to submit bugs or issues with the project
@@ -582,6 +590,11 @@ components:
               type: string
               format: ISO-8601
               description: The date the project was last updated
+            approved:
+              type: string
+              format: ISO-8601
+              description: The date the project's status was set to approved or unlisted
+              nullable: true
             followers:
               type: integer
               description: The total number of users following the project
@@ -901,10 +914,15 @@ components:
           type: string
           description: The project type this category is applicable to
           example: mod
+        header:
+          type: string
+          description: The header under which the category should go
+          example: "resolutions"
       required:
         - icon
         - name
         - project_type
+        - header
     LoaderTag: &LoaderTag
       type: object
       properties:
@@ -2412,13 +2430,13 @@ paths:
   # Moderation
   /moderation/projects:
     get:
-      summary: Get a list of unapproved projects
+      summary: Get a list of processing projects
       operationId: getModerationProjects
       security:
         - TokenAuth: []
       responses:
         "200":
-          description: List of report types
+          description: List of projects
           content:
             application/json:
               schema:
