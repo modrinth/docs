@@ -4,30 +4,53 @@ Modrinth's text fields, including project bodies and version changelogs, use [Gi
 
 As the full GFM spec is too large to read comfortably and [GitHub's formatting guide](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) contains features not included in GFM, this page serves as a quick reference for what types of formatting can be used on Modrinth.
 
+:::info Important
+
+The displayed features may not reflect the actual style used on Modrinth.
+
+:::
+
 ## Basic formatting
-
-| Markdown                    | Result                |
-| --------------------------- | --------------------- |
-| \*\*Bold\*\*                | **Bold**              |
-| \*Italic\*                  | *Italic*              |
-| \*\*\*Bold and Italic\*\*\* | ***Bold and italic*** |
-| \~\~Strikethrough\~\~       | ~~Strikethrough~~     |
-
-## Code Blocks
-
-### Single-line Code Block
-
-| Markdown      | Result      |
-| ------------- | ----------- |
-| \`Code here\` | `Code here` |
-
-### Multi-line Code Block
 
 :::note Markdown
 
-\`\`\`  
-Code here  
-\`\`\`
+```markdown
+**Bold**
+*Italic*
+***Bold and Italic***
+~~Strikethrough~~
+```
+
+**Bold**  
+*Italic*  
+***Bold and Italic***  
+~~Strikethrough~~
+
+:::
+
+## Code blocks
+
+### Single-line code block
+
+:::note Markdown
+
+```markdown
+`Code here`
+```
+
+`Code here`
+
+:::
+
+### Multi-line code block
+
+:::note Markdown
+
+````markdown
+```
+Code here
+```
+````
 
 ```
 Code here
@@ -41,42 +64,54 @@ You can add a language (e.g. `java`) after the first three backticks to add code
 
 :::
 
-## Block Quotes
+## Block quotes
 
 :::note Markdown
 
-\> Some Quote
-\> \> Nested Quote
-
+```markdown
 > Some Quote
+> > Nested Quote
+```
+
+> Some Quote  
 > > Nested Quote
 
 :::
 
 ## Links
 
-| Markdown                                | Result                                |
-| --------------------------------------- | ------------------------------------- |
-| \[Embedded Link\](https://modrinth.com) | [Embedded Link](https://modrinth.com) |
+:::note Markdown
+
+```markdown
+https://modrinth.com
+[Embedded link](https://modrinth.com)
+[Embedded link with title](https://modrinth.com 'Title')
+```
+
+https://modrinth.com  
+[Embedded link](https://modrinth.com)  
+[Embedded link with title](https://modrinth.com 'Title')
+
+:::
 
 ## Headings
 
 :::note Markdown
 
-\# H1 Header  
-\#\# H2 Header  
-\#\#\# H3 Header  
-\#\#\#\# H4 Header  
-\#\#\#\#\# H5 Header  
-\#\#\#\#\#\# H6 Header
-
+```
 # H1 Header
 ## H2 Header
 ### H3 Header
 #### H4 Header
-<!-- Workaround for Docosaurus Uppercasing H5 headers -->
-<h5 style={{textTransform: "unset"}}>H5 Header</h5>
+##### H5 Header
+###### H6 Header
+```
 
+# H1 Header  
+## H2 Header  
+### H3 Header  
+#### H4 Header  
+##### H5 Header  
 ###### H6 Header
 
 :::
@@ -87,19 +122,19 @@ You can add a language (e.g. `java`) after the first three backticks to add code
 
 :::note Markdown
 
-\- Entry 1  
-\- Entry 2  
-\- Entry 3
+```markdown
+- Entry 1
+- Entry 2
+    - Entry 2.1
+    - Entry 2.2
+- Entry 3
+```
 
 - Entry 1
 - Entry 2
+    - Entry 2.1
+    - Entry 2.2
 - Entry 3
-
-:::
-
-:::tip
-
-Add 4 spaces before a - to indend it by one level.
 
 :::
 
@@ -107,19 +142,19 @@ Add 4 spaces before a - to indend it by one level.
 
 :::note Markdown
 
-1\. Entry 1  
-2\. Entry 2  
-3\. Entry 3
+```markdown
+1. Entry 1
+2. Entry 2
+    1. Entry 2.1
+    2. Entry 2.2
+3. Entry 3
+```
 
 1. Entry 1
 2. Entry 2
+    1. Entry 2.1
+    2. Entry 2.2
 3. Entry 3
-
-:::
-
-:::tip
-
-Add 4 spaces before a number to indend it by one level.
 
 :::
 
@@ -140,5 +175,26 @@ Add 4 spaces before a number to indend it by one level.
 | Cell 1:1 | Cell 1:2 | Cell 1:3 |
 | Cell 2:1 | Cell 2:2 | Cell 2:3 |
 | Cell 3:1 | Cell 3:2 | Cell 3:3 |
+
+:::
+
+## Details
+
+:::note Markdown
+
+```markdown
+<details>
+<summary>Click me!</summary>
+
+You clicked me!
+</details>
+
+```
+
+<details>
+<summary>Click me!</summary>
+
+You clicked me!
+</details>
 
 :::
