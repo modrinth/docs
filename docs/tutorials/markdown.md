@@ -1,8 +1,8 @@
 # Formatting
 
-Modrinth allows the usage of [GitHub Flavourited Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) for text fields such as your Project's Description or Version description.
+Modrinth's text fields, including project bodies and version changelogs, use [GitHub Flavored Markdown](https://github.github.com/gfm).
 
-To help you understand what is and isn't available to use is this page here listing all currently supported Markdown features.
+As the full GFM spec is too large to read comfortably and [GitHub's formatting guide](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) contains features not included in GFM, this page serves as a quick reference for what types of formatting can be used on Modrinth.
 
 ## Basic formatting
 
@@ -37,7 +37,7 @@ Code here
 
 :::tip
 
-You can add a coding language (i.e. `java`) after the first three backticks to add code highlighting to the text inside the code block.
+You can add a language (e.g. `java`) after the first three backticks to add code highlighting to the code block.
 
 :::
 
