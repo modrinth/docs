@@ -17,6 +17,7 @@ module.exports = {
         'tutorials/api_search',
         'tutorials/maven',
         'tutorials/forge_updates',
+        'details/carbon',
       ],
       'Modpacks': [
         'modpacks/creating_modpacks',
