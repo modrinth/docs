@@ -24,7 +24,7 @@ AdBlock is configurable by clicking its logo, either within or next to the Exten
 
 From within the settings panel, it is very easy to disable ads on Modrinth. Simply click `Always` under `Pause on this site`.
 
-![](https://i.imgur.com/ytEkPEf.png)
+![AdBlock](../../static/img/carbon/adblock.png)
 
 If this still didn't work, your browser may have its own protection as well. Please refer to your browser's section on this page.
 
@@ -38,7 +38,7 @@ Adblock Plus is configurable by clicking its logo, either within or next to the 
 
 From within the settings panel, it is very easy to disable ads on Modrinth. Simply click the toggle for `This website` and refresh when prompted.
 
-![](https://i.imgur.com/yV6fHxu.png)
+![Adblock Plus](../../static/img/carbon/adblockplus.png)
 
 If this still didn't work, your browser may have its own protection as well. Please refer to your browser's section on this page.
 
@@ -52,7 +52,7 @@ AdGuard is configurable by clicking its logo, either within or next to the Exten
 
 From within the settings panel, it is very easy to disable ads on Modrinth. Simply click the toggle and you're done!
 
-![](https://i.imgur.com/cbUppXL.png)
+![AdGuard](../../static/img/carbon/adguard.png)
 
 If this still didn't work, your browser may have its own protection as well. Please refer to your browser's section on this page.
 
@@ -66,7 +66,7 @@ uBlock Origin is configurable by clicking its logo, either within or next to the
 
 From within the settings panel, it is very easy to disable ads on Modrinth. Simply click the big blue power button and then click the rotating arrows beside it to refresh the page.
 
-![](https://i.imgur.com/WnfpyyH.png)
+![uBlock Origin](../../static/img/carbon/ublockorigin.png)
 
 If this still didn't work, your browser may have its own protection as well. Please refer to your browser's section on this page.
 
@@ -82,7 +82,7 @@ Brave has a built-in adblocker which is configurable by clicking the Brave logo 
 
 To allow Modrinth’s ads to show from this menu, go into `Advanced controls` and change the first setting to `Allow all trackers & ads`.
 
-![](https://i.imgur.com/VMMH6A8.png)
+![Brave](../../static/img/carbon/brave.png)
 
 Alternatively, if you don't feel comfortable touching the advanced options, you can also turn Shields to Down for Modrinth by clicking the purple toggle.
 
@@ -97,16 +97,16 @@ Unfortunately, if Edge's tracking prevention mode is set to Strict, Edge will mi
 <details><summary>Turn off tracking prevention for Modrinth</summary>
 
 Turn off the toggle for `Tracking prevention for this site` by clicking the padlock or shield in the address bar.
-  
-![](https://i.imgur.com/JsMbP1w.png)
-  
+
+![Edge](../../static/img/carbon/edge.png)
+
 </details>
 
 <details><summary>Change the tracking prevention mode</summary>
 
 Make sure the tracking prevention mode is set to Balanced in [Edge's privacy settings](edge://settings/privacy#TrackingPrevention).
 
-![](https://i.imgur.com/Tfy5hAl.png)
+![Edge](../../static/img/carbon/edgealt.png)
 
 </details>
 
@@ -119,8 +119,8 @@ If Firefox's tracking prevention mode is set to Strict, Firefox will block Carbo
 <details><summary>Turn off Enhanced Tracking Prevention for Modrinth</summary>
 
 Turn off the toggle for Enhanced Tracking Protection by clicking the shield in the address bar.
-  
-![](https://i.imgur.com/uHWWbnX.png)
+
+![Firefox](../../static/img/carbon/firefox.png)
 
 </details>
 
@@ -128,7 +128,7 @@ Turn off the toggle for Enhanced Tracking Protection by clicking the shield in t
 
 Make sure the Enhanced Tracking Prevention mode is set to Standard in [Firefox's privacy settings](about:preferences#privacy).
 
-![](https://i.imgur.com/XcF5Gix.png)
+![Firefox](../../static/img/carbon/firefoxalt.png)
 
 </details>
 
@@ -141,10 +141,10 @@ Opera has a built-in adblocker which is configurable by clicking the blue shield
 There are two ways to allow Modrinth's ads to show after clicking the blue shield. You can either:
 1. Click the `Turn off for this site` button for ads, or
 2. Toggle on `Allow Acceptable Ads`
-  
+
 The panel should look like this in the end:
 
-![](https://i.imgur.com/AViNdnx.png)
+![Opera](../../static/img/carbon/opera.png)
 
 </details>
 
@@ -152,8 +152,8 @@ The panel should look like this in the end:
 
 If the blue shield is not visible, you can manually add an exception by going to [Opera's settings](opera://settings/adBlockerExceptions). Add an exception for `[*.]modrinth.com`.
 
-![](https://i.imgur.com/EEuU8Kj.png)
-  
+![Opera](../../static/img/carbon/operaalt.png)
+
 </details>
 
 ### Vivaldi
@@ -164,7 +164,7 @@ Vivaldi has a built-in adblocker which is configurable by clicking the shield in
 
 To allow Modrinth's ads to show from this menu, downgrade the protection on Modrinth from `Block Trackers and Ads` to only `Block Trackers`.
 
-![](https://i.imgur.com/d0bQYgX.png)
+![Vivaldi](../../static/img/carbon/vivaldi.png)
 
 </details>
 
@@ -172,6 +172,6 @@ To allow Modrinth's ads to show from this menu, downgrade the protection on Modr
 
 If the shield is not visible, you can manually add an exception by going to [Vivaldi’s privacy settings](vivaldi://settings/privacy/). Add an exception for `modrinth.com` and set the level to `Block Trackers`.
 
-![](https://i.imgur.com/tTPg2u7.png)
+![Vivaldi](../../static/img/carbon/vivaldialt.png)
 
 </details>
