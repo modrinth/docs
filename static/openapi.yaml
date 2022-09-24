@@ -364,8 +364,10 @@ components:
               example: my_user
             display_categories:
               type: array
+              items:
+                type: string
               description: A list of the categories that the project has which are not secondary
-              example: []
+              example: ["technology", "fabric"]
             versions:
               type: array
               items:
