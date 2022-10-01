@@ -10,7 +10,7 @@ Most Modrinth programs take advantage of the containerization platform [Docker](
 
 ### Consult people on Discord
 
-There are a number of reasons to want to consult with people on our [Discord](https://discord.gg/EUHuJHt) before making a pull request. For example, if you're not sure whether something is a good idea or not, if you're not sure how to implement something, or if you can't get something working, these would all be good opportunities to ask in a development channel. For all major programs made by Modrinth, there is a development channel near or at the bottom of the channel list, as well as a catch-all `#other` channel.
+There are a number of reasons to want to consult with people on our [Discord](https://discord.gg/EUHuJHt) before making a pull request. For example, if you're not sure whether something is a good idea or not, if you're not sure how to implement something, or if you can't get something working, these would all be good opportunities to create a thread in the `#development` forum channel.
 
 ### Don't get discouraged
 
@@ -107,7 +107,7 @@ Once that's done, you'll be serving knossos on `localhost:3000` with hot reloadi
 
 ### theseus (launcher), daedalus (metadata host), minos (authentication provider), and ariadne (analytics system)
 
-These Rust programs are still in early development. Ask in the relevant Discord channel what you can help with before making a pull request.
+These Rust programs are still in early development. Before attempting to contribute, ask for info in Discord.
 
 ### minotaur (Gradle plugin)
 
