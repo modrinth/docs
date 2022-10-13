@@ -24,6 +24,32 @@ If you have a direct link to a Modrinth pack, you also have the option of import
 
 ![ATLauncher import](../../static/img/tutorial/atlauncherImport.png)
 
+### BakaXL
+
+BakaXL is a Windows-only launcher primarily targeting Chinese speakers.
+
+#### Install through BakaPlaza
+
+The easiest way to play modpacks using BakaXL is download it from BakaPlaza.
+
+Click "BakaPlaza" in the Start Menu and search for the name of the modpack you want to install.
+
+![BakaPlaza search](../../static/img/tutorial/BakaPlazaSearchModpacks.png)
+
+Select the modpack you want and click the "Get" button, then choose a version to download.
+
+![BakaPlaza modpack info](../../static/img/tutorial/BakaPlazaModpackInfo.png)
+
+#### Install manually
+
+This requires you to have a modpack file already downloaded.
+
+Click the "Add a new Minecraft Core or Mod Pack" tile in the Start Menu, then click "Import Mod Pack".
+
+![Add a new Minecraft Core or Mod Pack Tile](../../static/img/tutorial/BakaXLAddCoreTile.png)
+
+Click "Continue" and drag the modpack file into BakaXL.
+
 ### MultiMC and PolyMC
 
 MultiMC and PolyMC are both launchers focused on efficiently managing multiple separate instances, with the latter being a fork of the former. The installation instructions for each are identical.
