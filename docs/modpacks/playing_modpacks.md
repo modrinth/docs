@@ -8,7 +8,7 @@ Please see the guide for [creating modpacks](creating_modpacks.md).
 
 ## How do I play a modpack?
 
-Currently, the easiest ways to play a Modrinth modpack are via [ATLauncher](https://atlauncher.com), [BakaXL](https://www.bakaxl.com/), or [MultiMC](https://multimc.org).
+Currently, the easiest ways to play a Modrinth modpack are via [ATLauncher](https://atlauncher.com), [BakaXL](https://www.bakaxl.com/), [MultiMC](https://multimc.org), or [Prism Launcher](https://prismlauncher.org).
 
 ### ATLauncher
 
@@ -50,9 +50,9 @@ Click the "Add a new Minecraft Core or Mod Pack" tile in the Start Menu, then cl
 
 Click "Continue" and drag the modpack file into BakaXL.
 
-### MultiMC
+### MultiMC and Prism Launcher
 
-MultiMC is a launcher focused on efficiently managing multiple separate instances.
+MultiMC and Prism are both launchers focused on efficiently managing multiple separate instances. The installation instructions for each are identical.
 
 Modrinth packs can be installed using the "Add instance" button and clicking "Modrinth" on the left. It's as easy as selecting the one you want, and pressing "OK".
 
