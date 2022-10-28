@@ -86,42 +86,6 @@ Alternatively, if you don't feel comfortable touching the advanced options, you 
 
 </details>
 
-### Edge
-
-Edge has built-in tracker prevention which is configurable by clicking the padlock or shield in the address bar.
-
-Unfortunately, if Edge's tracking prevention mode is set to Strict, Edge will misidentify Carbon as a tracker for a dating site, which is false. You can bypass this by doing one or both of two things.
-
-<details><summary>Turn off tracking prevention for Modrinth</summary>
-
-Turn off the toggle for `Tracking prevention for this site` by clicking the padlock or shield in the address bar.
-
-![Edge](../../static/img/ads/edge.png)
-
-</details>
-
-<details><summary>Change the tracking prevention mode</summary>
-
-Make sure the tracking prevention mode is set to Balanced in [Edge's privacy settings](edge://settings/privacy#TrackingPrevention).
-
-![Edge](../../static/img/ads/edgealt.png)
-
-</details>
-
-### Firefox
-
-Firefox has built-in tracker prevention which is configurable by clicking the shield in the address bar.
-
-If Firefox's tracking prevention mode is set to Strict, Firefox will block Carbon. You can bypass this by doing one or both of two things.
-
-<details><summary>Turn off Enhanced Tracking Prevention for Modrinth</summary>
-
-Turn off the toggle for Enhanced Tracking Protection by clicking the shield in the address bar.
-
-![Firefox](../../static/img/ads/firefox.png)
-
-</details>
-
 <details><summary>Change the Enhanced Tracking Prevention mode</summary>
 
 Make sure the Enhanced Tracking Prevention mode is set to Standard in [Firefox's privacy settings](about:preferences#privacy).
