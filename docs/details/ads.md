@@ -86,14 +86,6 @@ Alternatively, if you don't feel comfortable touching the advanced options, you 
 
 </details>
 
-<details><summary>Change the Enhanced Tracking Prevention mode</summary>
-
-Make sure the Enhanced Tracking Prevention mode is set to Standard in [Firefox's privacy settings](about:preferences#privacy).
-
-![Firefox](../../static/img/ads/firefoxalt.png)
-
-</details>
-
 ### Opera
 
 Opera has a built-in adblocker which is configurable by clicking the blue shield in the address bar.
