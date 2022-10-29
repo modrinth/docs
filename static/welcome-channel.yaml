@@ -1,0 +1,67 @@
+- type: text
+  text: https://cdn.discordapp.com/attachments/734084240408444949/975414177550200902/welcome-channel.png
+
+- type: embed
+  embeds:
+    - title: Welcome to Modrinth's Discord server!
+      url: https://modrinth.com
+      color: 0x1bd96a
+      description: Modrinth is an open source mod hosting and distribution platform designed for and by mod authors. Modrinth is designed to have an open API, which is used by Modrinth's own website, allowing third party tools to access to all of the same information that you can through the website.
+
+- type: embed
+  embeds:
+    - title: ":police_car: Rules"
+      color: 0x1bd96a
+      description: "Modrinth's rules are easy to follow. Despite this, please keep in mind that this is not an entirely open forum. Ultimately, it is up to the discretion of the moderators whether your messages are in violation of our rules. While off-topic discussion is allowed in the <#783091855616901200> channel, do not let this get in the way of Modrinth's development or ability to communicate with its users.\n\nWant to discuss these rules or appeal a punishment? Please send a message to <@1000632789118496818>!\n\u200B"
+      fields:
+        - name: 1. Treat every user with respect
+          value: "Do not harass, bother, provoke, or insult anyone.\n\u200B"
+        - name: 2. Don't cause problems or impede Modrinth's development
+          value: "First and foremost, this Discord server is intended to facilitate the development of Modrinth and for communication regarding Modrinth. If you do not wish to uphold this, you do not have to be in this server.\n\u200B"
+        - name: 3. Avoid discussion of drama from other places
+          value: "In these topics, emotions run high and opinions run even higher. To avoid arguments and other similar problems, simply avoid discussion of controversial topics from other communities.\n\u200B"
+        - name: 4. Avoid bashing other platforms
+          value: "Healthy competition does **not** involve hating on other platforms. You are allowed to constructively criticize other platforms, but any outright hatred of such platforms can be taken to other servers.\n\u200B"
+        - name: 5. Report website content on the website, not here
+          value: "If a project, version, or user is breaking Modrinth's [project rules](https://modrinth.com/legal/rules), locate the `Report` button on the site. Do not report content here in the Discord!\n\u200B"
+        - name: 6. Don't assume staff member's opinions reflect those of Modrinth
+          value: "Any and all opinions expressed by Modrinth staff members and contributors are to be treated as their own. Keep in mind that circumstances and plans change, and that something said a year ago, a month ago, or a week ago may already be outdated.\n\u200B"
+        - name: 7. Don't abuse accessibility tools
+          value: "This server has the [PluralKit bot](https://pluralkit.me), which should only be used as an accessibility and self-identity tool, usually for [plural systems](https://morethanone.info). These messages show up with a bot tag due to Discord's limitations. If you want to see what system/account a specific message is from, you can react to the message using :question:.\n\u200B"
+        - name: 8. Follow Discord's rules
+          value: "These include the [Community Guidelines](https://discord.com/guidelines) and the [Terms of Service](https://discord.com/terms)."
+
+- type: links
+  title: ":link: Links"
+  color: 0x1bd96a
+  links:
+    Website: https://modrinth.com
+    Documentation: https://docs.modrinth.com
+    Blog: https://blog.modrinth.com
+    Status page: https://status.modrinth.com
+    Modrinth source code: https://github.com/modrinth
+    Follow Modrinth on Mastodon: https://floss.social/@modrinth
+    Follow Modrinth on Twitter: https://twitter.com/modrinth
+    Help translate Modrinth: https://crowdin.com/project/modrinth
+    Link to this server: https://discord.com/servers/modrinth-734077874708938864
+
+- type: roles
+  id: community-roles
+  color: 0x1bd96a
+  title: Opt-in roles
+  description: Click the button below to assign or remove any of the following roles.
+  template: "{EMOJI} **{NAME}**: {DESCRIPTION}\n"
+
+  roles:
+    992998518602076170:
+      description: Get notified when we make changes to the [Modrinth API](https://docs.modrinth.com/api-spec).
+      emoji: "<:modrinth:947700040300892190>"
+    992998585618681907:
+      description: Get notified when there is scheduled downtime for Modrinth.
+      emoji: 📉
+    980118671215194112:
+      description: Get notified when changes are made to the [Modrinth translation project](https://crowdin.com/project/modrinth), including new strings or changes in the translation development efforts.
+      emoji: 🌐
+    1003521955703554119:
+      description: Get notified when a Modrinth team member wants a beta feature tested for bugs.
+      emoji: 🧪
