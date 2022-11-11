@@ -301,7 +301,7 @@ components:
       properties:
         slug:
           type: string
-          description: The slug of a project, used for vanity URLs
+          description: "The slug of a project, used for vanity URLs. Regex: ```^[\\w!@$()`.+,\"\\-']{3,64}$```"
           example: my_project
         title:
           type: string
