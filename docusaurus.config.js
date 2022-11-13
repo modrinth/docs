@@ -118,10 +118,6 @@ module.exports = {
         content: '#30b27b',
       },
       {
-        name: 'og:image',
-        content: 'https://cdn.modrinth.com/modrinth-new.png',
-      },
-      {
         name: 'twitter:card',
         content: 'summary',
       },
@@ -129,7 +125,8 @@ module.exports = {
         name: 'twitter:site',
         content: '@modrinth',
       },
-    ]
+    ],
+    image: 'https://cdn.modrinth.com/modrinth-new.png',
   },
   presets: [
     [
@@ -138,7 +135,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
-            'https://github.com/modrinth/docs/edit/master/',
+              'https://github.com/modrinth/docs/edit/master/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
