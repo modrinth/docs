@@ -55,7 +55,7 @@
   roles:
     992998518602076170:
       description: Get notified when we make changes to the [Modrinth API](https://docs.modrinth.com/api-spec).
-      emoji: "<:modrinth:947700040300892190>"
+      emoji: "<:modrinth:1040805511538421890>"
     992998585618681907:
       description: Get notified when there is scheduled downtime for Modrinth.
       emoji: 📉
