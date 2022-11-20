@@ -44,9 +44,9 @@ info:
     It is recommended, but not required, to include contact information in your user agent.
     This allows us to contact you if we would like a change in your application's behavior without having to block your traffic.
     - Bad: `User-Agent: okhttp/4.9.3`
-    - Good: `User-Agent: my_awesome_launcher`
-    - Better: `User-Agent: github_org/my_awesome_launcher/1.56.0`
-    - Best: `User-Agent: github_org/my_awesome_launcher/1.56.0 (launcher.com)` or `User-Agent: github_org/my_awesome_launcher/1.56.0 (contact@launcher.com)`
+    - Good: `User-Agent: project_name`
+    - Better: `User-Agent: github_username/project_name/1.56.0`
+    - Best: `User-Agent: github_username/project_name/1.56.0 (launcher.com)` or `User-Agent: github_username/project_name/1.56.0 (contact@launcher.com)`
 # The above snippet about User Agents was adapted from https://crates.io/policies, copyright (c) 2014 The Rust Project Developers under MIT license
 
 servers:
