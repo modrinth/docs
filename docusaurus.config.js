@@ -126,6 +126,26 @@ module.exports = {
         content: '@modrinth',
       },
     ],
+    links: [
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon-light.ico',
+        media: '(prefers-color-scheme:no-preference)',
+      },
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico',
+        media: '(prefers-color-scheme:dark)',
+      },
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon-light.ico',
+        media: '(prefers-color-scheme:light)',
+      },
+    ],
     image: 'https://cdn.modrinth.com/modrinth-new.png',
   },
   presets: [
@@ -153,7 +173,7 @@ module.exports = {
           },
         ],
         theme: {
-          primaryColor: '#30b27b',
+          primaryColor: '#1bd96a',
           redocOptions: {
             hideLoading: true,
             noAutoAuth: true,
