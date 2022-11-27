@@ -4,13 +4,11 @@ The vast majority of Modrinth, including everything from our [API/backend](https
 
 ## Things to keep in mind
 
-### Docker
-
-Most Modrinth programs take advantage of the containerization platform [Docker](https://www.docker.com), which can help to set up a working production or development environment within seconds. Be wary, though: if you're planning to make a lot of pull requests/changes to a certain project, it may be better to use the native live development tools instead of using Docker. Project-specific details, including what Docker commands to use, can be found below.
-
 ### Consult people on Discord
 
 There are a number of reasons to want to consult with people on our [Discord](https://discord.gg/EUHuJHt) before making a pull request. For example, if you're not sure whether something is a good idea or not, if you're not sure how to implement something, or if you can't get something working, these would all be good opportunities to create a thread in the `#development` forum channel.
+
+If you intend to work on new features, to make significant codebase changes, or to make UI/design changes, please open a discussion thread first to ensure your work is put to its best use.
 
 ### Don't get discouraged
 
