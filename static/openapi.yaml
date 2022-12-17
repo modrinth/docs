@@ -240,7 +240,7 @@ components:
               description: The number of times this version has been downloaded
             changelog_url:
               type: string
-              description: A link to the changelog for this version
+              description: A link to the changelog for this version. Always null, only kept for legacy compatibility.
               deprecated: true
               example: null
               nullable: true
@@ -513,13 +513,17 @@ components:
             initial_versions:
               type: array
               items: *EditableVersion
-              description: A list of initial versions to upload with the created project (required unless `is_draft` is true)
+              description: A list of initial versions to upload with the created project. Deprecated - please upload version files after initial upload.
+              deprecated: true
             is_draft:
               type: boolean
-              description: Whether the project should be saved as a draft instead of being sent to moderation for review
+              description: Whether the project should be saved as a draft instead of being sent to moderation for review. Deprecated - please always mark this as true.
               example: true
+              deprecated: true
             gallery_items:
               type: array
+              description: Gallery images to be uploaded with the created project. Deprecated - please upload gallery images after initial upload.
+              deprecated: true
               items:
                 type: object
                 nullable: true
@@ -569,7 +573,7 @@ components:
               type: string
               deprecated: true
               default: null
-              description: The link to the long description of the project (only present for old projects)
+              description: The link to the long description of the project. Always null, only kept for legacy compatibility.
               example: null
               nullable: true
             moderator_message:
@@ -1283,10 +1287,11 @@ paths:
                   type: string
                   format: binary
                   enum: ["*.png", "*.jpg", "*.jpeg", "*.bmp", "*.gif", "*.webp", "*.svg", "*.svgz", "*.rgb"]
-                  description: A project gallery image file
+                  description: A project gallery image file. Deprecated - please upload gallery images after initial upload.
+                  deprecated: true
                 '^version-[0-9]+-[0-9]+$':
                   type: string
-                  description: A version file
+                  description: A version file. Deprecated - please upload version files after initial upload.
               required: [data]
       responses:
         "200":
