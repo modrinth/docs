@@ -130,7 +130,6 @@ components:
           type: array
           items:
             type: object
-            nullable: true
             properties:
               version_id:
                 type: string
@@ -215,6 +214,7 @@ components:
             - version_type
             - loaders
             - featured
+            - dependencies
     Version: &Version
       allOf:
         - *BaseVersion
@@ -1309,6 +1309,41 @@ paths:
           content:
             application/json:
               schema: *AuthError
+  /project/{id|slug}/icon:
+    patch:
+      summary: Change project's icon
+      description: The new icon may be up to 256KiB in size.
+      operationId: changeProjectIcon
+      tags:
+        - projects
+      parameters:
+        - *ProjectIdentifier
+        - description: Image extension
+          in: query
+          name: ext
+          required: true
+          schema:
+            type: string
+            enum: [png, jpg, jpeg, bmp, gif, webp, svg, svgz, rgb]
+      requestBody:
+        content:
+          image/*:
+            schema:
+              type: string
+              format: binary
+            encoding:
+              image:
+                contentType: image/png, image/jpeg, image/bmp, image/gif, image/webp, image/svg, image/svgz, image/rgb
+      security:
+        - TokenAuth: []
+      responses:
+        "204":
+          description: Icon changed successfully
+        "400":
+          description: Invalid input for new icon
+          content:
+            application/json:
+              schema: *InvalidInputError
   /project/{id|slug}/check:
     get:
       summary: Check project slug/ID validity
@@ -2272,7 +2307,7 @@ paths:
                   description: |
                     The user's permissions in bitfield format
 
-                    In order from first to eighth bit, the bits are:
+                    In order from first to tenth bit, the bits are:
                     - UPLOAD_VERSION
                     - DELETE_VERSION
                     - EDIT_DETAILS
@@ -2281,6 +2316,8 @@ paths:
                     - REMOVE_MEMBER
                     - EDIT_MEMBER
                     - DELETE_PROJECT
+                    - VIEW_ANALYTICS
+                    - VIEW_PAYOUTS
       responses:
         "204":
           description: Roles/permissions have been updated successfully
@@ -2312,7 +2349,7 @@ paths:
         "404":
           description: The requested team was not found
   /team/{id}/owner:
-    post:
+    patch:
       summary: Transfer team's ownership to another user
       operationId: transferTeamOwnership
       tags:
