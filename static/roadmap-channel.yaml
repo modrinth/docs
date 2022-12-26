@@ -1,0 +1,41 @@
+- type: text
+  text: https://cdn.discordapp.com/attachments/734084240408444949/975414177550200902/welcome-channel.png
+
+- type: embed
+  embeds:
+    - title: "**:map: __Roadmap__**"
+      color: 0xa95bf8
+      description: "Modrinth is always innovating and growing. These are some of the things that the
+        <@&734078150967033969> have already done, are working on, and plan to do."
+
+- type: embed
+  embeds:
+    - title: ":white_check_mark: What have we already done?"
+      color: 0x1bd96a
+      description: "`+` Create an alternative mod hosting platform\n
+        `+` Implement fast and accurate search\n
+        `+` Create an open, robust, and documented API\n
+        `+` Pay creators who upload their projects to Modrinth\n
+        `+` Provide quality-of-life features like the gallery, dependencies, and more\n
+        `+` Allow creators to team up and manage permissions"
+
+- type: embed
+  embeds:
+    - title: ":construction_site: What are we doing right now?"
+      color: 0xffa347
+      description: "`+` Implement support for more project types\n
+        `+` A robust launcher integrated with Modrinth\n
+        `+` ||[Redacted]||\n
+        `+` Build out our advertiser network to help fuel payouts\n
+        `+` Provide analytics and stats to creators\n
+        `+` Squash bugs and fix problems"
+
+- type: embed
+  embeds:
+    - title: ":clipboard: And what's planned?"
+      color: 0xe777ad
+      description: "`+` Comments and/or reviews on projects\n
+        `+` Assist creators in automating platform migration process\n
+        `+` Roll out our own authentication service\n
+        `+` Expand into games other than Minecraft\n
+        `+` And even more cool features that we haven't thought of yet!"
