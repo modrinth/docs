@@ -11,7 +11,7 @@
 
 - type: embed
   embeds:
-    - title: "**:police_car: __Rules__**"
+    - title: "**:scroll: __Rules__**"
       color: 0xa95bf8
       description: "Modrinth's rules are easy to follow. Despite this, please keep in mind that this is not an entirely
         open forum. First and foremost, this Discord server is intended to facilitate the development of Modrinth and
@@ -54,7 +54,7 @@
 - type: roles
   id: community-roles
   color: 0x5865f2
-  title: "**:scroll: __Opt-in roles__**"
+  title: "**:raising_hand: __Opt-in roles__**"
   description: Click the button below to assign or remove any of the following roles.
   template: "{EMOJI} **{NAME}**: {DESCRIPTION}\n"
 
