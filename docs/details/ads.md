@@ -1,16 +1,12 @@
-# Ethical Ads
+# Modrinth's Advertising
 
-Modrinth makes use of [Ethical Ads](https://www.ethicalads.io). 100% of the ad revenue from creator pages, including projects, versions, and users, go directly to creators. The ad revenue from other pages, including search, pay for Modrinth's upkeep costs and allow us to continue to exist.
+Modrinth makes use of an in-house network called [Adrinth](https://adrinth.com). 100% of the ad revenue from creator pages, including projects and versions, goes directly to creators. The ad revenue from other pages, including search, pay for Modrinth's upkeep costs and allow us to continue to exist.
 
-:::note
-We have been using [ariadne](https://github.com/modrinth/ariadne) to take note of page views and ad revenue since August 1st, 2022. While creator payouts cannot yet be claimed, all ad revenue from this date forward will be claimable once payouts are released!
-:::
-
-Ethical Ads is fully compliant with GDPR, CCPA, and other privacy laws, and fall under the [Acceptable Ads Standard](https://acceptableads.com/standard/). There is only ever one per page, they are less than 120 pixels tall, and they are separate and distinguishable from actual site content.
+Adrinth ads are fully compliant with GDPR, CCPA, and other privacy laws, and fall under the [Acceptable Ads Standard](https://acceptableads.com/standard/). There is only ever one per page, they are less than 120 pixels tall, and they are separate and distinguishable from actual site content.
 
 While you are not required to turn off your adblocker to access Modrinth, you would be supporting both Modrinth and its creators in the process. For the benefit of everyone involved, we humbly request that you turn off your adblocker. You can use the links on the right side to navigate to your browser or browser extension.
 
-If none of the methods shown work or if you have more questions about Ethical, please join us on [Discord](https://discord.gg/EUHuJHt) so that we can assist you!
+If none of the methods shown work or if you have more questions about Adrinth, please join us on [Discord](https://discord.gg/EUHuJHt) so that we can assist you!
 
 ## Browser Extensions
 

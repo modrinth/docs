@@ -50,8 +50,8 @@ module.exports = {
               href: 'https://github.com/modrinth',
             },
             {
-              label: `modrinth/docs, built ${new Date().toDateString()}`,
-              href: 'https://github.com/modrinth/docs'
+              label: `modrinth/docs, built ${new Date(Date.now() - 25_200_000).toISOString().substring(0, 10)}`,
+              href: 'https://github.com/modrinth/docs',
             },
           ],
         },
@@ -71,8 +71,8 @@ module.exports = {
               href: 'https://modrinth.com/legal/rules',
             },
             {
-              label: 'License',
-              href: 'https://github.com/modrinth/docs/blob/master/LICENSE',
+              label: 'Security',
+              href: 'https://modrinth.com/legal/security',
             },
           ],
         },
@@ -85,7 +85,7 @@ module.exports = {
             },
             {
               label: 'Blog',
-              href: 'https://blog.modrinth.com/',
+              href: 'https://blog.modrinth.com/subscribe?utm_medium=website&utm_source=footer&utm_campaign=footer',
             },
             {
               label: 'Discord',
@@ -115,7 +115,7 @@ module.exports = {
       },
       {
         name: 'theme-color',
-        content: '#30b27b',
+        content: '#1bd96a',
       },
       {
         name: 'twitter:card',

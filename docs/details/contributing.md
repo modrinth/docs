@@ -16,7 +16,7 @@ At times, pull requests may be rejected or left unmerged for a variation of reas
 
 ### Code isn't the only way to contribute
 
-You don't need to know how to program to contribute to Modrinth. Quality assurance, supporting the community, coming up with feature ideas, and making sure your voice is heard in public decisions are all great ways to contribute to Modrinth. If you find bugs, reporting them on the appropriate issue tracker is your responsibility; however, remember that potential security breaches and exploits must instead be reported on the [security advisories page](https://github.com/modrinth/labrinth/security/advisories).
+You don't need to know how to program to contribute to Modrinth. Quality assurance, supporting the community, coming up with feature ideas, and making sure your voice is heard in public decisions are all great ways to contribute to Modrinth. If you find bugs, reporting them on the appropriate issue tracker is your responsibility; however, remember that potential security breaches and exploits must instead be reported in accordance with our [security policy](https://modrinth.com/legal/security).
 
 Modrinth currently does not accept monetary donations.
 
@@ -26,12 +26,7 @@ If you wish to contribute code to a specific project, here's the place to start.
 
 ### labrinth (backend and API)
 
-[labrinth](https://github.com/modrinth/labrinth) is the Rust-based backend serving Modrinth's API with the help of the [Actix](https://actix.rs) framework. To get started with a labrinth instance, install docker, docker-compose, and cargo. The initial startup can be done simply with the command `docker-compose up`. That will deploy several things on several ports:
-
-- Port 5432: PostgreSQL database
-- Port 7700: MeiliSearch instance
-- Port 8070: pgAdmin web UI 
-  - The password when initially accessing pgAdmin is nothing, so just leave it blank when prompted.
+[labrinth](https://github.com/modrinth/labrinth) is the Rust-based backend serving Modrinth's API with the help of the [Actix](https://actix.rs) framework. To get started with a labrinth instance, install docker, docker-compose, and cargo. The initial startup can be done simply with the command `docker-compose up`. That will deploy a PostgreSQL database on port 5432 and a MeiliSearch instance on port 7700.
 
 Now, you'll have to install the sqlx CLI, which can be done with cargo:
 
@@ -39,14 +34,13 @@ Now, you'll have to install the sqlx CLI, which can be done with cargo:
 cargo install --git https://github.com/launchbadge/sqlx sqlx-cli --no-default-features --features postgres,rustls
 ```
 
-From there, you can create the database and perform all database migrations with these two commands:
+From there, you can create the database and perform all database migrations with one simple command:
 
 ```bash
-sqlx database create
-sqlx migrate run
+sqlx database setup
 ```
 
-The majority of configuration is done at runtime using [dotenv](https://github.com/dotenv-rs/dotenv) and the `.env` file. Each of the variables and what they do can be found in the dropdown below. Additionally, there are three command line options that can be used to specify to MeiliSearch what you want to do.
+The majority of configuration is done at runtime using [dotenvy](https://crates.io/crates/dotenvy) and the `.env` file. Each of the variables and what they do can be found in the dropdown below. Additionally, there are three command line options that can be used to specify to MeiliSearch what you want to do.
 
 <details><summary>.env variables & command line options</summary>
 
@@ -115,4 +109,4 @@ Minotaur contains two test environments within it - one with ForgeGradle and one
 
 ### Documentation
 
-The [documentation](https://github.com/modrinth/docs) (which you are reading right now!) is the place to find any and all general information about Modrinth and its API. Instead of using npm to build and develop the documentation, you should instead use [yarn](https://yarnpkg.com). `yarn install` followed by `yarn start` will serve the docs on `localhost:3000` with hot reloading and open a browser window pointing there.
+The [documentation](https://github.com/modrinth/docs) (which you are reading right now!) is the place to find any and all general information about Modrinth and its API. The instructions are largely the same as [knossos](#knossos-frontend), except for the lint commands.

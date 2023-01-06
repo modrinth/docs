@@ -12,11 +12,13 @@ module.exports = {
           ],
         },
       ],
-      'Tutorials': [
-        'details/contributing',
+      'API Tutorials': [
         'tutorials/api_search',
         'tutorials/maven',
         'tutorials/forge_updates',
+      ],
+      'Other Tutorials': [
+        'details/contributing',
         'tutorials/markdown',
         'details/ads',
       ],
