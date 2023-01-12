@@ -1,0 +1,50 @@
+{
+  "link.title.Legal": {
+    "message": "法律文件",
+    "description": "The title of the footer links column with title=Legal in the footer"
+  },
+  "link.title.Resources": {
+    "message": "资源库",
+    "description": "The title of the footer links column with title=Resources in the footer"
+  },
+  "link.item.label.Modrinth is open source.": {
+    "message": "Modrinth 是一个开源软件。",
+    "description": "The label of footer link with label=Modrinth is open source. linking to https://github.com/modrinth"
+  },
+  "link.item.label.Terms": {
+    "message": "条款与条件",
+    "description": "The label of footer link with label=Terms linking to https://modrinth.com/legal/terms"
+  },
+  "link.item.label.Privacy": {
+    "message": "隐私政策",
+    "description": "The label of footer link with label=Privacy linking to https://modrinth.com/legal/privacy"
+  },
+  "link.item.label.Rules": {
+    "message": "规则",
+    "description": "The label of footer link with label=Rules linking to https://modrinth.com/legal/rules"
+  },
+  "link.item.label.Security": {
+    "message": "安全",
+    "description": "The label of footer link with label=Security linking to https://modrinth.com/legal/security"
+  },
+  "link.item.label.Main site": {
+    "message": "主站",
+    "description": "The label of footer link with label=Main site linking to https://modrinth.com"
+  },
+  "link.item.label.Blog": {
+    "message": "博客",
+    "description": "The label of footer link with label=Blog linking to https://blog.modrinth.com/subscribe?utm_medium=website&utm_source=footer&utm_campaign=footer"
+  },
+  "link.item.label.Discord": {
+    "message": "Discord",
+    "description": "The label of footer link with label=Discord linking to https://discord.gg/EUHuJHt"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/modrinth"
+  },
+  "copyright": {
+    "message": "此文档使用 CC0 协议公开。使用 Docusaurus 构建。",
+    "description": "The footer copyright"
+  }
+}

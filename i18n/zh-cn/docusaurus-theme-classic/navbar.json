@@ -1,0 +1,18 @@
+{
+  "title": {
+    "message": "Modrinth",
+    "description": "The title in the navbar"
+  },
+  "item.label.Information": {
+    "message": "信息",
+    "description": "Navbar item with label Information"
+  },
+  "item.label.API Routes": {
+    "message": "API 接口与规范",
+    "description": "Navbar item with label API Routes"
+  },
+  "item.label.Main website": {
+    "message": "主站",
+    "description": "Navbar item with label Main website"
+  }
+}

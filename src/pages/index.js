@@ -5,6 +5,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 import HomepageFeatures from '../components/HomepageFeatures';
+import Translate, {translate} from '@docusaurus/Translate';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -17,12 +18,12 @@ function HomepageHeader() {
           <Link
             className={clsx("button button--secondary button--lg", styles.button)}
             to="/docs/getting-started">
-            Get started
+            <Translate id="index.get-started">Get started</Translate>
           </Link>
           <Link
             className={clsx("button button--secondary button--lg", styles.button)}
             to="/api-spec">
-            Routes list
+            <Translate id="index.routes-list">Routes list</Translate>
           </Link>
         </div>
       </div>

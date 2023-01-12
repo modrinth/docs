@@ -1,0 +1,26 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.About the API": {
+    "message": "关于 API",
+    "description": "The label for category About the API in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Migrations": {
+    "message": "迁移",
+    "description": "The label for category Migrations in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.API Tutorials": {
+    "message": "API 教程",
+    "description": "The label for category API Tutorials in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Other Tutorials": {
+    "message": "其他教程",
+    "description": "The label for category Other Tutorials in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Modpacks": {
+    "message": "整合包",
+    "description": "The label for category Modpacks in sidebar tutorialSidebar"
+  }
+}
