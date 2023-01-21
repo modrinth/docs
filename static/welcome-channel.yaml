@@ -16,13 +16,13 @@
       description: "Modrinth's rules are easy to follow. Despite this, please keep in mind that this is not an entirely
         open forum. First and foremost, this Discord server is intended to facilitate the development of Modrinth and
         for communication regarding Modrinth. Ultimately, it is up to the discretion of the moderators whether your
-        messages are in violation of our rules.\n\nAll channels here are Modrinth-specific and should stay on topic,
-        with the exceptions of <#783091855616901200>, <#1061855195165892648>, and <#1061855024252207167>.\n\n
+        messages are in violation of our rules.\n\n
         Modrinth's rules are split up into two categories: the **__DOs__** and the **__DO NOTs__**."
     - title: ":white_check_mark: Do:"
       color: 0x1bd96a
-      description: "1. Treat every user with respect\n
-        2. Consider the opinions and viewpoints of others\n
+      description: "1. Treat every user with respect and consider the opinions and viewpoints of others\n
+        2. Stay on-topic in all channels; all channels are only for discussion of **Modrinth itself** with the
+          exceptions of <#783091855616901200>, <#1061855195165892648>, and <#1061855024252207167>\n
         3. Follow Discord's rules, including the [Community Guidelines](https://discord.com/guidelines) and the
           [Terms of Service](https://discord.com/terms)\n
         4. Contact moderators via the <@&895382919772766219> ping or the <@1000632789118496818> bot if you feel
