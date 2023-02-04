@@ -30,7 +30,9 @@ The files array contains a list of files for the modpack that needs to be downlo
 The destination path of this file, relative to the Minecraft instance directory. For example, `mods/MyMod.jar` resolves to `.minecraft/mods/MyMod.jar`.
 
 :::warning
-If you implement an "import ZIP" feature or similar, make sure this field doesn't exit the Minecraft instance directory for security reasons. To do this, make sure it doesn't contain `..` or start with a drive name (i.e., `[A-Z]:/`, `[A-Z]:\`, and `/`).
+If you implement an "import ZIP" feature or similar, make sure this field doesn't exit the Minecraft instance directory for security reasons. To do this, make sure it doesn't contain `..` or start with a drive name (i.e., `[A-Z]:/`, `[A-Z]:\`, `/`, and `\`).
+
+Any files uploaded to Modrinth are validated automatically to ensure they do not contain this.
 :::
 
 #### `hashes`
