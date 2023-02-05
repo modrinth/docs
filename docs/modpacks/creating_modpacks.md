@@ -12,7 +12,7 @@ Modrinth uses its own storage layout for modpacks. This can be found on the [for
 
 ## How do I create a modpack?
 
-You can either use [ATLauncher](https://atlauncher.com), [packwiz](https://github.com/packwiz/packwiz), or [Moddermore](https://moddermore.vercel.app) to create modpacks.
+You can either use [ATLauncher](https://atlauncher.com), [MultiMC](https://multimc.org), [packwiz](https://github.com/packwiz/packwiz), or [Moddermore](https://moddermore.vercel.app) to create modpacks.
 
 ### ATLauncher
 
@@ -31,6 +31,14 @@ You can also convert a CurseForge modpack to the Modrinth format via ATLauncher.
 
 The recommended method to convert packs was previously via packwiz, but we now discourage the use of packwiz for this specific use case. packwiz does not attempt to convert the CurseForge mod versions to Modrinth versions, but ATLauncher does.
 :::
+
+### MultiMC
+
+MultiMC is a launcher focused on efficiently managing multiple separate instances of Minecraft.
+
+You can easily export a MultiMC instance to the Modrinth format. You just need to select the instance, select the dropdown menu next to Export Instance and click Modrinth. Then, fill out the settings and metadata and press OK.
+
+![MultiMC export](../../static/img/tutorial/multimcExport.png)
 
 ### packwiz
 
