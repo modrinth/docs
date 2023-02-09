@@ -44,7 +44,6 @@ To enable labrinth to create a mod/modpack, you need to add two things.
 1. An entry in the `loaders` table.
 2. An entry in the `loaders_project_types` table. 
 
-
 The majority of configuration is done at runtime using [dotenvy](https://crates.io/crates/dotenvy) and the `.env` file. Each of the variables and what they do can be found in the dropdown below. Additionally, there are three command line options that can be used to specify to MeiliSearch what you want to do.
 
 <details><summary>.env variables & command line options</summary>
