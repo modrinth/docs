@@ -391,7 +391,7 @@ components:
           properties:
             project_type:
               type: string
-              enum: [mod, modpack, resourcepack]
+              enum: [mod, modpack, resourcepack, shader]
               description: The project type of the project
               example: mod
             downloads:
