@@ -71,13 +71,15 @@ More information about all available domains and versions can be found [here](de
 
 ## Structure
 
-Modrinth uses the term "project" to refer to the base item available in search. Currently, this includes mods and modpacks.
+Modrinth uses the term "project" to refer to the base item available in search. This can include mods, modpacks, resource packs, etc.
 
-Projects are required to have at least one "version", which is a downloadable version of a project alongside its metadata. These tend to only have one file attached, but may have multiple.
+Projects are required to have at least one "version", which is a downloadable version of a project alongside its metadata. Versions are each required to have one file attached, but occasionally have multiple.
 
-Users and teams go hand-in-hand. Projects all have a generated "team" attached. The team consists of one or more members of the project with one user listed as the owner. Users may be on as many teams as they like, and may have as many projects as they like. In the future, teams will be able to be applied to multiple projects, but at this time, a team will only ever have one project.
+Users have various data attached to them, including notifications, payouts, followed projects, and more. Users register to Modrinth using GitHub. Users are also the only way to obtain an API key, which is required for some specific API requests.
 
-Projects, teams, users, and versions all have a unique eight-digit base58 ID. These IDs are what you need to query in the URL of a request.
+Projects all have a generated "team" attached. The team consists of one or more members of the project with one user listed as the owner. Users may be on as many teams as they like, and may have as many projects as they like. In the future, teams will be able to be applied to multiple projects, but at this time, a team will only ever have one project.
+
+Projects, teams, users, and versions all have a unique eight-digit base62 ID. These IDs are what you need to query in the URL of a request. Version files use hashes as identifiers.
 
 Projects may be searched by a *slug* instead of its ID. Slugs are a unique identifier that the mod authors can change. For example, the Gravestones mod from above has the `gravestones` slug as well as its `ssUbhMkL` ID. Users may also be queried by their username.
 
