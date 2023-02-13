@@ -1621,6 +1621,28 @@ paths:
           content:
             application/json:
               schema: *InvalidInputError
+    delete:
+      summary: Delete project's icon
+      operationId: deleteProjectIcon
+      tags:
+        - projects
+      parameters:
+        - *ProjectIdentifier
+      security:
+        - TokenAuth: []
+      responses:
+        "204":
+          description: Icon deleted successfully
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema: *InvalidInputError
+        "401":
+          description: No authorization to edit this project
+          content:
+            application/json:
+              schema: *AuthError
   /project/{id|slug}/check:
     get:
       summary: Check project slug/ID validity
