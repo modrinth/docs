@@ -320,6 +320,7 @@ components:
                   primary:
                     type: boolean
                     example: false
+                    description: Whether this file is the primary one for its version. Only a maximum of one file per version will have this set to true. If there are not any primary files, it can be inferred that the first file is the primary one.
                   size:
                     type: integer
                     example: 1097270
