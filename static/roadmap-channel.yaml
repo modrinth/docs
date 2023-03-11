@@ -22,8 +22,7 @@
       color: 0xffa347
       description: "`+` A robust launcher integrated with Modrinth\n
         `+` Build out our advertiser network to help fuel payouts\n
-        `+` Provide analytics and stats to creators\n
-        `+` ||[Redacted]||\n
+        `+` Roll out our own authentication service\n
         `+` Continue to improve and build upon our open API\n
         `+` Squash bugs and fix problems"
     - title: ":clipboard: And what's planned?"
@@ -31,6 +30,7 @@
       description: "`+` Implement support for worlds and project collections\n
         `+` Comments and/or reviews on projects\n
         `+` Assist creators in automating platform migration process\n
-        `+` Roll out our own authentication service\n
+        `+` Provide analytics and stats to creators\n
+        `+` ||[Redacted]||\n
         `+` Expand into games other than Minecraft\n
         `+` And even more cool features that we haven't thought of yet!"
