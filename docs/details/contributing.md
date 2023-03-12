@@ -40,12 +40,7 @@ From there, you can create the database and perform all database migrations with
 sqlx database setup
 ```
 
-Finally, if on Linux, you will need the OpenSSL library, which can be installed with the following command (command may vary depending on package manager):
-
-```bash
-sudo apt update
-sudo apt install pkg-config libssl-dev
-```
+Finally, if on Linux, you will need the OpenSSL library. On Debian-based systems, this involves the `pkg-config` and `libssl-dev` packages.
 
 To enable labrinth to create a mod/modpack, you need to add two things.
 1. An entry in the `loaders` table.
