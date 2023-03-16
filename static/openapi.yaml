@@ -1748,7 +1748,6 @@ paths:
         - description: Whether the image is featured
           in: query
           name: featured
-          required: true
           schema:
             type: boolean
         - description: New title of the image
