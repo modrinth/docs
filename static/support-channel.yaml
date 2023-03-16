@@ -15,34 +15,34 @@
       fields:
         - name: "<:fabric:1049793348719890532> Fabric"
           value: https://discord.gg/v6v4pMv
-          inline: yes
+          inline: true
         - name: "<:forge:1049793350498275358> Forge"
           value: https://discord.gg/UvedJ9m
-          inline: yes
+          inline: true
         - name: "<:paper:1049793355598540810> Paper / <:velocity:1049793419108700170> Velocity / <:waterfall:1049793420937412638> Waterfall"
           value: https://discord.gg/papermc
-          inline: yes
+          inline: true
         - name: "<:purpur:1049793357351751772> Purpur"
           value: https://discord.gg/mtAAnkk
-          inline: yes
+          inline: true
         - name: "<:quilt:1049793857681887342> Quilt"
           value: https://discord.gg/M7GpuyTBvy
-          inline: yes
+          inline: true
         - name: "<:spigot:1049793413886779413> Spigot"
           value: https://discord.gg/spigotmc
-          inline: yes
+          inline: true
         - name: "<:sponge:1049793416969605231> Sponge"
           value: https://discord.gg/sponge
-          inline: yes
+          inline: true
     - title: "Launchers"
       color: 0x5865F2
       fields:
         - name: "ATLauncher"
           value: https://discord.gg/atlauncher
-          inline: yes
+          inline: true
         - name: "MultiMC"
           value: https://discord.gg/multimc
-          inline: yes
+          inline: true
         - name: "Prism Launcher"
           value: https://discord.gg/prismlauncher
-          inline: yes
+          inline: true
