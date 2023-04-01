@@ -58,7 +58,7 @@ INSERT INTO loaders_project_types VALUES (0, 1); -- modloader id, supported type
 This will initialize your database with a modloader called 'placeholder', with id 0, and marked as supporting mods only.
 If you would like 'placeholder' to be marked as supporting modpacks too, run
 ```sql
-INSERT INTO loaders_project_types VALUES (0, 1); -- modloader id, supported type id
+INSERT INTO loaders_project_types VALUES (0, 2); -- modloader id, supported type id
 ```
 
 The majority of configuration is done at runtime using [dotenvy](https://crates.io/crates/dotenvy) and the `.env` file. Each of the variables and what they do can be found in the dropdown below. Additionally, there are three command line options that can be used to specify to MeiliSearch what you want to do.
