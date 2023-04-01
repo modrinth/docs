@@ -26,7 +26,7 @@ If you wish to contribute code to a specific project, here's the place to start.
 
 ### labrinth (backend and API)
 
-[labrinth](https://github.com/modrinth/labrinth) is the Rust-based backend serving Modrinth's API with the help of the [Actix](https://actix.rs) framework. To get started with a labrinth instance, install docker, docker-compose, and cargo. The initial startup can be done simply with the command `docker-compose up`. That will deploy a PostgreSQL database on port 5432 and a MeiliSearch instance on port 7700.
+[labrinth](https://github.com/modrinth/labrinth) is the Rust-based backend serving Modrinth's API with the help of the [Actix](https://actix.rs) framework. To get started with a labrinth instance, install docker, docker-compose (which comes with Docker), and cargo. The initial startup can be done simply with the command `docker-compose up`, or with `docker compose up` (Compose V2 and later). That will deploy a PostgreSQL database on port 5432 and a MeiliSearch instance on port 7700.
 
 Now, you'll have to install the sqlx CLI, which can be done with cargo:
 
