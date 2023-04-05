@@ -1511,6 +1511,21 @@ paths:
                   description: An optional invite link to the projects' discord
                   example: https://discord.gg/AaBbCcDd
                   nullable: true
+      responses:
+        "204":
+          description: Projects successfully updated
+        "400":
+          description: One of the requested projects was not found
+          content:
+            application/json:
+              schema: *InvalidInputError
+        "401":
+          description: No authorization to edit one of the requested projects
+          content:
+            application/json:
+              schema: *AuthError
+        "404":
+          description: One of the requested projects is hidden
   /projects_random:
     get:
       summary: Get a list of random projects
