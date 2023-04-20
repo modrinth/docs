@@ -45,7 +45,6 @@ Finally, if on Linux, you will need the OpenSSL library. On Debian-based systems
 To enable labrinth to create a mod/modpack, you need to add two things.
 1. An entry in the `loaders` table.
 2. An entry in the `loaders_project_types` table. 
-3. An entry in the `categories` table.
 
 A minimal setup can be done from the command line with [psql](https://www.postgresql.org/docs/current/app-psql.html):
 ```bash
@@ -53,12 +52,12 @@ psql --host=localhost --port=5432 -U <username, default is labrinth> -W
 ```
 The default password for the database is `labrinth`. Once you've connected, run
 ```sql
-INSERT INTO loaders VALUES (0, 'placeholder');
+INSERT INTO placeholder_loader VALUES (0, 'placeholder');
 INSERT INTO loaders_project_types VALUES (0, 1); -- modloader id, supported type id
 INSERT INTO categories VALUES (0, 'placeholder_category', 1); -- category id, category, project type id
 ```
-This will initialize your database with a modloader called 'placeholder', with id 0, and marked as supporting mods only. It will also create a category called 'placeholder_category' that is marked as supporting mods only
-If you would like 'placeholder' to be marked as supporting modpacks too, run
+This will initialize your database with a modloader called 'placeholder_loader', with id 0, and marked as supporting mods only. It will also create a category called 'placeholder_category' that is marked as supporting mods only
+If you would like 'placeholder_loader' to be marked as supporting modpacks too, run
 ```sql
 INSERT INTO loaders_project_types VALUES (0, 2); -- modloader id, supported type id
 ```
