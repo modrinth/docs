@@ -1609,9 +1609,7 @@ paths:
             schema:
               type: string
               format: binary
-            encoding:
-              image:
-                contentType: image/png, image/jpeg, image/bmp, image/gif, image/webp, image/svg, image/svgz, image/rgb
+              contentMediaType: image/png, image/jpeg, image/bmp, image/gif, image/webp, image/svg, image/svgz, image/rgb
       security:
         - TokenAuth: []
       responses:
@@ -1711,9 +1709,7 @@ paths:
             schema:
               type: string
               format: binary
-            encoding:
-              image:
-                contentType: image/png, image/jpeg, image/bmp, image/gif, image/webp, image/svg, image/svgz, image/rgb
+              contentMediaType: image/png, image/jpeg, image/bmp, image/gif, image/webp, image/svg, image/svgz, image/rgb
       responses:
         "204":
           description: Gallery image successfully created
@@ -2427,13 +2423,11 @@ paths:
         - *UserIdentifier
       requestBody:
         content:
-          multipart/form-data:
+          image/*:
             schema:
-              enum:
-                - { }
-            encoding:
-              icon:
-                contentType: image/png, image/jpeg, image/bmp, image/gif, image/webp, image/svg, image/svgz, image/rgb
+              type: string
+              format: binary
+              contentMediaType: image/png, image/jpeg, image/bmp, image/gif, image/webp, image/svg, image/svgz, image/rgb
       security:
         - TokenAuth: []
       responses:
