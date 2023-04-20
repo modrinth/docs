@@ -1524,8 +1524,6 @@ paths:
           content:
             application/json:
               schema: *AuthError
-        "404":
-          description: One of the requested projects is hidden
   /projects_random:
     get:
       summary: Get a list of random projects
