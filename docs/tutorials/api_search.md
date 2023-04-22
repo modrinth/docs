@@ -67,7 +67,7 @@ All arrays in the top-level one are considered in a single AND block.
 For example, the search `[["versions:1.16.5"], ["project_type:modpack"]]` translates to `Projects that support 1.16.5 AND are modpacks`
 
 
-If you want to learn more about facets, the documentation on them is available [here](https://docs.meilisearch.com/reference/features/faceted_search.html#using-facets)
+If you want to learn more about facets, the documentation on them is available [on the MeiliSearch documentation](https://www.meilisearch.com/docs/learn/advanced/faceted_search)
 
 #### Example Query
 Here's an example query if you are confused on how to use facets:
@@ -77,6 +77,6 @@ https://api.modrinth.com/v2/search?limit=20&index=relevance&facets=[["categories
 This request searches for up to 20 projects sorted by relevance that are in the categories `adventure` and `fabric` and that support 1.17.1.
 
 ### Filters
-Filters are an alternative way to facets to filter out results. Filters are slower than facets.
+Filters are an alternative way to facets to filter out results. Filters are slower than facets.<sup>[*[citation needed](https://en.wikipedia.org/wiki/Wikipedia:Citation_needed)*]</sup>
 
-The syntax for filters can be found [here](https://docs.meilisearch.com/reference/features/filtering_and_faceted_search.html#using-filters).
+The syntax for filters can be found [on the MeiliSearch documentation](https://www.meilisearch.com/docs/learn/advanced/filtering).
