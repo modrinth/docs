@@ -52,7 +52,7 @@ psql --host=localhost --port=5432 -U <username, default is labrinth> -W
 ```
 The default password for the database is `labrinth`. Once you've connected, run
 ```sql
-INSERT INTO placeholder_loader VALUES (0, 'placeholder');
+INSERT INTO loaders VALUES (0, 'placeholder_loader');
 INSERT INTO loaders_project_types VALUES (0, 1); -- modloader id, supported type id
 INSERT INTO categories VALUES (0, 'placeholder_category', 1); -- category id, category, project type id
 ```
