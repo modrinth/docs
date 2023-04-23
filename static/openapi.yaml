@@ -251,7 +251,7 @@ components:
               type: array
               items:
                 type: string
-                description: An array of the multipart field names of each file that goes with this version
+              description: An array of the multipart field names of each file that goes with this version
             primary_file:
               type: string
               description: The multipart field name of the primary file
@@ -2020,7 +2020,12 @@ paths:
   /version:
     post:
       summary: Create a version
-      description: Project files are attached. `.mrpack` and `.jar` files are accepted.
+      description: |
+        This route creates a version on an existing project. There must be at least one file attached to each new version, unless the new version's status is `draft`. `.mrpack`, `.jar`, `.zip`, and `.litemod` files are accepted.
+        
+        The request is a [multipart request](https://www.ietf.org/rfc/rfc2388.txt) with at least two form fields: one is `data`, which includes a JSON body with the version metadata as shown below, and at least one field containing an upload file.
+        
+        You can name the file parts anything you would like, but you must list each of the parts' names in `file_parts`, and optionally, provide one to use as the primary file in `primary_file`.
       operationId: createVersion
       tags:
         - versions
