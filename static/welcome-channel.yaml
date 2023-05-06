@@ -12,7 +12,7 @@
 - type: embed
   embeds:
     - title: "**:scroll: __Rules__**"
-      color: 0xa95bf8
+      color: 0x5865f2
       description: "Modrinth's rules are easy to follow. Despite this, please keep in mind that this is not an entirely
         open forum. First and foremost, this Discord server is intended to facilitate the development of Modrinth and
         for communication regarding Modrinth. Ultimately, it is up to the discretion of the moderators whether your
@@ -42,6 +42,7 @@
   title: "**:link: __Links__**"
   links:
     Website: https://modrinth.com
+    Roadmap: https://roadmap.modrinth.com
     Blog and newsletter: https://blog.modrinth.com/subscribe?utm_medium=social&utm_source=discord&utm_campaign=welcome
     Documentation: https://docs.modrinth.com
     Status page: https://status.modrinth.com
@@ -51,23 +52,5 @@
     Help translate Modrinth: https://crowdin.com/project/modrinth
     Link to this server: https://discord.com/servers/modrinth-734077874708938864
 
-- type: roles
-  id: community-roles
-  color: 0x5865f2
-  title: "**:raising_hand: __Opt-in roles__**"
-  description: Click the button below to assign or remove any of the following roles.
-  template: "{EMOJI} **{NAME}**: {DESCRIPTION}\n"
-
-  roles:
-    992998518602076170:
-      description: Get notified when we make changes to the [Modrinth API](https://docs.modrinth.com/api-spec).
-      emoji: "<:modrinth:1040805511538421890>"
-    992998585618681907:
-      description: Get notified when there is scheduled downtime for Modrinth.
-      emoji: 📉
-    980118671215194112:
-      description: Get notified when changes are made to the [Modrinth translation project](https://crowdin.com/project/modrinth), including new strings or changes in the translation development efforts.
-      emoji: 🌐
-    1003521955703554119:
-      description: Get notified when a Modrinth team member wants a beta feature tested for bugs.
-      emoji: 🧪
+- type: text
+  text: https://discord.gg/modrinth-734077874708938864
