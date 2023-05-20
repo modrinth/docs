@@ -5,10 +5,10 @@
       description: "Modrinth only provides support for **Modrinth itself** in <#783153806531100673>, not for the
         projects present on the platform.\n\n
         If you need help with a specific project, please use the Issues link or the Discord link in the \"External
-        resources\" section of the project (see the thumbnail image).\n\n
+        resources\" section of the project (see image below).\n\n
         If the project does not have a Discord linked, please consider searching for support with your mod loader or
         launcher. A few of the Discords for common launchers and mod loaders are linked below."
-      thumbnail:
+      image:
         url: https://cdn.discordapp.com/attachments/979879523929710622/1085950147231490048/project-discord.png
 
 - type: embed
