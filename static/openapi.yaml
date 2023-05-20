@@ -57,7 +57,7 @@ servers:
 
 components:
   parameters:
-    ProjectIdentifier: &ProjectIdentifier
+    ProjectIdentifier:
       name: id|slug
       in: path
       required: true
@@ -65,7 +65,7 @@ components:
       schema:
         type: string
         example: [AABBCCDD, my_project]
-    MultipleProjectIdentifier: &MultipleProjectIdentifier
+    MultipleProjectIdentifier:
       in: query
       name: ids
       description: The IDs of the projects
@@ -75,7 +75,7 @@ components:
           type: string
         example: "[\"AABBCCDD\", \"EEFFGGHH\"]"
       required: true
-    UserIdentifier: &UserIdentifier
+    UserIdentifier:
       name: id|username
       in: path
       required: true
@@ -83,7 +83,7 @@ components:
       schema:
         type: string
         example: [EEFFGGHH, my_user]
-    VersionIdentifier: &VersionIdentifier
+    VersionIdentifier:
       name: id
       in: path
       required: true
@@ -91,7 +91,7 @@ components:
       schema:
         type: string
         example: [IIJJKKLL]
-    TeamIdentifier: &TeamIdentifier
+    TeamIdentifier:
       name: id
       in: path
       required: true
@@ -99,7 +99,7 @@ components:
       schema:
         type: string
         example: [MMNNOOPP]
-    AlgorithmIdentifier: &AlgorithmIdentifier
+    AlgorithmIdentifier:
       name: algorithm
       in: query
       required: false
@@ -109,7 +109,7 @@ components:
         enum: [sha1, sha512]
         example: sha512
         default: sha1
-    MultipleHashQueryIdentifier: &MultipleHashQueryIdentifier
+    MultipleHashQueryIdentifier:
       name: multiple
       in: query
       required: false
@@ -117,7 +117,7 @@ components:
       schema:
         type: boolean
         default: false
-    FileHashIdentifier: &FileHashIdentifier
+    FileHashIdentifier:
       name: hash
       in: path
       required: true
@@ -127,8 +127,8 @@ components:
         example: 619e250c133106bacc3e3b560839bd4b324dfda8
 
   schemas:
-  # Version
-    BaseVersion: &BaseVersion
+    # Version
+    BaseVersion:
       type: object
       properties:
         name:
@@ -202,9 +202,9 @@ components:
           enum: [listed, archived, draft, unlisted]
           nullable: true
     # https://github.com/modrinth/labrinth/blob/master/src/routes/versions.rs#L169-L190
-    EditableVersion: &EditableVersion
+    EditableVersion:
       allOf:
-        - *BaseVersion
+        - $ref: '#/components/schemas/BaseVersion'
         - type: object
           properties:
             primary_file:
@@ -238,9 +238,9 @@ components:
                   - hash
                   - file_type
     # https://github.com/modrinth/labrinth/blob/master/src/routes/version_creation.rs#L27-L57
-    CreatableVersion: &CreatableVersion
+    CreatableVersion:
       allOf:
-        - *BaseVersion
+        - $ref: '#/components/schemas/BaseVersion'
         - type: object
           properties:
             project_id:
@@ -265,9 +265,9 @@ components:
             - loaders
             - featured
             - dependencies
-    Version: &Version
+    Version:
       allOf:
-        - *BaseVersion
+        - $ref: '#/components/schemas/BaseVersion'
         - type: object
           properties:
             id:
@@ -353,7 +353,7 @@ components:
             - featured
     # Project
     # Fields that can be used in everything. Search, direct project lookup, project editing, you name it.
-    BaseProject: &BaseProject
+    BaseProject:
       type: object
       properties:
         slug:
@@ -385,9 +385,9 @@ components:
           description: The server side support of the project
           example: optional
     # Fields added to search results and direct project lookups that cannot be edited.
-    ServerRenderedProject: &ServerRenderedProject
+    ServerRenderedProject:
       allOf:
-        - *BaseProject
+        - $ref: '#/components/schemas/BaseProject'
         - type: object
           properties:
             project_type:
@@ -412,9 +412,9 @@ components:
             - project_type
             - downloads
     # The actual result in search.
-    ProjectResult: &ProjectResult
+    ProjectResult:
       allOf:
-        - *ServerRenderedProject
+        - $ref: '#/components/schemas/ServerRenderedProject'
         - type: object
           properties:
             project_id:
@@ -480,9 +480,9 @@ components:
             - date_modified
             - license
     # Fields that appear everywhere EXCEPT search.
-    NonSearchProject: &NonSearchProject
+    NonSearchProject:
       allOf:
-        - *BaseProject
+        - $ref: '#/components/schemas/BaseProject'
         - type: object
           properties:
             body:
@@ -532,9 +532,9 @@ components:
                     example: https://www.patreon.com/my_user
               description: A list of donation links for the project
     # Fields available only when editing or creating a project
-    ModifiableProject: &ModifiableProject
+    ModifiableProject:
       allOf:
-        - *NonSearchProject
+        - $ref: '#/components/schemas/NonSearchProject'
         - type: object
           properties:
             license_id:
@@ -546,9 +546,9 @@ components:
               description: The URL to this license
               nullable: true
     # Fields that can be edited through a PATCH request. https://github.com/modrinth/labrinth/blob/master/src/routes/projects.rs#L195-L269
-    EditableProject: &EditableProject
+    EditableProject:
       allOf:
-        - *ModifiableProject
+        - $ref: '#/components/schemas/ModifiableProject'
         - type: object
           properties:
             status:
@@ -570,9 +570,9 @@ components:
               description: The body of the moderators' message for the project
               nullable: true
     # Fields only available for project creation. https://github.com/modrinth/labrinth/blob/master/src/routes/project_creation.rs#L129-L197
-    CreatableProject: &CreatableProject
+    CreatableProject:
       allOf:
-        - *ModifiableProject
+        - $ref: '#/components/schemas/ModifiableProject'
         - type: object
           properties:
             project_type:
@@ -581,7 +581,8 @@ components:
               example: modpack
             initial_versions:
               type: array
-              items: *EditableVersion
+              items:
+                $ref: '#/components/schemas/EditableVersion'
               description: A list of initial versions to upload with the created project. Deprecated - please upload version files after initial upload.
               deprecated: true
             is_draft:
@@ -628,10 +629,10 @@ components:
             - client_side
             - server_side
             - license_id
-    Project: &Project
+    Project:
       allOf:
-        - *NonSearchProject
-        - *ServerRenderedProject
+        - $ref: '#/components/schemas/NonSearchProject'
+        - $ref: '#/components/schemas/ServerRenderedProject'
         - type: object
           properties:
             id:
@@ -768,24 +769,27 @@ components:
             - slug
             - body
             - status
-    ProjectDependencyList: &ProjectDependencyList
+    ProjectDependencyList:
       type: object
       properties:
         projects:
           type: array
-          items: *Project
+          items:
+            $ref: '#/components/schemas/Project'
           description: Projects that the project depends upon
         versions:
           type: array
-          items: *Version
+          items:
+            $ref: '#/components/schemas/Version'
           description: Versions that the project depends upon
     # Search
-    SearchResults: &SearchResults
+    SearchResults:
       type: object
       properties:
         hits:
           type: array
-          items: *ProjectResult
+          items:
+            $ref: '#/components/schemas/ProjectResult'
           description: The list of results
         offset:
           type: integer
@@ -805,7 +809,7 @@ components:
         - limit
         - total_hits
     # User
-    EditableUser: &EditableUser
+    EditableUser:
       type: object
       properties:
         username:
@@ -853,7 +857,7 @@ components:
         - username
     User: &User
       allOf:
-        - *EditableUser
+        - $ref: '#/components/schemas/EditableUser'
         - type: object
           properties:
             id:
@@ -899,7 +903,7 @@ components:
             - created
             - role
     # Notifications
-    Notification: &Notification
+    Notification:
       type: object
       properties:
         id:
@@ -951,7 +955,7 @@ components:
         - created
         - actions
     # Reports
-    CreatableReport: &CreatableReport
+    CreatableReport:
       type: object
       properties:
         report_type:
@@ -976,10 +980,10 @@ components:
         - item_id
         - item_type
         - body
-    Report: &Report
+    Report:
       type: object
       allOf:
-        - *CreatableReport
+        - $ref: '#/components/schemas/CreatableReport'
         - type: object
           properties:
             reporter:
@@ -994,14 +998,15 @@ components:
             - reporter
             - created
     # Team
-    TeamMember: &TeamMember
+    TeamMember:
       type: object
       properties:
         team_id:
           type: string
           example: MMNNOOPP
           description: The ID of the team this team member is a member of
-        user: *User
+        user:
+          $ref: '#/components/schemas/User'
         role:
           type: string
           example: Member
@@ -1042,7 +1047,7 @@ components:
         - role
         - accepted
     # Tags
-    CategoryTag: &CategoryTag
+    CategoryTag:
       type: object
       properties:
         icon:
@@ -1066,7 +1071,7 @@ components:
         - name
         - project_type
         - header
-    LoaderTag: &LoaderTag
+    LoaderTag:
       type: object
       properties:
         icon:
@@ -1088,7 +1093,7 @@ components:
         - icon
         - name
         - supported_project_types
-    GameVersionTag: &GameVersionTag
+    GameVersionTag:
       type: object
       properties:
         version:
@@ -1113,7 +1118,7 @@ components:
         - version_type
         - date
         - major
-    LicenseTag: &LicenseTag
+    LicenseTag:
       type: object
       properties:
         short:
@@ -1127,7 +1132,7 @@ components:
       required:
         - short
         - name
-    DonationPlatformTag: &DonationPlatformTag
+    DonationPlatformTag:
       type: object
       properties:
         short:
@@ -1142,7 +1147,7 @@ components:
         - short
         - name
     # Errors
-    InvalidInputError: &InvalidInputError
+    InvalidInputError:
       type: object
       properties:
         error:
@@ -1156,7 +1161,7 @@ components:
       required:
         - error
         - description
-    AuthError: &AuthError
+    AuthError:
       type: object
       properties:
         error:
@@ -1306,12 +1311,14 @@ paths:
           description: Search results
           content:
             application/json:
-              schema: *SearchResults
+              schema:
+                $ref: '#/components/schemas/SearchResults'
         "400":
           description: Invalid request
           content:
             application/json:
-              schema: *InvalidInputError
+              schema:
+                $ref: '#/components/schemas/InvalidInputError'
   /project/{id|slug}:
     get:
       summary: Get a project
@@ -1319,13 +1326,14 @@ paths:
       tags:
         - projects
       parameters:
-        - *ProjectIdentifier
+        - $ref: '#/components/parameters/ProjectIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
           content:
             application/json:
-              schema: *Project
+              schema:
+                $ref: '#/components/schemas/Project'
         "404":
           description: The requested project was not found or no authorization to see this project
     patch:
@@ -1336,12 +1344,13 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *ProjectIdentifier
+        - $ref: '#/components/parameters/ProjectIdentifier'
       requestBody:
         description: "Modified project fields"
         content:
           application/json:
-            schema: *EditableProject
+            schema:
+              $ref: '#/components/schemas/EditableProject'
       responses:
         "204":
           description: Project modified successfully
@@ -1349,7 +1358,8 @@ paths:
           description: No authorization to edit this project
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
         "404":
           description: The requested project was not found or no authorization to see this project
     delete:
@@ -1360,7 +1370,7 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *ProjectIdentifier
+        - $ref: '#/components/parameters/ProjectIdentifier'
       responses:
         "204":
           description: Project deleted successfully
@@ -1368,12 +1378,14 @@ paths:
           description: The requested project was not found
           content:
             application/json:
-              schema: *InvalidInputError
+              schema:
+                $ref: '#/components/schemas/InvalidInputError'
         "401":
           description: No valid authorization to delete this project
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
   /projects:
     get:
       summary: Get multiple projects
@@ -1381,7 +1393,7 @@ paths:
       tags:
         - projects
       parameters:
-        - *MultipleProjectIdentifier
+        - $ref: '#/components/parameters/MultipleProjectIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -1389,14 +1401,15 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *Project
+                items:
+                  $ref: '#/components/schemas/Project'
     patch:
       summary: Edit multiple projects
       operationId: patchProjects
       tags:
         - projects
       parameters:
-        - *MultipleProjectIdentifier
+        - $ref: '#/components/parameters/MultipleProjectIdentifier'
       requestBody:
         description: Fields to edit on all projects specified
         content:
@@ -1518,12 +1531,14 @@ paths:
           description: One of the requested projects was not found
           content:
             application/json:
-              schema: *InvalidInputError
+              schema:
+                $ref: '#/components/schemas/InvalidInputError'
         "401":
           description: No authorization to edit one of the requested projects
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
   /projects_random:
     get:
       summary: Get a list of random projects
@@ -1545,12 +1560,14 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *Project
+                items:
+                  $ref: '#/components/schemas/Project'
         "400":
           description: Invalid request
           content:
             application/json:
-              schema: *InvalidInputError
+              schema:
+                $ref: '#/components/schemas/InvalidInputError'
   /project:
     post:
       summary: Create a project
@@ -1566,7 +1583,8 @@ paths:
             schema:
               type: object
               properties:
-                data: *CreatableProject
+                data:
+                  $ref: '#/components/schemas/CreatableProject'
                 icon:
                   type: string
                   format: binary
@@ -1589,17 +1607,20 @@ paths:
           description: Project successfully created
           content:
             application/json:
-              schema: *Project
+              schema:
+                $ref: '#/components/schemas/Project'
         "400":
           description: Invalid request
           content:
             application/json:
-              schema: *InvalidInputError
+              schema:
+                $ref: '#/components/schemas/InvalidInputError'
         "401":
           description: No authorization to create a project
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
   /project/{id|slug}/icon:
     patch:
       summary: Change project's icon
@@ -1608,7 +1629,7 @@ paths:
       tags:
         - projects
       parameters:
-        - *ProjectIdentifier
+        - $ref: '#/components/parameters/ProjectIdentifier'
         - description: Image extension
           in: query
           name: ext
@@ -1632,14 +1653,15 @@ paths:
           description: Invalid input for new icon
           content:
             application/json:
-              schema: *InvalidInputError
+              schema:
+                $ref: '#/components/schemas/InvalidInputError'
     delete:
       summary: Delete project's icon
       operationId: deleteProjectIcon
       tags:
         - projects
       parameters:
-        - *ProjectIdentifier
+        - $ref: '#/components/parameters/ProjectIdentifier'
       security:
         - TokenAuth: []
       responses:
@@ -1649,12 +1671,14 @@ paths:
           description: Invalid input
           content:
             application/json:
-              schema: *InvalidInputError
+              schema:
+                $ref: '#/components/schemas/InvalidInputError'
         "401":
           description: No authorization to edit this project
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
   /project/{id|slug}/check:
     get:
       summary: Check project slug/ID validity
@@ -1662,7 +1686,7 @@ paths:
       tags:
         - projects
       parameters:
-        - *ProjectIdentifier
+        - $ref: '#/components/parameters/ProjectIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -1686,7 +1710,7 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *ProjectIdentifier
+        - $ref: '#/components/parameters/ProjectIdentifier'
         - description: Image extension
           in: query
           name: ext
@@ -1730,12 +1754,14 @@ paths:
           description: Invalid request
           content:
             application/json:
-              schema: *InvalidInputError
+              schema:
+                $ref: '#/components/schemas/InvalidInputError'
         "401":
           description: No authorization to create a gallery image
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
         "404":
           description: The requested project was not found or no authorization to see this project
     patch:
@@ -1746,7 +1772,7 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *ProjectIdentifier
+        - $ref: '#/components/parameters/ProjectIdentifier'
         - description: URL link of the image to modify
           in: query
           name: url
@@ -1781,7 +1807,8 @@ paths:
           description: No authorization to edit this gallery image
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
         "404":
           description: The requested project was not found or no authorization to see this project
     delete:
@@ -1792,7 +1819,7 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *ProjectIdentifier
+        - $ref: '#/components/parameters/ProjectIdentifier'
         - description: URL link of the image to delete
           in: query
           name: url
@@ -1807,12 +1834,14 @@ paths:
           description: Invalid URL or project specified
           content:
             application/json:
-              schema: *InvalidInputError
+              schema:
+                $ref: '#/components/schemas/InvalidInputError'
         "401":
           description: No authorization to delete this gallery image
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
   /project/{id|slug}/dependencies:
     get:
       summary: Get all of a project's dependencies
@@ -1820,13 +1849,14 @@ paths:
       tags:
         - projects
       parameters:
-        - *ProjectIdentifier
+        - $ref: '#/components/parameters/ProjectIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
           content:
             application/json:
-              schema: *ProjectDependencyList
+              schema:
+                $ref: '#/components/schemas/ProjectDependencyList'
         "404":
           description: The requested project was not found or no authorization to see this project
   /project/{id|slug}/follow:
@@ -1838,7 +1868,7 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *ProjectIdentifier
+        - $ref: '#/components/parameters/ProjectIdentifier'
       responses:
         "204":
           description: Expected response to a valid request
@@ -1846,12 +1876,14 @@ paths:
           description: You are already following the specified project or the requested project was not found
           content:
             application/json:
-              schema: *InvalidInputError
+              schema:
+                $ref: '#/components/schemas/InvalidInputError'
         "401":
           description: No authorization to follow a project
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
     delete:
       summary: Unfollow a project
       operationId: unfollowProject
@@ -1860,7 +1892,7 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *ProjectIdentifier
+        - $ref: '#/components/parameters/ProjectIdentifier'
       responses:
         "204":
           description: Expected response to a valid request
@@ -1868,12 +1900,14 @@ paths:
           description: You are not following the specified project or the requested project was not found
           content:
             application/json:
-              schema: *InvalidInputError
+              schema:
+                $ref: '#/components/schemas/InvalidInputError'
         "401":
           description: No authorization to unfollow a project
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
   /project/{id|slug}/schedule:
     post:
       summary: Schedule a project
@@ -1883,7 +1917,7 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *ProjectIdentifier
+        - $ref: '#/components/parameters/ProjectIdentifier'
       requestBody:
         description: Information about date and requested status
         content:
@@ -1909,12 +1943,14 @@ paths:
           description: Invalid input
           content:
             application/json:
-              schema: *InvalidInputError
+              schema:
+                $ref: '#/components/schemas/InvalidInputError'
         "401":
           description: No authorization to schedule this project
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
   # Version
   /project/{id|slug}/version:
     get:
@@ -1923,7 +1959,7 @@ paths:
       tags:
         - versions
       parameters:
-        - *ProjectIdentifier
+        - $ref: '#/components/parameters/ProjectIdentifier'
         - in: query
           name: loaders
           required: false
@@ -1955,7 +1991,8 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *Version
+                items:
+                  $ref: '#/components/schemas/Version'
         "404":
           description: The requested project was not found or no authorization to see this project
   /version/{id}:
@@ -1965,13 +2002,14 @@ paths:
       tags:
         - versions
       parameters:
-        - *VersionIdentifier
+        - $ref: '#/components/parameters/VersionIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
           content:
             application/json:
-              schema: *Version
+              schema:
+                $ref: '#/components/schemas/Version'
         "404":
           description: The requested version was not found or no authorization to see this version
     patch:
@@ -1982,12 +2020,13 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *VersionIdentifier
+        - $ref: '#/components/parameters/VersionIdentifier'
       requestBody:
         description: "Modified version fields"
         content:
           application/json:
-            schema: *EditableVersion
+            schema:
+              $ref: '#/components/schemas/EditableVersion'
       responses:
         "204":
           description: Version modified successfully
@@ -1995,7 +2034,8 @@ paths:
           description: No authorization to edit this version
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
         "404":
           description: The requested version was not found or no authorization to see this version
     delete:
@@ -2006,7 +2046,7 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *VersionIdentifier
+        - $ref: '#/components/parameters/VersionIdentifier'
       responses:
         "204":
           description: Version deleted successfully
@@ -2014,7 +2054,8 @@ paths:
           description: No authorization to delete this version
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
         "404":
           description: The requested version was not found or no authorization to see this version
   /version:
@@ -2038,24 +2079,28 @@ paths:
             schema:
               type: object
               properties:
-                data: *CreatableVersion
+                data:
+                  $ref: '#/components/schemas/CreatableVersion'
               required: [data]
       responses:
         "200":
           description: Version successfully created
           content:
             application/json:
-              schema: *Version
+              schema:
+                $ref: '#/components/schemas/Version'
         "400":
           description: Invalid request
           content:
             application/json:
-              schema: *InvalidInputError
+              schema:
+                $ref: '#/components/schemas/InvalidInputError'
         "401":
           description: No authorization to create this version
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
   /version/{id}/schedule:
     post:
       summary: Schedule a version
@@ -2065,7 +2110,7 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *VersionIdentifier
+        - $ref: '#/components/parameters/VersionIdentifier'
       requestBody:
         description: Information about date and requested status
         content:
@@ -2091,12 +2136,14 @@ paths:
           description: Invalid input
           content:
             application/json:
-              schema: *InvalidInputError
+              schema:
+                $ref: '#/components/schemas/InvalidInputError'
         "401":
           description: No authorization to schedule this project
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
   /versions:
     get:
       summary: Get multiple versions
@@ -2120,7 +2167,8 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *Version
+                items:
+                  $ref: '#/components/schemas/Version'
   /version/{id}/file:
     post:
       summary: Add files to version
@@ -2131,7 +2179,7 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *VersionIdentifier
+        - $ref: '#/components/parameters/VersionIdentifier'
       requestBody:
         description: "New version files"
         content:
@@ -2150,7 +2198,8 @@ paths:
           description: No authorization to modify this version
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
         "404":
           description: The requested version was not found or no authorization to see this version
   # Version file
@@ -2161,16 +2210,17 @@ paths:
       tags:
         - version-files
       parameters:
-        - *FileHashIdentifier
-        - <<: *AlgorithmIdentifier
+        - $ref: '#/components/parameters/FileHashIdentifier'
+        - $ref: '#/components/parameters/AlgorithmIdentifier'
           required: true
-        - *MultipleHashQueryIdentifier
+        - $ref: '#/components/parameters/MultipleHashQueryIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
           content:
             application/json:
-              schema: *Version
+              schema:
+                $ref: '#/components/schemas/Version'
         "404":
           description: The requested version file was not found or no authorization to see this version
     delete:
@@ -2181,8 +2231,8 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *FileHashIdentifier
-        - <<: *AlgorithmIdentifier
+        - $ref: '#/components/parameters/FileHashIdentifier'
+        - $ref: '#/components/parameters/AlgorithmIdentifier'
           required: true
         - description: Version ID to delete the version from, if multiple files of the same hash exist
           required: false
@@ -2198,7 +2248,8 @@ paths:
           description: No authorization to delete this version
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
         "404":
           description: The requested version was not found
   /version_file/{hash}/update:
@@ -2208,8 +2259,8 @@ paths:
       tags:
         - version-files
       parameters:
-        - *FileHashIdentifier
-        - <<: *AlgorithmIdentifier
+        - $ref: '#/components/parameters/FileHashIdentifier'
+        - $ref: '#/components/parameters/AlgorithmIdentifier'
           required: true
       requestBody:
         description: Parameters of the updated version requested
@@ -2236,7 +2287,8 @@ paths:
           description: Latest version retrieved successfully
           content:
             application/json:
-              schema: *Version
+              schema:
+                $ref: '#/components/schemas/Version'
         "400":
           description: Input is invalid
         "404":
@@ -2256,7 +2308,8 @@ paths:
               schema:
                 type: object
                 properties:
-                  your_hash_here: *Version
+                  your_hash_here:
+                    $ref: '#/components/schemas/Version'
         "400":
           description: Input is invalid
       requestBody:
@@ -2324,7 +2377,8 @@ paths:
               schema:
                 type: object
                 properties:
-                  your_hash_here: *Version
+                  your_hash_here:
+                    $ref: '#/components/schemas/Version'
         "400":
           description: Input is invalid
   # User
@@ -2335,13 +2389,14 @@ paths:
       tags:
         - users
       parameters:
-        - *UserIdentifier
+        - $ref: '#/components/parameters/UserIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
           content:
             application/json:
-              schema: *User
+              schema:
+                $ref: '#/components/schemas/User'
         "404":
           description: The requested user was not found
     patch:
@@ -2352,12 +2407,13 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *UserIdentifier
+        - $ref: '#/components/parameters/UserIdentifier'
       requestBody:
         description: "Modified user fields"
         content:
           application/json:
-            schema: *EditableUser
+            schema:
+              $ref: '#/components/schemas/EditableUser'
       responses:
         "204":
           description: User modified successfully
@@ -2365,7 +2421,8 @@ paths:
           description: No authorization to modify this user
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
         "404":
           description: The requested user was not found
     delete:
@@ -2376,7 +2433,7 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *UserIdentifier
+        - $ref: '#/components/parameters/UserIdentifier'
       responses:
         "204":
           description: User deleted successfully
@@ -2384,7 +2441,8 @@ paths:
           description: No authorization to delete this user
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
         "404":
           description: The requested user was not found
   /user:
@@ -2400,12 +2458,14 @@ paths:
           description: Expected response to a valid request
           content:
             application/json:
-              schema: *User
+              schema:
+                $ref: '#/components/schemas/User'
         "401":
           description: No authorization token given
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
   /users:
     get:
       summary: Get multiple users
@@ -2429,7 +2489,8 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *User
+                items:
+                  $ref: '#/components/schemas/User'
   /user/{id|username}/icon:
     patch:
       summary: Change user's avatar
@@ -2438,7 +2499,7 @@ paths:
       tags:
         - users
       parameters:
-        - *UserIdentifier
+        - $ref: '#/components/parameters/UserIdentifier'
       requestBody:
         content:
           image/*:
@@ -2455,7 +2516,8 @@ paths:
           description: Invalid format for new icon
           content:
             application/json:
-              schema: *InvalidInputError
+              schema:
+                $ref: '#/components/schemas/InvalidInputError'
         "404":
           description: The requested user was not found
   /user/{id|username}/projects:
@@ -2465,7 +2527,7 @@ paths:
       tags:
         - users
       parameters:
-        - *UserIdentifier
+        - $ref: '#/components/parameters/UserIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -2473,7 +2535,8 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *Project
+                items:
+                  $ref: '#/components/schemas/Project'
         "404":
           description: The requested user was not found
   /user/{id|username}/notifications:
@@ -2486,7 +2549,7 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *UserIdentifier
+        - $ref: '#/components/parameters/UserIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -2494,12 +2557,14 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *Notification
+                items:
+                  $ref: '#/components/schemas/Notification'
         "401":
           description: No authorization to get this user's notifications
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
         "404":
           description: The requested user was not found
   /user/{id|username}/follows:
@@ -2511,7 +2576,7 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *UserIdentifier
+        - $ref: '#/components/parameters/UserIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -2519,12 +2584,14 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *Project
+                items:
+                  $ref: '#/components/schemas/Project'
         "401":
           description: No authorization to get this user's followed projects
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
         "404":
           description: The requested user was not found
   /user/{id|username}/payouts:
@@ -2536,7 +2603,7 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *UserIdentifier
+        - $ref: '#/components/parameters/UserIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -2575,7 +2642,8 @@ paths:
           description: No authorization to get this user's transactions
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
         "404":
           description: The requested user was not found
     post:
@@ -2587,7 +2655,7 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *UserIdentifier
+        - $ref: '#/components/parameters/UserIdentifier'
         - name: amount
           in: query
           description: Amount to withdraw
@@ -2601,7 +2669,8 @@ paths:
           description: No authorization to withdraw this user's balance
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
         "404":
           description: The requested user was not found
   /report:
@@ -2617,23 +2686,27 @@ paths:
         description: The report to be sent
         content:
           application/json:
-            schema: *CreatableReport
+            schema:
+              $ref: '#/components/schemas/CreatableReport'
       responses:
         "200":
           description: Expected response to a valid request
           content:
             application/json:
-              schema: *Report
+              schema:
+                $ref: '#/components/schemas/Report'
         "400":
           description: Invalid request
           content:
             application/json:
-              schema: *InvalidInputError
+              schema:
+                $ref: '#/components/schemas/InvalidInputError'
         "401":
           description: No authorization to submit a report
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
     get:
       summary: Get reports
       operationId: getReports
@@ -2646,7 +2719,8 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *Report
+                items:
+                  $ref: '#/components/schemas/Report'
   # Teams
   /project/{id|slug}/members:
     get:
@@ -2655,7 +2729,7 @@ paths:
       tags:
         - teams
       parameters:
-        - *ProjectIdentifier
+        - $ref: '#/components/parameters/ProjectIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -2663,7 +2737,8 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *TeamMember
+                items:
+                  $ref: '#/components/schemas/TeamMember'
                 description: An array of team members
         "404":
           description: The requested project was not found or no authorization to see this project
@@ -2676,7 +2751,7 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *TeamIdentifier
+        - $ref: '#/components/parameters/TeamIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -2684,7 +2759,8 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *TeamMember
+                items:
+                  $ref: '#/components/schemas/TeamMember'
                 description: An array of team members
     post:
       summary: Add a user to a team
@@ -2694,7 +2770,7 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *TeamIdentifier
+        - $ref: '#/components/parameters/TeamIdentifier'
       requestBody:
         description: User to be added (must be the ID, usernames cannot be used here)
         content:
@@ -2713,7 +2789,8 @@ paths:
           description: No authorization to modify this team
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
         "404":
           description: The requested team was not found
   /teams:
@@ -2741,7 +2818,8 @@ paths:
                 type: array
                 items:
                   type: array
-                  items: *TeamMember
+                  items:
+                    $ref: '#/components/schemas/TeamMember'
 
   /team/{id}/join:
     post:
@@ -2752,7 +2830,7 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *TeamIdentifier
+        - $ref: '#/components/parameters/TeamIdentifier'
       responses:
         "204":
           description: Team has successfully been joined
@@ -2760,10 +2838,11 @@ paths:
           description: No authorization to join this team
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
         "404":
           description: The requested team was not found
-  /team/{team_id}/members/{user_id}:
+  /team/{id}/members/{user_id}:
     patch:
       summary: Modify a team member's information
       operationId: modifyTeamMember
@@ -2772,7 +2851,7 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *TeamIdentifier
+        - $ref: '#/components/parameters/TeamIdentifier'
         - in: path
           name: user_id
           description: The ID of the user to modify
@@ -2821,7 +2900,8 @@ paths:
           description: No authorization to change this member's roles/permissions
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
         "404":
           description: The requested team was not found
     delete:
@@ -2832,8 +2912,8 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *TeamIdentifier
-        - *UserIdentifier
+        - $ref: '#/components/parameters/TeamIdentifier'
+        - $ref: '#/components/parameters/UserIdentifier'
       responses:
         "204":
           description: User has been removed from the team successfully
@@ -2841,7 +2921,8 @@ paths:
           description: No authorization to remove this member from the team
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
         "404":
           description: The requested team was not found
   /team/{id}/owner:
@@ -2853,7 +2934,7 @@ paths:
       security:
         - TokenAuth: []
       parameters:
-        - *TeamIdentifier
+        - $ref: '#/components/parameters/TeamIdentifier'
       requestBody:
         description: New owner's ID
         content:
@@ -2872,7 +2953,8 @@ paths:
           description: No authorization to transfer ownership of this team
           content:
             application/json:
-              schema: *AuthError
+              schema:
+                $ref: '#/components/schemas/AuthError'
         "404":
           description: The requested team was not found
   # Tags
@@ -2890,7 +2972,8 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *CategoryTag
+                items:
+                  $ref: '#/components/schemas/CategoryTag'
   /tag/loader:
     get:
       summary: Get a list of loaders
@@ -2905,7 +2988,8 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *LoaderTag
+                items:
+                  $ref: '#/components/schemas/LoaderTag'
   /tag/game_version:
     get:
       summary: Get a list of game versions
@@ -2920,7 +3004,8 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *GameVersionTag
+                items:
+                  $ref: '#/components/schemas/GameVersionTag'
   /tag/license:
     get:
       summary: Get a list of licenses
@@ -2935,7 +3020,8 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *LicenseTag
+                items:
+                  $ref: '#/components/schemas/LicenseTag'
   /tag/donation_platform:
     get:
       summary: Get a list of donation platforms
@@ -2950,7 +3036,8 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *DonationPlatformTag
+                items:
+                  $ref: '#/components/schemas/DonationPlatformTag'
   /tag/report_type:
     get:
       summary: Get a list of report types
@@ -3008,4 +3095,5 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *Project
+                items:
+                  $ref: '#/components/schemas/Project'
