@@ -1,4 +1,4 @@
-openapi: '3.1.0'
+openapi: '3.0.0'
 
 info:
   version: v2.7.0/3b22f59
@@ -102,7 +102,7 @@ components:
     AlgorithmIdentifier:
       name: algorithm
       in: query
-      required: false
+      required: true
       description: The algorithm of the hash
       schema:
         type: string
@@ -125,7 +125,41 @@ components:
       schema:
         type: string
         example: 619e250c133106bacc3e3b560839bd4b324dfda8
-
+  requestBodies:
+    Image:
+      content:
+        image/png:
+          schema:
+            type: string
+            format: binary
+        image/jpeg:
+          schema:
+            type: string
+            format: binary
+        image/bmp:
+          schema:
+            type: string
+            format: binary
+        image/gif:
+          schema:
+            type: string
+            format: binary
+        image/webp:
+          schema:
+            type: string
+            format: binary
+        image/svg:
+          schema:
+            type: string
+            format: binary
+        image/svgz:
+          schema:
+            type: string
+            format: binary
+        image/rgb:
+          schema:
+            type: string
+            format: binary
   schemas:
     # Version
     BaseVersion:
@@ -491,8 +525,10 @@ components:
               example: A long body describing my project in detail
             additional_categories:
               type: array
+              items:
+                  type: string
               description: A list of categories which are searchable but non-primary
-              example: []
+              example: [technology, adventure, fabric]
             issues_url:
               type: string
               description: An optional link to where to submit bugs or issues with the project
@@ -1590,17 +1626,6 @@ paths:
                   format: binary
                   enum: ["*.png", "*.jpg", "*.jpeg", "*.bmp", "*.gif", "*.webp", "*.svg", "*.svgz", "*.rgb"]
                   description: Project icon file
-              patternProperties:
-                '^gallery-[0-9]+$':
-                  type: string
-                  format: binary
-                  enum: ["*.png", "*.jpg", "*.jpeg", "*.bmp", "*.gif", "*.webp", "*.svg", "*.svgz", "*.rgb"]
-                  description: A project gallery image file. Deprecated - please upload gallery images after initial upload.
-                  deprecated: true
-                '^version-[0-9]+-[0-9]+$':
-                  type: string
-                  description: A version file. Deprecated - please upload version files after initial upload.
-                  deprecated: true
               required: [data]
       responses:
         "200":
@@ -1638,12 +1663,7 @@ paths:
             type: string
             enum: [png, jpg, jpeg, bmp, gif, webp, svg, svgz, rgb]
       requestBody:
-        content:
-          image/*:
-            schema:
-              type: string
-              format: binary
-              contentMediaType: image/png, image/jpeg, image/bmp, image/gif, image/webp, image/svg, image/svgz, image/rgb
+        $ref: '#/components/requestBodies/Image'
       security:
         - TokenAuth: []
       responses:
@@ -1740,13 +1760,7 @@ paths:
           schema:
             type: integer
       requestBody:
-        description: New gallery image
-        content:
-          image/*:
-            schema:
-              type: string
-              format: binary
-              contentMediaType: image/png, image/jpeg, image/bmp, image/gif, image/webp, image/svg, image/svgz, image/rgb
+        $ref: '#/components/requestBodies/Image'
       responses:
         "204":
           description: Gallery image successfully created
@@ -2212,7 +2226,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/FileHashIdentifier'
         - $ref: '#/components/parameters/AlgorithmIdentifier'
-          required: true
         - $ref: '#/components/parameters/MultipleHashQueryIdentifier'
       responses:
         "200":
@@ -2233,7 +2246,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/FileHashIdentifier'
         - $ref: '#/components/parameters/AlgorithmIdentifier'
-          required: true
         - description: Version ID to delete the version from, if multiple files of the same hash exist
           required: false
           in: query
@@ -2261,7 +2273,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/FileHashIdentifier'
         - $ref: '#/components/parameters/AlgorithmIdentifier'
-          required: true
       requestBody:
         description: Parameters of the updated version requested
         content:
@@ -2501,12 +2512,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/UserIdentifier'
       requestBody:
-        content:
-          image/*:
-            schema:
-              type: string
-              format: binary
-              contentMediaType: image/png, image/jpeg, image/bmp, image/gif, image/webp, image/svg, image/svgz, image/rgb
+        $ref: '#/components/requestBodies/Image'
       security:
         - TokenAuth: []
       responses:
