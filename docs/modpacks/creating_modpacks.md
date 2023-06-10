@@ -12,7 +12,7 @@ Modrinth uses its own storage layout for modpacks. This can be found on the [for
 
 ## How do I create a modpack?
 
-You can either use [ATLauncher](https://atlauncher.com), [MultiMC](https://multimc.org), [packwiz](https://github.com/packwiz/packwiz), or [Moddermore](https://moddermore.vercel.app) to create modpacks.
+You can either use [ATLauncher](https://atlauncher.com), [MultiMC](https://multimc.org), [packwiz](https://github.com/packwiz/packwiz), or [Moddermore](https://moddermore.net) to create modpacks.
 
 ### ATLauncher
 
@@ -50,9 +50,9 @@ When you have a working packwiz pack, you can use the [`packwiz mr export`] comm
 
 ### Moddermore
 
-[Moddermore](https://moddermore.vercel.app) is a website for sharing lists of mods that Minecrafters use.
+[Moddermore](https://moddermore.net) is a website for sharing lists of mods that Minecrafters use.
 
-You can create an instance by going to [the `Create` page](https://moddermore.vercel.app/new), where you have a few options of how you want to create the list.
+You can create an instance by going to [the `Create` page](https://moddermore.net/new), where you have a few options of how you want to create the list.
 
 Once you've created the list, there will be a `Modrinth pack` button that you can click to export to the Modrinth modpack format.
 
