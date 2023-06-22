@@ -32,11 +32,11 @@ You can also convert a CurseForge modpack to the Modrinth format via ATLauncher.
 The recommended method to convert packs was previously via packwiz, but we now discourage the use of packwiz for this specific use case. packwiz does not attempt to convert the CurseForge mod versions to Modrinth versions, but ATLauncher does.
 :::
 
-### MultiMC
+### MultiMC and Prism 
 
-MultiMC is a launcher focused on efficiently managing multiple separate instances of Minecraft.
+MultiMC and Prism are launchers focused on efficiently managing multiple separate instances of Minecraft.
 
-You can easily export a MultiMC instance to the Modrinth format. You just need to select the instance, select the dropdown menu next to Export Instance and click Modrinth. Then, fill out the settings and metadata and press OK.
+You can easily export a MultiMC or Prism instance to the Modrinth format. You just need to select the instance, select the dropdown menu next to Export Instance and click Modrinth. Then, fill out the settings and metadata and press OK.
 
 ![MultiMC export](../../static/img/tutorial/multimcExport.png)
 
