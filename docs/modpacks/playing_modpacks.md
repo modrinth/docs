@@ -9,7 +9,8 @@ Please see the guide for [creating modpacks](creating_modpacks.md).
 ## How do I play a modpack?
 
 Currently, the easiest ways to play a Modrinth modpack are via [ATLauncher](https://atlauncher.com), [BakaXL](https://www.bakaxl.com/), [MultiMC](https://multimc.org), or [Prism Launcher](https://prismlauncher.org).
-To install a modpack server, try [mrpack-install](https://github.com/nothub/mrpack-install) or if using Docker, modpack support is included with [the `itzg/minecraft-server` image](https://github.com/itzg/docker-minecraft-server).
+
+To install a modpack on the server-side, try [mrpack-install](https://github.com/nothub/mrpack-install) or [the `itzg/minecraft-server` image](https://github.com/itzg/docker-minecraft-server) if using Docker.
 
 ### ATLauncher
 
