@@ -11,7 +11,7 @@ info:
     
     Example:
     ```
-    Authorization: mra_RNtLRSPmGj2pd1v1ubi52nX7TJJM9sznrmwhAuj511oe4t1jAqAQ3D6Wc8Ic
+    Authorization: mrp_RNtLRSPmGj2pd1v1ubi52nX7TJJM9sznrmwhAuj511oe4t1jAqAQ3D6Wc8Ic
     ```
     
     You do not need a token for most requests. Generally speaking, only the following types of requests require a token:
