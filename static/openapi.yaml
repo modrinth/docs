@@ -3,9 +3,12 @@ openapi: '3.0.0'
 info:
   version: v2.7.0/ec80c2b
   title: Labrinth
+  termsOfService: https://modrinth.com/legal/terms
+  contact:
+    name: Modrinth Support
+    url: https://discord.gg/modrinth
+    email: support@modrinth.com
   description: |
-    **Remember to join our [Discord](https://discord.gg/EUHuJHt) if you need any support!**
-    
     ## Authentication
     This API uses personal access tokens tied to a user account for authentication. The token is in the `Authorization` header of the request.
     
@@ -34,6 +37,15 @@ info:
     This allows for cross-domain communication from the browser.
     All responses have a wildcard same-origin which makes them completely public and accessible to everyone, including any code on any site.
     
+    ## Identifiers
+    The majority of items you can interact with in the API have a unique eight-digit base62 ID.
+    Projects, versions, users, threads, teams, and reports all use this same way of identifying themselves.
+    Version files use the sha1 or sha512 file hashes as identifiers.
+    
+    Each project and user has a friendlier way of identifying them; slugs and usernames, respectively.
+    While unique IDs are constant, slugs and usernames can change at any moment.
+    If you want to store something in the long term, it is recommended to use the unique ID.
+    
     ## Ratelimits
     The API has a ratelimit defined per IP. Limits and remaining amounts are given in the response headers.
     - `X-Ratelimit-Limit`: the maximum number of requests that can be made in a minute
@@ -52,6 +64,21 @@ info:
     - Good: `User-Agent: project_name`
     - Better: `User-Agent: github_username/project_name/1.56.0`
     - Best: `User-Agent: github_username/project_name/1.56.0 (launcher.com)` or `User-Agent: github_username/project_name/1.56.0 (contact@launcher.com)`
+    
+    ## Versioning
+    Modrinth follows a simple pattern for its API versioning.
+    In the event of a breaking API change, the API version in the URL path is bumped, and migration steps will be published [on the migrations page](/docs/migrations/information).
+    
+    When an API is no longer the current one, it will immediately be considered deprecated.
+    No more support will be provided for API versions older than the current one.
+    It will be kept for some time, but this amount of time is not certain.
+    
+    We will exercise various tactics to get people to update their implementation of our API.
+    One example is by adding something like `STOP USING THIS API` to various data returned by the API.
+    
+    Once an API version is completely deprecated, it will permanently return a 410 error.
+    Please ensure your application handles these 410 errors.
+
 # The above snippet about User Agents was adapted from https://crates.io/policies, copyright (c) 2014 The Rust Project Developers under MIT license
 
 servers:
@@ -1268,7 +1295,7 @@ components:
         icon:
           type: string
           description: The SVG icon of a category
-          example: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76\"/></svg>"
+          example: <svg></svg>
         name:
           type: string
           description: The name of the category
@@ -1292,7 +1319,7 @@ components:
         icon:
           type: string
           description: The SVG icon of a loader
-          example: "<svg viewBox=\"0 0 276 288\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"23\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"matrix(1,0,0,1,-3302.43,-67.3276)\"><g transform=\"matrix(0.564163,0,0,1.70346,1629.87,0)\"><g transform=\"matrix(1.97801,-0.0501803,0.151517,0.655089,1678.7,-354.14)\"><g><path d=\"M820.011,761.092C798.277,738.875 754.809,694.442 734.36,673.389C729.774,668.668 723.992,663.75 708.535,674.369C688.629,688.043 700.073,696.251 703.288,699.785C711.508,708.824 787.411,788.803 800.523,803.818C802.95,806.597 780.243,781.318 793.957,764.065C799.444,757.163 811.985,752.043 820.011,761.092C826.534,768.447 830.658,779.178 816.559,790.826C791.91,811.191 714.618,873.211 689.659,893.792C677.105,904.144 661.053,896.143 653.827,887.719C646.269,878.908 623.211,853.212 602.539,829.646C596.999,823.332 598.393,810.031 604.753,804.545C639.873,774.253 696.704,730.787 716.673,713.831\"/></g></g></g></g></svg>"
+          example: <svg></svg>
         name:
           type: string
           description: The name of the loader
@@ -1385,7 +1412,7 @@ components:
 tags:
   - name: projects
     x-displayName: Projects
-    description: Projects can be mods or modpacks and are created by users.
+    description: Projects are what Modrinth is centered around, be it mods, modpacks, resource packs, etc.
   - name: versions
     x-displayName: Versions
     description: Versions contain download links to files with additional metadata.
@@ -1472,7 +1499,51 @@ paths:
               items:
                 type: string
           example: "[[\"categories:forge\"],[\"versions:1.17.1\"],[\"project_type:mod\"],[\"license:mit\"]]"
-          description: The recommended way of filtering search results. [Learn more about using facets.](/docs/tutorials/api_search)
+          description: |
+            Facets are an essential concept for understanding how to filter out results.
+            
+            These are the most commonly used facet types:
+            - `project_type`
+            - `categories` (loaders are lumped in with categories in search)
+            - `versions`
+            - `client_side`
+            - `server_side`
+            - `open_source`
+            
+            Several others are also available for use, though these should not be used outside very specific use cases.
+            - `title`
+            - `author`
+            - `date_modified`
+            - `follows`
+            - `project_id`
+            - `license`
+            - `date_created`
+            - `downloads`
+            - `color`
+            
+            In order to then use these facets, you need a value to filter by, as well as an operation to perform on this value.
+            The most common operation is `:` (same as `=`), though you can also use `!=`, `>=`, `>`, `<=`, and `<`.
+            Join together the type, operation, and value, and you've got your string.
+            ```
+            {type} {operation} {value}
+            ```
+            
+            Examples:
+            ```
+            categories = adventure
+            versions != 1.20.1
+            downloads <= 100
+            ```
+            
+            You then join these strings together in arrays to signal `AND` and `OR` operators.
+            
+            ##### OR
+            All elements in a single array are considered to be joined by OR statements.  
+            For example, the search `[["versions:1.16.5", "versions:1.17.1"]]` translates to `Projects that support 1.16.5 OR 1.17.1`.
+
+            ##### AND
+            Separate arrays are considered to be joined by AND statements.  
+            For example, the search `[["versions:1.16.5"], ["project_type:modpack"]]` translates to `Projects that support 1.16.5 AND are modpacks`.
         - in: query
           name: index
           schema:
@@ -1499,13 +1570,15 @@ paths:
             type: integer
             default: 10
             example: 20
+            minimum: 0
+            maximum: 100
           description: The number of results returned by the search
         - in: query
           name: filters
           schema:
             type: string
             example: categories="fabric" AND (categories="technology" OR categories="utility")
-          description: A list of filters relating to the properties of a project. Use filters when there isn't an available facet for your needs. [More information](https://docs.meilisearch.com/reference/features/filtering.html)
+          description: A list of filters relating to the properties of a project. Facets are generally recommended over filters.
         - in: query
           name: version
           schema:
@@ -1529,13 +1602,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/InvalidInputError'
   /project/{id|slug}:
+    parameters:
+      - $ref: '#/components/parameters/ProjectIdentifier'
     get:
       summary: Get a project
       operationId: getProject
       tags:
         - projects
-      parameters:
-        - $ref: '#/components/parameters/ProjectIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -1552,8 +1625,6 @@ paths:
         - projects
       security:
         - TokenAuth: ['PROJECT_WRITE']
-      parameters:
-        - $ref: '#/components/parameters/ProjectIdentifier'
       requestBody:
         description: "Modified project fields"
         content:
@@ -1578,8 +1649,6 @@ paths:
         - projects
       security:
         - TokenAuth: ['PROJECT_DELETE']
-      parameters:
-        - $ref: '#/components/parameters/ProjectIdentifier'
       responses:
         "204":
           description: Expected response to a valid request
@@ -1596,13 +1665,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthError'
   /projects:
+    parameters:
+      - $ref: '#/components/parameters/MultipleProjectIdentifier'
     get:
       summary: Get multiple projects
       operationId: getProjects
       tags:
         - projects
-      parameters:
-        - $ref: '#/components/parameters/MultipleProjectIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -1619,8 +1688,6 @@ paths:
         - projects
       security:
         - TokenAuth: ['PROJECT_WRITE']
-      parameters:
-        - $ref: '#/components/parameters/MultipleProjectIdentifier'
       requestBody:
         description: Fields to edit on all projects specified
         content:
@@ -1819,6 +1886,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthError'
   /project/{id|slug}/icon:
+    parameters:
+      - $ref: '#/components/parameters/ProjectIdentifier'
     patch:
       summary: Change project's icon
       description: The new icon may be up to 256KiB in size.
@@ -1826,7 +1895,6 @@ paths:
       tags:
         - projects
       parameters:
-        - $ref: '#/components/parameters/ProjectIdentifier'
         - description: Image extension
           in: query
           name: ext
@@ -1852,8 +1920,6 @@ paths:
       operationId: deleteProjectIcon
       tags:
         - projects
-      parameters:
-        - $ref: '#/components/parameters/ProjectIdentifier'
       security:
         - TokenAuth: ['PROJECT_WRITE']
       responses:
@@ -3711,6 +3777,66 @@ paths:
                   type: string
                 example: [ required, optional, unsupported, unknown ]
   # Miscellaneous
+  /updates/{id|slug}/forge_updates.json:
+    parameters:
+      - $ref: '#/components/parameters/ProjectIdentifier'
+    servers:
+      - url: https://api.modrinth.com
+        description: Production server
+      - url: https://staging-api.modrinth.com
+        description: Staging server
+    get:
+      summary: Forge Updates JSON file
+      operationId: forgeUpdates
+      description: |
+        If you're a Forge mod developer, your Modrinth mods have an automatically generated `updates.json` using the
+        [Forge Update Checker](https://docs.minecraftforge.net/en/latest/misc/updatechecker/).
+
+        The only setup is to insert the URL into the `[[mods]]` section of your `mods.toml` file as such:
+
+        ```toml
+        [[mods]]
+        # the other stuff here - ID, version, display name, etc. 
+        updateJSONURL = "https://api.modrinth.com/updates/{slug|ID}/forge_updates.json"
+        ```
+
+        Replace `{slug|id}` with the slug or ID of your project.
+
+        Modrinth will handle the rest! When you update your mod, Forge will notify your users that their copy of your mod is out of date.
+
+        Make sure that the version format you use for your Modrinth releases is the same as the version format you use in your `mods.toml`.
+        If you use a format such as `1.2.3-forge` or `1.2.3+1.19` with your Modrinth releases but your `mods.toml` only has `1.2.3`,
+        the update checker may not function properly.
+      tags:
+        - misc
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  homepage:
+                    type: string
+                    description: A link to the mod page
+                    example: https://modrinth.com
+                  promos:
+                    type: object
+                    description: A list of the recommended and latest versions for each Minecraft release
+                    properties:
+                      "{version}-recommended":
+                        type: string
+                        description: The mod version that is recommended for `{version}`. Excludes versions with the `alpha` and `beta` version types.
+                      "{version}-latest":
+                        type: string
+                        description: The latest mod version for `{version}`. Shows versions with the `alpha` and `beta` version types.
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidInputError'
   /statistics:
     get:
       summary: Various statistics about this Modrinth instance

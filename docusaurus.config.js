@@ -89,7 +89,7 @@ module.exports = {
             },
             {
               label: 'Discord',
-              href: 'https://discord.gg/EUHuJHt',
+              href: 'https://discord.gg/modrinth',
             },
             {
               label: 'GitHub',

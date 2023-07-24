@@ -1,4 +1,4 @@
-# Formatting
+# Formatting Reference
 
 Modrinth's text fields, including project bodies and version changelogs, use [GitHub Flavored Markdown](https://github.github.com/gfm).
 
