@@ -8,9 +8,19 @@ Please see the guide for [creating modpacks](creating_modpacks.md).
 
 ## How do I play a modpack?
 
-Currently, the easiest ways to play a Modrinth modpack are via [ATLauncher](https://atlauncher.com), [BakaXL](https://www.bakaxl.com/), [MultiMC](https://multimc.org), or [Prism Launcher](https://prismlauncher.org).
+Currently, the easiest ways to play a Modrinth modpack are via [MultiMC](https://multimc.org), [Prism Launcher](https://prismlauncher.org), [ATLauncher](https://atlauncher.com), or [BakaXL](https://www.bakaxl.com/).
 
 To install a modpack on the server-side, try [mrpack-install](https://github.com/nothub/mrpack-install) or [the `itzg/minecraft-server` image](https://github.com/itzg/docker-minecraft-server) if using Docker.
+
+### MultiMC and Prism Launcher
+
+MultiMC and Prism are both launchers focused on efficiently managing multiple separate instances. The installation instructions for each are identical.
+
+Modrinth packs can be installed using the "Add instance" button and clicking "Modrinth" on the left. It's as easy as selecting the one you want, and pressing "OK".
+
+![MultiMC](../../static/img/tutorial/multimc.png)
+
+If you want to insert a URL directly, you can do so by selecting "Import from zip" instead of "Modrinth".
 
 ### ATLauncher
 
@@ -26,7 +36,7 @@ If you have a direct link to a Modrinth pack, you also have the option of import
 
 ![ATLauncher import](../../static/img/tutorial/atlauncherImport.png)
 
-### BakaXL
+### BakaXL (primarily for Chinese speakers)
 
 BakaXL is a Windows-only launcher primarily targeting Chinese speakers.
 
@@ -51,13 +61,3 @@ Click the "Add a new Minecraft Core or Mod Pack" tile in the Start Menu, then cl
 ![Add a new Minecraft Core or Mod Pack Tile](../../static/img/tutorial/BakaXLAddCoreTile.png)
 
 Click "Continue" and drag the modpack file into BakaXL.
-
-### MultiMC and Prism Launcher
-
-MultiMC and Prism are both launchers focused on efficiently managing multiple separate instances. The installation instructions for each are identical.
-
-Modrinth packs can be installed using the "Add instance" button and clicking "Modrinth" on the left. It's as easy as selecting the one you want, and pressing "OK".
-
-![MultiMC](../../static/img/tutorial/multimc.png)
-
-If you want to insert a URL directly, you can do so by selecting "Import from zip" instead of "Modrinth".
