@@ -155,16 +155,6 @@ components:
       schema:
         type: string
         example: [NNOOPPQQ]
-    MultipleNotificationIdentifier:
-      in: query
-      name: ids
-      description: The IDs of the notifications
-      schema:
-        type: array
-        items:
-          type: string
-        example: "[\"AABBCCDD\", \"EEFFGGHH\"]"
-      required: true
     AlgorithmIdentifier:
       name: algorithm
       in: query
@@ -1825,6 +1815,8 @@ paths:
           schema:
             type: integer
             example: 70
+            minimum: 0
+            maximum: 100
           description: The number of random projects to return
       tags:
         - projects
@@ -1938,13 +1930,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthError'
   /project/{id|slug}/check:
+    parameters:
+      - $ref: '#/components/parameters/ProjectIdentifier'
     get:
       summary: Check project slug/ID validity
       operationId: checkProjectValidity
       tags:
         - projects
-      parameters:
-        - $ref: '#/components/parameters/ProjectIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -1959,6 +1951,8 @@ paths:
         "404":
           description: The requested item(s) were not found or no authorization to access the requested item(s)
   /project/{id|slug}/gallery:
+    parameters:
+      - $ref: '#/components/parameters/ProjectIdentifier'
     post:
       summary: Add a gallery image
       description: Modrinth allows you to upload files of up to 5MiB to a project's gallery.
@@ -1968,7 +1962,6 @@ paths:
       security:
         - TokenAuth: ['PROJECT_WRITE']
       parameters:
-        - $ref: '#/components/parameters/ProjectIdentifier'
         - description: Image extension
           in: query
           name: ext
@@ -2024,7 +2017,6 @@ paths:
       security:
         - TokenAuth: ['PROJECT_WRITE']
       parameters:
-        - $ref: '#/components/parameters/ProjectIdentifier'
         - description: URL link of the image to modify
           in: query
           name: url
@@ -2071,7 +2063,6 @@ paths:
       security:
         - TokenAuth: ['PROJECT_WRITE']
       parameters:
-        - $ref: '#/components/parameters/ProjectIdentifier'
         - description: URL link of the image to delete
           in: query
           name: url
@@ -2095,13 +2086,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthError'
   /project/{id|slug}/dependencies:
+    parameters:
+      - $ref: '#/components/parameters/ProjectIdentifier'
     get:
       summary: Get all of a project's dependencies
       operationId: getDependencies
       tags:
         - projects
-      parameters:
-        - $ref: '#/components/parameters/ProjectIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -2112,6 +2103,8 @@ paths:
         "404":
           description: The requested item(s) were not found or no authorization to access the requested item(s)
   /project/{id|slug}/follow:
+    parameters:
+      - $ref: '#/components/parameters/ProjectIdentifier'
     post:
       summary: Follow a project
       operationId: followProject
@@ -2119,8 +2112,6 @@ paths:
         - projects
       security:
         - TokenAuth: ['USER_WRITE']
-      parameters:
-        - $ref: '#/components/parameters/ProjectIdentifier'
       responses:
         "204":
           description: Expected response to a valid request
@@ -2143,8 +2134,6 @@ paths:
         - projects
       security:
         - TokenAuth: ['USER_WRITE']
-      parameters:
-        - $ref: '#/components/parameters/ProjectIdentifier'
       responses:
         "204":
           description: Expected response to a valid request
@@ -2161,6 +2150,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthError'
   /project/{id|slug}/schedule:
+    parameters:
+      - $ref: '#/components/parameters/ProjectIdentifier'
     post:
       summary: Schedule a project
       operationId: scheduleProject
@@ -2168,8 +2159,6 @@ paths:
         - projects
       security:
         - TokenAuth: ['PROJECT_WRITE']
-      parameters:
-        - $ref: '#/components/parameters/ProjectIdentifier'
       requestBody:
         description: Information about date and requested status
         content:
@@ -2205,13 +2194,14 @@ paths:
                 $ref: '#/components/schemas/AuthError'
   # Version
   /project/{id|slug}/version:
+    parameters:
+      - $ref: '#/components/parameters/ProjectIdentifier'
     get:
       summary: List project's versions
       operationId: getProjectVersions
       tags:
         - versions
       parameters:
-        - $ref: '#/components/parameters/ProjectIdentifier'
         - in: query
           name: loaders
           required: false
@@ -2248,38 +2238,13 @@ paths:
         "404":
           description: The requested item(s) were not found or no authorization to access the requested item(s)
   /version/{id}:
+    parameters:
+      - $ref: '#/components/parameters/VersionIdentifier'
     get:
       summary: Get a version
       operationId: getVersion
       tags:
         - versions
-      parameters:
-        - $ref: '#/components/parameters/VersionIdentifier'
-      responses:
-        "200":
-          description: Expected response to a valid request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Version'
-        "404":
-          description: The requested item(s) were not found or no authorization to access the requested item(s)
-  /project/{id|slug}/version/{id|number}:
-    get:
-      summary: Get a version given a version number or ID
-      description: Please note that, if the version number provided matches multiple versions, only the **oldest matching version** will be returned.
-      operationId: getVersionFromIdOrNumber
-      tags:
-        - versions
-      parameters:
-        - $ref: '#/components/parameters/ProjectIdentifier'
-        - name: id|number
-          in: path
-          required: true
-          description: The version ID or version number
-          schema:
-            type: string
-            example: [IIJJKKLL]
       responses:
         "200":
           description: Expected response to a valid request
@@ -2296,8 +2261,6 @@ paths:
         - versions
       security:
         - TokenAuth: ['VERSION_WRITE']
-      parameters:
-        - $ref: '#/components/parameters/VersionIdentifier'
       requestBody:
         description: "Modified version fields"
         content:
@@ -2322,8 +2285,6 @@ paths:
         - versions
       security:
         - TokenAuth: ['VERSION_DELETE']
-      parameters:
-        - $ref: '#/components/parameters/VersionIdentifier'
       responses:
         "204":
           description: Expected response to a valid request
@@ -2333,6 +2294,31 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AuthError'
+        "404":
+          description: The requested item(s) were not found or no authorization to access the requested item(s)
+  /project/{id|slug}/version/{id|number}:
+    parameters:
+      - $ref: '#/components/parameters/ProjectIdentifier'
+      - name: id|number
+        in: path
+        required: true
+        description: The version ID or version number
+        schema:
+          type: string
+          example: [IIJJKKLL]
+    get:
+      summary: Get a version given a version number or ID
+      description: Please note that, if the version number provided matches multiple versions, only the **oldest matching version** will be returned.
+      operationId: getVersionFromIdOrNumber
+      tags:
+        - versions
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Version'
         "404":
           description: The requested item(s) were not found or no authorization to access the requested item(s)
   /version:
@@ -2379,6 +2365,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthError'
   /version/{id}/schedule:
+    parameters:
+      - $ref: '#/components/parameters/VersionIdentifier'
     post:
       summary: Schedule a version
       operationId: scheduleVersion
@@ -2386,8 +2374,6 @@ paths:
         - versions
       security:
         - TokenAuth: ['VERSION_WRITE']
-      parameters:
-        - $ref: '#/components/parameters/VersionIdentifier'
       requestBody:
         description: Information about date and requested status
         content:
@@ -2422,21 +2408,21 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthError'
   /versions:
+    parameters:
+      - in: query
+        name: ids
+        description: The IDs of the versions
+        schema:
+          type: array
+          items:
+            type: string
+          example: "[\"AABBCCDD\", \"EEFFGGHH\"]"
+        required: true
     get:
       summary: Get multiple versions
       operationId: getVersions
       tags:
         - versions
-      parameters:
-        - in: query
-          name: ids
-          description: The IDs of the versions
-          schema:
-            type: array
-            items:
-              type: string
-            example: "[\"AABBCCDD\", \"EEFFGGHH\"]"
-          required: true
       responses:
         "200":
           description: Expected response to a valid request
@@ -2447,6 +2433,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/Version'
   /version/{id}/file:
+    parameters:
+      - $ref: '#/components/parameters/VersionIdentifier'
     post:
       summary: Add files to version
       description: Project files are attached. `.mrpack` and `.jar` files are accepted.
@@ -2455,8 +2443,6 @@ paths:
         - versions
       security:
         - TokenAuth: ['VERSION_WRITE']
-      parameters:
-        - $ref: '#/components/parameters/VersionIdentifier'
       requestBody:
         description: "New version files"
         content:
@@ -2481,14 +2467,15 @@ paths:
           description: The requested item(s) were not found or no authorization to access the requested item(s)
   # Version file
   /version_file/{hash}:
+    parameters:
+      - $ref: '#/components/parameters/FileHashIdentifier'
+      - $ref: '#/components/parameters/AlgorithmIdentifier'
     get:
       summary: Get version from hash
       operationId: versionFromHash
       tags:
         - version-files
       parameters:
-        - $ref: '#/components/parameters/FileHashIdentifier'
-        - $ref: '#/components/parameters/AlgorithmIdentifier'
         - $ref: '#/components/parameters/MultipleHashQueryIdentifier'
       responses:
         "200":
@@ -2507,8 +2494,6 @@ paths:
       security:
         - TokenAuth: ['VERSION_WRITE']
       parameters:
-        - $ref: '#/components/parameters/FileHashIdentifier'
-        - $ref: '#/components/parameters/AlgorithmIdentifier'
         - description: Version ID to delete the version from, if multiple files of the same hash exist
           required: false
           in: query
@@ -2528,14 +2513,14 @@ paths:
         "404":
           description: The requested item(s) were not found or no authorization to access the requested item(s)
   /version_file/{hash}/update:
+    parameters:
+      - $ref: '#/components/parameters/FileHashIdentifier'
+      - $ref: '#/components/parameters/AlgorithmIdentifier'
     post:
       summary: Latest version of a project from a hash, loader(s), and game version(s)
       operationId: getLatestVersionFromHash
       tags:
         - version-files
-      parameters:
-        - $ref: '#/components/parameters/FileHashIdentifier'
-        - $ref: '#/components/parameters/AlgorithmIdentifier'
       requestBody:
         description: Parameters of the updated version requested
         content:
@@ -2695,13 +2680,13 @@ paths:
   #              - algorithm
   # User
   /user/{id|username}:
+    parameters:
+      - $ref: '#/components/parameters/UserIdentifier'
     get:
       summary: Get a user
       operationId: getUser
       tags:
         - users
-      parameters:
-        - $ref: '#/components/parameters/UserIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -2718,8 +2703,6 @@ paths:
         - users
       security:
         - TokenAuth: ['USER_WRITE']
-      parameters:
-        - $ref: '#/components/parameters/UserIdentifier'
       requestBody:
         description: "Modified user fields"
         content:
@@ -2759,21 +2742,21 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthError'
   /users:
+    parameters:
+      - in: query
+        name: ids
+        description: The IDs of the users
+        schema:
+          type: array
+          items:
+            type: string
+          example: "[\"AABBCCDD\", \"EEFFGGHH\"]"
+        required: true
     get:
       summary: Get multiple users
       operationId: getUsers
       tags:
         - users
-      parameters:
-        - in: query
-          name: ids
-          description: The IDs of the users
-          schema:
-            type: array
-            items:
-              type: string
-            example: "[\"AABBCCDD\", \"EEFFGGHH\"]"
-          required: true
       responses:
         "200":
           description: Expected response to a valid request
@@ -2784,14 +2767,14 @@ paths:
                 items:
                   $ref: '#/components/schemas/User'
   /user/{id|username}/icon:
+    parameters:
+      - $ref: '#/components/parameters/UserIdentifier'
     patch:
       summary: Change user's avatar
       description: The new avatar may be up to 2MiB in size.
       operationId: changeUserIcon
       tags:
         - users
-      parameters:
-        - $ref: '#/components/parameters/UserIdentifier'
       requestBody:
         $ref: '#/components/requestBodies/Image'
       security:
@@ -2808,13 +2791,13 @@ paths:
         "404":
           description: The requested item(s) were not found or no authorization to access the requested item(s)
   /user/{id|username}/projects:
+    parameters:
+      - $ref: '#/components/parameters/UserIdentifier'
     get:
       summary: Get user's projects
       operationId: getUserProjects
       tags:
         - users
-      parameters:
-        - $ref: '#/components/parameters/UserIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -2827,6 +2810,8 @@ paths:
         "404":
           description: The requested item(s) were not found or no authorization to access the requested item(s)
   /user/{id|username}/follows:
+    parameters:
+      - $ref: '#/components/parameters/UserIdentifier'
     get:
       summary: Get user's followed projects
       operationId: getFollowedProjects
@@ -2834,8 +2819,6 @@ paths:
         - users
       security:
         - TokenAuth: ['USER_READ']
-      parameters:
-        - $ref: '#/components/parameters/UserIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -2854,6 +2837,8 @@ paths:
         "404":
           description: The requested item(s) were not found or no authorization to access the requested item(s)
   /user/{id|username}/payouts:
+    parameters:
+      - $ref: '#/components/parameters/UserIdentifier'
     get:
       summary: Get user's payout history
       operationId: getPayoutHistory
@@ -2861,8 +2846,6 @@ paths:
         - users
       security:
         - TokenAuth: ['PAYOUTS_READ']
-      parameters:
-        - $ref: '#/components/parameters/UserIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -2914,7 +2897,6 @@ paths:
       security:
         - TokenAuth: ['PAYOUTS_WRITE']
       parameters:
-        - $ref: '#/components/parameters/UserIdentifier'
         - name: amount
           in: query
           description: Amount to withdraw
@@ -2934,6 +2916,8 @@ paths:
           description: The requested item(s) were not found or no authorization to access the requested item(s)
   # Notifications
   /user/{id|username}/notifications:
+    parameters:
+      - $ref: '#/components/parameters/UserIdentifier'
     get:
       summary: Get user's notifications
       operationId: getUserNotifications
@@ -2941,8 +2925,6 @@ paths:
         - notifications
       security:
         - TokenAuth: ['NOTIFICATION_READ']
-      parameters:
-        - $ref: '#/components/parameters/UserIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -2961,6 +2943,8 @@ paths:
         "404":
           description: The requested item(s) were not found or no authorization to access the requested item(s)
   /notification/{id}:
+    parameters:
+      - $ref: '#/components/parameters/NotificationIdentifier'
     get:
       summary: Get notification from ID
       operationId: getNotification
@@ -2968,8 +2952,6 @@ paths:
         - notifications
       security:
         - TokenAuth: ['NOTIFICATION_READ']
-      parameters:
-        - $ref: '#/components/parameters/NotificationIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -2992,8 +2974,6 @@ paths:
         - notifications
       security:
         - TokenAuth: ['NOTIFICATION_WRITE']
-      parameters:
-        - $ref: '#/components/parameters/NotificationIdentifier'
       responses:
         "204":
           description: Expected response to a valid request
@@ -3012,8 +2992,6 @@ paths:
         - notifications
       security:
         - TokenAuth: ['NOTIFICATION_WRITE']
-      parameters:
-        - $ref: '#/components/parameters/NotificationIdentifier'
       responses:
         "204":
           description: Expected response to a valid request
@@ -3026,6 +3004,16 @@ paths:
         "404":
           description: The requested item(s) were not found or no authorization to access the requested item(s)
   /notifications:
+    parameters:
+      - in: query
+        name: ids
+        description: The IDs of the notifications
+        schema:
+          type: array
+          items:
+            type: string
+          example: "[\"AABBCCDD\", \"EEFFGGHH\"]"
+        required: true
     get:
       summary: Get multiple notifications
       operationId: getNotifications
@@ -3033,8 +3021,6 @@ paths:
         - notifications
       security:
         - TokenAuth: ['NOTIFICATION_READ']
-      parameters:
-        - $ref: '#/components/parameters/MultipleNotificationIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -3059,8 +3045,6 @@ paths:
         - notifications
       security:
         - TokenAuth: ['NOTIFICATION_WRITE']
-      parameters:
-        - $ref: '#/components/parameters/MultipleNotificationIdentifier'
       responses:
         "204":
           description: Expected response to a valid request
@@ -3079,8 +3063,6 @@ paths:
         - notifications
       security:
         - TokenAuth: ['NOTIFICATION_WRITE']
-      parameters:
-        - $ref: '#/components/parameters/MultipleNotificationIdentifier'
       responses:
         "204":
           description: Expected response to a valid request
@@ -3158,6 +3140,8 @@ paths:
         "404":
           description: The requested item(s) were not found or no authorization to access the requested item(s)
   /report/{id}:
+    parameters:
+      - $ref: '#/components/parameters/ReportIdentifier'
     get:
       summary: Get report from ID
       operationId: getReport
@@ -3165,8 +3149,6 @@ paths:
         - threads
       security:
         - TokenAuth: ['REPORT_READ']
-      parameters:
-        - $ref: '#/components/parameters/ReportIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -3189,8 +3171,6 @@ paths:
         - threads
       security:
         - TokenAuth: ['REPORT_WRITE']
-      parameters:
-        - $ref: '#/components/parameters/ReportIdentifier'
       requestBody:
         description: What to modify about the report
         content:
@@ -3223,6 +3203,16 @@ paths:
         "404":
           description: The requested item(s) were not found or no authorization to access the requested item(s)
   /reports:
+    parameters:
+      - in: query
+        name: ids
+        description: The IDs of the reports
+        schema:
+          type: array
+          items:
+            type: string
+          example: "[\"AABBCCDD\", \"EEFFGGHH\"]"
+        required: true
     get:
       summary: Get multiple reports
       operationId: getReports
@@ -3230,16 +3220,6 @@ paths:
         - threads
       security:
         - TokenAuth: ['REPORT_READ']
-      parameters:
-        - in: query
-          name: ids
-          description: The IDs of the reports
-          schema:
-            type: array
-            items:
-              type: string
-            example: "[\"AABBCCDD\", \"EEFFGGHH\"]"
-          required: true
       responses:
         "200":
           description: Expected response to a valid request
@@ -3258,6 +3238,8 @@ paths:
         "404":
           description: The requested item(s) were not found or no authorization to access the requested item(s)
   /thread/{id}:
+    parameters:
+      - $ref: '#/components/parameters/ThreadIdentifier'
     get:
       summary: Get a thread
       operationId: getThread
@@ -3265,8 +3247,6 @@ paths:
         - threads
       security:
         - TokenAuth: ['THREAD_READ']
-      parameters:
-        - $ref: '#/components/parameters/ThreadIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -3289,8 +3269,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ThreadMessageBody'
-      parameters:
-        - $ref: '#/components/parameters/ThreadIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -3307,6 +3285,16 @@ paths:
         "404":
           description: The requested item(s) were not found or no authorization to access the requested item(s)
   /threads:
+    parameters:
+      - in: query
+        name: ids
+        description: The IDs of the threads
+        schema:
+          type: array
+          items:
+            type: string
+          example: "[\"AABBCCDD\", \"EEFFGGHH\"]"
+        required: true
     get:
       summary: Get multiple threads
       operationId: getThreads
@@ -3314,16 +3302,6 @@ paths:
         - threads
       security:
         - TokenAuth: ['THREAD_READ']
-      parameters:
-        - in: query
-          name: ids
-          description: The IDs of the threads
-          schema:
-            type: array
-            items:
-              type: string
-            example: "[\"AABBCCDD\", \"EEFFGGHH\"]"
-          required: true
       responses:
         "200":
           description: Expected response to a valid request
@@ -3336,6 +3314,14 @@ paths:
         "404":
           description: The requested item(s) were not found or no authorization to access the requested item(s)
   /message/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the message
+        schema:
+          type: string
+          example: [IIJJKKLL]
     delete:
       summary: Delete a thread message
       operationId: deleteThreadMessage
@@ -3343,14 +3329,6 @@ paths:
         - threads
       security:
         - TokenAuth: ['THREAD_WRITE']
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: The ID of the message
-          schema:
-            type: string
-            example: [IIJJKKLL]
       responses:
         "204":
           description: Expected response to a valid request
@@ -3364,13 +3342,13 @@ paths:
           description: The requested item(s) were not found or no authorization to access the requested item(s)
   # Teams
   /project/{id|slug}/members:
+    parameters:
+      - $ref: '#/components/parameters/ProjectIdentifier'
     get:
       summary: Get a project's team members
       operationId: getProjectTeamMembers
       tags:
         - teams
-      parameters:
-        - $ref: '#/components/parameters/ProjectIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -3384,6 +3362,8 @@ paths:
         "404":
           description: The requested item(s) were not found or no authorization to access the requested item(s)
   /team/{id}/members:
+    parameters:
+      - $ref: '#/components/parameters/TeamIdentifier'
     get:
       summary: Get a team's members
       operationId: getTeamMembers
@@ -3391,8 +3371,6 @@ paths:
         - teams
       security:
         - TokenAuth: ['PROJECT_READ']
-      parameters:
-        - $ref: '#/components/parameters/TeamIdentifier'
       responses:
         "200":
           description: Expected response to a valid request
@@ -3410,8 +3388,6 @@ paths:
         - teams
       security:
         - TokenAuth: ['PROJECT_WRITE']
-      parameters:
-        - $ref: '#/components/parameters/TeamIdentifier'
       requestBody:
         description: User to be added (must be the ID, usernames cannot be used here)
         content:
@@ -3435,21 +3411,21 @@ paths:
         "404":
           description: The requested item(s) were not found or no authorization to access the requested item(s)
   /teams:
+    parameters:
+      - in: query
+        name: ids
+        description: The IDs of the teams
+        schema:
+          type: array
+          items:
+            type: string
+          example: "[\"AABBCCDD\", \"EEFFGGHH\"]"
+        required: true
     get:
       summary: Get the members of multiple teams
       operationId: getTeams
       tags:
         - teams
-      parameters:
-        - in: query
-          name: ids
-          description: The IDs of the teams
-          schema:
-            type: array
-            items:
-              type: string
-            example: "[\"AABBCCDD\", \"EEFFGGHH\"]"
-          required: true
       responses:
         "200":
           description: Expected response to a valid request
@@ -3462,6 +3438,8 @@ paths:
                   items:
                     $ref: '#/components/schemas/TeamMember'
   /team/{id}/join:
+    parameters:
+      - $ref: '#/components/parameters/TeamIdentifier'
     post:
       summary: Join a team
       operationId: joinTeam
@@ -3469,8 +3447,6 @@ paths:
         - teams
       security:
         - TokenAuth: ['PROJECT_WRITE']
-      parameters:
-        - $ref: '#/components/parameters/TeamIdentifier'
       responses:
         "204":
           description: Expected response to a valid request
@@ -3482,7 +3458,10 @@ paths:
                 $ref: '#/components/schemas/AuthError'
         "404":
           description: The requested item(s) were not found or no authorization to access the requested item(s)
-  /team/{id}/members/{user_id}:
+  /team/{id}/members/{id|username}:
+    parameters:
+      - $ref: '#/components/parameters/TeamIdentifier'
+      - $ref: '#/components/parameters/UserIdentifier'
     patch:
       summary: Modify a team member's information
       operationId: modifyTeamMember
@@ -3490,14 +3469,6 @@ paths:
         - teams
       security:
         - TokenAuth: ['PROJECT_WRITE']
-      parameters:
-        - $ref: '#/components/parameters/TeamIdentifier'
-        - in: path
-          name: user_id
-          description: The ID of the user to modify
-          required: true
-          schema:
-            type: string
       requestBody:
         description: Contents to be modified
         content:
@@ -3551,9 +3522,6 @@ paths:
         - teams
       security:
         - TokenAuth: ['PROJECT_WRITE']
-      parameters:
-        - $ref: '#/components/parameters/TeamIdentifier'
-        - $ref: '#/components/parameters/UserIdentifier'
       responses:
         "204":
           description: Expected response to a valid request
@@ -3566,6 +3534,8 @@ paths:
         "404":
           description: The requested item(s) were not found or no authorization to access the requested item(s)
   /team/{id}/owner:
+    parameters:
+      - $ref: '#/components/parameters/TeamIdentifier'
     patch:
       summary: Transfer team's ownership to another user
       operationId: transferTeamOwnership
@@ -3573,8 +3543,6 @@ paths:
         - teams
       security:
         - TokenAuth: ['PROJECT_WRITE']
-      parameters:
-        - $ref: '#/components/parameters/TeamIdentifier'
       requestBody:
         description: New owner's ID
         content:
@@ -3676,19 +3644,19 @@ paths:
                     - short
                     - name
   /tag/license/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The license ID to get the text of
+        schema:
+          type: string
+          example: [LGPL-3.0-or-later]
     get:
       summary: Get the text and title of a license
       operationId: licenseText
       tags:
         - tags
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: The license ID to get the text of
-          schema:
-            type: string
-            example: [ LGPL-3.0-or-later ]
       responses:
         "200":
           description: Expected response to a valid request
