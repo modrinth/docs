@@ -12,7 +12,7 @@ Modrinth uses its own storage layout for modpacks. This can be found on the [for
 
 ## How do I create a modpack?
 
-You can either use [ATLauncher](https://atlauncher.com), [MultiMC](https://multimc.org), [packwiz](https://github.com/packwiz/packwiz), or [Moddermore](https://moddermore.net) to create modpacks.
+You can either use [ATLauncher](https://atlauncher.com), [MultiMC](https://multimc.org), [Prism Launcher](https://prismlauncher.org), [packwiz](https://github.com/packwiz/packwiz), or [Moddermore](https://moddermore.net) to create modpacks.
 
 ### ATLauncher
 
@@ -32,16 +32,23 @@ You can also convert a CurseForge modpack to the Modrinth format via ATLauncher.
 The recommended method to convert packs was previously via packwiz, but we now discourage the use of packwiz for this specific use case. packwiz does not attempt to convert the CurseForge mod versions to Modrinth versions, but ATLauncher does.
 :::
 
-### MultiMC and Prism Launcher
+### MultiMC
 
-MultiMC and Prism are both launchers focused on efficiently managing multiple separate instances. The export instructions for each are identical.
+MultiMC is a launcher focused on efficiently managing multiple separate instances of Minecraft.
 
-You can easily export an instance to the Modrinth format. You just need to select the instance, select the dropdown menu next to Export Instance and click Modrinth. Then, fill out the options and press OK.
+You can easily export a MultiMC instance to the Modrinth format. You just need to select the instance, select the dropdown menu next to Export Instance and click Modrinth. Then, fill out the settings and metadata and press OK.
 
 ![MultiMC export](../../static/img/tutorial/multimcExport.png)
 
+### Prism Launcher
+Prism Launcher is a fork of MultiMC.
+
+Because of this, the export process is fairly similar. You must select the instance, then select the dropdown menu next to Export and click Modrinth. Then, enter the information fields. Optionally, you may check and uncheck files under Files to include or exclude them. Finally, press save and choose the destination.
+
+![Prism Launcher export](../../static/img/tutorial/prismLauncherExport.png)
+
 :::caution
-Prism Launcher has had multiple bugs in its implementation of Modrinth modpack exporting. Version 7.0 had a bug that would put all mods into the overrides rather than into the `modrinth.index.json` file, and version 7.1 has a bug that will incorrectly export a pack if any mods contain a space in their file name. For these reasons, please do not use Prism 7.0 or 7.1 for Modrinth modpack exporting.
+Prism Launcher has had issues with its implementation, so make sure you are using version 7.2 or newer to avoid these.
 :::
 
 ### packwiz
