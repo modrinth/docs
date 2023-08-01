@@ -273,6 +273,10 @@ You clicked me!
 </TabItem>
 </Tabs>
 
+:::caution
+Markdown only works properly in details tags if there is at least one empty line between HTML and Markdown content.
+:::
+
 ## Newlines
 
 <Tabs>
@@ -325,7 +329,3 @@ split into two lines
 
 </TabItem>
 </Tabs>
-
-:::caution
-Markdown only works properly in details tags if there is at least one empty line between HTML and Markdown content.
-:::
