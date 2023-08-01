@@ -273,6 +273,59 @@ You clicked me!
 </TabItem>
 </Tabs>
 
+## Newlines
+
+<Tabs>
+<TabItem value="source" label="Source">
+
+```markdown
+This sentence will have an empty line
+
+between its two segments.
+
+---
+
+This sentence will all
+go on one line.
+
+---
+
+This sentence will be\
+split into two lines
+
+---
+
+This sentence will also be  <!-- there are two spaces after this line -->
+split into two lines
+```
+
+</TabItem>
+<TabItem value="preview" label="Preview">
+
+This sentence will have an empty line
+
+between its two segments.
+
+---
+
+This sentence will all
+go on one line.
+
+---
+
+<!-- This is not the same as above because Redocusaurus linebreaks are different
+     from the linebreaks made by markdown-it, the MD plugin knossos uses -->
+This sentence will be  
+split into two lines
+
+---
+
+This sentence will also be  
+split into two lines
+
+</TabItem>
+</Tabs>
+
 :::caution
 Markdown only works properly in details tags if there is at least one empty line between HTML and Markdown content.
 :::
