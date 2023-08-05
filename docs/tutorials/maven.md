@@ -60,9 +60,9 @@ Instead of the conventional repository declaration, it is recommended instead to
 All in all, here's what an optimal `repositories` block with the Modrinth Maven repository might look like:
 
 ```groovy
+// Note: this is NOT the `repositories` block in `pluginManagement`! This is its own block.
 repositories {
     // Other repositories can go above or below Modrinth's. We don't need priority :)
-    // Note: this is NOT the `repositories` block in `pluginManagement`! This is its own block.
     exclusiveContent {
         forRepository {
             maven {
