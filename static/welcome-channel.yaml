@@ -56,10 +56,14 @@
     Documentation: https://docs.modrinth.com
     Status page: https://status.modrinth.com
     Modrinth source code: https://github.com/modrinth
+    Help translate Modrinth: https://crowdin.com/project/modrinth
+    Link to this server: https://discord.com/servers/modrinth
     Follow Modrinth on Mastodon: https://floss.social/@modrinth
     Follow Modrinth on Twitter: https://twitter.com/modrinth
-    Help translate Modrinth: https://crowdin.com/project/modrinth
-    Link to this server: https://discord.com/servers/modrinth-734077874708938864
+    Follow Modrinth on Bluesky: https://bsky.app/profile/modrinth.com
+    Follow Modrinth on Threads: https://threads.net/@modrinth
 
 - type: text
-  text: https://discord.gg/modrinth-734077874708938864
+  text: |
+    **Main server:** https://discord.gg/modrinth
+    **Testing server:** https://discord.gg/gBtHVSfb6B
