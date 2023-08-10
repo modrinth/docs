@@ -1121,6 +1121,10 @@ components:
         - $ref: '#/components/schemas/CreatableReport'
         - type: object
           properties:
+            id:
+              type: string
+              description: The ID of the report
+              example: VVWWXXYY
             reporter:
               type: string
               description: The ID of the user who reported the item
