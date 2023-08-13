@@ -101,8 +101,8 @@ module.exports = {
       copyright: `This documentation is public domain under the CC0. Built with Docusaurus.`,
     },
     prism: {
-      theme: lightCodeTheme,
-      darkTheme: darkCodeTheme,
+      theme: require('prism-react-renderer/themes/vsLight'),
+      darkTheme: require('prism-react-renderer/themes/vsDark'),
       additionalLanguages: ['http', 'groovy', 'toml'],
     },
     colorMode: {
