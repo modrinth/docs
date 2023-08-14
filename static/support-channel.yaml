@@ -22,6 +22,9 @@
         - name: "<:forge:1049793350498275358> Forge"
           value: "[/UvedJ9m](https://discord.gg/UvedJ9m)"
           inline: true
+        - name: "<:neoforge:1140437823783190679> NeoForge"
+          value: "[/UvedJ9m](https://discord.gg/UvedJ9m)"
+          inline: true
         - name: "<:paper:1049793355598540810> Paper"
           value: "[/papermc](https://discord.gg/papermc)"
           inline: true
