@@ -52,6 +52,16 @@ When you have a working packwiz pack, you can use the [`packwiz mr export`] comm
 
 [`packwiz mr export`]: https://packwiz.infra.link/reference/commands/packwiz_modrinth_export/
 
+### mc-modpack-kit
+
+:::caution
+The project is quite new, so it may have some bugs.
+:::
+
+[`mc-modpack-kit`](https://github.com/jh-devv/mc-modpack-kit) is a GitHub Actions workflow template designed to automate the process of creating and releasing Minecraft modpacks. This template simplifies tasks such as version management, modpack building, and publishing to platforms like Modrinth and CurseForge. By using this template, you can streamline your modpack development and make it easier to share your creations with the community.
+
+You can export your modpack with mc-modpack-kit to Modrinth just by adding few GitHub secrets to your repo without even needing to touch GitHub Actions.
+
 ### Moddermore
 
 [Moddermore](https://moddermore.net) is a website for sharing lists of mods that Minecrafters use.
