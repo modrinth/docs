@@ -129,9 +129,23 @@ npm run dev
 
 Once that's done, you'll be serving knossos on `localhost:3000` with hot reloading. You can replace the `dev` in `npm run dev` with `build` to build for a production server and `start` to start the server. You can also use `npm run lint` to find any eslint problems, and `npm run fix` to try automatically fixing those problems.
 
-### theseus (launcher), daedalus (metadata host), minos (authentication provider), and ariadne (analytics system)
+### theseus (launcher)
 
-These Rust programs are still in early development. Before attempting to contribute, ask for info in Discord.
+[theseus](https://github.com/modrinth/theseus) is the Tauri-based launcher that lets users conveniently play any mod or modpack on Modrinth. It uses the Rust-based Tauri as the backend and Nuxt.js as the frontend. To get started, install [pnpm](https://pnpm.io) and [Rust](https://www.rust-lang.org/tools/install), then run the following commands:
+
+```bash
+cd theseus_gui
+pnpm install
+pnpm run tauri dev
+```
+
+Once the commands finish, you'll be viewing a Tauri window with Nuxt.js hot reloading. 
+To ensure your code follows the project's standards, you can use the `pnpm run lint` command to lint the application or try fixing them automatically using the `pnpm run fix` command.
+
+#### Ready to open a PR?
+If you're prepared to contribute by submitting a Pull Request (PR), ensure you have met the following criteria:
+- Run `pnpm run fix` to address any fixable issues automatically.
+- Run `cargo check` to validate Rust-related code.
 
 ### minotaur (Gradle plugin)
 
