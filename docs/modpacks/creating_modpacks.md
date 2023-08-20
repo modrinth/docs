@@ -1,6 +1,12 @@
 # Creating Modpacks
 
-A modpack is a list of mods bundled with additional files, such as configuration files. In general, it's a modded instance of a game ready to play, or with minor changes.
+A modpack is a list of mods bundled with additional files, such as configuration files. In general, it's a modded instance of a game ready to play.
+
+:::info
+**[The Modrinth App](https://modrinth.com/app)** is the official solution for creating Modrinth modpacks. You can create a Modrinth modpack using the app by going to the Mods tab of an instance and clicking "Export modpack" near the top right. If this option is not available, you may first need to unpair the instance in the instance settings.
+
+![Modrinth App export](../../static/img/tutorial/modrinthAppExport.png)
+:::
 
 ## How do I play a modpack?
 

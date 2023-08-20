@@ -1220,12 +1220,12 @@ components:
       type: object
       properties:
         all_time:
-          type: integer
-          description: The all-time balance accrued by this user
+          type: string
+          description: The all-time balance accrued by this user in USD
           example: 10.11223344556677889900
         last_month:
-          type: integer
-          description: The amount made by the user in the previous 30 days
+          type: string
+          description: The amount in USD made by the user in the previous 30 days
           example: 2.22446688002244668800
         payouts:
           type: array
@@ -1241,7 +1241,7 @@ components:
           description: The date of this transaction
         amount:
           type: integer
-          description: The amount of this transaction
+          description: The amount of this transaction in USD
           example: 10.00
         status:
           type: string
@@ -1753,11 +1753,7 @@ paths:
         - in: query
           name: facets
           schema:
-            type: array
-            items:
-              type: array
-              items:
-                type: string
+            type: string
           example: "[[\"categories:forge\"],[\"versions:1.17.1\"],[\"project_type:mod\"],[\"license:mit\"]]"
           description: |
             Facets are an essential concept for understanding how to filter out results.
