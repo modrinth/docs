@@ -147,10 +147,6 @@ If you're prepared to contribute by submitting a Pull Request (PR), ensure you h
 - Run `pnpm run fix` to address any fixable issues automatically.
 - Run `cargo check` to validate Rust-related code.
 
-### daedalus (metadata host), minos (authentication provider), and ariadne (analytics system)
-
-These Rust programs are still in early development. Before attempting to contribute, ask for info in Discord.
-
 ### minotaur (Gradle plugin)
 
 [Minotaur](https://github.com/modrinth/minotaur) is the Gradle plugin used to automatically publish artifacts to Modrinth. To run your copy of the plugin in a project, publish it to your local Maven with `./gradlew publishToMavenLocal` and add `mavenLocal()` to your buildscript.
