@@ -131,7 +131,7 @@ Once that's done, you'll be serving knossos on `localhost:3000` with hot reloadi
 
 ### theseus (launcher)
 
-[theseus](https://github.com/modrinth/theseus) is the Tauri-based launcher letting users conveniently play any mod or modpack on Modrinth. It uses the Rust-based Tauri as the backend and Nuxt.js as the frontend. To get started, install [pnpm](https://pnpm.io) and [Rust](https://www.rust-lang.org/tools/install), then run the following commands:
+[theseus](https://github.com/modrinth/theseus) is the Tauri-based launcher that lets users conveniently play any mod or modpack on Modrinth. It uses the Rust-based Tauri as the backend and Nuxt.js as the frontend. To get started, install [pnpm](https://pnpm.io) and [Rust](https://www.rust-lang.org/tools/install), then run the following commands:
 
 ```bash
 cd theseus_gui
