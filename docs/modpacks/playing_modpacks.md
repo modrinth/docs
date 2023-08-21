@@ -14,7 +14,7 @@ Please see the guide for [creating modpacks](creating_modpacks.md).
 
 ## How do I play a modpack?
 
-Currently, the easiest ways to play a Modrinth modpack are via [MultiMC](https://multimc.org), [Prism Launcher](https://prismlauncher.org), [ATLauncher](https://atlauncher.com), [BakaXL](https://www.bakaxl.com/) or [HMCL](https://hmcl.huangyuhui.net/).
+Currently, the easiest ways to play a Modrinth modpack are via [MultiMC](https://multimc.org), [Prism Launcher](https://prismlauncher.org), [ATLauncher](https://atlauncher.com), [BakaXL](https://www.bakaxl.com/), or [HMCL](https://hmcl.huangyuhui.net/).
 
 To install a modpack on the server-side, try [mrpack-install](https://github.com/nothub/mrpack-install) or [the `itzg/minecraft-server` image](https://github.com/itzg/docker-minecraft-server) if using Docker.
 
@@ -70,10 +70,10 @@ Click "Continue" and drag the modpack file into BakaXL.
 
 ### HMCL
 
-HMCL is a cross-platform Minecraft launcher which supports Mod Management, Game Customizing, Auto Installing (Forge, Fabric, Quilt, LiteLoader and OptiFine), Modpack Creating, UI Customization, and more.
-![HMCL](../../static/img/tutorial/Hmcl.png)
+HMCL is a cross-platform Minecraft launcher.
 
 #### Install through HMCL
+
 Installing Modrinth Modpack using HMCL is very simple. Go to the "Download" tab, select the Modpack, set the download source to "Modrinth," and then search for the Modpack you want. You can install and play it directly.
 
 ![Hmcl search](../../static/img/tutorial/HmclSearch.png)
@@ -81,8 +81,11 @@ Installing Modrinth Modpack using HMCL is very simple. Go to the "Download" tab,
 #### Install manually
 
 This requires you to have a modpack file already downloaded.
-Go to the "All Instances" tab, click the "Install a Modpack", Click on "Import from local file" and then select your Modpack file. 
+
+Go to the "All Instances" tab, click the "Install a Modpack", Click on "Import from local file" and then select your Modpack file.
+
 If you have the direct link to the Modrinth Modpack, you can also choose "Download from the Internet" to import the instance.
+
 Alternatively, you can simply drag the Modpack file into the HMCL launcher interface.
 
 ![Hmcl Install a modpack](../../static/img/tutorial/HmclInstallAModpack.png)
