@@ -1,6 +1,12 @@
 # Playing Modpacks
 
-A modpack is a list of mods bundled with additional files, such as configuration files. In general, it's a modded instance of a game ready to play, or with minor changes.
+A modpack is a list of mods bundled with additional files, such as configuration files. In general, it's a modded instance of a game ready to play.
+
+:::info
+**[The Modrinth App](https://modrinth.com/app)** is the official solution for playing Modrinth modpacks. You can install a Modrinth modpack using the app by clicking the "Browse" button on the left side of the launcher. Then, simply click "Install" on the modpacks you want to play.
+
+![Modrinth App](../../static/img/tutorial/modrinthAppSearch.png)
+:::
 
 ## How do I create a modpack?
 

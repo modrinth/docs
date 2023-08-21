@@ -1,12 +1,12 @@
 # Contributing to Modrinth
 
-The vast majority of Modrinth, including everything from our [API/backend](https://github.com/modrinth/labrinth) and [frontend](https://github.com/modrinth/knossos) to the [Minotaur plugin](https://github.com/modrinth/minotaur) and [analytics service](https://github.com/modrinth/ariadne), is released under free and open source licenses on our [GitHub](https://github.com/modrinth). As such, we love contributions from community members! Before proceeding to do so, though, there are a number of things you'll want to keep in mind throughout the process, as well as some details specific to certain projects.
+Every public-facing aspect of Modrinth, including everything from our [API/backend][labrinth] and [frontend][knossos] to our [Gradle plugin][minotaur] and [launcher][theseus], is released under free and open source licenses on [GitHub]. As such, we love contributions from community members! Before proceeding to do so, though, there are a number of things you'll want to keep in mind throughout the process, as well as some details specific to certain projects.
 
 ## Things to keep in mind
 
 ### Consult people on Discord
 
-There are a number of reasons to want to consult with people on our [Discord](https://discord.gg/EUHuJHt) before making a pull request. For example, if you're not sure whether something is a good idea or not, if you're not sure how to implement something, or if you can't get something working, these would all be good opportunities to create a thread in the `#development` forum channel.
+There are a number of reasons to want to consult with people on our [Discord] before making a pull request. For example, if you're not sure whether something is a good idea or not, if you're not sure how to implement something, or if you can't get something working, these would all be good opportunities to create a thread in the `#development` forum channel.
 
 If you intend to work on new features, to make significant codebase changes, or to make UI/design changes, please open a discussion thread first to ensure your work is put to its best use.
 
@@ -26,7 +26,7 @@ If you wish to contribute code to a specific project, here's the place to start.
 
 ### labrinth (backend and API)
 
-[labrinth](https://github.com/modrinth/labrinth) is the Rust-based backend serving Modrinth's API with the help of the [Actix](https://actix.rs) framework. To get started with a labrinth instance, install docker, docker-compose (which comes with Docker), and cargo. The initial startup can be done simply with the command `docker-compose up`, or with `docker compose up` (Compose V2 and later). That will deploy a PostgreSQL database on port 5432 and a MeiliSearch instance on port 7700.
+[labrinth] is the Rust-based backend serving Modrinth's API with the help of the [Actix](https://actix.rs) framework. To get started with a labrinth instance, install docker, docker-compose (which comes with Docker), and [Rust]. The initial startup can be done simply with the command `docker-compose up`, or with `docker compose up` (Compose V2 and later). That will deploy a PostgreSQL database on port 5432 and a MeiliSearch instance on port 7700.
 
 Now, you'll have to install the sqlx CLI, which can be done with cargo:
 
@@ -66,7 +66,6 @@ If you would like 'placeholder_category' to be marked as supporting modpacks too
 INSERT INTO categories VALUES (0, 'placeholder_category', 2); -- modloader id, supported type id
 ```
 
-
 The majority of configuration is done at runtime using [dotenvy](https://crates.io/crates/dotenvy) and the `.env` file. Each of the variables and what they do can be found in the dropdown below. Additionally, there are three command line options that can be used to specify to MeiliSearch what you want to do.
 
 <details><summary>.env variables & command line options</summary>
@@ -100,8 +99,7 @@ The Backblaze and S3 configuration options are fairly self-explanatory in name, 
 `LOCAL_INDEX_INTERVAL`: The interval, in seconds, at which the local database is reindexed for searching. Defaults to `3600` seconds (1 hour).  
 `VERSION_INDEX_INTERVAL`: The interval, in seconds, at which versions are reindexed for searching. Defaults to `1800` seconds (30 minutes).
 
-The two GitHub OAuth configuration options are also fairly self-explanatory.  
-`GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`
+The OAuth configuration options are fairly self-explanatory. For help setting up authentication, please contact us on [Discord].
 
 `RATE_LIMIT_IGNORE_IPS`: An array of IPs that should have a lower rate limit factor. This can be useful for allowing the front-end to have a lower rate limit to prevent accidental timeouts.
 
@@ -114,31 +112,59 @@ The two GitHub OAuth configuration options are also fairly self-explanatory.
 </details>
 
 #### Ready to open a PR?
-Please ensure the following requirements has been met:
-- `cargo check` has been ran.
-- `cargo sqlx prepare` has been ran.
+
+If you're prepared to contribute by submitting a pull request, ensure you have met the following criteria:
+
+- `cargo check` has been run.
+- `cargo sqlx prepare` has been run.
 
 ### knossos (frontend)
 
-[knossos](https://github.com/modrinth/knossos) is the Nuxt.js frontend. While you're able to use Docker here, you may find it faster to just install [npm](https://www.npmjs.com) and run the standard commands from there:
+[knossos] is the Nuxt.js frontend. You will need to install [pnpm] and run the standard commands:
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
-Once that's done, you'll be serving knossos on `localhost:3000` with hot reloading. You can replace the `dev` in `npm run dev` with `build` to build for a production server and `start` to start the server. You can also use `npm run lint` to find any eslint problems, and `npm run fix` to try automatically fixing those problems.
+Once that's done, you'll be serving knossos on `localhost:3000` with hot reloading. You can replace the `dev` in `pnpm run dev` with `build` to build for a production server and `start` to start the server. You can also use `pnpm run lint` to find any eslint problems, and `pnpm run fix` to try automatically fixing those problems.
 
-### theseus (launcher), daedalus (metadata host), minos (authentication provider), and ariadne (analytics system)
+### theseus (launcher)
 
-These Rust programs are still in early development. Before attempting to contribute, ask for info in Discord.
+[theseus] is the Tauri-based launcher that lets users conveniently play any mod or modpack on Modrinth. It uses the Rust-based Tauri as the backend and Nuxt.js as the frontend. To get started, install [pnpm] and [Rust], then run the following commands:
+
+```bash
+cd theseus_gui
+pnpm install
+pnpm run tauri dev
+```
+
+Once the commands finish, you'll be viewing a Tauri window with Nuxt.js hot reloading.
+
+You can use `pnpm run lint` to find any eslint problems, and `pnpm run fix` to try automatically fixing those problems.
+
+#### Ready to open a PR?
+
+If you're prepared to contribute by submitting a pull request, ensure you have met the following criteria:
+
+- Run `pnpm run fix` to address any fixable issues automatically.
+- Run `cargo check` to validate Rust-related code.
 
 ### minotaur (Gradle plugin)
 
-[Minotaur](https://github.com/modrinth/minotaur) is the Gradle plugin used to automatically publish artifacts to Modrinth. To run your copy of the plugin in a project, publish it to your local Maven with `./gradlew publishToMavenLocal` and add `mavenLocal()` to your buildscript.
+[Minotaur][minotaur] is the Gradle plugin used to automatically publish artifacts to Modrinth. To run your copy of the plugin in a project, publish it to your local Maven with `./gradlew publishToMavenLocal` and add `mavenLocal()` to your buildscript.
 
 Minotaur contains two test environments within it - one with ForgeGradle and one with Fabric Loom. You may tweak with these environments to test whatever you may be trying; just make sure that the `modrinth` task within each still functions properly. GitHub Actions will validate this if you're making a pull request, so you may want to use [`act pull_request`](https://github.com/nektos/act) to test them locally.
 
 ### Documentation
 
-The [documentation](https://github.com/modrinth/docs) (which you are reading right now!) is the place to find any and all general information about Modrinth and its API. The instructions are largely the same as [knossos](#knossos-frontend), except for the lint commands.
+The [documentation](https://github.com/modrinth/docs) (which you are reading right now!) is the place to find any and all general information about Modrinth and its API. The instructions are largely the same as [knossos](#knossos-frontend), except that the docs have no lint.
+
+[Discord]: https://discord.gg/modrinth
+[GitHub]: https://github.com/modrinth
+[knossos]: https://github.com/modrinth/knossos
+[labrinth]: https://github.com/modrinth/labrinth
+[theseus]: https://github.com/modrinth/theseus
+[minotaur]: https://github.com/modrinth/minotaur
+[Rust]: https://www.rust-lang.org/tools/install
+[pnpm]: https://pnpm.io

@@ -11,8 +11,9 @@ module.exports = {
         'migrations/v1-to-v2',
       ],
       'Modpacks': [
-        'modpacks/creating_modpacks',
         'modpacks/playing_modpacks',
+        'modpacks/creating_modpacks',
+        'modpacks/modpack_permissions',
         'modpacks/format_definition',
       ],
     },
