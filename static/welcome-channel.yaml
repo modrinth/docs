@@ -27,7 +27,8 @@
         exceptions of <#783091855616901200>, <#1109517383074328686>, and <#1061855024252207167>
         
         3. Follow Discord's rules, including the [Community Guidelines](https://discord.com/guidelines) and the [Terms
-        of Service](https://discord.com/terms)
+        of Service](https://discord.com/terms) (this also means that discussions regarding "cracked" launchers and
+        Discord client modifications are **prohibited under all circumstances**)
         
         4. Contact the moderators at any time via the <@&895382919772766219> ping or the <@1000632789118496818> bot
         
@@ -35,7 +36,7 @@
     - title: ":no_entry: Do not:"
       color: 0xff496e
       description: >-
-        6. Harass, bother, provoke, or insult anyone
+        6. Harass, bother, provoke, or insult anyone, including by sending unsolicited DMs or friend requests
         
         7. Cause problems or impede Modrinth's development
         
@@ -57,11 +58,8 @@
     Status page: https://status.modrinth.com
     Modrinth source code: https://github.com/modrinth
     Help translate Modrinth: https://crowdin.com/project/modrinth
-    Link to this server: https://discord.com/servers/modrinth
     Follow Modrinth on Mastodon: https://floss.social/@modrinth
     Follow Modrinth on Twitter: https://twitter.com/modrinth
-    Follow Modrinth on Bluesky: https://bsky.app/profile/modrinth.com
-    Follow Modrinth on Threads: https://threads.net/@modrinth
 
 - type: text
   text: |
