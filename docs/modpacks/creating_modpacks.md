@@ -58,6 +58,15 @@ When you have a working packwiz pack, you can use the [`packwiz mr export`] comm
 
 [`packwiz mr export`]: https://packwiz.infra.link/reference/commands/packwiz_modrinth_export/
 
+### mc-modpack-kit
+
+[`mc-modpack-kit`](https://github.com/jh-devv/mc-modpack-kit) is a GitHub Action Workflow template that uses [packwiz](https://packwiz.infra.link) to manage modpacks.
+
+To setup mc-modpack-kit for Modrinth, in your repo:
+- Navigate to "Settings" -> "Secrets" and add the following secrets:
+  - `MODRINTH_TOKEN`, `MODRINTH_ID`
+- Add your packwiz pack, as an example to the `main/` directory in your repo!
+
 ### Moddermore
 
 [Moddermore](https://moddermore.net) is a website for sharing lists of mods that Minecrafters use.
