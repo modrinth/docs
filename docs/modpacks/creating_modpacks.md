@@ -54,7 +54,7 @@ When you have a working packwiz pack, you can use the [`packwiz mr export`] comm
 
 ### mc-modpack-kit
 
-[`mc-modpack-kit`](https://github.com/jh-devv/mc-modpack-kit) is a GitHub Action Workflow template that uses [packwiz](https://packwiz.infra.link) to manage the packs.
+[`mc-modpack-kit`](https://github.com/jh-devv/mc-modpack-kit) is a GitHub Action Workflow template that uses [packwiz](https://packwiz.infra.link) to manage modpacks.
 
 To setup mc-modpack-kit for Modrinth, in your repo:
 - Navigate to "Settings" -> "Secrets" and add the following secrets:
