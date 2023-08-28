@@ -1,20 +1,16 @@
+---
+sidebar_position: 0
+---
+
 # Playing Modpacks
 
 A modpack is a list of mods bundled with additional files, such as configuration files. In general, it's a modded instance of a game ready to play.
 
-:::info
 **[The Modrinth App](https://modrinth.com/app)** is the official solution for playing Modrinth modpacks. You can install a Modrinth modpack using the app by clicking the "Browse" button on the left side of the launcher. Then, simply click "Install" on the modpacks you want to play.
 
 ![Modrinth App](../../static/img/tutorial/modrinthAppSearch.png)
-:::
 
-## How do I create a modpack?
-
-Please see the guide for [creating modpacks](creating_modpacks.md).
-
-## How do I play a modpack?
-
-Currently, the easiest ways to play a Modrinth modpack are via [MultiMC](https://multimc.org), [Prism Launcher](https://prismlauncher.org), [ATLauncher](https://atlauncher.com), or [BakaXL](https://www.bakaxl.com/).
+Besides [the Modrinth App](https://modrinth.com/app), the easiest ways to play a Modrinth modpack are via [MultiMC](https://multimc.org), [Prism Launcher](https://prismlauncher.org), [ATLauncher](https://atlauncher.com), or [BakaXL](https://www.bakaxl.com/).
 
 To install a modpack on the server-side, try [mrpack-install](https://github.com/nothub/mrpack-install) or [the `itzg/minecraft-server` image](https://github.com/itzg/docker-minecraft-server) if using Docker.
 

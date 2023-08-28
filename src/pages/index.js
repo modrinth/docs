@@ -16,13 +16,15 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className={clsx("button button--secondary button--lg", styles.button)}
-            to="/docs/getting-started">
-            Get started
+            to="/docs">
+            Knowledge Base
           </Link>
+        </div>
+        <div className={styles.buttons}>
           <Link
             className={clsx("button button--secondary button--lg", styles.button)}
             to="/api-spec">
-            Routes list
+            API Routes
           </Link>
         </div>
       </div>

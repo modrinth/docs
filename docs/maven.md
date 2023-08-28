@@ -1,4 +1,4 @@
-# Modrinth Maven
+# Modrinth Maven Usage
 
 All projects uploaded to Modrinth are automatically placed on a Maven repository. This can be used for a variation of reasons with a JVM build automation tool such as [Gradle]. This tool will not be of any use to an everyday user, but can be very useful for mod or plugin developers.
 

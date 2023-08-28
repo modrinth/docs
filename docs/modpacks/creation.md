@@ -2,23 +2,11 @@
 
 A modpack is a list of mods bundled with additional files, such as configuration files. In general, it's a modded instance of a game ready to play.
 
-:::info
 **[The Modrinth App](https://modrinth.com/app)** is the official solution for creating Modrinth modpacks. You can create a Modrinth modpack using the app by going to the Mods tab of an instance and clicking "Export modpack" near the top right. If this option is not available, you may first need to unpair the instance in the instance settings.
 
 ![Modrinth App export](../../static/img/tutorial/modrinthAppExport.png)
-:::
 
-## How do I play a modpack?
-
-Please see the guide for [playing modpacks](playing_modpacks.md).
-
-## What does the Modrinth format look like?
-
-Modrinth uses its own storage layout for modpacks. This can be found on the [format definition](format_definition.md) page. The Modrinth format is unique for our purposes, so you cannot use the CurseForge format or another format to upload to Modrinth.
-
-## How do I create a modpack?
-
-You can either use [ATLauncher](https://atlauncher.com), [MultiMC](https://multimc.org), [packwiz](https://github.com/packwiz/packwiz), or [Moddermore](https://moddermore.net) to create modpacks.
+Besides [the Modrinth App](https://modrinth.com/app), you can use [ATLauncher](https://atlauncher.com), [MultiMC](https://multimc.org), [Prism Launcher](https://prismlauncher.org), [packwiz](https://github.com/packwiz/packwiz), or [Moddermore](https://moddermore.net) to create modpacks.
 
 ### ATLauncher
 

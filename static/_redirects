@@ -1,4 +1,16 @@
-/docs/details/carbon/              /docs/details/ads/
-/docs/details/versioning/          /api-spec/#section/Versioning
-/docs/tutorials/forge_updates/     /api-spec/#tag/misc/operation/forgeUpdates
-/docs/tutorials/api_search/        /api-spec/#tag/projects/operation/searchProjects
+/docs/getting-started/                /docs/api
+/docs/migrations/information/         /docs/api/migration
+/docs/migrations/v1-to-v2/            /docs/api/migration/v1-to-v2
+/docs/details/carbon/                 /docs/ads
+/docs/details/ads/                    /docs/ads
+/docs/details/contributing/           /docs/contributing
+/docs/tutorials/markdown/             /docs/markdown
+/docs/tutorials/maven/                /docs/maven
+/docs/modpacks/creating_modpacks/     /docs/modpacks/creation
+/docs/modpacks/format_definition/     /docs/modpacks/format
+/docs/modpacks/modpack_permissions/   /docs/modpacks/permissions
+/docs/modpacks/playing_modpacks/      /docs/modpacks/play
+
+/docs/details/versioning/             /api-spec/#section/Versioning
+/docs/tutorials/forge_updates/        /api-spec/#tag/misc/operation/forgeUpdates
+/docs/tutorials/api_search/           /api-spec/#tag/projects/operation/searchProjects

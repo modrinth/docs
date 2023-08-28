@@ -1,6 +1,6 @@
 # Modpack Format
 
-The Modrinth modpack format is a simple format that lets you store modpacks.
+The Modrinth modpack format (`.mrpack`) is a simple format that lets you store modpacks. This is the only format of modpack that can be uploaded to Modrinth.
 
 ## Fields
 
