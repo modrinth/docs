@@ -66,7 +66,7 @@ If this still didn't work, your browser may have its own protection as well. Ple
 uBlock Origin is configurable by clicking its logo, either within or next to the Extensions button (usually a puzzle piece or a double right chevron).
 
 <Tabs>
-<TabItem value="settings" label="Configure AdGuard via its settings panel">
+<TabItem value="settings" label="Configure uBlock Origin via its settings panel">
 
 From within the settings panel, it is very easy to disable ads on Modrinth. Simply click the big blue power button and then click the rotating arrows beside it to refresh the page.
 
