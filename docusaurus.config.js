@@ -6,7 +6,7 @@ module.exports = {
   baseUrl: '/',
   trailingSlash: false,
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenMarkdownLinks: 'throw',
   favicon: 'img/favicon.ico',
   organizationName: 'modrinth',
   projectName: 'docs',
@@ -20,7 +20,7 @@ module.exports = {
       items: [
         {
           type: 'doc',
-          docId: 'index',
+          docId: 'faq',
           position: 'left',
           label: 'Knowledge Base',
         },
@@ -166,8 +166,10 @@ module.exports = {
       {
         docs: {
           editUrl: 'https://github.com/modrinth/docs/edit/master/',
+          routeBasePath: '/',
           sidebarCollapsible: false,
         },
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -194,6 +196,11 @@ module.exports = {
     ],
   ],
   plugins: [
-    ['@cmfcmf/docusaurus-search-local', {}],
+    [
+      '@cmfcmf/docusaurus-search-local',
+      {
+        indexBlog: false,
+      }
+    ],
   ],
 }

@@ -13,16 +13,19 @@ function HomepageHeader() {
       <div className="container">
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <p className="hero__subsubtitle">
+          If none of these pages address your needs, please <a href="https://discord.gg/modrinth" target="_blank">join us on Discord</a>!
+        </p>
         <div className={styles.buttons}>
           <Link
-            className={clsx("button button--secondary button--lg", styles.button)}
-            to="/docs">
+            className={clsx("button button--lg", styles.button)}
+            to="/faq">
             Knowledge Base
           </Link>
         </div>
         <div className={styles.buttons}>
           <Link
-            className={clsx("button button--secondary button--lg", styles.button)}
+            className={clsx("button button--lg", styles.button)}
             to="/api-spec">
             API Routes
           </Link>

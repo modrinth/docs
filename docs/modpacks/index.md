@@ -9,7 +9,7 @@ You can create and play Modrinth modpacks using [the Modrinth App](https://modri
 
 ![Screenshot of the Modrinth App](https://cdn.modrinth.com/app-landing/app-screenshot.webp)
 
-While the Modrinth App is the preferred solution, you can also play and create modpacks using unofficial third-party tools. Please refer to the pages for [playing modpacks](play.md) and [creating modpacks](creation.md).
+While the Modrinth App is the preferred solution, you can also play and create modpacks using unofficial third-party tools. Please refer to the pages for [playing modpacks](play.md) and [creating modpacks](create.md).
 
 If you are a developer interested in implementing the Modrinth modpack format in your tool, please refer to the [modpack format definition](format.md).
 

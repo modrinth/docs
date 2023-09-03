@@ -6,6 +6,8 @@
  */
 
 .heroBanner {
+  background-image: var(--landing-maze-bg);
+  background-size: cover;
   padding: 4rem 0;
   text-align: center;
   position: relative;
