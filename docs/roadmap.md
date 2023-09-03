@@ -37,6 +37,6 @@ Modrinth is always innovating and growing. These are some of the things that the
 - Implement a more configurable teams/organizations system
 - Comments and/or reviews on projects
 - Assist creators in automating platform migration process
-- [*~~`Redacted`~~*](/redacted)
+- [*~~`Redacted`~~*](https://docs.modrinth.com/redacted)
 - Expand into games other than Minecraft (including Bedrock)
 - And even more cool features that we haven't thought of yet!
