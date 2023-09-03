@@ -1288,16 +1288,7 @@ components:
         actions:
           type: array
           items:
-            type: object
-            properties:
-              title:
-                type: string
-                description: The friendly name for this action
-                example: Accept
-              action_route:
-                type: array
-                description: The HTTP code and path to request in order to perform this action.
-                example: [POST, 'team/{id}/join']
+            $ref: '#/components/schemas/NotificationAction'
           description: A list of actions that can be performed
       required:
         - id
@@ -1308,6 +1299,18 @@ components:
         - read
         - created
         - actions
+    NotificationAction:
+      type: object
+      description: An action that can be performed on a notification
+      properties:
+        title:
+          type: string
+          description: The friendly name for this action
+          example: Accept
+        action_route:
+          type: array
+          description: The HTTP code and path to request in order to perform this action.
+          example: [POST, 'team/{id}/join']
     # Reports
     CreatableReport:
       type: object
@@ -1618,6 +1621,31 @@ components:
           type: integer
           example: 0
           description: The order of the team member.
+    LicenseTag:
+      type: object
+      description: A short overview of a license
+      properties:
+        short:
+          type: string
+          description: The short identifier of the license
+          example: lgpl-3
+        name:
+          type: string
+          description: The full name of the license
+          example: GNU Lesser General Public License v3
+      required:
+        - short
+        - name
+    License:
+      type: object
+      description: A full license
+      properties:
+        title:
+          type: string
+          example: GNU Lesser General Public License v3.0 or later
+        body:
+          type: string
+          example: Insert the entire text of the LGPL-3.0 here...
     # Errors
     InvalidInputError:
       type: object
@@ -1663,6 +1691,26 @@ components:
         authors:
           type: integer
           description: Number of authors (users with projects) on Modrinth
+    ForgeUpdates:
+      type: object
+      description: Mod version information that can be consumed by Forge's update checker
+      properties:
+        homepage:
+          type: string
+          description: A link to the mod page
+          example: https://modrinth.com
+        promos:
+          $ref: '#/components/schemas/ForgeUpdateCheckerPromos'
+    ForgeUpdateCheckerPromos:
+      type: object
+      description: A list of the recommended and latest versions for each Minecraft release
+      properties:
+        "{version}-recommended":
+          type: string
+          description: The mod version that is recommended for `{version}`. Excludes versions with the `alpha` and `beta` version types.
+        "{version}-latest":
+          type: string
+          description: The latest mod version for `{version}`. Shows versions with the `alpha` and `beta` version types.
   securitySchemes:
     TokenAuth:
       type: apiKey
@@ -3626,19 +3674,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
-                  properties:
-                    short:
-                      type: string
-                      description: The short identifier of the license
-                      example: lgpl-3
-                    name:
-                      type: string
-                      description: The full name of the license
-                      example: GNU Lesser General Public License v3
-                  required:
-                    - short
-                    - name
+                  $ref: '#/components/schemas/LicenseTag'
   /tag/license/{id}:
     parameters:
       - name: id
@@ -3659,14 +3695,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  title:
-                    type: string
-                    example: GNU Lesser General Public License v3.0 or later
-                  body:
-                    type: string
-                    example: Insert the entire text of the LGPL-3.0 here...
+                $ref: '#/components/schemas/License'
         "400":
           description: Request was invalid, see given error
           content:
@@ -3779,22 +3808,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  homepage:
-                    type: string
-                    description: A link to the mod page
-                    example: https://modrinth.com
-                  promos:
-                    type: object
-                    description: A list of the recommended and latest versions for each Minecraft release
-                    properties:
-                      "{version}-recommended":
-                        type: string
-                        description: The mod version that is recommended for `{version}`. Excludes versions with the `alpha` and `beta` version types.
-                      "{version}-latest":
-                        type: string
-                        description: The latest mod version for `{version}`. Shows versions with the `alpha` and `beta` version types.
+                $ref: '#/components/schemas/ForgeUpdates'
         "400":
           description: Invalid request
           content:
