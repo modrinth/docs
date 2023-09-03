@@ -20,6 +20,9 @@ dependencies:
   clsx:
     specifier: ^1.2.1
     version: 1.2.1
+  docusaurus2-dotenv:
+    specifier: ^1.4.0
+    version: 1.4.0(webpack@5.88.1)
   joi:
     specifier: 17.9.2
     version: 17.9.2
@@ -4522,6 +4525,14 @@ packages:
       - webpack
     dev: false
 
+  /docusaurus2-dotenv@1.4.0(webpack@5.88.1):
+    resolution: {integrity: sha512-iWqem5fnBAyeBBtX75Fxp71uUAnwFaXzOmade8zAhN4vL3RG9m27sLSRwjJGVVgIkEo3esjGyCcTGTiCjfi+sg==}
+    dependencies:
+      dotenv-webpack: 1.7.0(webpack@5.88.1)
+    transitivePeerDependencies:
+      - webpack
+    dev: false
+
   /dom-converter@0.2.0:
     resolution: {integrity: sha512-gd3ypIPfOMr9h5jIKq8E3sHOTCjeirnl0WK5ZdS1AW0Odt0b1PaWaHdJ4Qk4klv+YB9aJBS7mESXjFoDQPu6DA==}
     dependencies:
@@ -4594,6 +4605,26 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       is-obj: 2.0.0
+    dev: false
+
+  /dotenv-defaults@1.1.1:
+    resolution: {integrity: sha512-6fPRo9o/3MxKvmRZBD3oNFdxODdhJtIy1zcJeUSCs6HCy4tarUpd+G67UTU9tF6OWXeSPqsm4fPAB+2eY9Rt9Q==}
+    dependencies:
+      dotenv: 6.2.0
+    dev: false
+
+  /dotenv-webpack@1.7.0(webpack@5.88.1):
+    resolution: {integrity: sha512-wwNtOBW/6gLQSkb8p43y0Wts970A3xtNiG/mpwj9MLUhtPCQG6i+/DSXXoNN7fbPCU/vQ7JjwGmgOeGZSSZnsw==}
+    peerDependencies:
+      webpack: ^1 || ^2 || ^3 || ^4
+    dependencies:
+      dotenv-defaults: 1.1.1
+      webpack: 5.88.1
+    dev: false
+
+  /dotenv@6.2.0:
+    resolution: {integrity: sha512-HygQCKUBSFl8wKQZBSemMywRWcEDNidvNbjGVyZu3nbZ8qq9ubiPoGLMdRDpfSrpkkm9BXYFkpKxxFX38o/76w==}
+    engines: {node: '>=6'}
     dev: false
 
   /duplexer3@0.1.5:
