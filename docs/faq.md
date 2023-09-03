@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 0
 ---
 
 # Frequently Asked Questions
@@ -10,7 +10,7 @@ For questions specific to the Modrinth App or website, please refer to the [app 
 
 ### When will (x) feature get released? When will support for other games/Bedrock be added? {#etas}
 
-Modrinth does not provide any public <abbr title="Estimated Time of Arrival">ETAs</abbr> for new features or for bug fixes. You can take a look at [our roadmap](https://roadmap.modrinth.com) to see what features we're working on right now as well as what is yet to come. The roadmap is not in any particular order — one item will not be right after the other.
+Modrinth does not provide any public <abbr title="Estimated Time of Arrival">ETAs</abbr> for new features or for bug fixes. You can take a look at [our roadmap](roadmap.md) to see what features we're working on right now as well as what is yet to come.
 
 ### Why can't I log into my account? {#account-locked}
 

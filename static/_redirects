@@ -16,4 +16,6 @@
 /docs/tutorials/forge_updates/        /api-spec/#tag/misc/operation/forgeUpdates
 /docs/tutorials/api_search/           /api-spec/#tag/projects/operation/searchProjects
 
+/redacted                             https://www.youtube.com/watch?v=qWNQUvIk954
+
 /docs/*                               /:splat
