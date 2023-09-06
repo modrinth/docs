@@ -122,21 +122,21 @@ https://modrinth.com
 <TabItem value="source" label="Source">
 
 ```markdown
-![Alt text](https://cdn.modrinth.com/modrinth-new.png)
-![Alt text](https://cdn.modrinth.com/landing-new/landing.webp 'Optional title')
+![REPLACE ME WITH YOUR ALT TEXT](https://cdn.modrinth.com/modrinth-new.png)
+![REPLACE ME WITH YOUR ALT TEXT](https://cdn.modrinth.com/landing-new/landing.webp 'REPLACE ME WITH AN OPTIONAL TITLE')
 <!-- Use the Gallery tab on your project for image hosting! -->
 ```
 
 </TabItem>
 <TabItem value="preview" label="Preview">
 
-![Alt text](https://cdn.modrinth.com/modrinth-new.png)
-![Alt text](https://cdn.modrinth.com/landing-new/landing.webp 'Optional title')
+![REPLACE ME WITH YOUR ALT TEXT](https://cdn.modrinth.com/modrinth-new.png)
+![REPLACE ME WITH YOUR ALT TEXT](https://cdn.modrinth.com/landing-new/landing.webp 'REPLACE ME WITH AN OPTIONAL TITLE')
 
 </TabItem>
 </Tabs>
 
-:::caution
+:::warning
 [Alt text](https://accessibility.huit.harvard.edu/describe-content-images) is very important to use. Your project may be rejected if you don't add alt text! Refer to section 2.1 of [Modrinth's content rules](https://modrinth.com/legal/rules#general-expectations).
 :::
 
@@ -329,3 +329,13 @@ split into two lines
 
 </TabItem>
 </Tabs>
+
+## YouTube iframes
+
+To use a YouTube iframe, copy-paste the following into your description:
+
+```html
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/REPLACE_THIS_TEXT_HERE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+```
+
+Then, replace the text that says `REPLACE_THIS_TEXT_HERE` with the 11-character code that follows `/watch?v=` in the YouTube video URL. For example, it should look something like `d1YBv2mWll0`. Remove any query parameters like `si=randomText` or `wmode=transparent`.
