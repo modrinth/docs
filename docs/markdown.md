@@ -167,6 +167,10 @@ https://modrinth.com
 </TabItem>
 </Tabs>
 
+:::caution
+Do not overuse headers, but do not underuse them either! Headers are meant to delineate different sections of content in your description. Entire sentences should never be inside a header.
+:::
+
 ## Lists
 
 ### Unordered Lists
