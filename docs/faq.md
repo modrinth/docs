@@ -16,7 +16,7 @@ Modrinth does not provide any public <abbr title="Estimated Time of Arrival">ETA
 
 If your account was created on or before August 5th, 2023, your account was created using GitHub. Attempting to reset your password or log in through any other service will not work.
 
-If you still cannot log into your account after this, please join [our Discord][Discord] and send a message to the `ModrinthMail#3547` bot.
+If you still cannot log into your account after this, please email support@modrinth.com.
 
 ## App
 
@@ -55,9 +55,7 @@ Modrinth does not currently have a way to see the dependents of a project — on
 
 ### How long will my submitted project be "under review" for? {#review-times}
 
-Modrinth's team of content moderators work hard to review all submitted projects, but keep in mind that larger projects, especially modpacks, may require more time to review.
-
-Typically, you can expect a new project to be reviewed within 24 to 48 hours. **However, due to a high volume of new projects, reviews are currently experiencing extended delays, much greater than usual. Many projects may be under review for a week or more.** Please understand that we are working to fix this problem as soon as possible. Our sincerest apologies for the inconvenience!
+Modrinth's team of content moderators work hard to review all submitted projects. Typically, you can expect a new project to be reviewed within 24 to 48 hours. Please keep in mind that larger projects, especially modpacks, may require more time to review. Certain holidays or events may also lead to delays depending on moderator availability.
 
 Thanks to the way that Modrinth's queue system works, it is not possible for something to be "lost in the queue". If your project displays as "Under review", it will be reviewed.
 
