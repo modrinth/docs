@@ -75,4 +75,4 @@ This list was last updated September 2nd, 2023. If you wish to see the list of l
 
 If you have a single version that is manually featured, the auto-featuring system will not work. Thus, we do not recommend manually featuring any version. For most intents and purposes, the automatic featuring system for versions on projects is sufficient.
 
-[Discord]: https://discord.gg/modrinth
+[Discord]: https://discord.modrinth.com

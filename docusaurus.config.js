@@ -102,7 +102,7 @@ module.exports = {
           items: [
             {
               label: 'Discord',
-              href: 'https://discord.gg/modrinth',
+              href: 'https://discord.modrinth.com',
             },
             {
               label: 'Twitter',

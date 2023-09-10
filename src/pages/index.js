@@ -14,7 +14,7 @@ function HomepageHeader() {
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <p className="hero__subsubtitle">
-          If none of these pages address your needs, please <a href="https://discord.gg/modrinth" target="_blank">join us on Discord</a>!
+          If none of these pages address your needs, please <a href="https://discord.modrinth.com" target="_blank">join us on Discord</a>!
         </p>
         <div className={styles.buttons}>
           <Link

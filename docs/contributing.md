@@ -160,7 +160,7 @@ Minotaur contains two test environments within it - one with ForgeGradle and one
 
 The [documentation](https://github.com/modrinth/docs) (which you are reading right now!) is the place to find any and all general information about Modrinth and its API. The instructions are largely the same as [knossos](#knossos-frontend), except that the docs have no lint.
 
-[Discord]: https://discord.gg/modrinth
+[Discord]: https://discord.modrinth.com
 [GitHub]: https://github.com/modrinth
 [knossos]: https://github.com/modrinth/knossos
 [labrinth]: https://github.com/modrinth/labrinth

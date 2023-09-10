@@ -17,44 +17,44 @@
       color: 0x5865F2
       fields:
         - name: "<:fabric:1049793348719890532> Fabric"
-          value: "[/v6v4pMv](https://discord.gg/v6v4pMv)"
+          value: "[v6v4pMv](https://discord.gg/v6v4pMv)"
           inline: true
         - name: "<:forge:1049793350498275358> Forge"
-          value: "[/UvedJ9m](https://discord.gg/UvedJ9m)"
+          value: "[UvedJ9m](https://discord.gg/UvedJ9m)"
           inline: true
         - name: "<:neoforge:1140437823783190679> NeoForge"
-          value: "[/UvedJ9m](https://discord.gg/UvedJ9m)"
+          value: "[UvedJ9m](https://discord.gg/UvedJ9m)"
           inline: true
         - name: "<:paper:1049793355598540810> Paper"
-          value: "[/papermc](https://discord.gg/papermc)"
+          value: "[papermc](https://discord.gg/papermc)"
           inline: true
         - name: "<:purpur:1140436034505674762> Purpur"
-          value: "[/mtAAnkk](https://discord.gg/mtAAnkk)"
+          value: "[mtAAnkk](https://discord.gg/mtAAnkk)"
           inline: true
         - name: "<:quilt:1049793857681887342> Quilt"
-          value: "[/M7GpuyTBvy](https://discord.gg/M7GpuyTBvy)"
+          value: "[M7GpuyTBvy](https://discord.gg/M7GpuyTBvy)"
           inline: true
         - name: "<:spigot:1049793413886779413> Spigot"
-          value: "[/spigotmc](https://discord.gg/spigotmc)"
+          value: "[spigotmc](https://discord.gg/spigotmc)"
           inline: true
         - name: "<:sponge:1049793416969605231> Sponge"
-          value: "[/sponge](https://discord.gg/sponge)"
+          value: "[sponge](https://discord.gg/sponge)"
           inline: true
         - name: "<:velocity:1049793419108700170> Velocity"
-          value: "[/papermc](https://discord.gg/papermc)"
+          value: "[papermc](https://discord.gg/papermc)"
           inline: true
         - name: "<:waterfall:1049793420937412638> Waterfall"
-          value: "[/papermc](https://discord.gg/papermc)"
+          value: "[papermc](https://discord.gg/papermc)"
           inline: true
     - title: "Launchers"
       color: 0x5865F2
       fields:
         - name: "<:atlauncher:1086501740104392795> ATLauncher"
-          value: "[/atlauncher](https://discord.gg/atlauncher)"
+          value: "[atlauncher](https://discord.gg/atlauncher)"
           inline: true
         - name: "<:multimc:1086501764687200316> MultiMC"
-          value: "[/multimc](https://discord.gg/multimc)"
+          value: "[multimc](https://discord.gg/multimc)"
           inline: true
         - name: "<:prism:1086501783305715773> Prism Launcher"
-          value: "[/prismlauncher](https://discord.gg/prismlauncher)"
+          value: "[prismlauncher](https://discord.gg/prismlauncher)"
           inline: true
