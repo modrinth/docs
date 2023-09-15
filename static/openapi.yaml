@@ -1817,13 +1817,13 @@ paths:
             Several others are also available for use, though these should not be used outside very specific use cases.
             - `title`
             - `author`
-            - `date_modified`
             - `follows`
             - `project_id`
             - `license`
-            - `date_created`
             - `downloads`
             - `color`
+            - `created_timestamp`
+            - `modified_timestamp`
             
             In order to then use these facets, you need a value to filter by, as well as an operation to perform on this value.
             The most common operation is `:` (same as `=`), though you can also use `!=`, `>=`, `>`, `<=`, and `<`.
@@ -1877,19 +1877,6 @@ paths:
             minimum: 0
             maximum: 100
           description: The number of results returned by the search
-        - in: query
-          name: filters
-          schema:
-            type: string
-            example: categories="fabric" AND (categories="technology" OR categories="utility")
-          description: A list of filters relating to the properties of a project. Facets are generally recommended over filters.
-        - in: query
-          name: version
-          schema:
-            type: string
-            example: version="1.16.3" OR version="1.16.2" OR version="1.16.1"
-          deprecated: true
-          description: A list of filters relating to the versions of a project. Use of facets for filtering by version is recommended
       tags:
         - projects
       responses:
