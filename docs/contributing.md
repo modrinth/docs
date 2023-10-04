@@ -126,6 +126,8 @@ If you're prepared to contribute by submitting a pull request, ensure you have m
 - `cargo check` has been run.
 - `cargo sqlx prepare` has been run.
 
+> Note: If you encounter issues with `sqlx` saying 'no queries found' after running `cargo sqlx prepare`, you may need to ensure the installed version of `sqlx-cli` matches the current version of `sqlx` used [in labrinth](https://github.com/modrinth/labrinth/blob/master/Cargo.toml).
+
 ### knossos (frontend)
 
 [knossos] is the Nuxt.js frontend. You will need to install [pnpm] and run the standard commands:
@@ -139,7 +141,7 @@ Once that's done, you'll be serving knossos on `localhost:3000` with hot reloadi
 
 ### theseus (launcher)
 
-[theseus] is the Tauri-based launcher that lets users conveniently play any mod or modpack on Modrinth. It uses the Rust-based Tauri as the backend and Nuxt.js as the frontend. To get started, install [pnpm] and [Rust], then run the following commands:
+[theseus] is the Tauri-based launcher that lets users conveniently play any mod or modpack on Modrinth. It uses the Rust-based Tauri as the backend and Nuxt.js as the frontend. To get started, install [pnpm], [Rust], and the [Tauri prerequisites](https://tauri.app/v1/guides/getting-started/prerequisites/#installing) for your system. Then, run the following commands:
 
 ```bash
 cd theseus_gui
