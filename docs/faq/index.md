@@ -38,7 +38,8 @@ We recommend [Bitwarden](https://bitwarden.com) for generating and storing passw
 
 You can use Discord, GitHub, Microsoft, Google, Steam, GitLab, or a password to sign in to Modrinth. We generally recommend you set up two or three of these seven methods. You can set this up under the "Account security" section of the [Modrinth account settings](https://modrinth.com/settings/account).
 
-<details><summary>Why only set up two or three and not all seven?</summary>
+<details>
+<summary>Why only set up two or three and not all seven?</summary>
 
 There is a delicate balance to be struck when choosing how to log in to your Modrinth account. Setting up too few authentication methods can leave you prone to locking yourself out of your Modrinth account if you lose your login information for one service. Meanwhile, setting up too many can leave your Modrinth account prone to also being compromised if your login for another service is compromised.
 
