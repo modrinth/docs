@@ -4,9 +4,35 @@ sidebar_label: Modrinth App FAQ
 
 # Frequently Asked Questions - Modrinth App
 
-For questions that are not specific to the Modrinth App, please refer to the [general FAQ](index.md).
+For questions that are not specific to the Modrinth App, please refer to the [general FAQ](index.md). If none of these answer your questions, please join us in the `#app-support` channel of our [Discord].
 
 ## General questions
+
+### Why is my modded game instance crashing? {#crashing}
+
+There are many possible reasons for your game crashing. While some crashes may be caused by the Modrinth App itself, such as in the case of [Forge 1.18.2 or older on M1/M2 Mac devices](#old-forge), this is extremely rare.
+
+#### Step 1: Updated mods
+
+First, make sure you're using the latest version of each mod you're using. You can update very easily by clicking the "Update all" button in the top-right corner of the "Mods" section of an instance. If it's been a while since you last updated, it might take a while to download all new updates.
+
+Next, double check to ensure that all of your mods support the loader and game version you're using. For example, mods for 1.20.1 may not work on 1.20.2.
+
+#### Step 2: Read crash logs
+
+Reading the log or crash report can be incredibly important in diagnosing a crash. The most common crash that can be resolved by reading logs are mods that have a failure in using "Mixin", a library very commonly used in Fabric and Quilt mods, and occasionally in Forge or NeoForge mods. If your crash log says `Caused by: org.spongepowered.asm.mixin` anywhere in it, it is likely this category of crash. If you search for `Mixin apply for mod` or `.mixins.json`, you can often find the ID of a mod that's misbehaving. For example, finding `memoryleakfix.mixins.json` in a crash log may indicate an issue with [Memory Leak Fix](https://modrinth.com/mod/memoryleakfix).
+
+#### Step 3: Binary search method
+
+When all else fails, the **binary search method** (also "divide and conquer") is a tried-and-true method. If you have many mods, it might seem impossible to figure out which one might be causing the crash. The binary search method allows you to determine the problematic mod very quickly, without having to disable and test mods one-by-one. Here's how it works:
+
+1. Start by disabling half of your mods. Run the game to see if the crash still happens.
+2. Does the issue still exist?
+    a. If YES: Repeat from step 1 with the mods you currently have enabled.
+    b. If NO: Disable all mods you currently have enabled, and enable all mods which were previously disabled.
+3. Repeat this process until the problematic mod(s) have been found. Check for updates, conflicts, or incompatibilities.
+
+Following this process, you should be able to find the problem, regardless of your loader or game version. If the game still crashes even without any mods enabled, it may be caused by the loader itself or by the Modrinth App. Check if any FAQs below, such as [broken intermediary (Fabric/Quilt)](#intermediary), [out-of-memory errors](#32bit-java), or [old Forge on M1/M2 Macs](#old-forge) solve your issues. If your game still crashes and you suspect the crash is caused by the Modrinth App, please join us in the `#app-support` channel of our [Discord]. We are unable to assist with crashes caused by a loader.
 
 ### How do I install or create a Modrinth modpack? {#modpack-basics}
 
@@ -16,15 +42,19 @@ Please refer to the [Modpacks on Modrinth](../modpacks/index.md) page.
 
 When you install a modpack from Modrinth, it is paired and locked to only contain the content from that modpack. By unlocking a modpack, you can add your own content. By unpairing a modpack, you remove the link between your local installation and the modpack as available on Modrinth.
 
-To unpair and/or unlock an instance, go into the instance options, then scroll down to "Modpack" and unpair/unlock as needed.
+To unpair and/or unlock an instance, go into the instance options, then scroll down to "Instance management" and unpair/unlock as needed.
 
-### Why am I getting an error saying "end of file before message length reached"? {#network}
+### How do I repair an instance? {#repair}
 
-This error, or any other error along the lines of "Error fetching URL", shows an issue with your network. If your Internet connection is limited, you should lower the "Maximum concurrent downloads" setting in the "Resource management" section of the app settings.
+An instance can become corrupted for a variation of reasons. In most cases, such corruption can be fixed simply by repairing the instance. To repair an instance, go into the instance options, then scroll down to "Modpack" and repair as needed. Allow it some time to process, since this may take a while.
+
+### Why am I getting a network error when downloading files? {#network}
+
+Any error along the lines of "end of file before message length reached" or "Error fetching URL" shows an issue with your network. If your Internet connection is limited, you should lower the "Maximum concurrent downloads" setting in the "Resource management" section of the app settings.
 
 ### Why am I getting an error from Fabric saying that it cannot access intermediary? {#intermediary}
 
-This error can show as a result of a corrupted instance installation. You can fix it by repairing the instance. Go into the instance options, then scroll down to "Instance management" and click "Repair".
+This error can show as a result of a corrupted instance installation. First, locate and delete the `.jar` file it tells you has the issue. Then, [repair the instance](#repair).
 
 ### Can I run two copies of the same instance at the same time? {#duplicate-instances}
 
@@ -56,24 +86,17 @@ Many users confuse it with the actual browser and mistakenly remove its files, w
 2. If you encounter an ‘already installed’ message, try running the installer as administrator.
 3. Once the installation is complete, give the Modrinth app another go.
 
-If the app still does not run, the issue is likely unrelated to the Edge WebView2. Please join [our Discord][Discord] and send a message in the `#app-support` channel.
-
 ### Why am I getting "out-of-memory" errors, even when I have enough memory allocated? {#32bit-java}
 
 If you're experiencing Java memory errors when launching Minecraft 1.16.5 or older, despite having sufficient RAM, it may be due to having a 32-bit version of Java installed.
 
-The Oracle Java 8 installer has issues where it may incorrectly detect your system as a 32-bit one and install 32-bit Java. 32-bit processes can only allocate memory within the first 4 GB of RAM due to how memory addressing works.
-
-To resolve this issue, follow the steps below:
-1. Right-click the Start button (⊞) and choose "Installed apps" in the open menu.
-2. Uninstall all Java 8 versions that you can find.
-3. Download and install the [64-bit version of Java 8 from Azul](https://www.azul.com/downloads/?version=java-8-lts&os=windows&architecture=x86-64-bit&package=jdk#zulu).
-4. In your Modrinth app, click "Auto-detect" or manually enter the path to `bin\javaw.exe` of the newly installed Java.
-5. Try launching your game now.
-
-If you still have the same error, the problem is probably unrelated to the Java bit-ness. Please join [our Discord][Discord] and send a message in the `#app-support` channel. Check that you allocate the correct amount of RAM and provide all relevant logs and error messages.
+Go to the app settings and scroll down to "Java settings". Click "Install recommended" next to both "Java 17 location" and "Java 8 location". Then, your issue should be solved. If not, make sure you don't override the global Java installations in your individual instance settings.
 
 ## Mac-specific questions
+
+### Why can't I launch Forge 1.18.2 (or older)? {#old-forge}
+
+Due to technical restrictions, the Modrinth App does not currently support Forge 1.18.2 or older on M1/M2 Macs. This error might say something along the lines of "Failed to locate library: liblwjgl.dylib". This is a known issue, and we are working on fixing it.
 
 ### Why can't I launch the app on macOS Catalina (or older)? {#catalina}
 
