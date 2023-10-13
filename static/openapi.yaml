@@ -1309,6 +1309,8 @@ components:
           example: Accept
         action_route:
           type: array
+          items:
+            type: string
           description: The HTTP code and path to request in order to perform this action.
           example: [POST, 'team/{id}/join']
     # Reports
