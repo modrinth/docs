@@ -1,7 +1,7 @@
 openapi: '3.0.0'
 
 info:
-  version: v2.7.0/ec80c2b
+  version: v2.7.0/15cf3fc
   title: Labrinth
   termsOfService: https://modrinth.com/legal/terms
   contact:
@@ -633,12 +633,6 @@ components:
               type: string
               description: The featured gallery image of the project
               nullable: true
-            dependencies:
-              type: array
-              description: A list of this project's dependencies, in the format of `{project_id}-{dep_type}`
-              example: [AABBCCDD-required, EEFFGGHH-optional, IIJJKKLL-incompatible, MMNNOOPP-embedded]
-              items:
-                type: string
           required:
             - slug
             - title

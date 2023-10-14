@@ -133,6 +133,20 @@ dependencies {
 }
 ```
 
+## Maven version filters
+
+Many projects on Modrinth elect to use the same version number for several different versions across multiple loaders and game versions. In cases like these, version filters can be used to select a specific version out of several that share the same version number.
+
+To use them, put a dash and a comma-separated list of the loaders and game versions your version has:
+```groovy
+// Get version `1.19.4-2.4.13` of `moonlight` for Forge mod loader
+modImplementation "maven.modrinth:moonlight:1.19.4-2.4.13-forge"
+
+// You can also put several filters into the list:
+// Get version `3.0.9` of `physicsmod` for Fabric 1.20.2
+modImplementation "maven.modrinth:physicsmod:3.0.9-fabric,1.20.2"
+```
+
 ## Appendix: transitive dependencies
 
 Modrinth's Maven does not have any [transitive dependencies]. This can sometimes cause compilation problems and will often cause the development environment to have runtime problems.
