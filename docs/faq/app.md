@@ -48,6 +48,12 @@ To unpair and/or unlock an instance, go into the instance options, then scroll d
 
 An instance can become corrupted for a variation of reasons. In most cases, such corruption can be fixed simply by repairing the instance. To repair an instance, go into the instance options, then scroll down to "Modpack" and repair as needed. Allow it some time to process, since this may take a while.
 
+### How do I install Java? {#java}
+
+Java is the coding language that Minecraft uses. In order to play Minecraft, you must have Java installed.
+
+Go to your app settings by clicking the cog (⚙️) in the bottom-left. Scroll down to "Java settings". Click "Install recommended" next to both "Java 17 location" and "Java 8 location". Allow some time for both to be downloaded.
+
 ### Why am I getting a network error when downloading files? {#network}
 
 Any error along the lines of "end of file before message length reached" or "Error fetching URL" shows an issue with your network. If your Internet connection is limited, you should lower the "Maximum concurrent downloads" setting in the "Resource management" section of the app settings.
@@ -88,9 +94,7 @@ Many users confuse it with the actual browser and mistakenly remove its files, w
 
 ### Why am I getting "out-of-memory" errors, even when I have enough memory allocated? {#32bit-java}
 
-If you're experiencing Java memory errors when launching Minecraft 1.16.5 or older, despite having sufficient RAM, it may be due to having a 32-bit version of Java installed.
-
-Go to the app settings and scroll down to "Java settings". Click "Install recommended" next to both "Java 17 location" and "Java 8 location". Then, your issue should be solved. If not, make sure you don't override the global Java installations in your individual instance settings.
+If you're experiencing Java memory errors when launching Minecraft 1.16.5 or older, despite having sufficient RAM, it may be due to having a 32-bit version of Java installed. Please [reinstall Java](#java).
 
 ## Mac-specific questions
 
