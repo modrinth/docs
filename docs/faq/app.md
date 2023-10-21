@@ -38,6 +38,14 @@ Following this process, you should be able to find the problem, regardless of yo
 
 Please refer to the [Modpacks on Modrinth](../modpacks/index.md) page.
 
+### How do I share a modpack with others? {#share}
+
+Once you have [created an `.mrpack` file](#modpack-basics), you can share this file with the world.
+
+The main method of distribution is via the [Modrinth website](https://modrinth.com). First, log in to the website. Then, you can create a project by hovering over your avatar and clicking "Create a project". Make sure to select "Modpack" as the project type. Follow the checklist, ensuring you are following the rules and have [obtained permission to include each file](../modpacks/permissions.md). Once submitted for review, you can expect it to be reviewed by our moderators [within 24-48 hours](./index.md#review-times).
+
+Alternatively, if your pack is only for you and a few friends, you can share the `.mrpack` file using your file host of choice — [Google Drive](https://drive.google.com), [OneDrive](https://www.microsoft.com/en-us/microsoft-365/onedrive/online-cloud-storage), [Dropbox](https://dropbox.com), etc. This method of distribution is much faster and does not involve intervention by Modrinth's moderators. However, it does not allow users to easily move between multiple versions of the same modpack.
+
 ### How do I unlock or unpair an instance? {#unpair}
 
 When you install a modpack from Modrinth, it is paired and locked to only contain the content from that modpack. By unlocking a modpack, you can add your own content. By unpairing a modpack, you remove the link between your local installation and the modpack as available on Modrinth.
@@ -48,23 +56,58 @@ To unpair and/or unlock an instance, go into the instance options, then scroll d
 
 An instance can become corrupted for a variation of reasons. In most cases, such corruption can be fixed simply by repairing the instance. To repair an instance, go into the instance options, then scroll down to "Modpack" and repair as needed. Allow it some time to process, since this may take a while.
 
+### Where are the Modrinth App files located? {#file-location}
+
+The Modrinth App puts its files in a certain place depending on your operating system. These are the default values; you can change this directory in the "App directory" section of the launcher settings.
+
+Please note: the Modrinth App **will break** if you change the app directory to any directory that requires administrator privileges, such as `Program Files` on Windows. Unless you really know what you're doing, we highly advise against changing the app directory.
+
+#### Windows
+
+On Windows, files are stored in `%AppData%\com.modrinth.theseus\` by default.
+
+To navigate to this directory, press <kbd>Win</kbd> + <kbd>R</kbd> on your keyboard, then enter `%AppData%\com.modrinth.theseus\` into the dialog box.
+
+#### Mac
+
+On Mac, files are stored in `~/Library/Application Support/com.modrinth.theseus/` by default.
+
+To navigate to this directory, open Finder and click on "Go" in the bar at the top of your screen. In that menu, click "Go to folder", then enter `~/Library/Application Support/com.modrinth.theseus/` into the dialog box.
+
+#### Linux
+
+On Linux, files are stored in `$XDG_CONFIG_HOME/com.modrinth.theseus/` (usually `~/.config/com.modrinth.theseus/`) by default.
+
+As a Linux user, you're expected to know how to navigate to this directory yourself.
+
 ### How do I install Java? {#java}
 
 Java is the coding language that Minecraft uses. In order to play Minecraft, you must have Java installed.
 
 Go to your app settings by clicking the cog (⚙️) in the bottom-left. Scroll down to "Java settings". Click "Install recommended" next to both "Java 17 location" and "Java 8 location". Allow some time for both to be downloaded.
 
+### Can I run two copies of the same instance at the same time? {#duplicate-instances}
+
+Due to restrictions with how Minecraft interacts with its files, it is not possible to run more than one copy of an instance at the same time. As a workaround, we suggest duplicating your instances. You can do this by right-clicking on the instance and clicking "Duplicate instance".
+
+## General errors
+
 ### Why am I getting a network error when downloading files? {#network}
 
 Any error along the lines of "end of file before message length reached" or "Error fetching URL" shows an issue with your network. If your Internet connection is limited, you should lower the "Maximum concurrent downloads" setting in the "Resource management" section of the app settings.
 
+### Why did my instances suddenly disappear? {#power-outage}
+
+Sometimes, closing out of the Modrinth App without properly shutting down your computer can cause your instances to disappear. For example, this commonly occurs following a power outage. Don't worry: your instance isn't lost! In order to recover an instance, follow these steps:
+
+1. Create a new instance using the exact same loader and game version as the instance you wish to recover.
+2. Open your file manager and find the folder that contains the instance you wish to recover. This will be somewhere in the `profiles` folder of the Modrinth App directory. If you're not sure where this is, check out [Where are the Modrinth App files located?](#file-location)
+3. Delete the `profile.json` file in the folder of the instance you wish to recover. Then, copy over all remaining files and folders to the new instance's folder.
+4. Close out of any other instances you may have open and restart the app.
+
 ### Why am I getting an error from Fabric saying that it cannot access intermediary? {#intermediary}
 
 This error can show as a result of a corrupted instance installation. First, locate and delete the `.jar` file it tells you has the issue. Then, [repair the instance](#repair).
-
-### Can I run two copies of the same instance at the same time? {#duplicate-instances}
-
-Due to restrictions with how Minecraft interacts with its files, it is not possible to run more than one copy of an instance at the same time. As a workaround, we suggest duplicating your instances. You can do this by right-clicking on the instance and clicking "Duplicate instance".
 
 ## Account-related questions
 
