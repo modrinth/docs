@@ -7,13 +7,13 @@ settings:
 dependencies:
   '@cmfcmf/docusaurus-search-local':
     specifier: ^1.1.0
-    version: 1.1.0(@docusaurus/core@3.0.0-beta.0)(search-insights@2.7.0)
+    version: 1.1.0(@docusaurus/core@3.0.0-rc.0)(search-insights@2.7.0)
   '@docusaurus/core':
-    specifier: ^3.0.0-beta.0
-    version: 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+    specifier: ^3.0.0-rc.0
+    version: 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
   '@docusaurus/preset-classic':
-    specifier: ^3.0.0-beta.0
-    version: 3.0.0-beta.0(@algolia/client-search@4.18.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+    specifier: ^3.0.0-rc.0
+    version: 3.0.0-rc.0(@algolia/client-search@4.20.0)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.7.0)(typescript@5.1.6)
   '@mdx-js/react':
     specifier: ^2.3.0
     version: 2.3.0(react@18.2.0)
@@ -27,8 +27,8 @@ dependencies:
     specifier: 17.9.2
     version: 17.9.2
   prism-react-renderer:
-    specifier: ^1.3.5
-    version: 1.3.5(react@18.2.0)
+    specifier: ^2.1.0
+    version: 2.1.0(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -52,10 +52,15 @@ packages:
       - search-insights
     dev: false
 
-  /@algolia/autocomplete-core@1.8.2:
-    resolution: {integrity: sha512-mTeshsyFhAqw/ebqNsQpMtbnjr+qVOSKXArEj4K0d7sqc8It1XD0gkASwecm9mF/jlOQ4Z9RNg1HbdA8JPdRwQ==}
+  /@algolia/autocomplete-core@1.9.3(@algolia/client-search@4.20.0)(algoliasearch@4.20.0)(search-insights@2.7.0):
+    resolution: {integrity: sha512-009HdfugtGCdC4JdXUbVJClA0q0zh24yyePn+KUGk3rP7j8FEe/m5Yo/z65gn6nP/cM39PxpzqKrL7A6fP6PPw==}
     dependencies:
-      '@algolia/autocomplete-shared': 1.8.2
+      '@algolia/autocomplete-plugin-algolia-insights': 1.9.3(@algolia/client-search@4.20.0)(algoliasearch@4.20.0)(search-insights@2.7.0)
+      '@algolia/autocomplete-shared': 1.9.3(@algolia/client-search@4.20.0)(algoliasearch@4.20.0)
+    transitivePeerDependencies:
+      - '@algolia/client-search'
+      - algoliasearch
+      - search-insights
     dev: false
 
   /@algolia/autocomplete-js@1.11.0(@algolia/client-search@4.18.0)(algoliasearch@4.18.0)(search-insights@2.7.0):
@@ -87,6 +92,18 @@ packages:
       - algoliasearch
     dev: false
 
+  /@algolia/autocomplete-plugin-algolia-insights@1.9.3(@algolia/client-search@4.20.0)(algoliasearch@4.20.0)(search-insights@2.7.0):
+    resolution: {integrity: sha512-a/yTUkcO/Vyy+JffmAnTWbr4/90cLzw+CC3bRbhnULr/EM0fGNvM13oQQ14f2moLMcVDyAx/leczLlAOovhSZg==}
+    peerDependencies:
+      search-insights: '>= 1 < 3'
+    dependencies:
+      '@algolia/autocomplete-shared': 1.9.3(@algolia/client-search@4.20.0)(algoliasearch@4.20.0)
+      search-insights: 2.7.0
+    transitivePeerDependencies:
+      - '@algolia/client-search'
+      - algoliasearch
+    dev: false
+
   /@algolia/autocomplete-preset-algolia@1.11.0(@algolia/client-search@4.18.0)(algoliasearch@4.18.0):
     resolution: {integrity: sha512-a2Tg6TOXN75xIzcx9P7srTNIH8kFjap6IEDHiMYWwa3V4qWNZjbE3e07HxwD3Pme8zp700y3EiYTQMBaYETe6g==}
     peerDependencies:
@@ -98,15 +115,15 @@ packages:
       algoliasearch: 4.18.0
     dev: false
 
-  /@algolia/autocomplete-preset-algolia@1.8.2(@algolia/client-search@4.18.0)(algoliasearch@4.18.0):
-    resolution: {integrity: sha512-J0oTx4me6ZM9kIKPuL3lyU3aB8DEvpVvR6xWmHVROx5rOYJGQcZsdG4ozxwcOyiiu3qxMkIbzntnV1S1VWD8yA==}
+  /@algolia/autocomplete-preset-algolia@1.9.3(@algolia/client-search@4.20.0)(algoliasearch@4.20.0):
+    resolution: {integrity: sha512-d4qlt6YmrLMYy95n5TB52wtNDr6EgAIPH81dvvvW8UmuWRgxEtY0NJiPwl/h95JtG2vmRM804M0DSwMCNZlzRA==}
     peerDependencies:
       '@algolia/client-search': '>= 4.9.1 < 6'
       algoliasearch: '>= 4.9.1 < 6'
     dependencies:
-      '@algolia/autocomplete-shared': 1.8.2
-      '@algolia/client-search': 4.18.0
-      algoliasearch: 4.18.0
+      '@algolia/autocomplete-shared': 1.9.3(@algolia/client-search@4.20.0)(algoliasearch@4.20.0)
+      '@algolia/client-search': 4.20.0
+      algoliasearch: 4.20.0
     dev: false
 
   /@algolia/autocomplete-shared@1.11.0(@algolia/client-search@4.18.0)(algoliasearch@4.18.0):
@@ -119,8 +136,14 @@ packages:
       algoliasearch: 4.18.0
     dev: false
 
-  /@algolia/autocomplete-shared@1.8.2:
-    resolution: {integrity: sha512-b6Z/X4MczChMcfhk6kfRmBzPgjoPzuS9KGR4AFsiLulLNRAAqhP+xZTKtMnZGhLuc61I20d5WqlId02AZvcO6g==}
+  /@algolia/autocomplete-shared@1.9.3(@algolia/client-search@4.20.0)(algoliasearch@4.20.0):
+    resolution: {integrity: sha512-Wnm9E4Ye6Rl6sTTqjoymD+l8DjSTHsHboVRYrKgEt8Q7UHm9nYbqhN/i0fhUYA3OAEH7WA8x3jfpnmJm3rKvaQ==}
+    peerDependencies:
+      '@algolia/client-search': '>= 4.9.1 < 6'
+      algoliasearch: '>= 4.9.1 < 6'
+    dependencies:
+      '@algolia/client-search': 4.20.0
+      algoliasearch: 4.20.0
     dev: false
 
   /@algolia/autocomplete-theme-classic@1.11.0:
@@ -133,8 +156,18 @@ packages:
       '@algolia/cache-common': 4.18.0
     dev: false
 
+  /@algolia/cache-browser-local-storage@4.20.0:
+    resolution: {integrity: sha512-uujahcBt4DxduBTvYdwO3sBfHuJvJokiC3BP1+O70fglmE1ShkH8lpXqZBac1rrU3FnNYSUs4pL9lBdTKeRPOQ==}
+    dependencies:
+      '@algolia/cache-common': 4.20.0
+    dev: false
+
   /@algolia/cache-common@4.18.0:
     resolution: {integrity: sha512-BmxsicMR4doGbeEXQu8yqiGmiyvpNvejYJtQ7rvzttEAMxOPoWEHrWyzBQw4x7LrBY9pMrgv4ZlUaF8PGzewHg==}
+    dev: false
+
+  /@algolia/cache-common@4.20.0:
+    resolution: {integrity: sha512-vCfxauaZutL3NImzB2G9LjLt36vKAckc6DhMp05An14kVo8F1Yofb6SIl6U3SaEz8pG2QOB9ptwM5c+zGevwIQ==}
     dev: false
 
   /@algolia/cache-in-memory@4.18.0:
@@ -143,12 +176,26 @@ packages:
       '@algolia/cache-common': 4.18.0
     dev: false
 
+  /@algolia/cache-in-memory@4.20.0:
+    resolution: {integrity: sha512-Wm9ak/IaacAZXS4mB3+qF/KCoVSBV6aLgIGFEtQtJwjv64g4ePMapORGmCyulCFwfePaRAtcaTbMcJF+voc/bg==}
+    dependencies:
+      '@algolia/cache-common': 4.20.0
+    dev: false
+
   /@algolia/client-account@4.18.0:
     resolution: {integrity: sha512-XsDnlROr3+Z1yjxBJjUMfMazi1V155kVdte6496atvBgOEtwCzTs3A+qdhfsAnGUvaYfBrBkL0ThnhMIBCGcew==}
     dependencies:
       '@algolia/client-common': 4.18.0
       '@algolia/client-search': 4.18.0
       '@algolia/transporter': 4.18.0
+    dev: false
+
+  /@algolia/client-account@4.20.0:
+    resolution: {integrity: sha512-GGToLQvrwo7am4zVkZTnKa72pheQeez/16sURDWm7Seyz+HUxKi3BM6fthVVPUEBhtJ0reyVtuK9ArmnaKl10Q==}
+    dependencies:
+      '@algolia/client-common': 4.20.0
+      '@algolia/client-search': 4.20.0
+      '@algolia/transporter': 4.20.0
     dev: false
 
   /@algolia/client-analytics@4.18.0:
@@ -160,11 +207,27 @@ packages:
       '@algolia/transporter': 4.18.0
     dev: false
 
+  /@algolia/client-analytics@4.20.0:
+    resolution: {integrity: sha512-EIr+PdFMOallRdBTHHdKI3CstslgLORQG7844Mq84ib5oVFRVASuuPmG4bXBgiDbcsMLUeOC6zRVJhv1KWI0ug==}
+    dependencies:
+      '@algolia/client-common': 4.20.0
+      '@algolia/client-search': 4.20.0
+      '@algolia/requester-common': 4.20.0
+      '@algolia/transporter': 4.20.0
+    dev: false
+
   /@algolia/client-common@4.18.0:
     resolution: {integrity: sha512-7N+soJFP4wn8tjTr3MSUT/U+4xVXbz4jmeRfWfVAzdAbxLAQbHa0o/POSdTvQ8/02DjCLelloZ1bb4ZFVKg7Wg==}
     dependencies:
       '@algolia/requester-common': 4.18.0
       '@algolia/transporter': 4.18.0
+    dev: false
+
+  /@algolia/client-common@4.20.0:
+    resolution: {integrity: sha512-P3WgMdEss915p+knMMSd/fwiHRHKvDu4DYRrCRaBrsfFw7EQHon+EbRSm4QisS9NYdxbS04kcvNoavVGthyfqQ==}
+    dependencies:
+      '@algolia/requester-common': 4.20.0
+      '@algolia/transporter': 4.20.0
     dev: false
 
   /@algolia/client-personalization@4.18.0:
@@ -175,12 +238,28 @@ packages:
       '@algolia/transporter': 4.18.0
     dev: false
 
+  /@algolia/client-personalization@4.20.0:
+    resolution: {integrity: sha512-N9+zx0tWOQsLc3K4PVRDV8GUeOLAY0i445En79Pr3zWB+m67V+n/8w4Kw1C5LlbHDDJcyhMMIlqezh6BEk7xAQ==}
+    dependencies:
+      '@algolia/client-common': 4.20.0
+      '@algolia/requester-common': 4.20.0
+      '@algolia/transporter': 4.20.0
+    dev: false
+
   /@algolia/client-search@4.18.0:
     resolution: {integrity: sha512-F9xzQXTjm6UuZtnsLIew6KSraXQ0AzS/Ee+OD+mQbtcA/K1sg89tqb8TkwjtiYZ0oij13u3EapB3gPZwm+1Y6g==}
     dependencies:
       '@algolia/client-common': 4.18.0
       '@algolia/requester-common': 4.18.0
       '@algolia/transporter': 4.18.0
+    dev: false
+
+  /@algolia/client-search@4.20.0:
+    resolution: {integrity: sha512-zgwqnMvhWLdpzKTpd3sGmMlr4c+iS7eyyLGiaO51zDZWGMkpgoNVmltkzdBwxOVXz0RsFMznIxB9zuarUv4TZg==}
+    dependencies:
+      '@algolia/client-common': 4.20.0
+      '@algolia/requester-common': 4.20.0
+      '@algolia/transporter': 4.20.0
     dev: false
 
   /@algolia/events@4.0.1:
@@ -191,10 +270,20 @@ packages:
     resolution: {integrity: sha512-46etYgSlkoKepkMSyaoriSn2JDgcrpc/nkOgou/lm0y17GuMl9oYZxwKKTSviLKI5Irk9nSKGwnBTQYwXOYdRg==}
     dev: false
 
+  /@algolia/logger-common@4.20.0:
+    resolution: {integrity: sha512-xouigCMB5WJYEwvoWW5XDv7Z9f0A8VoXJc3VKwlHJw/je+3p2RcDXfksLI4G4lIVncFUYMZx30tP/rsdlvvzHQ==}
+    dev: false
+
   /@algolia/logger-console@4.18.0:
     resolution: {integrity: sha512-3P3VUYMl9CyJbi/UU1uUNlf6Z8N2ltW3Oqhq/nR7vH0CjWv32YROq3iGWGxB2xt3aXobdUPXs6P0tHSKRmNA6g==}
     dependencies:
       '@algolia/logger-common': 4.18.0
+    dev: false
+
+  /@algolia/logger-console@4.20.0:
+    resolution: {integrity: sha512-THlIGG1g/FS63z0StQqDhT6bprUczBI8wnLT3JWvfAQDZX5P6fCg7dG+pIrUBpDIHGszgkqYEqECaKKsdNKOUA==}
+    dependencies:
+      '@algolia/logger-common': 4.20.0
     dev: false
 
   /@algolia/requester-browser-xhr@4.18.0:
@@ -203,8 +292,18 @@ packages:
       '@algolia/requester-common': 4.18.0
     dev: false
 
+  /@algolia/requester-browser-xhr@4.20.0:
+    resolution: {integrity: sha512-HbzoSjcjuUmYOkcHECkVTwAelmvTlgs48N6Owt4FnTOQdwn0b8pdht9eMgishvk8+F8bal354nhx/xOoTfwiAw==}
+    dependencies:
+      '@algolia/requester-common': 4.20.0
+    dev: false
+
   /@algolia/requester-common@4.18.0:
     resolution: {integrity: sha512-xlT8R1qYNRBCi1IYLsx7uhftzdfsLPDGudeQs+xvYB4sQ3ya7+ppolB/8m/a4F2gCkEO6oxpp5AGemM7kD27jA==}
+    dev: false
+
+  /@algolia/requester-common@4.20.0:
+    resolution: {integrity: sha512-9h6ye6RY/BkfmeJp7Z8gyyeMrmmWsMOCRBXQDs4mZKKsyVlfIVICpcSibbeYcuUdurLhIlrOUkH3rQEgZzonng==}
     dev: false
 
   /@algolia/requester-node-http@4.18.0:
@@ -213,12 +312,26 @@ packages:
       '@algolia/requester-common': 4.18.0
     dev: false
 
+  /@algolia/requester-node-http@4.20.0:
+    resolution: {integrity: sha512-ocJ66L60ABSSTRFnCHIEZpNHv6qTxsBwJEPfYaSBsLQodm0F9ptvalFkHMpvj5DfE22oZrcrLbOYM2bdPJRHng==}
+    dependencies:
+      '@algolia/requester-common': 4.20.0
+    dev: false
+
   /@algolia/transporter@4.18.0:
     resolution: {integrity: sha512-xbw3YRUGtXQNG1geYFEDDuFLZt4Z8YNKbamHPkzr3rWc6qp4/BqEeXcI2u/P/oMq2yxtXgMxrCxOPA8lyIe5jw==}
     dependencies:
       '@algolia/cache-common': 4.18.0
       '@algolia/logger-common': 4.18.0
       '@algolia/requester-common': 4.18.0
+    dev: false
+
+  /@algolia/transporter@4.20.0:
+    resolution: {integrity: sha512-Lsii1pGWOAISbzeyuf+r/GPhvHMPHSPrTDWNcIzOE1SG1inlJHICaVe2ikuoRjcpgxZNU54Jl+if15SUCsaTUg==}
+    dependencies:
+      '@algolia/cache-common': 4.20.0
+      '@algolia/logger-common': 4.20.0
+      '@algolia/requester-common': 4.20.0
     dev: false
 
   /@ampproject/remapping@2.2.1:
@@ -1623,7 +1736,7 @@ packages:
       to-fast-properties: 2.0.0
     dev: false
 
-  /@cmfcmf/docusaurus-search-local@1.1.0(@docusaurus/core@3.0.0-beta.0)(search-insights@2.7.0):
+  /@cmfcmf/docusaurus-search-local@1.1.0(@docusaurus/core@3.0.0-rc.0)(search-insights@2.7.0):
     resolution: {integrity: sha512-0IVb/aA0IK8ZlktuxmgXmluXfcSpo6Vdd2nG21y1aOH9nVYnPP231Dn0H8Ng9Qf9ronQQCDWHnuWpYOr9rUrEQ==}
     peerDependencies:
       '@docusaurus/core': ^2.0.0
@@ -1635,7 +1748,7 @@ packages:
       '@algolia/autocomplete-js': 1.11.0(@algolia/client-search@4.18.0)(algoliasearch@4.18.0)(search-insights@2.7.0)
       '@algolia/autocomplete-theme-classic': 1.11.0
       '@algolia/client-search': 4.18.0
-      '@docusaurus/core': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/core': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
       algoliasearch: 4.18.0
       cheerio: 1.0.0-rc.12
       clsx: 1.2.1
@@ -1657,16 +1770,17 @@ packages:
     engines: {node: '>=10.0.0'}
     dev: false
 
-  /@docsearch/css@3.3.5:
-    resolution: {integrity: sha512-NaXVp3I8LdmJ54fn038KHgG7HmbIzZlKS2FkVf6mKcW5bYMJovkx4947joQyZk5yubxOZ+ddHSh79y39Aevufg==}
+  /@docsearch/css@3.5.2:
+    resolution: {integrity: sha512-SPiDHaWKQZpwR2siD0KQUwlStvIAnEyK6tAE2h2Wuoq8ue9skzhlyVQ1ddzOxX6khULnAALDiR/isSF3bnuciA==}
     dev: false
 
-  /@docsearch/react@3.3.5(@algolia/client-search@4.18.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-Zuxf4z5PZ9eIQkVCNu76v1H+KAztKItNn3rLzZa7kpBS+++TgNARITnZeUS7C1DKoAhJZFr6T/H+Lvc6h/iiYg==}
+  /@docsearch/react@3.5.2(@algolia/client-search@4.20.0)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.7.0):
+    resolution: {integrity: sha512-9Ahcrs5z2jq/DcAvYtvlqEBHImbm4YJI8M9y0x6Tqg598P40HTEkX7hsMcIuThI+hTFxRGZ9hll0Wygm2yEjng==}
     peerDependencies:
       '@types/react': '>= 16.8.0 < 19.0.0'
       react: '>= 16.8.0 < 19.0.0'
       react-dom: '>= 16.8.0 < 19.0.0'
+      search-insights: '>= 1 < 3'
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -1674,13 +1788,16 @@ packages:
         optional: true
       react-dom:
         optional: true
+      search-insights:
+        optional: true
     dependencies:
-      '@algolia/autocomplete-core': 1.8.2
-      '@algolia/autocomplete-preset-algolia': 1.8.2(@algolia/client-search@4.18.0)(algoliasearch@4.18.0)
-      '@docsearch/css': 3.3.5
-      algoliasearch: 4.18.0
+      '@algolia/autocomplete-core': 1.9.3(@algolia/client-search@4.20.0)(algoliasearch@4.20.0)(search-insights@2.7.0)
+      '@algolia/autocomplete-preset-algolia': 1.9.3(@algolia/client-search@4.20.0)(algoliasearch@4.20.0)
+      '@docsearch/css': 3.5.2
+      algoliasearch: 4.20.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+      search-insights: 2.7.0
     transitivePeerDependencies:
       - '@algolia/client-search'
     dev: false
@@ -1785,9 +1902,9 @@ packages:
       - webpack-cli
     dev: false
 
-  /@docusaurus/core@3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-tNVEw//Xdzg81y6n+mIV1wrTjwU3GIixTpo00uel7hrn1/vH05HTcj5sn+7R5Iq+tXBK2hc3h+Gjt7opwsvklQ==}
-    engines: {node: '>=16.14'}
+  /@docusaurus/core@3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-T76brimnLd8xAoYZkIpqjva8YAjJWOMgIidV14gqKmYVTo3Ya5sbFnZScPjvJJKmX2PRr59Pj0AyFKKcYi9DIg==}
+    engines: {node: '>=18.0'}
     hasBin: true
     peerDependencies:
       react: ^18.0.0
@@ -1803,13 +1920,13 @@ packages:
       '@babel/runtime': 7.22.6
       '@babel/runtime-corejs3': 7.22.6
       '@babel/traverse': 7.22.8(supports-color@5.5.0)
-      '@docusaurus/cssnano-preset': 3.0.0-beta.0
-      '@docusaurus/logger': 3.0.0-beta.0
-      '@docusaurus/mdx-loader': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/cssnano-preset': 3.0.0-rc.0
+      '@docusaurus/logger': 3.0.0-rc.0
+      '@docusaurus/mdx-loader': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)
       '@docusaurus/react-loadable': 5.5.2(react@18.2.0)
-      '@docusaurus/utils': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
-      '@docusaurus/utils-common': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
-      '@docusaurus/utils-validation': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
+      '@docusaurus/utils': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
+      '@docusaurus/utils-common': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
+      '@docusaurus/utils-validation': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
       '@slorber/static-site-generator-webpack-plugin': 4.0.7
       '@svgr/webpack': 6.5.1
       autoprefixer: 10.4.14(postcss@8.4.26)
@@ -1836,7 +1953,6 @@ packages:
       html-minifier-terser: 7.2.0
       html-tags: 3.3.1
       html-webpack-plugin: 5.5.3(webpack@5.88.1)
-      import-fresh: 3.3.0
       leven: 3.1.0
       lodash: 4.17.21
       mini-css-extract-plugin: 2.7.6(webpack@5.88.1)
@@ -1895,9 +2011,9 @@ packages:
       tslib: 2.6.0
     dev: false
 
-  /@docusaurus/cssnano-preset@3.0.0-beta.0:
-    resolution: {integrity: sha512-CMjYTp5Lhg0fU23MfD9VrmN3mAOtAx4RzvVRG6T/da+p+gVdAKGgzt6q46e5uDpLs9Q8+OQW8oDfe/tdUD0gqQ==}
-    engines: {node: '>=16.14'}
+  /@docusaurus/cssnano-preset@3.0.0-rc.0:
+    resolution: {integrity: sha512-zR0CWjP01xc55iUhpOtxWsN8G8Xy+EYq12ReUnYxrBT0xuQmYCDT+YHVJv5dOA9RSkfVHzq55W2of3i7qysufA==}
+    engines: {node: '>=18.0'}
     dependencies:
       cssnano-preset-advanced: 5.3.10(postcss@8.4.26)
       postcss: 8.4.26
@@ -1913,9 +2029,9 @@ packages:
       tslib: 2.6.0
     dev: false
 
-  /@docusaurus/logger@3.0.0-beta.0:
-    resolution: {integrity: sha512-fHD5tSPVkppGp5b36vdVOyYNGpNNSIqIRUixVuRq9yM3k4xN54Rt1wr01rkupuJ978DkNEnx9zTV+uY08CYEKg==}
-    engines: {node: '>=16.14'}
+  /@docusaurus/logger@3.0.0-rc.0:
+    resolution: {integrity: sha512-jVyE1AZvjzxu4sWIxBGbQrYATX1ZFOkivuTui8G+MPvbiT6dh91Z0i6qET7Hg3OgYhfii+ojupxUXqc9mY0yAQ==}
+    engines: {node: '>=18.0'}
     dependencies:
       chalk: 4.1.2
       tslib: 2.6.0
@@ -1956,18 +2072,18 @@ packages:
       - webpack-cli
     dev: false
 
-  /@docusaurus/mdx-loader@3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-xfRw38IAvoclaLWUMGU2EXuD6iawvFYTw+rmIdrjigGDxWfo8Id2fXr+dHfXZM7BYYAVckZeUfyYnzx/heGB+g==}
-    engines: {node: '>=16.14'}
+  /@docusaurus/mdx-loader@3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-VuXXXoalGc0QGFlxRJZFMwLMdkFPORpx6Qj6C8Ob4pqIOP36fQMt9Y3t9oR7sqtk5XR1WtTR97etE84GqJTUVQ==}
+    engines: {node: '>=18.0'}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
     dependencies:
       '@babel/parser': 7.22.7
       '@babel/traverse': 7.22.8(supports-color@5.5.0)
-      '@docusaurus/logger': 3.0.0-beta.0
-      '@docusaurus/utils': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
-      '@docusaurus/utils-validation': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
+      '@docusaurus/logger': 3.0.0-rc.0
+      '@docusaurus/utils': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
+      '@docusaurus/utils-validation': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
       '@mdx-js/mdx': 2.3.0
       '@slorber/remark-comment': 1.0.0
       escape-html: 1.0.3
@@ -1983,12 +2099,14 @@ packages:
       rehype-raw: 6.1.1
       remark-directive: 2.0.1
       remark-emoji: 2.2.0
+      remark-frontmatter: 5.0.0
       remark-gfm: 3.0.1
       stringify-object: 3.3.0
       tslib: 2.6.0
       unified: 10.1.2
       unist-util-visit: 2.0.3
       url-loader: 4.1.1(file-loader@6.2.0)(webpack@5.88.1)
+      vfile: 5.3.7
       webpack: 5.88.1
     transitivePeerDependencies:
       - '@docusaurus/types'
@@ -2022,14 +2140,14 @@ packages:
       - webpack-cli
     dev: false
 
-  /@docusaurus/module-type-aliases@3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-Gy12aDp5oRdx1dHdqzyxsoR0TcGUeDOsItLtm7cpsnk/r4q459ifLtuY9X2Dyo4EpOt9+4XGuxQY8Q1DpMhCTg==}
+  /@docusaurus/module-type-aliases@3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Ucpgod8KMwDl1g9Jci3BMQ9j4mJ+3LNyYQlKN5GBJ9NXkiBhAttdZA2SkOU35rXa0lCGa+/xCC93XVVSZEc+8Q==}
     peerDependencies:
       react: '*'
       react-dom: '*'
     dependencies:
       '@docusaurus/react-loadable': 5.5.2(react@18.2.0)
-      '@docusaurus/types': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/types': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)
       '@types/history': 4.7.11
       '@types/react': 18.2.15
       '@types/react-router-config': 5.0.7
@@ -2088,20 +2206,20 @@ packages:
       - webpack-cli
     dev: false
 
-  /@docusaurus/plugin-content-blog@3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-fpauSrjOpC/HvdYbNimiLHgdomjfdOcjkgyzfNaDdQo0wtA0tl2MqZoCoYuh/UpdiMWkJX/L/kUyZaIiiNO7zQ==}
-    engines: {node: '>=16.14'}
+  /@docusaurus/plugin-content-blog@3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-zq7sE21oBwMau2+gUlrrxstIXDB7eOlZCNbw/xbiS76juI58bMu3wZfy8KBLtfg5AJZQAZ+3UQPfcWWabFg8Rw==}
+    engines: {node: '>=18.0'}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
     dependencies:
-      '@docusaurus/core': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/logger': 3.0.0-beta.0
-      '@docusaurus/mdx-loader': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)
-      '@docusaurus/types': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)
-      '@docusaurus/utils': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
-      '@docusaurus/utils-common': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
-      '@docusaurus/utils-validation': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
+      '@docusaurus/core': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/logger': 3.0.0-rc.0
+      '@docusaurus/mdx-loader': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/types': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/utils': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
+      '@docusaurus/utils-common': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
+      '@docusaurus/utils-validation': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
       cheerio: 1.0.0-rc.12
       feed: 4.2.2
       fs-extra: 11.1.1
@@ -2175,24 +2293,23 @@ packages:
       - webpack-cli
     dev: false
 
-  /@docusaurus/plugin-content-docs@3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-mCMjysyJIMnhx+YVv8nRwJtkaz+oKfxUx4EGH+83kWgBBMXq0XHPheeUAPBvJOfYyO7jN8zChmYdOMmOuEIcLA==}
-    engines: {node: '>=16.14'}
+  /@docusaurus/plugin-content-docs@3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-d+0Ejro8+gqLMZw2QBGgDg4bBOliNqOGncTFRLxYPH+b/bdJl3G5SWCC5PQeNoqWbi866WRhN51ug3IAdwfLKg==}
+    engines: {node: '>=18.0'}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
     dependencies:
-      '@docusaurus/core': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/logger': 3.0.0-beta.0
-      '@docusaurus/mdx-loader': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)
-      '@docusaurus/module-type-aliases': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)
-      '@docusaurus/types': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)
-      '@docusaurus/utils': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
-      '@docusaurus/utils-validation': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
+      '@docusaurus/core': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/logger': 3.0.0-rc.0
+      '@docusaurus/mdx-loader': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/module-type-aliases': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/types': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/utils': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
+      '@docusaurus/utils-validation': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
       '@types/react-router-config': 5.0.7
       combine-promises: 1.1.0
       fs-extra: 11.1.1
-      import-fresh: 3.3.0
       js-yaml: 4.1.0
       lodash: 4.17.21
       react: 18.2.0
@@ -2253,18 +2370,18 @@ packages:
       - webpack-cli
     dev: false
 
-  /@docusaurus/plugin-content-pages@3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-C5ex2E0OFHq5JkDDHtq7KuU3N9J9nWR/yDburjutN7qO8+TvdoC1nw59wGtfPZyVEeAnJJVVKZKf8pkiYJc5ig==}
-    engines: {node: '>=16.14'}
+  /@docusaurus/plugin-content-pages@3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-261VObtPTHwarqs1CfAb/9zCW/7YLJ7phTb1tyMYiv5+WYZtAfBnX5y6Cql4DWopeUZzhWLZwmxhjW25IhxlKw==}
+    engines: {node: '>=18.0'}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
     dependencies:
-      '@docusaurus/core': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/mdx-loader': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)
-      '@docusaurus/types': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)
-      '@docusaurus/utils': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
-      '@docusaurus/utils-validation': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
+      '@docusaurus/core': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/mdx-loader': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/types': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/utils': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
+      '@docusaurus/utils-validation': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
       fs-extra: 11.1.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -2288,16 +2405,16 @@ packages:
       - webpack-cli
     dev: false
 
-  /@docusaurus/plugin-debug@3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-11EfWWPZW/ZhAklyZOjyWBHIRb4IeNwrW4IcMz5gz08tLMe74A6JhMGtnQZrH7084H94WKRToK7dzKKmSipqDw==}
-    engines: {node: '>=16.14'}
+  /@docusaurus/plugin-debug@3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-5ahPutRokJKhd28fOjQTf8ZRYsVOKbdffV8QkXmvCk7EZeztKuXaJHqq2Rexi/f7InYjxJhX6mRx68FA5Izj2A==}
+    engines: {node: '>=18.0'}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
     dependencies:
-      '@docusaurus/core': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/types': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)
-      '@docusaurus/utils': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
+      '@docusaurus/core': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/types': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/utils': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
       '@microlink/react-json-view': 1.22.2(react-dom@18.2.0)(react@18.2.0)
       fs-extra: 11.1.1
       react: 18.2.0
@@ -2323,16 +2440,16 @@ packages:
       - webpack-cli
     dev: false
 
-  /@docusaurus/plugin-google-analytics@3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-oErAWR0jkr2Bvx1lX6H7tG86UCQMb0yJVSyfr2nk34i9jfxfjOpSP34mLv/5wy5Ff90Xorw6PkuyuBVJtV36Pg==}
-    engines: {node: '>=16.14'}
+  /@docusaurus/plugin-google-analytics@3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-ogsuNkfGSdGkZ04ReXpYymjuhO/6ySeI43E9iFvjDMu1zhmbj+gPQxGyH9kAfkTVIhPHFL+EvzdnkAIQ4IX1ag==}
+    engines: {node: '>=18.0'}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
     dependencies:
-      '@docusaurus/core': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/types': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)
-      '@docusaurus/utils-validation': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
+      '@docusaurus/core': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/types': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/utils-validation': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       tslib: 2.6.0
@@ -2354,16 +2471,16 @@ packages:
       - webpack-cli
     dev: false
 
-  /@docusaurus/plugin-google-gtag@3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-KCpMZmVA/p6f1L1zkGF5YS11xcKx8w+6CeDY2meJuKE/L+9TEY41PcT84yfWlXtmpTxU7ZDHcX1UwuYhGWtsfA==}
-    engines: {node: '>=16.14'}
+  /@docusaurus/plugin-google-gtag@3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-7W0JD92nU541UqiaUYTT+f54DQMHSrqcYh+gosBjODlYf3+MSGI0Jp1kZVZKm0k7kilLZapK/wACaZwpZ8ucnA==}
+    engines: {node: '>=18.0'}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
     dependencies:
-      '@docusaurus/core': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/types': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)
-      '@docusaurus/utils-validation': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
+      '@docusaurus/core': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/types': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/utils-validation': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
       '@types/gtag.js': 0.0.12
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -2386,16 +2503,16 @@ packages:
       - webpack-cli
     dev: false
 
-  /@docusaurus/plugin-google-tag-manager@3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-JHod06M63Mdi1B3WTdnuDFtw/M+aGtn5jmoyT7MZcOET4lNa2wOda6IUDz2X+vpIP+JgUBZLs4elhRi7K5f+mg==}
-    engines: {node: '>=16.14'}
+  /@docusaurus/plugin-google-tag-manager@3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-mzkmQWCAMCTjAmeMEQtgqodTS79jHnx7sfwsmt+ZZ3GvKovdz3L9l1/Mk0D86yCkyuBsJP3zpiJZvnZlobZKLQ==}
+    engines: {node: '>=18.0'}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
     dependencies:
-      '@docusaurus/core': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/types': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)
-      '@docusaurus/utils-validation': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
+      '@docusaurus/core': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/types': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/utils-validation': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       tslib: 2.6.0
@@ -2417,19 +2534,19 @@ packages:
       - webpack-cli
     dev: false
 
-  /@docusaurus/plugin-sitemap@3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-tO3xkOW241wEG9Rx7US7FAr9F7RukVjCbJTZ/qeIqz+0SYznm3+kINxWFN+RnCUeUSEJhzxvCL6Zjqh5NAd41w==}
-    engines: {node: '>=16.14'}
+  /@docusaurus/plugin-sitemap@3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-Cc/H16DsgMNj6q7MmrAbDcI9D0V8LrMMao+bs8/wcI+K1DuI5LhYiudoDbjMZmbfoIYT4nAbyWH/O+oM1lAthQ==}
+    engines: {node: '>=18.0'}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
     dependencies:
-      '@docusaurus/core': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/logger': 3.0.0-beta.0
-      '@docusaurus/types': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)
-      '@docusaurus/utils': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
-      '@docusaurus/utils-common': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
-      '@docusaurus/utils-validation': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
+      '@docusaurus/core': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/logger': 3.0.0-rc.0
+      '@docusaurus/types': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/utils': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
+      '@docusaurus/utils-common': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
+      '@docusaurus/utils-validation': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
       fs-extra: 11.1.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -2453,26 +2570,26 @@ packages:
       - webpack-cli
     dev: false
 
-  /@docusaurus/preset-classic@3.0.0-beta.0(@algolia/client-search@4.18.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-zLD/Qa492YUD9jktXuDc1DTxzGlrO7qyjmQHKxvOf+sS9qKRc88l16FeaiXmLP5sgOWW1acMoyyVf/HrDWXrRg==}
-    engines: {node: '>=16.14'}
+  /@docusaurus/preset-classic@3.0.0-rc.0(@algolia/client-search@4.20.0)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.7.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-IHPePkt0wCqExfHEuyXRqavfQolvrwE/Gx4zeETOoc+Qi6nSyUuRBD4ncJ4jKQpwX68prtPrrlR34f0c4TMNtA==}
+    engines: {node: '>=18.0'}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
     dependencies:
-      '@docusaurus/core': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/plugin-content-blog': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/plugin-content-docs': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/plugin-content-pages': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/plugin-debug': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/plugin-google-analytics': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/plugin-google-gtag': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/plugin-google-tag-manager': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/plugin-sitemap': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/theme-classic': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/theme-common': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/theme-search-algolia': 3.0.0-beta.0(@algolia/client-search@4.18.0)(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/types': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/core': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/plugin-content-blog': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/plugin-content-docs': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/plugin-content-pages': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/plugin-debug': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/plugin-google-analytics': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/plugin-google-gtag': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/plugin-google-tag-manager': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/plugin-sitemap': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/theme-classic': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/theme-common': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/theme-search-algolia': 3.0.0-rc.0(@algolia/client-search@4.20.0)(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.7.0)(typescript@5.1.6)
+      '@docusaurus/types': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
@@ -2488,6 +2605,7 @@ packages:
       - esbuild
       - eslint
       - lightningcss
+      - search-insights
       - supports-color
       - typescript
       - uglify-js
@@ -2506,25 +2624,25 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@docusaurus/theme-classic@3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-D9xnt22/2yO7e6jSXHJzN5IsMJ967TbK7nLjW/5FRI/UX8b9q5zHSOaw3VjlQ7hWJ4JeG3V5b28QYDnru0ybBA==}
-    engines: {node: '>=16.14'}
+  /@docusaurus/theme-classic@3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-HNaIbjQ1SfWf1tC6kMC1XtKnym6IT9bjmyDYxtPaR02eLwFJ8NFAjZTmSlEQriEMB5Hb5uohH0KYjgNR+BD57A==}
+    engines: {node: '>=18.0'}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
     dependencies:
-      '@docusaurus/core': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/mdx-loader': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)
-      '@docusaurus/module-type-aliases': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)
-      '@docusaurus/plugin-content-blog': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/plugin-content-docs': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/plugin-content-pages': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/theme-common': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/theme-translations': 3.0.0-beta.0
-      '@docusaurus/types': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)
-      '@docusaurus/utils': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
-      '@docusaurus/utils-common': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
-      '@docusaurus/utils-validation': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
+      '@docusaurus/core': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/mdx-loader': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/module-type-aliases': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/plugin-content-blog': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/plugin-content-docs': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/plugin-content-pages': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/theme-common': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/theme-translations': 3.0.0-rc.0
+      '@docusaurus/types': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/utils': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
+      '@docusaurus/utils-common': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
+      '@docusaurus/utils-validation': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
       '@mdx-js/react': 2.3.0(react@18.2.0)
       clsx: 1.2.1
       copy-text-to-clipboard: 3.2.0
@@ -2532,7 +2650,7 @@ packages:
       lodash: 4.17.21
       nprogress: 0.2.0
       postcss: 8.4.26
-      prism-react-renderer: 1.3.5(react@18.2.0)
+      prism-react-renderer: 2.1.0(react@18.2.0)
       prismjs: 1.29.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -2602,26 +2720,26 @@ packages:
       - webpack-cli
     dev: false
 
-  /@docusaurus/theme-common@3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-3fOL7/v1App4B8uonnKLxV1jWmdCykFHeVf727WpJs6S2msADJGQCZe/ZS1D7IobKHPlBTn038ls73yKhkLKlA==}
-    engines: {node: '>=16.14'}
+  /@docusaurus/theme-common@3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-KhPb4nrhUV+BeeMrAd7SGFsRneqon4aFgmYWBvhKUZUZuhicTw0U6dxZXZzF4UiDkCvIRQ8WTB9nIa3le+dgSw==}
+    engines: {node: '>=18.0'}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
     dependencies:
-      '@docusaurus/mdx-loader': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)
-      '@docusaurus/module-type-aliases': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)
-      '@docusaurus/plugin-content-blog': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/plugin-content-docs': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/plugin-content-pages': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/utils': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
-      '@docusaurus/utils-common': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
+      '@docusaurus/mdx-loader': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/module-type-aliases': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/plugin-content-blog': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/plugin-content-docs': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/plugin-content-pages': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/utils': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
+      '@docusaurus/utils-common': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
       '@types/history': 4.7.11
       '@types/react': 18.2.15
       '@types/react-router-config': 5.0.7
       clsx: 1.2.1
       parse-numeric-range: 1.3.0
-      prism-react-renderer: 1.3.5(react@18.2.0)
+      prism-react-renderer: 2.1.0(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       tslib: 2.6.0
@@ -2645,21 +2763,21 @@ packages:
       - webpack-cli
     dev: false
 
-  /@docusaurus/theme-search-algolia@3.0.0-beta.0(@algolia/client-search@4.18.0)(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-ixrBFD9dR7PeccstIC1YC+pdJc35QKleWFEGNPjuu/bSUUd2RxGvx9hZeQB4Dq8KL/hWZ2i+2qaBsPMjPBxieg==}
-    engines: {node: '>=16.14'}
+  /@docusaurus/theme-search-algolia@3.0.0-rc.0(@algolia/client-search@4.20.0)(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.7.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-HZPyjjqUsUSkzWemrFEHchHVGCEuI9puV3sbUhBE1EW9a1k8n2bzC7Pc/xP4UQmcK44Y8D0tHtQqWDndLHqwzA==}
+    engines: {node: '>=18.0'}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
     dependencies:
-      '@docsearch/react': 3.3.5(@algolia/client-search@4.18.0)(react-dom@18.2.0)(react@18.2.0)
-      '@docusaurus/core': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/logger': 3.0.0-beta.0
-      '@docusaurus/plugin-content-docs': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/theme-common': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      '@docusaurus/theme-translations': 3.0.0-beta.0
-      '@docusaurus/utils': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
-      '@docusaurus/utils-validation': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
+      '@docsearch/react': 3.5.2(@algolia/client-search@4.20.0)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.7.0)
+      '@docusaurus/core': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/logger': 3.0.0-rc.0
+      '@docusaurus/plugin-content-docs': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/theme-common': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@docusaurus/theme-translations': 3.0.0-rc.0
+      '@docusaurus/utils': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
+      '@docusaurus/utils-validation': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
       algoliasearch: 4.18.0
       algoliasearch-helper: 3.13.3(algoliasearch@4.18.0)
       clsx: 1.2.1
@@ -2683,6 +2801,7 @@ packages:
       - esbuild
       - eslint
       - lightningcss
+      - search-insights
       - supports-color
       - typescript
       - uglify-js
@@ -2691,9 +2810,9 @@ packages:
       - webpack-cli
     dev: false
 
-  /@docusaurus/theme-translations@3.0.0-beta.0:
-    resolution: {integrity: sha512-L47LI/5fCMgP93S4iA1VWzPaU9zkAvQYJMJ93H1iXMjLdKSvtS2JL+hHkL7uPh8DSUbtWeAUeayPCh2gxc+b1g==}
-    engines: {node: '>=16.14'}
+  /@docusaurus/theme-translations@3.0.0-rc.0:
+    resolution: {integrity: sha512-DrFv+8uu8d8bQMe+OsSsYcSldTEDsztDIaF0xE/Um9b2KZBW/evASI34cIiGA04FzYTzVwLCUflefXoQNjYMug==}
+    engines: {node: '>=18.0'}
     dependencies:
       fs-extra: 11.1.1
       tslib: 2.6.0
@@ -2722,8 +2841,8 @@ packages:
       - webpack-cli
     dev: false
 
-  /@docusaurus/types@3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-99ueMwPtRtlODUH1nEim5k6yk819K2hCTf0Gns5cLgmZfnjFQvTEcuQE43kB2Zl9bbWn88w9TBAYvDac9LP32w==}
+  /@docusaurus/types@3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-vaeCGTlxNl4MRgXiHdMvCWlKfHkAu+5zIX01Mc4Iwe0sCGbh1w3nZkr1bZaxfShQo0pdWYsYkjMAUg0qHESc1w==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
@@ -2758,16 +2877,16 @@ packages:
       tslib: 2.6.0
     dev: false
 
-  /@docusaurus/utils-common@3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0):
-    resolution: {integrity: sha512-bfcBkzShK00MffNtAdamoHXt1bVGlypCKzbaqQDmVjFoBVYIvXLXP437uqSu2cx+Bg9JtI37J7Be6nsZqzrR/A==}
-    engines: {node: '>=16.14'}
+  /@docusaurus/utils-common@3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0):
+    resolution: {integrity: sha512-7PpZCzXCue1kkN8nV7tX5oeKuMSYvImC3H2Mjql05ge6ILvWY/lHI8gQl9oS1Wazd4jEK0yeflAs1C/PsYUV3A==}
+    engines: {node: '>=18.0'}
     peerDependencies:
       '@docusaurus/types': '*'
     peerDependenciesMeta:
       '@docusaurus/types':
         optional: true
     dependencies:
-      '@docusaurus/types': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/types': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)
       tslib: 2.6.0
     dev: false
 
@@ -2789,12 +2908,12 @@ packages:
       - webpack-cli
     dev: false
 
-  /@docusaurus/utils-validation@3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0):
-    resolution: {integrity: sha512-skzBB/uA5Tc0dxTlLmuH2BwAn7d1AntUINZyPZ/XMuqMhUXlHF/FKZMZNafC0UFI1M6SyqTwju8myXzD2nosEQ==}
-    engines: {node: '>=16.14'}
+  /@docusaurus/utils-validation@3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0):
+    resolution: {integrity: sha512-YMyDuM6wGzTrkWa40FnclF+gmgTJnid2U8/WAyAkMpJG6PX4sBSKFJTJQr8Gieks1bz9ia0u1vcxavYmtMVcLg==}
+    engines: {node: '>=18.0'}
     dependencies:
-      '@docusaurus/logger': 3.0.0-beta.0
-      '@docusaurus/utils': 3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0)
+      '@docusaurus/logger': 3.0.0-rc.0
+      '@docusaurus/utils': 3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0)
       joi: 17.9.2
       js-yaml: 4.1.0
       tslib: 2.6.0
@@ -2841,17 +2960,17 @@ packages:
       - webpack-cli
     dev: false
 
-  /@docusaurus/utils@3.0.0-beta.0(@docusaurus/types@3.0.0-beta.0):
-    resolution: {integrity: sha512-H1ePqc8GVR3gA/2MFiB4m5Oczbm9l1X1SraYK1Pv6RljLHkSmvUf+tr6UU/tItKiDHwtAunv8kep0m4bYvDL7Q==}
-    engines: {node: '>=16.14'}
+  /@docusaurus/utils@3.0.0-rc.0(@docusaurus/types@3.0.0-rc.0):
+    resolution: {integrity: sha512-O6TI8LCmXC8BH9bgakW57q9eEtgjS+wy3B3FYR7PKTVfDXH3yrGL4BNG7cXidWy6filJKvQpaL7MLUGAGjrsog==}
+    engines: {node: '>=18.0'}
     peerDependencies:
       '@docusaurus/types': '*'
     peerDependenciesMeta:
       '@docusaurus/types':
         optional: true
     dependencies:
-      '@docusaurus/logger': 3.0.0-beta.0
-      '@docusaurus/types': 3.0.0-beta.0(react-dom@18.2.0)(react@18.2.0)
+      '@docusaurus/logger': 3.0.0-rc.0
+      '@docusaurus/types': 3.0.0-rc.0(react-dom@18.2.0)(react@18.2.0)
       '@svgr/webpack': 6.5.1
       escape-string-regexp: 4.0.0
       file-loader: 6.2.0(webpack@5.88.1)
@@ -2859,6 +2978,7 @@ packages:
       github-slugger: 1.5.0
       globby: 11.1.0
       gray-matter: 4.0.3
+      jiti: 1.20.0
       js-yaml: 4.1.0
       lodash: 4.17.21
       micromatch: 4.0.5
@@ -3491,6 +3611,12 @@ packages:
       '@types/unist': 2.0.7
     dev: false
 
+  /@types/mdast@4.0.2:
+    resolution: {integrity: sha512-tYR83EignvhYO9iU3kDg8V28M0jqyh9zzp5GV+EO+AYnyUl3P5ltkTeJuTiFZQFz670FSb3EwT/6LQdX+UdKfw==}
+    dependencies:
+      '@types/unist': 2.0.7
+    dev: false
+
   /@types/mdx@2.0.8:
     resolution: {integrity: sha512-r7/zWe+f9x+zjXqGxf821qz++ld8tp6Z4jUS6qmPZUXH6tfh4riXOhAqb12tWGWAevCFtMt1goLWkQMqIJKpsA==}
     dev: false
@@ -3529,6 +3655,10 @@ packages:
 
   /@types/parse5@6.0.3:
     resolution: {integrity: sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==}
+    dev: false
+
+  /@types/prismjs@1.26.2:
+    resolution: {integrity: sha512-/r7Cp7iUIk7gts26mHXD66geUC+2Fo26TZYjQK6Nr4LDfi6lmdRmMqM0oPwfiMhUwoBAOFe8GstKi2pf6hZvwA==}
     dev: false
 
   /@types/prop-types@15.7.5:
@@ -3623,6 +3753,10 @@ packages:
 
   /@types/unist@2.0.7:
     resolution: {integrity: sha512-cputDpIbFgLUaGQn6Vqg3/YsJwxUwHLO13v3i5ouxT4lat0khip9AEWxtERujXV9wxIB1EyF97BSJFt6vpdI8g==}
+    dev: false
+
+  /@types/unist@3.0.1:
+    resolution: {integrity: sha512-ue/hDUpPjC85m+PM9OQDMZr3LywT+CT6mPsQq8OJtCLiERkGRcQUFvu9XASF5XWqyZFXbf15lvb3JFJ4dRLWPg==}
     dev: false
 
   /@types/ws@8.5.5:
@@ -3875,6 +4009,25 @@ packages:
       '@algolia/requester-common': 4.18.0
       '@algolia/requester-node-http': 4.18.0
       '@algolia/transporter': 4.18.0
+    dev: false
+
+  /algoliasearch@4.20.0:
+    resolution: {integrity: sha512-y+UHEjnOItoNy0bYO+WWmLWBlPwDjKHW6mNHrPi0NkuhpQOOEbrkwQH/wgKFDLh7qlKjzoKeiRtlpewDPDG23g==}
+    dependencies:
+      '@algolia/cache-browser-local-storage': 4.20.0
+      '@algolia/cache-common': 4.20.0
+      '@algolia/cache-in-memory': 4.20.0
+      '@algolia/client-account': 4.20.0
+      '@algolia/client-analytics': 4.20.0
+      '@algolia/client-common': 4.20.0
+      '@algolia/client-personalization': 4.20.0
+      '@algolia/client-search': 4.20.0
+      '@algolia/logger-common': 4.20.0
+      '@algolia/logger-console': 4.20.0
+      '@algolia/requester-browser-xhr': 4.20.0
+      '@algolia/requester-common': 4.20.0
+      '@algolia/requester-node-http': 4.20.0
+      '@algolia/transporter': 4.20.0
     dev: false
 
   /ansi-align@3.0.1:
@@ -5176,6 +5329,12 @@ packages:
       - supports-color
     dev: false
 
+  /devlop@1.1.0:
+    resolution: {integrity: sha512-RWmIqhcFf1lRYBvNmr7qTNuyCt/7/ns2jbpp1+PalgE/rDQcBT0fioSMUpJ93irlUhC5hrg4cYqe6U+0ImW0rA==}
+    dependencies:
+      dequal: 2.0.3
+    dev: false
+
   /diff@5.1.0:
     resolution: {integrity: sha512-D+mk+qE8VC/PAUrlAU34N+VfXev0ghe5ywmpqrawphmVZc1bEfn56uo9qpyGp1p4xpzOHkSW4ztBd6L7Xx4ACw==}
     engines: {node: '>=0.3.1'}
@@ -5676,6 +5835,12 @@ packages:
       reusify: 1.0.4
     dev: false
 
+  /fault@2.0.1:
+    resolution: {integrity: sha512-WtySTkS4OKev5JtpHXnib4Gxiurzh5NCGvWrFaZ34m6JehfTUhKZvn9njTfw48t6JumVQOmrKqpmGcdwxnhqBQ==}
+    dependencies:
+      format: 0.2.2
+    dev: false
+
   /faye-websocket@0.11.4:
     resolution: {integrity: sha512-CzbClwlXAuiRQAlUyfqPgvPoNKTckTPGfwZV4ZdAhVcP2lh9KUxJg2b5GkE7XbjKQ3YJnQ9z6D9ntLAlB+tP8g==}
     engines: {node: '>=0.8.0'}
@@ -5871,6 +6036,11 @@ packages:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       mime-types: 2.1.35
+    dev: false
+
+  /format@0.2.2:
+    resolution: {integrity: sha512-wzsgA6WOq+09wrU1tsJ09udeR/YZRaeArL9e1wPbFg3GG2yDnC2ldKpxs4xunpFF9DgqCqOIra3bc1HWrJ37Ww==}
+    engines: {node: '>=0.4.x'}
     dev: false
 
   /forwarded@0.2.0:
@@ -6888,6 +7058,11 @@ packages:
     hasBin: true
     dev: false
 
+  /jiti@1.20.0:
+    resolution: {integrity: sha512-3TV69ZbrvV6U5DfQimop50jE9Dl6J8O1ja1dvBbMba/sZ3YBEQqJ2VZRoQPVnhlzjNtU1vaXRZVrVjU4qtm8yA==}
+    hasBin: true
+    dev: false
+
   /joi@17.9.2:
     resolution: {integrity: sha512-Itk/r+V4Dx0V3c7RLFdRh12IOjySm2/WGPMubBT92cQvRfYZhPM2W0hZlctjj72iES8jsRCwp7S/cRmWBnJ4nw==}
     dependencies:
@@ -7256,6 +7431,38 @@ packages:
       - supports-color
     dev: false
 
+  /mdast-util-from-markdown@2.0.0:
+    resolution: {integrity: sha512-n7MTOr/z+8NAX/wmhhDji8O3bRvPTV/U0oTCaZJkjhPSKTPhS3xufVhKGF8s1pJ7Ox4QgoIU7KHseh09S+9rTA==}
+    dependencies:
+      '@types/mdast': 4.0.2
+      '@types/unist': 3.0.1
+      decode-named-character-reference: 1.0.2
+      devlop: 1.1.0
+      mdast-util-to-string: 4.0.0
+      micromark: 4.0.0
+      micromark-util-decode-numeric-character-reference: 2.0.0
+      micromark-util-decode-string: 2.0.0
+      micromark-util-normalize-identifier: 2.0.0
+      micromark-util-symbol: 2.0.0
+      micromark-util-types: 2.0.0
+      unist-util-stringify-position: 4.0.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /mdast-util-frontmatter@2.0.1:
+    resolution: {integrity: sha512-LRqI9+wdgC25P0URIJY9vwocIzCcksduHQ9OF2joxQoyTNVduwLAFUzjoopuRJbJAReaKrNQKAZKL3uCMugWJA==}
+    dependencies:
+      '@types/mdast': 4.0.2
+      devlop: 1.1.0
+      escape-string-regexp: 5.0.0
+      mdast-util-from-markdown: 2.0.0
+      mdast-util-to-markdown: 2.1.0
+      micromark-extension-frontmatter: 2.0.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /mdast-util-gfm-autolink-literal@1.0.3:
     resolution: {integrity: sha512-My8KJ57FYEy2W2LyNom4n3E7hKTuQk/0SES0u16tjA9Z3oFkF4RrC/hPAPgjlSpezsOvI8ObcXcElo92wn5IGA==}
     dependencies:
@@ -7374,6 +7581,13 @@ packages:
       unist-util-is: 5.2.1
     dev: false
 
+  /mdast-util-phrasing@4.0.0:
+    resolution: {integrity: sha512-xadSsJayQIucJ9n053dfQwVu1kuXg7jCTdYsMK8rqzKZh52nLfSH/k0sAxE0u+pj/zKZX+o5wB+ML5mRayOxFA==}
+    dependencies:
+      '@types/mdast': 4.0.2
+      unist-util-is: 6.0.0
+    dev: false
+
   /mdast-util-to-hast@10.0.1:
     resolution: {integrity: sha512-BW3LM9SEMnjf4HXXVApZMt8gLQWVNXc3jryK0nJu/rOXPOnlkUjmdkDlmxMirpbU9ILncGFIwLH/ubnWBbcdgA==}
     dependencies:
@@ -7413,6 +7627,19 @@ packages:
       zwitch: 2.0.4
     dev: false
 
+  /mdast-util-to-markdown@2.1.0:
+    resolution: {integrity: sha512-SR2VnIEdVNCJbP6y7kVTJgPLifdr8WEU440fQec7qHoHOUz/oJ2jmNRqdDQ3rbiStOXb2mCDGTuwsK5OPUgYlQ==}
+    dependencies:
+      '@types/mdast': 4.0.2
+      '@types/unist': 3.0.1
+      longest-streak: 3.1.0
+      mdast-util-phrasing: 4.0.0
+      mdast-util-to-string: 4.0.0
+      micromark-util-decode-string: 2.0.0
+      unist-util-visit: 5.0.0
+      zwitch: 2.0.4
+    dev: false
+
   /mdast-util-to-string@2.0.0:
     resolution: {integrity: sha512-AW4DRS3QbBayY/jJmD8437V1Gombjf8RSOUCMFBuo5iHi58AGEgVCKQ+ezHkZZDpAQS75hcBMpLqjpJTjtUL7w==}
     dev: false
@@ -7421,6 +7648,12 @@ packages:
     resolution: {integrity: sha512-V4Zn/ncyN1QNSqSBxTrMOLpjr+IKdHl2v3KVLoWmDPscP4r9GcCi71gjgvUV1SFSKh92AjAG4peFuBl2/YgCJg==}
     dependencies:
       '@types/mdast': 3.0.12
+    dev: false
+
+  /mdast-util-to-string@4.0.0:
+    resolution: {integrity: sha512-0H44vDimn51F0YwvxSJSm0eCDOJTRlmN0R1yBh4HLj9wiV1Dn0QoXGbvFAWj2hSItVTlCmBF1hqKlIyUBVFLPg==}
+    dependencies:
+      '@types/mdast': 4.0.2
     dev: false
 
   /mdn-data@2.0.14:
@@ -7482,6 +7715,27 @@ packages:
       uvu: 0.5.6
     dev: false
 
+  /micromark-core-commonmark@2.0.0:
+    resolution: {integrity: sha512-jThOz/pVmAYUtkroV3D5c1osFXAMv9e0ypGDOIZuCeAe91/sD6BoE2Sjzt30yuXtwOYUmySOhMas/PVyh02itA==}
+    dependencies:
+      decode-named-character-reference: 1.0.2
+      devlop: 1.1.0
+      micromark-factory-destination: 2.0.0
+      micromark-factory-label: 2.0.0
+      micromark-factory-space: 2.0.0
+      micromark-factory-title: 2.0.0
+      micromark-factory-whitespace: 2.0.0
+      micromark-util-character: 2.0.1
+      micromark-util-chunked: 2.0.0
+      micromark-util-classify-character: 2.0.0
+      micromark-util-html-tag-name: 2.0.0
+      micromark-util-normalize-identifier: 2.0.0
+      micromark-util-resolve-all: 2.0.0
+      micromark-util-subtokenize: 2.0.0
+      micromark-util-symbol: 2.0.0
+      micromark-util-types: 2.0.0
+    dev: false
+
   /micromark-extension-directive@2.2.1:
     resolution: {integrity: sha512-ZFKZkNaEqAP86IghX1X7sE8NNnx6kFNq9mSBRvEHjArutTCJZ3LYg6VH151lXVb1JHpmIcW/7rX25oMoIHuSug==}
     dependencies:
@@ -7492,6 +7746,15 @@ packages:
       micromark-util-types: 1.1.0
       parse-entities: 4.0.1
       uvu: 0.5.6
+    dev: false
+
+  /micromark-extension-frontmatter@2.0.0:
+    resolution: {integrity: sha512-C4AkuM3dA58cgZha7zVnuVxBhDsbttIMiytjgsM2XbHAB2faRVaHRle40558FBN+DJcrLNCoqG5mlrpdU4cRtg==}
+    dependencies:
+      fault: 2.0.1
+      micromark-util-character: 2.0.1
+      micromark-util-symbol: 2.0.0
+      micromark-util-types: 2.0.0
     dev: false
 
   /micromark-extension-gfm-autolink-literal@1.0.5:
@@ -7635,6 +7898,14 @@ packages:
       micromark-util-types: 1.1.0
     dev: false
 
+  /micromark-factory-destination@2.0.0:
+    resolution: {integrity: sha512-j9DGrQLm/Uhl2tCzcbLhy5kXsgkHUrjJHg4fFAeoMRwJmJerT9aw4FEhIbZStWN8A3qMwOp1uzHr4UL8AInxtA==}
+    dependencies:
+      micromark-util-character: 2.0.1
+      micromark-util-symbol: 2.0.0
+      micromark-util-types: 2.0.0
+    dev: false
+
   /micromark-factory-label@1.1.0:
     resolution: {integrity: sha512-OLtyez4vZo/1NjxGhcpDSbHQ+m0IIGnT8BoPamh+7jVlzLJBH98zzuCoUeMxvM6WsNeh8wx8cKvqLiPHEACn0w==}
     dependencies:
@@ -7642,6 +7913,15 @@ packages:
       micromark-util-symbol: 1.1.0
       micromark-util-types: 1.1.0
       uvu: 0.5.6
+    dev: false
+
+  /micromark-factory-label@2.0.0:
+    resolution: {integrity: sha512-RR3i96ohZGde//4WSe/dJsxOX6vxIg9TimLAS3i4EhBAFx8Sm5SmqVfR8E87DPSR31nEAjZfbt91OMZWcNgdZw==}
+    dependencies:
+      devlop: 1.1.0
+      micromark-util-character: 2.0.1
+      micromark-util-symbol: 2.0.0
+      micromark-util-types: 2.0.0
     dev: false
 
   /micromark-factory-mdx-expression@1.0.9:
@@ -7664,6 +7944,13 @@ packages:
       micromark-util-types: 1.1.0
     dev: false
 
+  /micromark-factory-space@2.0.0:
+    resolution: {integrity: sha512-TKr+LIDX2pkBJXFLzpyPyljzYK3MtmllMUMODTQJIUfDGncESaqB90db9IAUcz4AZAJFdd8U9zOp9ty1458rxg==}
+    dependencies:
+      micromark-util-character: 2.0.1
+      micromark-util-types: 2.0.0
+    dev: false
+
   /micromark-factory-title@1.1.0:
     resolution: {integrity: sha512-J7n9R3vMmgjDOCY8NPw55jiyaQnH5kBdV2/UXCtZIpnHH3P6nHUKaH7XXEYuWwx/xUJcawa8plLBEjMPU24HzQ==}
     dependencies:
@@ -7671,6 +7958,15 @@ packages:
       micromark-util-character: 1.2.0
       micromark-util-symbol: 1.1.0
       micromark-util-types: 1.1.0
+    dev: false
+
+  /micromark-factory-title@2.0.0:
+    resolution: {integrity: sha512-jY8CSxmpWLOxS+t8W+FG3Xigc0RDQA9bKMY/EwILvsesiRniiVMejYTE4wumNc2f4UbAa4WsHqe3J1QS1sli+A==}
+    dependencies:
+      micromark-factory-space: 2.0.0
+      micromark-util-character: 2.0.1
+      micromark-util-symbol: 2.0.0
+      micromark-util-types: 2.0.0
     dev: false
 
   /micromark-factory-whitespace@1.1.0:
@@ -7682,6 +7978,15 @@ packages:
       micromark-util-types: 1.1.0
     dev: false
 
+  /micromark-factory-whitespace@2.0.0:
+    resolution: {integrity: sha512-28kbwaBjc5yAI1XadbdPYHX/eDnqaUFVikLwrO7FDnKG7lpgxnvk/XGRhX/PN0mOZ+dBSZ+LgunHS+6tYQAzhA==}
+    dependencies:
+      micromark-factory-space: 2.0.0
+      micromark-util-character: 2.0.1
+      micromark-util-symbol: 2.0.0
+      micromark-util-types: 2.0.0
+    dev: false
+
   /micromark-util-character@1.2.0:
     resolution: {integrity: sha512-lXraTwcX3yH/vMDaFWCQJP1uIszLVebzUa3ZHdrgxr7KEU/9mL4mVgCpGbyhvNLNlauROiNUq7WN5u7ndbY6xg==}
     dependencies:
@@ -7689,10 +7994,23 @@ packages:
       micromark-util-types: 1.1.0
     dev: false
 
+  /micromark-util-character@2.0.1:
+    resolution: {integrity: sha512-3wgnrmEAJ4T+mGXAUfMvMAbxU9RDG43XmGce4j6CwPtVxB3vfwXSZ6KhFwDzZ3mZHhmPimMAXg71veiBGzeAZw==}
+    dependencies:
+      micromark-util-symbol: 2.0.0
+      micromark-util-types: 2.0.0
+    dev: false
+
   /micromark-util-chunked@1.1.0:
     resolution: {integrity: sha512-Ye01HXpkZPNcV6FiyoW2fGZDUw4Yc7vT0E9Sad83+bEDiCJ1uXu0S3mr8WLpsz3HaG3x2q0HM6CTuPdcZcluFQ==}
     dependencies:
       micromark-util-symbol: 1.1.0
+    dev: false
+
+  /micromark-util-chunked@2.0.0:
+    resolution: {integrity: sha512-anK8SWmNphkXdaKgz5hJvGa7l00qmcaUQoMYsBwDlSKFKjc6gjGXPDw3FNL3Nbwq5L8gE+RCbGqTw49FK5Qyvg==}
+    dependencies:
+      micromark-util-symbol: 2.0.0
     dev: false
 
   /micromark-util-classify-character@1.1.0:
@@ -7703,6 +8021,14 @@ packages:
       micromark-util-types: 1.1.0
     dev: false
 
+  /micromark-util-classify-character@2.0.0:
+    resolution: {integrity: sha512-S0ze2R9GH+fu41FA7pbSqNWObo/kzwf8rN/+IGlW/4tC6oACOs8B++bh+i9bVyNnwCcuksbFwsBme5OCKXCwIw==}
+    dependencies:
+      micromark-util-character: 2.0.1
+      micromark-util-symbol: 2.0.0
+      micromark-util-types: 2.0.0
+    dev: false
+
   /micromark-util-combine-extensions@1.1.0:
     resolution: {integrity: sha512-Q20sp4mfNf9yEqDL50WwuWZHUrCO4fEyeDCnMGmG5Pr0Cz15Uo7KBs6jq+dq0EgX4DPwwrh9m0X+zPV1ypFvUA==}
     dependencies:
@@ -7710,10 +8036,23 @@ packages:
       micromark-util-types: 1.1.0
     dev: false
 
+  /micromark-util-combine-extensions@2.0.0:
+    resolution: {integrity: sha512-vZZio48k7ON0fVS3CUgFatWHoKbbLTK/rT7pzpJ4Bjp5JjkZeasRfrS9wsBdDJK2cJLHMckXZdzPSSr1B8a4oQ==}
+    dependencies:
+      micromark-util-chunked: 2.0.0
+      micromark-util-types: 2.0.0
+    dev: false
+
   /micromark-util-decode-numeric-character-reference@1.1.0:
     resolution: {integrity: sha512-m9V0ExGv0jB1OT21mrWcuf4QhP46pH1KkfWy9ZEezqHKAxkj4mPCy3nIH1rkbdMlChLHX531eOrymlwyZIf2iw==}
     dependencies:
       micromark-util-symbol: 1.1.0
+    dev: false
+
+  /micromark-util-decode-numeric-character-reference@2.0.0:
+    resolution: {integrity: sha512-pIgcsGxpHEtTG/rPJRz/HOLSqp5VTuIIjXlPI+6JSDlK2oljApusG6KzpS8AF0ENUMCHlC/IBb5B9xdFiVlm5Q==}
+    dependencies:
+      micromark-util-symbol: 2.0.0
     dev: false
 
   /micromark-util-decode-string@1.1.0:
@@ -7725,8 +8064,21 @@ packages:
       micromark-util-symbol: 1.1.0
     dev: false
 
+  /micromark-util-decode-string@2.0.0:
+    resolution: {integrity: sha512-r4Sc6leeUTn3P6gk20aFMj2ntPwn6qpDZqWvYmAG6NgvFTIlj4WtrAudLi65qYoaGdXYViXYw2pkmn7QnIFasA==}
+    dependencies:
+      decode-named-character-reference: 1.0.2
+      micromark-util-character: 2.0.1
+      micromark-util-decode-numeric-character-reference: 2.0.0
+      micromark-util-symbol: 2.0.0
+    dev: false
+
   /micromark-util-encode@1.1.0:
     resolution: {integrity: sha512-EuEzTWSTAj9PA5GOAs992GzNh2dGQO52UvAbtSOMvXTxv3Criqb6IOzJUBCmEqrrXSblJIJBbFFv6zPxpreiJw==}
+    dev: false
+
+  /micromark-util-encode@2.0.0:
+    resolution: {integrity: sha512-pS+ROfCXAGLWCOc8egcBvT0kf27GoWMqtdarNfDcjb6YLuV5cM3ioG45Ys2qOVqeqSbjaKg72vU+Wby3eddPsA==}
     dev: false
 
   /micromark-util-events-to-acorn@1.2.3:
@@ -7746,10 +8098,20 @@ packages:
     resolution: {integrity: sha512-VTQzcuQgFUD7yYztuQFKXT49KghjtETQ+Wv/zUjGSGBioZnkA4P1XXZPT1FHeJA6RwRXSF47yvJ1tsJdoxwO+Q==}
     dev: false
 
+  /micromark-util-html-tag-name@2.0.0:
+    resolution: {integrity: sha512-xNn4Pqkj2puRhKdKTm8t1YHC/BAjx6CEwRFXntTaRf/x16aqka6ouVoutm+QdkISTlT7e2zU7U4ZdlDLJd2Mcw==}
+    dev: false
+
   /micromark-util-normalize-identifier@1.1.0:
     resolution: {integrity: sha512-N+w5vhqrBihhjdpM8+5Xsxy71QWqGn7HYNUvch71iV2PM7+E3uWGox1Qp90loa1ephtCxG2ftRV/Conitc6P2Q==}
     dependencies:
       micromark-util-symbol: 1.1.0
+    dev: false
+
+  /micromark-util-normalize-identifier@2.0.0:
+    resolution: {integrity: sha512-2xhYT0sfo85FMrUPtHcPo2rrp1lwbDEEzpx7jiH2xXJLqBuy4H0GgXk5ToU8IEwoROtXuL8ND0ttVa4rNqYK3w==}
+    dependencies:
+      micromark-util-symbol: 2.0.0
     dev: false
 
   /micromark-util-resolve-all@1.1.0:
@@ -7758,12 +8120,26 @@ packages:
       micromark-util-types: 1.1.0
     dev: false
 
+  /micromark-util-resolve-all@2.0.0:
+    resolution: {integrity: sha512-6KU6qO7DZ7GJkaCgwBNtplXCvGkJToU86ybBAUdavvgsCiG8lSSvYxr9MhwmQ+udpzywHsl4RpGJsYWG1pDOcA==}
+    dependencies:
+      micromark-util-types: 2.0.0
+    dev: false
+
   /micromark-util-sanitize-uri@1.2.0:
     resolution: {integrity: sha512-QO4GXv0XZfWey4pYFndLUKEAktKkG5kZTdUNaTAkzbuJxn2tNBOr+QtxR2XpWaMhbImT2dPzyLrPXLlPhph34A==}
     dependencies:
       micromark-util-character: 1.2.0
       micromark-util-encode: 1.1.0
       micromark-util-symbol: 1.1.0
+    dev: false
+
+  /micromark-util-sanitize-uri@2.0.0:
+    resolution: {integrity: sha512-WhYv5UEcZrbAtlsnPuChHUAsu/iBPOVaEVsntLBIdpibO0ddy8OzavZz3iL2xVvBZOpolujSliP65Kq0/7KIYw==}
+    dependencies:
+      micromark-util-character: 2.0.1
+      micromark-util-encode: 2.0.0
+      micromark-util-symbol: 2.0.0
     dev: false
 
   /micromark-util-subtokenize@1.1.0:
@@ -7775,12 +8151,29 @@ packages:
       uvu: 0.5.6
     dev: false
 
+  /micromark-util-subtokenize@2.0.0:
+    resolution: {integrity: sha512-vc93L1t+gpR3p8jxeVdaYlbV2jTYteDje19rNSS/H5dlhxUYll5Fy6vJ2cDwP8RnsXi818yGty1ayP55y3W6fg==}
+    dependencies:
+      devlop: 1.1.0
+      micromark-util-chunked: 2.0.0
+      micromark-util-symbol: 2.0.0
+      micromark-util-types: 2.0.0
+    dev: false
+
   /micromark-util-symbol@1.1.0:
     resolution: {integrity: sha512-uEjpEYY6KMs1g7QfJ2eX1SQEV+ZT4rUD3UcF6l57acZvLNK7PBZL+ty82Z1qhK1/yXIY4bdx04FKMgR0g4IAag==}
     dev: false
 
+  /micromark-util-symbol@2.0.0:
+    resolution: {integrity: sha512-8JZt9ElZ5kyTnO94muPxIGS8oyElRJaiJO8EzV6ZSyGQ1Is8xwl4Q45qU5UOg+bGH4AikWziz0iN4sFLWs8PGw==}
+    dev: false
+
   /micromark-util-types@1.1.0:
     resolution: {integrity: sha512-ukRBgie8TIAcacscVHSiddHjO4k/q3pnedmzMQ4iwDcK0FtFCohKOlFbaOL/mPgfnPsL3C1ZyxJa4sbWrBl3jg==}
+    dev: false
+
+  /micromark-util-types@2.0.0:
+    resolution: {integrity: sha512-oNh6S2WMHWRZrmutsRmDDfkzKtxF+bc2VxLC9dvtrDIRFln627VsFP6fLMgTryGDljgLPjkrzQSDcPrjPyDJ5w==}
     dev: false
 
   /micromark@3.2.0:
@@ -7803,6 +8196,30 @@ packages:
       micromark-util-symbol: 1.1.0
       micromark-util-types: 1.1.0
       uvu: 0.5.6
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /micromark@4.0.0:
+    resolution: {integrity: sha512-o/sd0nMof8kYff+TqcDx3VSrgBTcZpSvYcAHIfHhv5VAuNmisCxjhx6YmxS8PFEpb9z5WKWKPdzf0jM23ro3RQ==}
+    dependencies:
+      '@types/debug': 4.1.9
+      debug: 4.3.4(supports-color@5.5.0)
+      decode-named-character-reference: 1.0.2
+      devlop: 1.1.0
+      micromark-core-commonmark: 2.0.0
+      micromark-factory-space: 2.0.0
+      micromark-util-character: 2.0.1
+      micromark-util-chunked: 2.0.0
+      micromark-util-combine-extensions: 2.0.0
+      micromark-util-decode-numeric-character-reference: 2.0.0
+      micromark-util-encode: 2.0.0
+      micromark-util-normalize-identifier: 2.0.0
+      micromark-util-resolve-all: 2.0.0
+      micromark-util-sanitize-uri: 2.0.0
+      micromark-util-subtokenize: 2.0.0
+      micromark-util-symbol: 2.0.0
+      micromark-util-types: 2.0.0
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -8927,6 +9344,16 @@ packages:
       react: 18.2.0
     dev: false
 
+  /prism-react-renderer@2.1.0(react@18.2.0):
+    resolution: {integrity: sha512-I5cvXHjA1PVGbGm1MsWCpvBCRrYyxEri0MC7/JbfIfYfcXAxHyO5PaUjs3A8H5GW6kJcLhTHxxMaOZZpRZD2iQ==}
+    peerDependencies:
+      react: '>=16.0.0'
+    dependencies:
+      '@types/prismjs': 1.26.2
+      clsx: 1.2.1
+      react: 18.2.0
+    dev: false
+
   /prismjs@1.29.0:
     resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
     engines: {node: '>=6'}
@@ -9482,6 +9909,17 @@ packages:
 
   /remark-footnotes@2.0.0:
     resolution: {integrity: sha512-3Clt8ZMH75Ayjp9q4CorNeyjwIxHFcTkaektplKGl2A1jNGEUey8cKL0ZC5vJwfcD5GFGsNLImLG/NGzWIzoMQ==}
+    dev: false
+
+  /remark-frontmatter@5.0.0:
+    resolution: {integrity: sha512-XTFYvNASMe5iPN0719nPrdItC9aU0ssC4v14mH1BCi1u0n1gAocqcujWUrByftZTbLhRtiKRyjYTSIOcr69UVQ==}
+    dependencies:
+      '@types/mdast': 4.0.2
+      mdast-util-frontmatter: 2.0.1
+      micromark-extension-frontmatter: 2.0.0
+      unified: 11.0.3
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /remark-gfm@3.0.1:
@@ -10523,6 +10961,18 @@ packages:
       vfile: 5.3.7
     dev: false
 
+  /unified@11.0.3:
+    resolution: {integrity: sha512-jlCV402P+YDcFcB2VcN/n8JasOddqIiaxv118wNBoZXEhOn+lYG7BR4Bfg2BwxvlK58dwbuH2w7GX2esAjL6Mg==}
+    dependencies:
+      '@types/unist': 3.0.1
+      bail: 2.0.2
+      devlop: 1.1.0
+      extend: 3.0.2
+      is-plain-obj: 4.1.0
+      trough: 2.1.0
+      vfile: 6.0.1
+    dev: false
+
   /unified@9.2.0:
     resolution: {integrity: sha512-vx2Z0vY+a3YoTj8+pttM3tiJHCwY5UFbYdiWrwBEbHmK8pvsPj2rtAX2BFfgXen8T39CJWblWRDT4L5WGXtDdg==}
     dependencies:
@@ -10583,6 +11033,12 @@ packages:
       '@types/unist': 2.0.7
     dev: false
 
+  /unist-util-is@6.0.0:
+    resolution: {integrity: sha512-2qCTHimwdxLfz+YzdGfkqNlH0tLi9xjTnHddPmJwtIG9MGsdbutfTc4P+haPD7l7Cjxf/WZj+we5qfVPvvxfYw==}
+    dependencies:
+      '@types/unist': 3.0.1
+    dev: false
+
   /unist-util-position-from-estree@1.1.2:
     resolution: {integrity: sha512-poZa0eXpS+/XpoQwGwl79UUdea4ol2ZuCYguVaJS4qzIOMDzbqz8a3erUCOmubSZkaOuGamb3tX790iwOIROww==}
     dependencies:
@@ -10630,6 +11086,12 @@ packages:
       '@types/unist': 2.0.7
     dev: false
 
+  /unist-util-stringify-position@4.0.0:
+    resolution: {integrity: sha512-0ASV06AAoKCDkS2+xw5RXJywruurpbC4JZSm7nr7MOt1ojAzvyyaO+UxZf18j8FCF6kmzCZKcAgN/yu2gm2XgQ==}
+    dependencies:
+      '@types/unist': 3.0.1
+    dev: false
+
   /unist-util-visit-parents@3.1.1:
     resolution: {integrity: sha512-1KROIZWo6bcMrZEwiH2UrXDyalAa0uqzWCxCJj6lPOvTve2WkfgCytoDTPaMnodXh1WrXOq0haVYHj99ynJlsg==}
     dependencies:
@@ -10642,6 +11104,13 @@ packages:
     dependencies:
       '@types/unist': 2.0.7
       unist-util-is: 5.2.1
+    dev: false
+
+  /unist-util-visit-parents@6.0.1:
+    resolution: {integrity: sha512-L/PqWzfTP9lzzEa6CKs0k2nARxTdZduw3zyh8d2NVBnsyvHjSX4TWse388YrrQKbvI8w20fGjGlhgT96WwKykw==}
+    dependencies:
+      '@types/unist': 3.0.1
+      unist-util-is: 6.0.0
     dev: false
 
   /unist-util-visit@2.0.3:
@@ -10658,6 +11127,14 @@ packages:
       '@types/unist': 2.0.7
       unist-util-is: 5.2.1
       unist-util-visit-parents: 5.1.3
+    dev: false
+
+  /unist-util-visit@5.0.0:
+    resolution: {integrity: sha512-MR04uvD+07cwl/yhVuVWAtw+3GOR/knlL55Nd/wAdblk27GCVt3lqpTivy/tkJcZoNPzTwS1Y+KMojlLDhoTzg==}
+    dependencies:
+      '@types/unist': 3.0.1
+      unist-util-is: 6.0.0
+      unist-util-visit-parents: 6.0.1
     dev: false
 
   /universalify@2.0.0:
@@ -10869,6 +11346,13 @@ packages:
       unist-util-stringify-position: 3.0.3
     dev: false
 
+  /vfile-message@4.0.2:
+    resolution: {integrity: sha512-jRDZ1IMLttGj41KcZvlrYAaI3CfqpLpfpf+Mfig13viT6NKvRzWZ+lXz0Y5D60w6uJIBAOGq9mSHf0gktF0duw==}
+    dependencies:
+      '@types/unist': 3.0.1
+      unist-util-stringify-position: 4.0.0
+    dev: false
+
   /vfile@4.2.1:
     resolution: {integrity: sha512-O6AE4OskCG5S1emQ/4gl8zK586RqA3srz3nfK/Viy0UPToBc5Trp9BVFb1u0CjsKrAWwnpr4ifM/KBXPWwJbCA==}
     dependencies:
@@ -10885,6 +11369,14 @@ packages:
       is-buffer: 2.0.5
       unist-util-stringify-position: 3.0.3
       vfile-message: 3.1.4
+    dev: false
+
+  /vfile@6.0.1:
+    resolution: {integrity: sha512-1bYqc7pt6NIADBJ98UiG0Bn/CHIVOoZ/IyEkqIruLg0mE1BKzkOXY2D6CSqQIcKqgadppE5lrxgWXJmXd7zZJw==}
+    dependencies:
+      '@types/unist': 3.0.1
+      unist-util-stringify-position: 4.0.0
+      vfile-message: 4.0.2
     dev: false
 
   /wait-on@6.0.1:
