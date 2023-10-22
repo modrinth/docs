@@ -135,6 +135,12 @@ Many users confuse it with the actual browser and mistakenly remove its files, w
 2. If you encounter an ‘already installed’ message, try running the installer as administrator.
 3. Once the installation is complete, give the Modrinth app another go.
 
+### Why am I getting a "IO error: Access is denied" error? (Program Files forbidden) {#program-files}
+
+The error `I/O error: Access is denied. (os error 5)` means that you have changed the Modrinth App directory to a location that the Modrinth App does not have access to. People commonly change the app directory to `Program Files`. **Please do not do this.** The option to change the app directory is only provided for advanced users. The Modrinth App does not have access to the Program Files folder, so it will fail to read anything from there.
+
+In order to fix this issue, you need to delete the app's default installation folder (`%AppData%\com.modrinth.theseus\`). For more assistance on how to find this folder, please check out [Where are the Modrinth App files located?](#file-location)
+
 ### Why am I getting "out-of-memory" errors, even when I have enough memory allocated? {#32bit-java}
 
 If you're experiencing Java memory errors when launching Minecraft 1.16.5 or older, despite having sufficient RAM, it may be due to having a 32-bit version of Java installed. Please [reinstall Java](#java).
