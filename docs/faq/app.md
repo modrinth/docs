@@ -109,6 +109,10 @@ Sometimes, closing out of the Modrinth App without properly shutting down your c
 
 This error can show as a result of a corrupted instance installation. First, locate and delete the `.jar` file it tells you has the issue. Then, [repair the instance](#repair).
 
+### Why can't I launch Forge 1.6.4 (or older)? {#old-forge}
+
+Due to technical restrictions, the Modrinth App does not currently support Forge installations on versions 1.5 through 1.6.4. This is a known issue, and we are working on fixing it.
+
 ## Account-related questions
 
 ### Why am I getting an error saying my account is underage? {#underage}
@@ -145,11 +149,11 @@ In order to fix this issue, you need to delete the app's default installation fo
 
 If you're experiencing Java memory errors when launching Minecraft 1.16.5 or older, despite having sufficient RAM, it may be due to having a 32-bit version of Java installed. Please [reinstall Java](#java).
 
+### Why can't I launch Minecraft 1.5.2 (or older)? {#old-minecraft}
+
+Due to technical restrictions, the Modrinth App does not currently support 1.5.2 or older on Windows. This is a known issue, and we are working on fixing it.
+
 ## Mac-specific questions
-
-### Why can't I launch Forge 1.18.2 (or older)? {#old-forge}
-
-Due to technical restrictions, the Modrinth App does not currently support Forge 1.18.2 or older on M1/M2 Macs. This error might say something along the lines of "Failed to locate library: liblwjgl.dylib". This is a known issue, and we are working on fixing it.
 
 ### Why can't I launch the app on macOS Catalina (or older)? {#catalina}
 
