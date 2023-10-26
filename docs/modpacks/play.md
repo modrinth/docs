@@ -10,7 +10,7 @@ A modpack is a list of mods bundled with additional files, such as configuration
 
 ![Modrinth App](../../static/img/tutorial/modrinthAppSearch.png)
 
-Besides [the Modrinth App](https://modrinth.com/app), the easiest ways to play a Modrinth modpack are via [MultiMC](https://multimc.org), [Prism Launcher](https://prismlauncher.org), [ATLauncher](https://atlauncher.com), or [BakaXL](https://www.bakaxl.com/).
+Besides [the Modrinth App](https://modrinth.com/app), the easiest ways to play a Modrinth modpack are via [MultiMC](https://multimc.org), [Prism Launcher](https://prismlauncher.org), [ATLauncher](https://atlauncher.com), [BakaXL](https://www.bakaxl.com/) or [Superpack](https://github.com/Gaming32/Superpack/releases).
 
 To install a modpack on the server-side, try [mrpack-install](https://github.com/nothub/mrpack-install) or [the `itzg/minecraft-server` image](https://github.com/itzg/docker-minecraft-server) if using Docker.
 
@@ -63,3 +63,21 @@ Click the "Add a new Minecraft Core or Mod Pack" tile in the Start Menu, then cl
 ![Add a new Minecraft Core or Mod Pack Tile](../../static/img/tutorial/BakaXLAddCoreTile.png)
 
 Click "Continue" and drag the modpack file into BakaXL.
+
+### Superpack
+
+Superpack is an application for extracting/downloading modpacks to directories.
+
+#### Install through Superpack
+
+Modpacks can be installed by simply navigating or searching the required modpack.
+
+![Superpack homepage](../../static/img/tutorial/superpackHome.png)
+
+Click on the desired modpack to download and view details!
+
+![Superpack modpack page](../../static/img/tutorial/superpackSearch.jpg)
+
+In case you want to use ID or slug of the modpack to view it, click on the "Jump to Project" button on the top-right.
+
+Also, in case of manual file imports, just switch to "Import from file" page.
