@@ -20,6 +20,12 @@ Right now, when you try to filter search results based on specific game versions
 
 Modrinth does not currently have a way to see the dependents of a project — only the dependencies. Pending resolution of some performance issues, this feature is coming soon.
 
+### When will version (x) or snapshot (x) be added to Modrinth? {#snapshots}
+
+For the Labrinth API and Modrinth App, new versions and snapshots will automatically be added within one hour of release. Please ensure that you restart the app for it to show up.
+
+For the main modrinth.com website, versions must be manually added at this point in time. Typically, new versions are added within the same day of release, but it may be delayed for a variety of reasons.
+
 ## Account-related questions
 
 ### Why can't I log into my Modrinth account? {#account-locked}

@@ -2,8 +2,8 @@
   embeds:
     - title: "<:minecraft:1049793352964526100> Support"
       color: 0x5865F2
-      description: "Modrinth only provides support for **Modrinth itself** in <#783153806531100673>, not for the
-        projects present on the platform.\n\n
+      description: "Modrinth's staff are only able to provide support for **Modrinth itself**, not for Minecraft itself
+        or for the projects on the platform.\n\n
         If you need help with a specific project, please use the Issues link or the Discord link in the \"External
         resources\" section of the project (see image below).\n\n
         If the project does not have a Discord linked, please consider searching for support with your mod loader or
