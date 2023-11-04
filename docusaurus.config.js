@@ -157,6 +157,8 @@ module.exports = {
           editUrl: 'https://github.com/modrinth/docs/edit/master/',
           routeBasePath: '/',
           sidebarCollapsible: false,
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
         },
         blog: false,
         theme: {
