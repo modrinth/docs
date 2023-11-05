@@ -2,7 +2,15 @@
 sidebar_position: 0
 ---
 
+import UserCard from '../../src/components/UserCard.js';
+
 # Frequently Asked Questions
+
+<div style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap' }}>
+
+<UserCard avatar={"https://github.com/triphora.png"} username={"triphora"} profileLink={"https://github.com/triphora.png"} /> <UserCard avatar={"https://github.com/triphora.png"} username={"triphora"} profileLink={"https://github.com/triphora.png"} /> <UserCard avatar={"https://github.com/triphora.png"} username={"triphora"} profileLink={"https://github.com/triphora.png"} />
+
+</div>
 
 For questions specific to the Modrinth App, please refer to the [app FAQ](app.md).
 
