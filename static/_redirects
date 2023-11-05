@@ -21,4 +21,5 @@
 /redacted                             https://www.youtube.com/watch?v=qWNQUvIk954
 
 /docs/*                               /:splat
-/faq/app#                             /faq/app/:splat
+/faq/#*                               /faq/app/:splat
+/faq/app#*                            /faq/app/:splat
