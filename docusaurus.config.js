@@ -1,5 +1,4 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
-const {exist} = require("joi");
 module.exports = {
   title: 'Modrinth Documentation',
   tagline: "Need help doing something with Modrinth? This is the place!",
