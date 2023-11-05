@@ -1,4 +1,5 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
+const {exist} = require("joi");
 module.exports = {
   title: 'Modrinth Documentation',
   tagline: "Need help doing something with Modrinth? This is the place!",
@@ -197,6 +198,21 @@ module.exports = {
       "docusaurus2-dotenv",
       {
         systemvars: true,
+      },
+    ],
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        createRedirects(path) {
+          if (path.includes('/faq/app')) {
+            return path.includes('#')
+                ? path.replace('#', '/')
+                : path.replace('/app', '')
+          } else if (path.includes('/faq#')) {
+            return path.replace('#', '/')
+          }
+          return undefined
+        },
       },
     ],
   ],

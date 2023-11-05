@@ -19,7 +19,3 @@
 /redacted                             https://www.youtube.com/watch?v=qWNQUvIk954
 
 /docs/*                               /:splat
-/faq/#:anchor                         /faq/:anchor
-/faq/app#:anchor                      /faq/app/:anchor
-
-/faq/app                              /faq
