@@ -12,8 +12,6 @@
 /docs/modpacks/modpack_permissions/   /modpacks/permissions
 /docs/modpacks/playing_modpacks/      /modpacks/play
 
-/faq/app                              /faq
-
 /docs/details/versioning/             /api-spec/#section/Versioning
 /docs/tutorials/forge_updates/        /api-spec/#tag/misc/operation/forgeUpdates
 /docs/tutorials/api_search/           /api-spec/#tag/projects/operation/searchProjects
@@ -22,4 +20,6 @@
 
 /docs/*                               /:splat
 /faq/#:anchor                         /faq/:anchor
-/faq/app#:anchor                       /faq/app/:anchor
+/faq/app#:anchor                      /faq/app/:anchor
+
+/faq/app                              /faq
