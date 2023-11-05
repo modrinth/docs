@@ -199,20 +199,5 @@ module.exports = {
         systemvars: true,
       },
     ],
-    [
-      '@docusaurus/plugin-client-redirects',
-      {
-        createRedirects(path) {
-          if (path.includes('/faq/app')) {
-            return path.includes('#')
-                ? path.replace('#', '/')
-                : path.replace('/app', '')
-          } else if (path.includes('/faq#')) {
-            return path.replace('#', '/')
-          }
-          return undefined
-        },
-      },
-    ],
   ],
 }
