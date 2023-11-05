@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+pagination_prev: faq/index
 ---
 
 # Modrinth Public Roadmap

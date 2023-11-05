@@ -52,3 +52,7 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   font-size: 1.5rem;
   font-weight: 600;
 }
+
+.hidden {
+  display: none !important;
+}
