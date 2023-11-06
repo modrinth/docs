@@ -25,6 +25,12 @@ module.exports = {
           label: 'Knowledge Base',
         },
         {
+          type: 'doc',
+          docId: 'manual/index',
+          position: 'left',
+          label: 'Modrinth Manual',
+        },
+        {
           to: 'api-spec',
           position: 'left',
           label: 'API Routes',
