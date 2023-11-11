@@ -10,7 +10,7 @@ The Modrinth App should be closed before attempting to perform any of the steps 
 
 ## Less destructive - manually edit config to change directory
 
-1. Open <https://jsoneditoronline.org/>.
+1. Open https://jsoneditoronline.org.
 2. Click "Open" -> "Open from disk".
 3. In path field at the bottom, type `%AppData%\com.modrinth.theseus\settings.json` and click Open.
 4. In the top click `[tree]`.
