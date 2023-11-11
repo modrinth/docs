@@ -3,7 +3,7 @@ const {themes} = require('prism-react-renderer');
 
 module.exports = {
   title: 'Modrinth Documentation',
-  tagline: "Need help doing something with Modrinth? This is where you'll find a lot of your information!",
+  tagline: "Need help doing something with Modrinth? This is the place!",
   url: 'https://docs.modrinth.com',
   baseUrl: '/',
   trailingSlash: false,
