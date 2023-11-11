@@ -159,8 +159,6 @@ module.exports = {
           editUrl: 'https://github.com/modrinth/docs/edit/master/',
           routeBasePath: '/',
           sidebarCollapsible: false,
-          showLastUpdateAuthor: true,
-          showLastUpdateTime: true,
         },
         blog: false,
         theme: {
@@ -196,7 +194,7 @@ module.exports = {
       }
     ],
     [
-      "docusaurus2-dotenv",
+      "docusaurus-plugin-dotenv",
       {
         systemvars: true,
       },
