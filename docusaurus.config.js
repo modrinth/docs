@@ -1,4 +1,6 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
+const {themes} = require('prism-react-renderer');
+
 module.exports = {
   title: 'Modrinth Documentation',
   tagline: "Need help doing something with Modrinth? This is where you'll find a lot of your information!",
@@ -122,8 +124,8 @@ module.exports = {
       copyright: `<span style="font-size: .75rem">NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG.</span>`,
     },
     prism: {
-      theme: require('prism-react-renderer/themes/vsLight'),
-      darkTheme: require('prism-react-renderer/themes/vsDark'),
+      theme: themes.vsLight,
+      darkTheme: themes.vsDark,
       additionalLanguages: ['http', 'groovy', 'toml'],
     },
     colorMode: {

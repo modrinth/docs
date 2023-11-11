@@ -76,7 +76,8 @@ INSERT INTO categories VALUES (0, 'placeholder_category', 2); -- modloader id, s
 
 The majority of configuration is done at runtime using [dotenvy](https://crates.io/crates/dotenvy) and the `.env` file. Each of the variables and what they do can be found in the dropdown below. Additionally, there are three command line options that can be used to specify to MeiliSearch what you want to do.
 
-<details><summary>.env variables & command line options</summary>
+<details>
+<summary>.env variables & command line options</summary>
 
 #### Basic configuration
 
