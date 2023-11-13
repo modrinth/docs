@@ -1,5 +1,3 @@
-@import url(https://fonts.bunny.net/css?family=inter:300,400,500,600,700|montserrat:600);
-
 :root[data-theme='dark'] {
   --ifm-color-primary: #1cdf8b;
   --ifm-color-primary-dark: #1bd96a;
@@ -51,6 +49,16 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   font-family: "Montserrat", sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
+}
+
+.dsla-search-wrapper {
+  min-width: 200px;
+}
+
+nav .dsla-search-wrapper {
+  @media (max-width: 440px) {
+    display: none;
+  }
 }
 
 .hidden {

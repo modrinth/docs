@@ -36,5 +36,10 @@
   "engines": {
     "node": ">=18.0"
   },
-  "packageManager": "pnpm@8.6.7"
+  "packageManager": "pnpm@8.6.7",
+  "devDependencies": {
+    "@docusaurus/tsconfig": "^3.0.0",
+    "@docusaurus/types": "^3.0.0",
+    "@types/node": "^20.9.0"
+  }
 }

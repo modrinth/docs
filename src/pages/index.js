@@ -76,6 +76,8 @@ const FeatureList = [
     title: 'Other Pages',
     description: (
         <ul>
+          <li><Link to={"what"}>What is Modrinth?</Link></li>
+          <li><Link to={"roadmap"}>Modrinth Public Roadmap</Link></li>
           <li><Link to={"api"}>Getting Started with the API</Link></li>
           <ul>
             <li><Link to={"api/migration"}>API Migration Information</Link></li>
