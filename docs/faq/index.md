@@ -43,6 +43,7 @@ pagination_next: roadmap
 - [Why did my instances suddenly disappear?](app/power-outage.md)
 - [Why am I getting an error from Fabric saying that it cannot access intermediary?](app/intermediary.md)
 - [Why can't I launch certain Minecraft versions?](app/unsupported.md)
+- [Why can't I access the Modrinth App from Russia?](app/russia.md)
 
 ### Account-related errors
 
