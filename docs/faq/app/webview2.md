@@ -6,4 +6,5 @@ Many users confuse it with the actual browser and mistakenly remove its files, w
 
 1. To get started, download the [Microsoft Edge WebView2 installer](https://go.microsoft.com/fwlink/p/?LinkId=2124703) and proceed with the installation.
 2. If you encounter an ‘already installed’ message, try running the installer as administrator.
+    1. If you still get an error, try clearing all Edge-related registry keys.
 3. Once the installation is complete, give the Modrinth app another go.

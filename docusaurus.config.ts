@@ -216,7 +216,7 @@ const config: Config = {
       attributes: {
         as: 'style',
         rel: 'stylesheet preload prefetch',
-        href: 'font/font-faces.css',
+        href: '/font/font-faces.css',
       },
     },
     {
