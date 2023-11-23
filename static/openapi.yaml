@@ -102,9 +102,7 @@ components:
       name: ids
       description: The IDs of the projects
       schema:
-        type: array
-        items:
-          type: string
+        type: string
         example: "[\"AABBCCDD\", \"EEFFGGHH\"]"
       required: true
     UserIdentifier:
