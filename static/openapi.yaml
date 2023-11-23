@@ -3463,9 +3463,7 @@ paths:
         name: ids
         description: The IDs of the teams
         schema:
-          type: array
-          items:
-            type: string
+          type: string
           example: "[\"AABBCCDD\", \"EEFFGGHH\"]"
         required: true
     get:
