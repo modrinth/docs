@@ -2372,18 +2372,14 @@ paths:
           required: false
           description: "The types of loaders to filter for"
           schema:
-            type: array
-            items:
-              type: string
+            type: string
             example: "[\"fabric\"]"
         - in: query
           name: game_versions
           required: false
           description: "The game versions to filter for"
           schema:
-            type: array
-            items:
-              type: string
+            type: string
             example: "[\"1.18.1\"]"
         - in: query
           name: featured
