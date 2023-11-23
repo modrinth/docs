@@ -3264,9 +3264,7 @@ paths:
         name: ids
         description: The IDs of the reports
         schema:
-          type: array
-          items:
-            type: string
+          type: string
           example: "[\"AABBCCDD\", \"EEFFGGHH\"]"
         required: true
     get:
