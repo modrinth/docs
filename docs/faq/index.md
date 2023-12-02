@@ -47,9 +47,9 @@ pagination_next: roadmap
 
 ### Account-related errors
 
+- [Why can't I sign in to my Microsoft account?](app/msa.md)
 - [Why am I getting an error saying my account is underage?](app/underage.md)
 - [Why can't I join multiplayer servers? (Invalid session)](app/invalid-session.md)
-- [Why am I getting an error saying I don't own Minecraft, even though I do?](app/own-minecraft.md)
 
 ### Operating system-specific questions
 

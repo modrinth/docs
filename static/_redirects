@@ -13,6 +13,7 @@
 /docs/modpacks/playing_modpacks/      /modpacks/play
 
 /faq/app                              /faq
+/faq/app/own-minecraft                /faq/app/msa
 
 /docs/details/versioning/             /api-spec/#section/Versioning
 /docs/tutorials/forge_updates/        /api-spec/#tag/misc/operation/forgeUpdates

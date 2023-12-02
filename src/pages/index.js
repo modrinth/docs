@@ -58,9 +58,9 @@ const FeatureList = [
           </ul>
           <h4>Account-related errors</h4>
           <ul>
+            <li><Link to={"faq/app/msa"}>Why can't I sign in to my Microsoft account?</Link></li>
             <li><Link to={"faq/app/underage"}>Why am I getting an error saying my account is underage?</Link></li>
             <li><Link to={"faq/app/invalid-session"}>Why can't I join multiplayer servers? (Invalid session)</Link></li>
-            <li><Link to={"faq/app/own-minecraft"}>Why am I getting an error saying I don't own Minecraft, even though I do?</Link></li>
           </ul>
           <h4>Operating system-specific questions</h4>
           <ul>
