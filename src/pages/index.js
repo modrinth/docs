@@ -53,6 +53,7 @@ const FeatureList = [
             <li><Link to={"faq/app/network"}>Why am I getting a network error when downloading files?</Link></li>
             <li><Link to={"faq/app/power-outage"}>Why did my instances suddenly disappear?</Link></li>
             <li><Link to={"faq/app/intermediary"}>Why am I getting an error from Fabric saying that it cannot access intermediary?</Link></li>
+            <li><Link to={"faq/app/exclamation-point"}>Why do I crash when I put an exclamation point in my instance name?</Link></li>
             <li><Link to={"faq/app/unsupported"}>Why can't I launch certain Minecraft versions?</Link></li>
             <li><Link to={"faq/app/russia"}>Why can't I access the Modrinth App from Russia?</Link></li>
           </ul>
