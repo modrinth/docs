@@ -11,6 +11,27 @@ As the full GFM spec is too large to read comfortably and [GitHub's formatting g
 The displayed features may not reflect the actual style used on Modrinth.
 :::
 
+HTML also works in all Markdown fields. However, use of HTML tends to override default element styles used on Modrinth. For the sake of consistency, we therefore advise against using HTML elements, except when there is no Markdown equivalent (e.g., spoilers and YouTube iframes).
+
+You can view the spoiler below to see more specifics on how our HTML rendering works.
+
+<details><summary>Supported HTML features</summary>
+
+A broad subset of HTML is supported. The [default XSS whitelist](https://github.com/leizongmin/js-xss/blob/master/dist/xss.js#L12) is used, and the following tags are also supported:
+- `kbd`
+- `iframe` (only from YouTube or Discord)
+- `input`
+- `map`
+- `picture`
+- `source`
+
+Additionally, certain elements also support being styled with the following CSS:
+- `float`
+- `image-rendering` (only the `pixelated` option, otherwise `auto` is used)
+- `text-align`
+
+</details>
+
 ## Basic formatting
 
 <Tabs>
@@ -115,6 +136,10 @@ https://modrinth.com
 
 </TabItem>
 </Tabs>
+
+:::note
+All links have the following `rel` set by default: `noopener nofollow ugc`. If you don't know what this means, you probably don't need to worry about it.
+:::
 
 ## Images
 
