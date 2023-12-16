@@ -1,6 +1,6 @@
 # Why can't I sign in to my Microsoft account?
 
-Due to the way that Microsoft's authentication systems work, it can sometimes be very difficult to log in to your Microsoft/Minecraft account to play the game. While Modrinth has been trying to find a solution to this problem for a while, we have not found a solution that works consistently. However, there are some steps you can do to troubleshoot to potentially help the process.
+Due to the way that Microsoft's authentication systems work, it can sometimes be difficult to log in to your Microsoft/Minecraft account to play the game. However, there are some steps you can do to troubleshoot to potentially help the process.
 
 ## 1. Make sure you have a Minecraft username set
 
@@ -19,5 +19,3 @@ If you're sure you're logging in with the correct Microsoft account, there may b
 ## 4. Keep trying until it works
 
 Unfortunately, if you are sure you're following all previous steps, you may simply need to keep retrying until it works. Again, Microsoft's authentication system can be difficult at times, so no alternative solutions are currently known.
-
-If you are a developer and know how we might be able to fix this, please email us at support@modrinth.com.
