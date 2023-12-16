@@ -15,7 +15,8 @@ HTML also works in all Markdown fields. However, use of HTML tends to override d
 
 You can view the spoiler below to see more specifics on how our HTML rendering works.
 
-<details><summary>Supported HTML features</summary>
+<details>
+<summary>Supported HTML features</summary>
 
 A broad subset of HTML is supported. The [default XSS whitelist](https://github.com/leizongmin/js-xss/blob/master/dist/xss.js#L12) is used, and the following tags are also supported:
 - `kbd`
