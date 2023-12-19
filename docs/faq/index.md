@@ -59,3 +59,4 @@ pagination_next: roadmap
 - [Why am I getting "out-of-memory" errors, even when I have enough memory allocated?](app/32bit-java.md)
 - [Why can't I launch the app on macOS Catalina (or older)?](app/catalina.md)
 - [Why isn't the Modrinth App packaged for my Linux distribution?](app/packaging.md)
+- [Why doesn't the app boot on Linux? (Using GNOME Wayland)](app/gnome.md)

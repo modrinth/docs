@@ -70,6 +70,7 @@ const FeatureList = [
             <li><Link to={"faq/app/32bit-java"}>Why am I getting "out-of-memory" errors, even when I have enough memory allocated?</Link></li>
             <li><Link to={"faq/app/catalina"}>Why can't I launch the app on macOS Catalina (or older)?</Link></li>
             <li><Link to={"faq/app/packaging"}>Why isn't the Modrinth App packaged for my Linux distribution?</Link></li>
+            <li><Link to={"faq/app/gnome"}>Why doesn't the app boot on Linux? (Using GNOME Wayland)</Link></li>
           </ul>
         </>
     ),
