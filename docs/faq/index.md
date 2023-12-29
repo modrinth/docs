@@ -18,6 +18,7 @@ pagination_next: roadmap
 - [How can I make my Modrinth account more secure?](2fa.md)
 - [What makes a secure Modrinth account password?](password-requirements.md)
 - [How can I add additional authentication methods to my Modrinth account?](auth-methods.md)
+- [Why can't I access my notifications?](notifications.md)
 
 ### Author questions
 

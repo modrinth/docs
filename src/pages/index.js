@@ -23,6 +23,7 @@ const FeatureList = [
             <li><Link to={"faq/2fa"}>How can I make my Modrinth account more secure?</Link></li>
             <li><Link to={"faq/password-requirements"}>What makes a secure Modrinth account password?</Link></li>
             <li><Link to={"faq/auth-methods"}>How can I add additional authentication methods to my Modrinth account?</Link></li>
+            <li><Link to={"faq/notifications"}>Why can't I access my notifications?</Link></li>
           </ul>
           <h4>Author questions</h4>
           <ul>
