@@ -61,3 +61,4 @@ pagination_next: roadmap
 - [Why can't I launch the app on macOS Catalina (or older)?](app/catalina.md)
 - [Why isn't the Modrinth App packaged for my Linux distribution?](app/packaging.md)
 - [Why doesn't the app boot on Linux? (Using GNOME Wayland)](app/gnome.md)
+- [Why can't I open links or folders on Linux?](app/linux-links.md)
