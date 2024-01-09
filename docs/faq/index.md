@@ -5,28 +5,6 @@ pagination_next: roadmap
 
 # Frequently Asked Questions
 
-## General Modrinth FAQ
-
-- [When will (x) feature get released? When will support for other games/Bedrock be added?](etas.md)
-- [Why are the search filters broken when filtering by both game versions and loaders?](join-filters.md)
-- [How can I see the dependents/reverse-dependencies of a project?](dependents.md)
-- [When will version (x) or snapshot (x) be added to Modrinth?](snapshots.md)
-
-### Account-related questions
-
-- [Why can't I log into my Modrinth account?](account-locked.md)
-- [How can I make my Modrinth account more secure?](2fa.md)
-- [What makes a secure Modrinth account password?](password-requirements.md)
-- [How can I add additional authentication methods to my Modrinth account?](auth-methods.md)
-- [Why can't I access my notifications?](notifications.md)
-
-### Author questions
-
-- [How long will my submitted project be "under review" for?](review-times.md)
-- [How does the "featured versions" system work?](featured-versions.md)
-- [What is the "Additional files" section for?](additional-files.md)
-- [How should I format my version numbers?](version-numbers.md)
-
 ## Modrinth App FAQ
 
 - [How do I install or create a Modrinth modpack?](app/modpack-basics.md)

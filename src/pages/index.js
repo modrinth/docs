@@ -8,34 +8,6 @@ import Link from "@docusaurus/core/lib/client/exports/Link";
 
 const FeatureList = [
   {
-    title: 'General Modrinth FAQ',
-    description: (
-        <>
-          <ul>
-            <li><Link to={"faq/etas"}>When will (x) feature get released? When will support for other games/Bedrock be added?</Link></li>
-            <li><Link to={"faq/join-filters"}>Why are the search filters broken when filtering by both game versions and loaders?</Link></li>
-            <li><Link to={"faq/dependents"}>How can I see the dependents/reverse-dependencies of a project?</Link></li>
-            <li><Link to={"faq/snapshots"}>When will version (x) or snapshot (x) be added to Modrinth?</Link></li>
-          </ul>
-          <h4>Account-related questions</h4>
-          <ul>
-            <li><Link to={"faq/account-locked"}>Why can't I log into my Modrinth account?</Link></li>
-            <li><Link to={"faq/2fa"}>How can I make my Modrinth account more secure?</Link></li>
-            <li><Link to={"faq/password-requirements"}>What makes a secure Modrinth account password?</Link></li>
-            <li><Link to={"faq/auth-methods"}>How can I add additional authentication methods to my Modrinth account?</Link></li>
-            <li><Link to={"faq/notifications"}>Why can't I access my notifications?</Link></li>
-          </ul>
-          <h4>Author questions</h4>
-          <ul>
-            <li><Link to={"faq/review-times"}>How long will my submitted project be "under review" for?</Link></li>
-            <li><Link to={"faq/featured-versions"}>How does the "featured versions" system work?</Link></li>
-            <li><Link to={"faq/additional-files"}>What is the "Additional files" section for?</Link></li>
-            <li><Link to={"faq/version-numbers"}>How should I format my version numbers?</Link></li>
-          </ul>
-        </>
-    ),
-  },
-  {
     title: 'Modrinth App FAQ',
     description: (
         <>
@@ -125,7 +97,7 @@ export default function Home() {
           <div className="container">
             <div className="row">
               {FeatureList.map((props) => (
-                  <div className={clsx('col col--4')}>
+                  <div className={clsx('col col--6')}>
                     <div className="padding-horiz--md">
                       <h3>{props.title}</h3>
                       <p>{props.description}</p>

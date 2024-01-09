@@ -15,6 +15,20 @@
 /faq/app                              /faq
 /faq/app/own-minecraft                /faq/app/msa
 
+/faq/etas                             https://support.modrinth.com/en/articles/8793126
+/faq/join-filters                     https://support.modrinth.com/en/articles/8793174
+/faq/dependents                       https://support.modrinth.com/en/articles/8793204
+/faq/snapshots                        https://support.modrinth.com/en/articles/8793207
+/faq/account-locked                   https://support.modrinth.com/en/articles/8793305
+/faq/2fa                              https://support.modrinth.com/en/articles/8793322
+/faq/password-requirements            https://support.modrinth.com/en/articles/8793324
+/faq/auth-methods                     https://support.modrinth.com/en/articles/8793347
+/faq/notifications                    https://support.modrinth.com/en/articles/8793352
+/faq/review-times                     https://support.modrinth.com/en/articles/8793355
+/faq/featured-versions                https://support.modrinth.com/en/articles/8793360
+/faq/additional-files                 https://support.modrinth.com/en/articles/8793363
+/faq/version-numbers                  https://support.modrinth.com/en/articles/8793369
+
 /docs/details/versioning/             /api-spec/#section/Versioning
 /docs/tutorials/forge_updates/        /api-spec/#tag/misc/operation/forgeUpdates
 /docs/tutorials/api_search/           /api-spec/#tag/projects/operation/searchProjects
