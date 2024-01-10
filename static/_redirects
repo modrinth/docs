@@ -1,17 +1,27 @@
 /docs/getting-started/                /api                                               308
 /docs/migrations/information/         /api/migration                                     308
 /docs/migrations/v1-to-v2/            /api/migration/v1-to-v2                            308
-/docs/details/carbon/                 /ads                                               308
-/docs/details/ads/                    /ads                                               308
-/docs/details/contributing/           /contributing                                      308
-/docs/tutorials/markdown/             /markdown                                          308
-/docs/tutorials/maven/                /maven                                             308
-/docs/modpacks/creating_modpacks/     /modpacks/creation                                 308
-/docs/modpacks/creation/              /modpacks/create                                   308
-/docs/modpacks/format_definition/     /modpacks/format                                   308
-/docs/modpacks/playing_modpacks/      /modpacks/play                                     308
 /docs/modpacks/modpack_permissions/   https://support.modrinth.com/en/articles/8797527   308
 /modpacks/permissions                 https://support.modrinth.com/en/articles/8797527   308
+/what                                 https://support.modrinth.com/en/articles/8800818   308
+/roadmap                              https://support.modrinth.com/en/articles/8800954   308
+/docs/tutorials/maven/                https://support.modrinth.com/en/articles/8801191   308
+/maven                                https://support.modrinth.com/en/articles/8801191   308
+/ads                                  https://support.modrinth.com/en/articles/8801452   308
+/docs/details/carbon/                 https://support.modrinth.com/en/articles/8801452   308
+/docs/details/ads/                    https://support.modrinth.com/en/articles/8801452   308
+/markdown                             https://support.modrinth.com/en/articles/8801962   308
+/docs/tutorials/markdown/             https://support.modrinth.com/en/articles/8801962   308
+/contributing                         https://support.modrinth.com/en/articles/8802215   308
+/docs/details/contributing/           https://support.modrinth.com/en/articles/8802215   308
+/modpacks                             https://support.modrinth.com/en/articles/8802250   308
+/modpacks/play                        https://support.modrinth.com/en/articles/8802250   308
+/docs/modpacks/playing_modpacks/      https://support.modrinth.com/en/articles/8802250   308
+/docs/modpacks/creating_modpacks/     https://support.modrinth.com/en/articles/8802250   308
+/docs/modpacks/creation/              https://support.modrinth.com/en/articles/8802250   308
+/modpacks/create                      https://support.modrinth.com/en/articles/8802250   308
+/modpacks/format                      https://support.modrinth.com/en/articles/8802351   308
+/docs/modpacks/format_definition/     https://support.modrinth.com/en/articles/8802351   308
 
 /faq/etas                             https://support.modrinth.com/en/articles/8793126   308
 /faq/join-filters                     https://support.modrinth.com/en/articles/8793174   308
@@ -27,7 +37,7 @@
 /faq/additional-files                 https://support.modrinth.com/en/articles/8793363   308
 /faq/version-numbers                  https://support.modrinth.com/en/articles/8793369   308
 
-/faq/app/modpack-basics               /modpacks                                          308
+/faq/app/modpack-basics               https://support.modrinth.com/en/articles/8802250   308
 /faq/app/share                        https://support.modrinth.com/en/articles/8797522   308
 /faq/app/crashing                     https://support.modrinth.com/en/articles/8792916   308
 /faq/app/network                      https://support.modrinth.com/en/articles/8797363   308

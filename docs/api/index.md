@@ -1,7 +1,3 @@
----
-sidebar_position: 2
----
-
 # Getting Started with the API
 
 Welcome to Modrinth API developer docs!

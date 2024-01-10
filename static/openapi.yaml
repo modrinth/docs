@@ -6,7 +6,7 @@ info:
   termsOfService: https://modrinth.com/legal/terms
   contact:
     name: Modrinth Support
-    url: https://discord.modrinth.com
+    url: https://support.modrinth.com
     email: support@modrinth.com
   description: |
     ## Authentication
@@ -100,7 +100,7 @@ components:
     MultipleProjectIdentifier:
       in: query
       name: ids
-      description: The IDs of the projects
+      description: The IDs and/or slugs of the projects
       schema:
         type: string
         example: "[\"AABBCCDD\", \"EEFFGGHH\"]"

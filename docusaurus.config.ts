@@ -31,9 +31,9 @@ const config: Config = {
       items: [
         {
           type: 'doc',
-          docId: 'what',
+          docId: 'api/index',
           position: 'left',
-          label: 'Documentation',
+          label: 'Getting Started',
         },
         {
           to: 'api-spec',
@@ -44,6 +44,11 @@ const config: Config = {
         {
           href: 'https://modrinth.com/',
           label: 'Main website',
+          position: 'right',
+        },
+        {
+          href: 'https://support.modrinth.com/',
+          label: 'Support website',
           position: 'right',
         },
       ],
@@ -189,7 +194,6 @@ const config: Config = {
           primaryColor: '#1bd96a',
           redocOptions: {
             hideLoading: true,
-            noAutoAuth: true,
           },
         },
       },
