@@ -1,0 +1,18 @@
+- type: embed
+  embeds:
+    - title: "**<:modrinth:1040805511538421890> __Modrinth Support__**"
+      color: 0x1bd96a
+      description: "Our goal is to create a supportive environment for both official and community-driven assistance.
+      We provide two options for seeking support."
+    - title: "<:perseus:1194463693178683432> Official support from the Modrinth Team"
+      color: 0x38c3ac
+      description: "For official support from Modrinth staff, head over to [support.modrinth.com](https://support.modrinth.com).
+      Search for your issue, and file a support thread using the green button in the bottom right if none of the pages
+      address your issue. We respond to all support threads within 24 hours. Modrinth staff are only able to assist with
+      questions and issues regarding Modrinth itself, so we cannot help with game crashes. Otherwise, our team is here to
+      assist you promptly!"
+    - title: ":busts_in_silhouette: Community support for other issues"
+      color: 0x55acee
+      description: "Modrinth staff won't be able to help you with certain issues, like your game crashing. That's why we have
+      <#1194455551212527696>! This channel is designed for community interaction. Modrinth staff won't actively respond
+      to threads here. Feel free to seek help and advice from fellow community members. Engage, share, and collaborate!"
