@@ -33,7 +33,7 @@ const config: Config = {
           type: 'doc',
           docId: 'what',
           position: 'left',
-          label: 'Knowledge Base',
+          label: 'Documentation',
         },
         {
           to: 'api-spec',

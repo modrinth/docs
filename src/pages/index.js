@@ -4,35 +4,50 @@ import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 import SearchBar from "@cmfcmf/docusaurus-search-local/lib/client/theme/SearchBar";
-import Link from "@docusaurus/core/lib/client/exports/Link";
 
 const FeatureList = [
   {
-    title: 'Pages',
+    title: 'Simple by design',
+    Svg: require('../../static/img/undraw_building_blocks.svg').default,
     description: (
-        <ul>
-          <li><Link to={"what"}>What is Modrinth?</Link></li>
-          <li><Link to={"roadmap"}>Modrinth Public Roadmap</Link></li>
-          <li><Link to={"api"}>Getting Started with the API</Link></li>
-          <ul>
-            <li><Link to={"api/migration"}>API Migration Information</Link></li>
-            <ul><li><Link to={"api/migration/v1-to-v2"}>From API v1 to API v2</Link></li></ul>
-          </ul>
-          <li><Link to={"ads"}>Adrinth (Modrinth's Advertising)</Link></li>
-          <li><Link to={"contributing"}>Contributing to Modrinth</Link></li>
-          <li><Link to={"markdown"}>Markdown Formatting</Link></li>
-          <li><Link to={"maven"}>Modrinth Maven Usage</Link></li>
-          <li><Link to={"modpacks"}>Modpacks on Modrinth</Link></li>
-          <ul>
-            <li><Link to={"modpacks/play"}>Playing Modpacks</Link></li>
-            <li><Link to={"modpacks/create"}>Creating Modpacks</Link></li>
-            <li><Link to={"modpacks/format"}>Modpack Format</Link></li>
-            <li><Link to={"modpacks/permissions"}>Obtaining Modpack Permissions</Link></li>
-          </ul>
-        </ul>
+        <>
+          Modrinth is made from the ground up to be easy to use and easy to integrate into other applications, not just our own.
+        </>
+    ),
+  },
+  {
+    title: 'Free to use',
+    Svg: require('../../static/img/undraw_running_wild.svg').default,
+    description: (
+        <>
+          Modrinth doesn't charge money or prevent certain developers from using our APIs, and we <b>do not</b> make advertising mandatory.
+        </>
+    ),
+  },
+  {
+    title: 'Powered by Rust',
+    Svg: require('../../static/img/undraw_fast_loading.svg').default,
+    description: (
+        <>
+          Rust empowers us to achieve both exceptional performance and robust safety in our work, resulting in exceptionally fast APIs.
+        </>
     ),
   },
 ];
+
+function Feature({Svg, title, description}) {
+  return (
+      <div className={clsx('col col--4')}>
+        <div className="text--center">
+          <Svg className={styles.featureSvg} alt={title} />
+        </div>
+        <div className="text--center padding-horiz--md">
+          <h3>{title}</h3>
+          <p>{description}</p>
+        </div>
+      </div>
+  );
+}
 
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
@@ -46,7 +61,7 @@ export default function Home() {
           <p className="hero__subtitle">{siteConfig.tagline}</p>
           <div className={styles.searchBarWrapper}><SearchBar /></div>
           <p className="hero__subsubtitle">
-            If none of these pages address your needs, please <a href="https://discord.modrinth.com" target="_blank">join us on Discord</a>!
+            If none of these pages address your needs, please <a href="https://support.modrinth.com" target="_blank">visit our Support page</a>!
           </p>
         </div>
       </main>
@@ -54,18 +69,14 @@ export default function Home() {
         <section className={styles.features}>
           <div className="container">
             <div className="row">
-              {FeatureList.map((props) => (
-                  <div className={clsx('col col--12')}>
-                    <div className="padding-horiz--md">
-                      <h3>{props.title}</h3>
-                      <p>{props.description}</p>
-                    </div>
-                  </div>
-              ))}
-            </div>
+              {FeatureList.map((props, idx) => (
+                  <Feature key={idx} {...props} />
+            ))}
           </div>
-        </section>
-      </main>
-    </Layout>
-  );
+        </div>
+      </section>
+    </main>
+</Layout>
+)
+  ;
 }
