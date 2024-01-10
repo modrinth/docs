@@ -13,4 +13,4 @@ While the Modrinth App is the preferred solution, you can also play and create m
 
 If you are a developer interested in implementing the Modrinth modpack format in your tool, please refer to the [modpack format definition](format.md).
 
-Are you ready to share your modpack with the world? Before doing so, please remember to read over [the permissions page](permissions.md).
+Are you ready to share your modpack with the world? Before doing so, please remember to read over [the permissions page](https://support.modrinth.com/en/articles/8797527).
