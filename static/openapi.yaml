@@ -10,7 +10,8 @@ info:
     email: support@modrinth.com
   description: |
     ## Authentication
-    This API uses personal access tokens tied to a user account for authentication. The token is in the `Authorization` header of the request.
+    This API has two options for authentication: personal access tokens and [OAuth2](https://en.wikipedia.org/wiki/OAuth).
+    All tokens are tied to a Modrinth user and use the `Authorization` header of the request.
     
     Example:
     ```
@@ -22,12 +23,32 @@ info:
     - those which modify data (such as editing a project)
     - those which access private data (such as draft projects, notifications, emails, and payout data)
     
-    Applications interacting with the authenticated API should have the user generate a personal access token from [their user settings](https://modrinth.com/settings/account).
     Each request requiring authentication has a certain scope. For example, to view the email of the user being requested, the token must have the `USER_READ_EMAIL` scope.
     You can find the list of available scopes [on GitHub](https://github.com/modrinth/labrinth/blob/master/src/models/pats.rs#L15). Making a request with an invalid scope will return a 401 error.
     
-    Please note that certain scopes and requests cannot be completed with a personal access token. For example, deleting a user account can only be done through Modrinth's frontend.
+    Please note that certain scopes and requests cannot be completed with a personal access token or using OAuth.
+    For example, deleting a user account can only be done through Modrinth's frontend.
+
+    ### OAuth2
+    Applications interacting with the authenticated API should create an OAuth2 application.
+    You can do this in [the developer settings](https://modrinth.com/settings/applications).
     
+    Once you have created a client, use the following URL to have a user authorize your client:
+    ```
+    https://modrinth.com/auth/authorize?client_id=<CLIENT_ID>&redirect_uri=<CALLBACK_URL>&scope=<SCOPE_ONE>+<SCOPE_TWO>+<SCOPE_THREE>
+    ```
+    
+    Then, use the following URL to get the token:
+    ```
+    https://api.modrinth.com/_internal/oauth/token
+    ```
+    
+    This route will be changed in the future to move the `_internal` part to `v3`.
+    
+    ### Personal access tokens
+    Personal access tokens (PATs) can be generated in from [the user settings](https://modrinth.com/settings/account).
+    
+    ### GitHub tokens
     For backwards compatibility purposes, some types of GitHub tokens also work for authenticating a user with Modrinth's API, granting all scopes.
     **We urge any application still using GitHub tokens to start using personal access tokens for security and reliability purposes.**
     GitHub tokens will cease to function to authenticate with Modrinth's API as soon as version 3 of the API is made generally available.
