@@ -163,9 +163,6 @@ const config: Config = {
           {
             spec: './static/openapi.yaml',
             route: '/',
-            layout: {
-              image: 'https://cdn.modrinth.com/landing-new/landing.webp'
-            }
           },
         ],
         theme: {
