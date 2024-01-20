@@ -30,7 +30,7 @@
         of Service](https://discord.com/terms) (this also means that discussions regarding "cracked" launchers and
         Discord client modifications are **prohibited under all circumstances**)
         
-        4. Contact the moderators at any time via the <@&895382919772766219> ping or the <@1000632789118496818> bot
+        4. Contact the moderators at any time via the <@&895382919772766219> ping
         
         5. Respect the use of accessibility and self-identity tools such as [PluralKit](https://pluralkit.me)
     - title: ":no_entry: Do not:"
@@ -52,10 +52,11 @@
   title: "**:link: __Links__**"
   links:
     Website: https://modrinth.com
+    Support: https://support.modrinth.com
+    Status page: https://status.modrinth.com
     Roadmap: https://roadmap.modrinth.com
     Blog and newsletter: https://blog.modrinth.com/subscribe?utm_medium=social&utm_source=discord&utm_campaign=welcome
-    Documentation: https://docs.modrinth.com
-    Status page: https://status.modrinth.com
+    API documentation: https://docs.modrinth.com
     Modrinth source code: https://github.com/modrinth
     Help translate Modrinth: https://crowdin.com/project/modrinth
     Follow Modrinth on Mastodon: https://floss.social/@modrinth

@@ -1,4 +1,3 @@
-import { themes } from 'prism-react-renderer'
 import type { Config } from '@docusaurus/types'
 
 const textLogo: string = `<svg width="10rem" xmlns="http://www.w3.org/2000/svg" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 3307 593" xml:space="preserve">
@@ -11,8 +10,7 @@ const textLogo: string = `<svg width="10rem" xmlns="http://www.w3.org/2000/svg" 
 </svg>`
 
 const config: Config = {
-  title: 'Modrinth Documentation',
-  tagline: "Need help doing something with Modrinth? This is the place!",
+  title: 'Modrinth API Documentation',
   url: 'https://docs.modrinth.com',
   baseUrl: '/',
   trailingSlash: false,
@@ -30,26 +28,12 @@ const config: Config = {
       },
       items: [
         {
-          type: 'doc',
-          docId: 'api/index',
-          position: 'left',
-          label: 'Getting Started',
-        },
-        {
-          to: 'api-spec',
-          position: 'left',
-          label: 'API Routes',
-          activeBasePath: 'api-spec',
-        },
-        {
           href: 'https://modrinth.com/',
           label: 'Main website',
-          position: 'right',
         },
         {
           href: 'https://support.modrinth.com/',
           label: 'Support website',
-          position: 'right',
         },
       ],
     },
@@ -137,11 +121,6 @@ const config: Config = {
       ],
       copyright: `<span style="font-size: .75rem">NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG.</span>`,
     },
-    prism: {
-      theme: themes.vsLight,
-      darkTheme: themes.vsDark,
-      additionalLanguages: ['http', 'groovy', 'toml'],
-    },
     colorMode: {
       respectPrefersColorScheme: true,
     },
@@ -169,11 +148,7 @@ const config: Config = {
     [
       '@docusaurus/preset-classic',
       {
-        docs: {
-          editUrl: 'https://github.com/modrinth/docs/edit/master/',
-          routeBasePath: '/',
-          sidebarCollapsible: false,
-        },
+        docs: false,
         blog: false,
         theme: {
           customCss: './src/css/custom.css',
@@ -187,25 +162,23 @@ const config: Config = {
         specs: [
           {
             spec: './static/openapi.yaml',
-            route: '/api-spec/',
+            route: '/',
+            layout: {
+              image: 'https://cdn.modrinth.com/landing-new/landing.webp'
+            }
           },
         ],
         theme: {
-          primaryColor: '#1bd96a',
-          redocOptions: {
-            hideLoading: true,
+          primaryColor: '#00af5c',
+          primaryColorDark: '#1bd96a',
+          options: {
+            disableSearch: true,
           },
         },
       },
     ],
   ],
   plugins: [
-    [
-      '@cmfcmf/docusaurus-search-local',
-      {
-        indexBlog: false,
-      }
-    ],
     [
       "docusaurus-plugin-dotenv",
       {
@@ -221,24 +194,6 @@ const config: Config = {
         as: 'style',
         rel: 'stylesheet preload prefetch',
         href: '/font/font-faces.css',
-      },
-    },
-    {
-      tagName: 'link',
-      attributes: {
-        rel: 'preload',
-        href: 'https://cdn.modrinth.com/landing-new/landing-light.webp',
-        as: 'image',
-        type: 'image/webp',
-      },
-    },
-    {
-      tagName: 'link',
-      attributes: {
-        rel: 'preload',
-        href: 'https://cdn.modrinth.com/landing-new/landing.webp',
-        as: 'image',
-        type: 'image/webp',
       },
     },
   ],

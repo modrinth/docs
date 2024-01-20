@@ -1,6 +1,52 @@
-/docs/getting-started/                /api                                               308
-/docs/migrations/information/         /api/migration                                     308
-/docs/migrations/v1-to-v2/            /api/migration/v1-to-v2                            308
+/api-spec                             /                                                  308
+
+/docs/getting-started/                /#section/Getting-Started                          308
+/api                                  /#section/Getting-Started                          308
+/docs/migrations/information/         /#section/Versioning                               308
+/api/migration                        /#section/Versioning                               308
+/docs/migrations/v1-to-v2/            /#section/Versioning                               308
+/api/migration/v1-to-v2               /#section/Versioning                               308
+/docs/details/versioning/             /#section/Versioning                               308
+/docs/tutorials/forge_updates/        /#tag/misc/operation/forgeUpdates                  308
+/docs/tutorials/api_search/           /#tag/projects/operation/searchProjects            308
+
+/faq/app/crashing                     https://support.modrinth.com/en/articles/8792916   308
+/faq/etas                             https://support.modrinth.com/en/articles/8793126   308
+/faq/join-filters                     https://support.modrinth.com/en/articles/8793174   308
+/faq/dependents                       https://support.modrinth.com/en/articles/8793204   308
+/faq/snapshots                        https://support.modrinth.com/en/articles/8793207   308
+/faq/account-locked                   https://support.modrinth.com/en/articles/8793305   308
+/faq/2fa                              https://support.modrinth.com/en/articles/8793322   308
+/faq/password-requirements            https://support.modrinth.com/en/articles/8793324   308
+/faq/auth-methods                     https://support.modrinth.com/en/articles/8793347   308
+/faq/notifications                    https://support.modrinth.com/en/articles/8793352   308
+/faq/review-times                     https://support.modrinth.com/en/articles/8793355   308
+/faq/featured-versions                https://support.modrinth.com/en/articles/8793360   308
+/faq/additional-files                 https://support.modrinth.com/en/articles/8793363   308
+/faq/version-numbers                  https://support.modrinth.com/en/articles/8793369   308
+/faq/app/power-outage                 https://support.modrinth.com/en/articles/8797509   308
+/faq/app/share                        https://support.modrinth.com/en/articles/8797522   308
+/faq/app/network                      https://support.modrinth.com/en/articles/8797363   308
+/faq/app/unpair                       https://support.modrinth.com/en/articles/8797558   308
+/faq/app/repair                       https://support.modrinth.com/en/articles/8797637   308
+/faq/app/intermediary                 https://support.modrinth.com/en/articles/8797637   308
+/faq/app/file-location                https://support.modrinth.com/en/articles/8797641   308
+/faq/app/java                         https://support.modrinth.com/en/articles/8797659   308
+/faq/app/32bit-java                   https://support.modrinth.com/en/articles/8797659   308
+/faq/app/duplicate-instances          https://support.modrinth.com/en/articles/8797660   308
+/faq/app/exclamation-point            https://support.modrinth.com/en/articles/8797699   308
+/faq/app/unsupported                  https://support.modrinth.com/en/articles/8797705   308
+/faq/app/russia                       https://support.modrinth.com/en/articles/8797714   308
+/faq/app/msa                          https://support.modrinth.com/en/articles/8797739   308
+/faq/app/own-minecraft                https://support.modrinth.com/en/articles/8797739   308
+/faq/app/underage                     https://support.modrinth.com/en/articles/8797749   308
+/faq/app/invalid-session              https://support.modrinth.com/en/articles/8797761   308
+/faq/app/webview2                     https://support.modrinth.com/en/articles/8797765   308
+/faq/app/program-files                https://support.modrinth.com/en/articles/8797783   308
+/faq/app/catalina                     https://support.modrinth.com/en/articles/8797807   308
+/faq/app/gnome                        https://support.modrinth.com/en/articles/8797810   308
+/faq/app/linux-links                  https://support.modrinth.com/en/articles/8797813   308
+/faq/app/packaging                    https://support.modrinth.com/en/articles/8797818   308
 /docs/modpacks/modpack_permissions/   https://support.modrinth.com/en/articles/8797527   308
 /modpacks/permissions                 https://support.modrinth.com/en/articles/8797527   308
 /what                                 https://support.modrinth.com/en/articles/8800818   308
@@ -20,56 +66,11 @@
 /docs/modpacks/creating_modpacks/     https://support.modrinth.com/en/articles/8802250   308
 /docs/modpacks/creation/              https://support.modrinth.com/en/articles/8802250   308
 /modpacks/create                      https://support.modrinth.com/en/articles/8802250   308
+/faq/app/modpack-basics               https://support.modrinth.com/en/articles/8802250   308
 /modpacks/format                      https://support.modrinth.com/en/articles/8802351   308
 /docs/modpacks/format_definition/     https://support.modrinth.com/en/articles/8802351   308
 
-/faq/etas                             https://support.modrinth.com/en/articles/8793126   308
-/faq/join-filters                     https://support.modrinth.com/en/articles/8793174   308
-/faq/dependents                       https://support.modrinth.com/en/articles/8793204   308
-/faq/snapshots                        https://support.modrinth.com/en/articles/8793207   308
-/faq/account-locked                   https://support.modrinth.com/en/articles/8793305   308
-/faq/2fa                              https://support.modrinth.com/en/articles/8793322   308
-/faq/password-requirements            https://support.modrinth.com/en/articles/8793324   308
-/faq/auth-methods                     https://support.modrinth.com/en/articles/8793347   308
-/faq/notifications                    https://support.modrinth.com/en/articles/8793352   308
-/faq/review-times                     https://support.modrinth.com/en/articles/8793355   308
-/faq/featured-versions                https://support.modrinth.com/en/articles/8793360   308
-/faq/additional-files                 https://support.modrinth.com/en/articles/8793363   308
-/faq/version-numbers                  https://support.modrinth.com/en/articles/8793369   308
-
-/faq/app/modpack-basics               https://support.modrinth.com/en/articles/8802250   308
-/faq/app/share                        https://support.modrinth.com/en/articles/8797522   308
-/faq/app/crashing                     https://support.modrinth.com/en/articles/8792916   308
-/faq/app/network                      https://support.modrinth.com/en/articles/8797363   308
-/faq/app/unpair                       https://support.modrinth.com/en/articles/8797558   308
-/faq/app/repair                       https://support.modrinth.com/en/articles/8797637   308
-/faq/app/intermediary                 https://support.modrinth.com/en/articles/8797637   308
-/faq/app/file-location                https://support.modrinth.com/en/articles/8797641   308
-/faq/app/java                         https://support.modrinth.com/en/articles/8797659   308
-/faq/app/32bit-java                   https://support.modrinth.com/en/articles/8797659   308
-/faq/app/duplicate-instances          https://support.modrinth.com/en/articles/8797660   308
-/faq/app/power-outage                 https://support.modrinth.com/en/articles/8797509   308
-/faq/app/exclamation-point            https://support.modrinth.com/en/articles/8797699   308
-/faq/app/unsupported                  https://support.modrinth.com/en/articles/8797705   308
-/faq/app/russia                       https://support.modrinth.com/en/articles/8797714   308
-/faq/app/msa                          https://support.modrinth.com/en/articles/8797739   308
-/faq/app/own-minecraft                https://support.modrinth.com/en/articles/8797739   308
-/faq/app/underage                     https://support.modrinth.com/en/articles/8797749   308
-/faq/app/invalid-session              https://support.modrinth.com/en/articles/8797761   308
-/faq/app/webview2                     https://support.modrinth.com/en/articles/8797765   308
-/faq/app/program-files                https://support.modrinth.com/en/articles/8797783   308
-/faq/app/catalina                     https://support.modrinth.com/en/articles/8797807   308
-/faq/app/gnome                        https://support.modrinth.com/en/articles/8797810   308
-/faq/app/linux-links                  https://support.modrinth.com/en/articles/8797813   308
-/faq/app/packaging                    https://support.modrinth.com/en/articles/8797818   308
-
-/docs/details/versioning/             /api-spec/#section/Versioning                      308
-/docs/tutorials/forge_updates/        /api-spec/#tag/misc/operation/forgeUpdates         308
-/docs/tutorials/api_search/           /api-spec/#tag/projects/operation/searchProjects   308
-
 /redacted                             https://www.youtube.com/watch?v=qWNQUvIk954
 
-/faq                                  https://support.modrinth.com                       308
-
-/faq/*                                https://support.modrinth.com                       308
+/fa*                                  https://support.modrinth.com                       308
 /docs/*                               /:splat   308
