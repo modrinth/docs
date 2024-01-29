@@ -12,7 +12,7 @@
 - type: embed
   embeds:
     - title: "**:scroll: __Rules__**"
-      color: 0x5865f2
+      color: 0x4f9cff
       description: "Modrinth's rules are easy to follow. Despite this, please keep in mind that this is not an entirely
         open forum. First and foremost, this Discord server is intended to facilitate the development of Modrinth and
         for communication regarding Modrinth. Ultimately, it is up to the discretion of the moderators whether your
@@ -46,9 +46,20 @@
         9. Report Modrinth content in the Discord (use the Report button on the website)
         
         10. Assume staff member's opinions reflect those of Modrinth
+    - title: ":pencil2: Nickname policy:"
+      color: 0xffa347
+      description: >-
+        We want to keep this server clean and therefore require that display names of all members on the server are
+        readable, accessible, and free of attention-seeking elements, which includes, but is not limited to, display
+        names that begin with hoisting characters, have an excessive number of emojis in them, or use "fancy fonts",
+        "glitch effects" and any other Unicode characters, which are either very inaccessible to screen readers or cause
+        annoyance to other members.
 
+        When we find that your display name does not adhere to this policy, we will try to correct it by changing your
+        nickname on the server. Repetitive attempts to revert to a violating display name may result in your removal
+        from the server. We will also permanently remove any users whose profiles contain inappropriate content.
 - type: links
-  color: 0x00aff4
+  color: 0x4f9cff
   title: "**:link: __Links__**"
   links:
     Website: https://modrinth.com
