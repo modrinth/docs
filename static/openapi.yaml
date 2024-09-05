@@ -621,12 +621,12 @@ components:
           description: A list of the categories that the project has
         client_side:
           type: string
-          enum: [required, optional, unsupported]
+          enum: [required, optional, unsupported, unknown]
           description: The client side support of the project
           example: required
         server_side:
           type: string
-          enum: [required, optional, unsupported]
+          enum: [required, optional, unsupported, unknown]
           description: The server side support of the project
           example: optional
     # Fields added to search results and direct project lookups that cannot be edited.
