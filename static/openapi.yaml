@@ -46,7 +46,7 @@ info:
     - those which access private data (such as draft projects, notifications, emails, and payout data)
     
     Each request requiring authentication has a certain scope. For example, to view the email of the user being requested, the token must have the `USER_READ_EMAIL` scope.
-    You can find the list of available scopes [on GitHub](https://github.com/modrinth/labrinth/blob/master/src/models/pats.rs#L15). Making a request with an invalid scope will return a 401 error.
+    You can find the list of available scopes [on GitHub](https://github.com/modrinth/labrinth/blob/master/src/models/v3/pats.rs#L17). Making a request with an invalid scope will return a 401 error.
     
     Please note that certain scopes and requests cannot be completed with a personal access token or using OAuth.
     For example, deleting a user account can only be done through Modrinth's frontend.
