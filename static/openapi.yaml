@@ -593,6 +593,11 @@ components:
               items:
                 type: string
               example: [ "1.18", 1.18.1 ]
+            version_types:
+              type: array
+              items:
+                type: string
+              example: [ "release", "beta" ]
           required:
             - loaders
             - game_versions
